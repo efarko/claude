@@ -25,7 +25,9 @@ Especificaciones: H.264 + AAC 48 kHz, 1080×1920, 30 fps, 18 s, audio a −14,3 
 ```bash
 # Logo 3D (Blender 4.2 como módulo de Python)
 uv venv -p 3.11 .bpy && uv pip install -p .bpy/bin/python "bpy==4.2.*"
-.bpy/bin/python blender/build_logo.py          # .blend + imagen fija + secuencia
+sudo apt-get install -y libegl1 libgl1-mesa-dri  # solo si no hay GPU (Eevee necesita EGL)
+.bpy/bin/python blender/build_logo.py          # Eevee (por defecto): .blend + imagen fija + secuencia
+.bpy/bin/python blender/build_logo.py --cycles # Cycles: más realista, ~4x más lento en CPU
 
 # Video
 cd video && npm ci
@@ -37,6 +39,7 @@ El audio ya está en `video/public/audio/` (normalizado). Las tomas originales e
 
 ## Notas de producción
 
+- **Motor de render**: el script usa **Eevee** por defecto (~6,6 s por fotograma en CPU, menos de 1 s con GPU). Los renders entregados en `renders/` se hicieron con Cycles (~25 s por fotograma); para regenerarlos igual, usa `--cycles`.
 - **Blender**: esta sesión no tenía un MCP de Blender conectado, así que el logo se construyó con Blender 4.2 LTS ejecutado como módulo de Python (`bpy`). Es el mismo motor (Cycles) y el `.blend` se abre en Blender normal.
 - **Logo**: la web no publica un archivo de logo; es un cuadro redondeado con degradado y "SV" en texto. Se reconstruyó con geometría (cuadro extruido de 0,36, bisel de 0,07, esquinas con el radio de la web) y texto 3D con la fuente real (Bricolage Grotesque Bold). El degradado del material reproduce `--brand-gradient-logo` (118°, `#0e142a` 8 % → `#1c5cc6` 52 % → `#2d87ff` 92 %), con barniz brillante (*clearcoat*) e iluminación de estudio de tres luces más una barra de destello.
 - **Precios**: S/300 y S/500 son precios de lanzamiento que la web muestra hasta el 31/12/2026. Después de esa fecha el anuncio queda desactualizado (los regulares son S/390 y S/690). La nota en pantalla lo indica.

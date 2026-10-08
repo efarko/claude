@@ -5,8 +5,12 @@ degradado navy -> azul (`--brand-gradient-logo`) y "SV" en blanco con
 Bricolage Grotesque Bold. Este script lo replica con geometría + texto.
 
 Uso (Blender como módulo, `pip install bpy==4.2.*`):
-    python build_logo.py            # .blend + imagen fija + secuencia PNG
-    python build_logo.py --still    # solo .blend + imagen fija
+    python build_logo.py                 # .blend + imagen fija + secuencia PNG (Eevee)
+    python build_logo.py --still         # solo .blend + imagen fija
+    python build_logo.py --cycles        # Cycles en vez de Eevee (más realista, ~4x más lento en CPU)
+
+Eevee necesita OpenGL/EGL. En un contenedor sin GPU: `apt-get install libegl1 libgl1-mesa-dri`
+(Mesa renderiza por software: ~6,6 s/fotograma a 1000x1000 frente a ~25 s con Cycles en 4 núcleos).
 """
 import math
 import os
@@ -26,6 +30,7 @@ OUT_SEQ = os.path.join(ROOT, "renders", "logo_anim", "frame_")
 FPS = 30
 FRAMES = 105  # 3,5 s
 RES = 1000
+USE_CYCLES = "--cycles" in sys.argv
 
 # Colores de css/style.css
 NAVY = "#0e142a"
@@ -46,10 +51,14 @@ def srgb_to_linear(hex_color):
 def reset_scene():
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scene = bpy.context.scene
-    scene.render.engine = "CYCLES"
-    scene.cycles.device = "CPU"
-    scene.cycles.samples = 48
-    scene.cycles.use_denoising = True
+    if USE_CYCLES:
+        scene.render.engine = "CYCLES"
+        scene.cycles.device = "CPU"
+        scene.cycles.samples = 48
+        scene.cycles.use_denoising = True
+    else:
+        scene.render.engine = "BLENDER_EEVEE_NEXT"
+        scene.eevee.taa_render_samples = 16
     scene.render.resolution_x = RES
     scene.render.resolution_y = RES
     scene.render.film_transparent = True
@@ -273,7 +282,10 @@ def main():
     text.location = text_final
     rig.rotation_euler = (math.radians(-6), 0, math.radians(-16))
     glint.location = (2.6, -4.0, 0)
-    scene.cycles.samples = 128
+    if USE_CYCLES:
+        scene.cycles.samples = 128
+    else:
+        scene.eevee.taa_render_samples = 64
     scene.render.filepath = OUT_STILL
     bpy.ops.render.render(write_still=True)
     print("still ->", OUT_STILL)
