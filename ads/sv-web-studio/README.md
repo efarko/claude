@@ -13,11 +13,12 @@
 | `blender/build_logo.py` | Script que construye la escena y renderiza |
 | `renders/logo_still.png` | (a) Imagen del logo 3D, PNG con transparencia, 1000×1000 |
 | `renders/logo_anim/frame_0001–0105.png` | (b) Revelado giratorio del logo, 3,5 s a 30 fps, PNG con transparencia |
+| `renders/logo_anim_preview.mp4` | Vista rápida de la animación sobre el fondo de la marca (solo para revisar) |
 | `brand/` | Favicon SVG original, imagen OG, fuentes de la web y copia de `config.js` |
 | `video/` | Proyecto de Remotion (montaje) |
 
 Las tres versiones son idénticas desde el segundo 2: solo cambia el gancho, así que la comparación de retención es limpia.
-Especificaciones: H.264 + AAC 48 kHz, 1080×1920, 30 fps, 18 s, audio a −14 LUFS / −1,5 dBTP, `faststart`.
+Especificaciones: H.264 + AAC 48 kHz, 1080×1920, 30 fps, 18 s, audio a −14,3 LUFS integrados, pico real ≤ −1,8 dBTP, `faststart`.
 
 ## Cómo regenerar
 

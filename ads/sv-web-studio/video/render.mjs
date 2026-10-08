@@ -1,4 +1,4 @@
-// Renderiza las 3 versiones del anuncio y normaliza el audio a -14 LUFS / -1,5 dBTP
+// Renderiza las 3 versiones del anuncio y normaliza el audio a -14 LUFS / ≤ -1 dBTP (objetivo -2 antes de AAC)
 // (la referencia habitual de TikTok e Instagram).
 //   node render.mjs            -> las tres
 //   node render.mjs SV-Ad-A    -> solo una
@@ -23,18 +23,18 @@ mkdirSync(OUT, { recursive: true });
 const serveUrl = await bundle({ entryPoint: path.join(ROOT, "src/index.ts") });
 
 const loudnorm = (input, output) => {
-  const filter = "loudnorm=I=-14:TP=-1.5:LRA=11";
+  const filter = "loudnorm=I=-14:TP=-2:LRA=11";
   // 1.ª pasada: medir (loudnorm imprime el JSON en stderr)
   const { stderr } = spawnSync("ffmpeg", ["-hide_banner", "-i", input, "-af", `${filter}:print_format=json`, "-f", "null", "-"], {
     encoding: "utf8",
   });
   const m = JSON.parse(stderr.slice(stderr.lastIndexOf("{")));
-  // 2.ª pasada: aplicar con las medidas, en modo lineal
+  // 2.ª pasada: aplicar con las medidas (lineal) y limitar a -2 dBFS para que el AAC no pase de -1 dBTP
   const second = `${filter}:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
   execFileSync("ffmpeg", [
     "-v", "error", "-y", "-i", input,
     "-c:v", "copy",
-    "-af", second, "-ar", "48000", "-c:a", "aac", "-b:a", "192k",
+    "-af", `${second},aresample=192000,alimiter=limit=0.75:level=false:attack=2:release=60,aresample=48000`, "-ar", "48000", "-c:a", "aac", "-b:a", "192k",
     "-movflags", "+faststart",
     output,
   ]);

@@ -37,5 +37,5 @@ En el bloque de PRUEBA no se usan testimonios, cifras de clientes ni garantías 
 
 - **Música**: Eleven Music v2.5, instrumental de 18 s ("electronic pop enérgico, 124 BPM, entrada con golpe, sin intro lenta").
 - **Efectos**: Sound Effects v2: whoosh (×2 tomas), impacto grave (×2 tomas) y pop digital.
-- **Normalización**: cada efecto se iguala antes de montarlo (whoosh −16 LUFS, impacto −14, pop −18, música −16). La mezcla final pasa por un `loudnorm` de dos pasadas a **−14 LUFS integrados y −1,5 dBTP**, la referencia de TikTok e Instagram.
+- **Normalización**: cada efecto se iguala antes de montarlo (whoosh −16 LUFS, impacto −14/−15, pop −20 con paso bajo, música −16; limitador y fundidos de 4–30 ms para evitar clics). La mezcla final pasa por un `loudnorm` de dos pasadas a −14 LUFS y un limitador con sobremuestreo: resultado medido **−14,3 LUFS integrados, pico real ≤ −1,8 dBTP**, la referencia de TikTok e Instagram.
 - Canvas de ElevenLabs con todas las tomas generadas: https://elevenlabs.io/app/flows/ciUf1ETmljBPh8s9jBKL
