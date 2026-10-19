@@ -1,5 +1,12 @@
 # SV WebStudio: plan para cerrar clientes esta semana
 
+## Hecho el 19/10
+- ✅ 27 correos de corrección del número de WhatsApp enviados a la tanda del 12 al 14/10 (26 entregados; Estudio Milian rebota).
+- ✅ 26 seguimientos enviados a la tanda del 14 al 16/10. Quedaron sin enviar (bloqueados por permisos): Chemiservis, CYC Asfaltos, Casa de Reposo Vitality, Dra. Pinto. Están en la lista de WhatsApp con ⚠️.
+- ✅ Landing de muestra para Art & Glass Vitrales: `demos/artglass-vitrales/`.
+- ✅ `LISTA-WHATSAPP.md`: 55 negocios, cada uno con su fallo y un botón de WhatsApp con el mensaje ya escrito, más 5 negocios nuevos sin web.
+- ⏳ Revisión automática de respuestas a las 17:00 de Lima de hoy.
+
 Diagnóstico al 19/10/2026 (revisando Gmail y la hoja "SV WebStudio – Seguimiento de prospectos"):
 
 - ~95 correos en frío enviados del 12 al 19/10. **1 respuesta** (Art & Glass Vitrales). 0 follow-ups enviados.
