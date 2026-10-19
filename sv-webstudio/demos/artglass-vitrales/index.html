@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art & Glass Vitrales · Anthony Martínez · Lima</title>
+<meta name="description" content="Fabricación, restauración e instalación de vitrales emplomados en Lima. Más de 20 años de experiencia. Taller en Magdalena del Mar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16120f; --ink-2:#221c17; --paper:#f6f0e6; --muted:#b9ab98; --line:rgba(246,240,230,.12);
+  --amber:#e0a43a; --ruby:#b8312f; --emerald:#2e8a5a; --wa:#25d366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600}
+
+/* demo ribbon */
+.demo{background:var(--amber);color:var(--ink);font-size:13px;text-align:center;padding:8px 16px;font-weight:500}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(22,18,15,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:Fraunces,serif;font-size:19px;text-decoration:none}
+.brand span{color:var(--amber)}
+.nav-call{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:64px 0 72px}
+.hero h1{font-size:clamp(38px,6vw,64px);margin:14px 0 18px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--amber),var(--ruby) 55%,var(--emerald));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;padding:14px 22px;border-radius:999px;font-size:16px;transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#08311a}
+.btn-ghost{border:1px solid var(--line)}
+.btn svg{width:20px;height:20px}
+.hero-img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 80px -30px rgba(224,164,58,.45)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.facts{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.facts div{border-left:2px solid var(--amber);padding-left:12px}
+.facts b{display:block;font-family:Fraunces,serif;font-size:26px}
+.facts small{color:var(--muted);font-size:13px}
+
+section{padding:80px 0;border-top:1px solid var(--line)}
+.sec-head{max-width:640px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(28px,4vw,42px);margin-top:10px}
+.sec-head p{color:var(--muted);margin-top:12px}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card .dot{width:10px;height:10px;border-radius:50%;margin-bottom:16px}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gal figure{border-radius:14px;overflow:hidden;background:var(--ink-2);position:relative}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .4s ease}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:13px;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+
+.tile{width:100%;aspect-ratio:1;background-size:300% 200%;background-repeat:no-repeat;border-radius:14px;transition:transform .4s ease}
+.gal .tile{border-radius:0}
+.gal figure:hover .tile{transform:scale(1.04)}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step img{border-radius:14px;aspect-ratio:1;object-fit:cover;width:100%}
+.step h3{font-size:18px;margin:14px 0 4px}
+.step h3::before{counter-increment:s;content:counter(s,decimal-leading-zero) " ";color:var(--amber);font-family:Inter,sans-serif;font-size:13px;font-weight:600}
+.step p{color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch}
+.contact ul{list-style:none;display:grid;gap:14px;margin:24px 0 28px}
+.contact li{display:flex;gap:12px;align-items:flex-start}
+.contact li b{display:block;font-size:13px;color:var(--muted);font-weight:500}
+.contact li a{font-weight:600;text-decoration:none}
+.map{border-radius:16px;overflow:hidden;border:1px solid var(--line);min-height:320px}
+.map iframe{width:100%;height:100%;min-height:320px;border:0;filter:grayscale(.3) contrast(1.05)}
+
+footer{border-top:1px solid var(--line);padding:28px 0 100px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* floating whatsapp */
+.fab{position:fixed;right:18px;bottom:18px;z-index:30;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.fab svg{width:32px;height:32px;fill:#fff}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding:36px 0 56px;gap:32px}
+  .hero-img{aspect-ratio:4/3;order:-1}
+  .svc{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .contact{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .nav-call span{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="demo">Muestra gratuita preparada por SV WebStudio para Art &amp; Glass Vitrales</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Art <span>&amp;</span> Glass Vitrales</a>
+    <a class="nav-call" href="tel:+51999127848">📞 <span>999 127 848</span></a>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <div class="eyebrow">Taller de Anthony Martínez · Lima</div>
+    <h1>Vitrales emplomados <em>hechos a mano</em>, restaurados con su color original.</h1>
+    <p class="lead">Más de 20 años fabricando, restaurando e instalando vitrales para iglesias, casas y edificios en todo el Perú, incluso en alturas y techos de difícil acceso.</p>
+    <div class="cta-row">
+      <a class="btn btn-wa" href="https://wa.me/51999127848?text=Hola%20Art%20%26%20Glass%20Vitrales%2C%20quisiera%20cotizar%20un%20vitral." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+        Cotizar por WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#trabajos">Ver trabajos</a>
+    </div>
+    <div class="facts">
+      <div><b>+20 años</b><small>de experiencia</small></div>
+      <div><b>Emplomado</b><small>técnica tradicional</small></div>
+      <div><b>Todo el Perú</b><small>traslado e instalación</small></div>
+    </div>
+  </div>
+  <div class="hero-img"><img src="https://artesvitrales.com/wp-content/uploads/2025/07/salider.jpg" style="object-position:0% 50%;transform:scale(1.06);transform-origin:0 100%" alt="Vitral del Sagrado Corazón fabricado en el taller de Art & Glass Vitrales" ></div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Servicios</div>
+      <h2>Del diseño a la instalación, en un solo taller.</h2>
+    </div>
+    <div class="svc">
+      <div class="card"><div class="dot" style="background:var(--amber)"></div><h3>Fabricación a medida</h3><p>Vitrales religiosos, puertas, ventanas, mamparas y lámparas tipo Tiffany, diseñados para su espacio.</p></div>
+      <div class="card"><div class="dot" style="background:var(--ruby)"></div><h3>Restauración</h3><p>Técnica tradicional de emplomado y stock de vidrios catedral antiguos para reponer piezas rotas conservando formas y colores originales.</p></div>
+      <div class="card"><div class="dot" style="background:var(--emerald)"></div><h3>Instalación y traslado</h3><p>Montaje seguro en alturas y techos de riesgo, y transporte especializado a provincias.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="trabajos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Algunos trabajos</div>
+      <h2>Luz y color que duran generaciones.</h2>
+    </div>
+    <div class="gal">
+      <figure><div class="tile" role="img" aria-label="Rosetón con imagen de Cristo" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-1.jpg);background-position:0% 100%"></div><figcaption>Rosetón religioso</figcaption></figure>
+      <figure><div class="tile" role="img" aria-label="Vitral en arco con calas y colibrí" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-1.jpg);background-position:100% 100%"></div><figcaption>Vitral en arco</figcaption></figure>
+      <figure><div class="tile" role="img" aria-label="Lámpara tipo Tiffany con libélulas" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-1.jpg);background-position:100% 0%"></div><figcaption>Lámpara tipo Tiffany</figcaption></figure>
+      <figure><div class="tile" role="img" aria-label="Lámpara de vitral en tonos azules" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-1.jpg);background-position:0% 0%"></div><figcaption>Lámpara de mesa</figcaption></figure>
+      <figure><div class="tile" role="img" aria-label="Ventanas con vitral en fachada de casa" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-1.jpg);background-position:50% 100%"></div><figcaption>Ventanas para fachada</figcaption></figure>
+      <figure><div class="tile" role="img" aria-label="Rostros pintados a mano sobre vidrio" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-1.jpg);background-position:50% 0%"></div><figcaption>Pintura sobre vidrio</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Cada vitral pasa por nuestras manos, pieza por pieza.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="tile" role="img" aria-label="Boceto a lápiz de un vitral" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-2.jpg);background-position:0% 100%"></div><h3>Boceto</h3><p>Dibujamos el diseño a escala real.</p></div>
+      <div class="step"><div class="tile" role="img" aria-label="Plantilla numerada con piezas de vidrio" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-2.jpg);background-position:50% 100%"></div><h3>Corte</h3><p>Cortamos y numeramos cada vidrio.</p></div>
+      <div class="step"><div class="tile" role="img" aria-label="Rostros pintados sobre vidrio" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-2.jpg);background-position:50% 0%"></div><h3>Pintura</h3><p>Pintamos rostros y detalles a mano.</p></div>
+      <div class="step"><div class="tile" role="img" aria-label="Vitral terminado del Sagrado Corazón" style="background-image:url(https://artesvitrales.com/wp-content/uploads/2025/07/galeria-2.jpg);background-position:100% 100%"></div><h3>Emplomado</h3><p>Unimos con plomo y entregamos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap contact">
+    <div>
+      <div class="eyebrow">Contacto</div>
+      <h2 style="font-size:clamp(28px,4vw,42px);margin-top:10px">Cuéntenos su proyecto y le cotizamos.</h2>
+      <ul>
+        <li>💬<div><b>WhatsApp</b><a href="https://wa.me/51999127848?text=Hola%20Art%20%26%20Glass%20Vitrales%2C%20quisiera%20cotizar%20un%20vitral." target="_blank" rel="noopener">+51 999 127 848</a></div></li>
+        <li>📞<div><b>Teléfono fijo</b><a href="tel:+5112615290">(01) 261-5290</a></div></li>
+        <li>✉️<div><b>Correo</b><a href="mailto:artesvitrales@hotmail.com">artesvitrales@hotmail.com</a></div></li>
+        <li>📍<div><b>Taller</b>Jr. Amazonas 705, Magdalena del Mar<br><span style="color:var(--muted)">Alt. cdra. 13 de Av. Sucre, esquina con Esther Festini</span></div></li>
+      </ul>
+      <a class="btn btn-wa" href="https://wa.me/51999127848?text=Hola%20Art%20%26%20Glass%20Vitrales%2C%20quisiera%20cotizar%20un%20vitral." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+    <div class="map"><iframe title="Mapa del taller" loading="lazy" src="https://www.google.com/maps?q=Jr.+Amazonas+705,+Magdalena+del+Mar,+Lima&output=embed"></iframe></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Art &amp; Glass Vitrales · Anthony Martínez</span>
+    <span>Muestra hecha por <a href="https://sv-web-studio.vercel.app/">SV WebStudio</a></span>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/51999127848?text=Hola%20Art%20%26%20Glass%20Vitrales%2C%20quisiera%20cotizar%20un%20vitral." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+</a>
+
+</body>
+</html>
