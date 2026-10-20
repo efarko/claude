@@ -16,3 +16,14 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimientos enviados: 0. Todos los hilos con 3 días o más ya recibieron hoy su seguimiento 1. Los del 17/10 cumplen 3 días mañana.
 - Pendientes para Franco por WhatsApp (envío bloqueado por permisos, no se reintenta): Chemiservis, CYC Asfaltos, Casa de Reposo Vitality, Dra. Pinto.
 - Próximo: 20/10, seguimiento 1 a los 10 correos del 17/10. 23/10, seguimiento 2 a los hilos del 12 al 16/10.
+
+## 20/10/2026 · revisión automática 4:51 pm
+- **Respuesta: SÍ** · Hogar Geriátrico Virgen del Carmen (Ana Pacheco, anapacheco_645@hotmail.com). Respondió "Si sr 941991831" al correo Y (arreglable) de hoy, y antes "Si buenas tardes 9004570".
+  - Le contesté en el hilo: le escribo hoy por WhatsApp al 941 991 831 y le pregunté si el 900 4570 es el fijo correcto.
+  - Muestra de versión nueva: `demos/hogar-virgen-del-carmen/` (sus fotos reales, 2 sedes, todos los teléfonos tocables). Revisada a 390 px sin scroll horizontal. No se publicó: el conector de Vercel no está disponible.
+  - Fallos de su web actual (hecha en Duda, irp.cdn-website.com): el fijo (01) 254-1064 marca el (01) 471-2858; el 944 899 120 está enlazado sin "+"; 5 botones dicen "Button"; el pie dice © 2020. Para arreglar necesita acceso al editor de Duda (preguntar quién se la hizo; el pie dice "Sitio web creado por…").
+  - Aviso enviado a Franco (PushNotification).
+- Seguimiento 1 enviado (10): Almir Confecciones, Distribuidora Fresquito, Romero Automotriz, Servsum, Sport Grass Perú, Avícola Señor Pollo, Centherplast, Agencia de Empleos Clarita, Bea Fotógrafa, Ortopedia y Podología De Pie.
+- Seguimiento 2: ninguno pendiente aún (los hilos del 12 al 16/10 lo reciben desde el 23/10).
+- Bloqueados: ninguno.
+- Rebotes nuevos: ninguno.

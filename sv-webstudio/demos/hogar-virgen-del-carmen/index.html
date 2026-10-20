@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hogar Geriátrico Virgen del Carmen · Casa de reposo en Lince</title>
+<meta name="description" content="Casa de reposo en Lince y Santa Beatriz. Atención permanente para personas de la tercera edad, con médico de cabecera y personal capacitado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2f6b45; --green-d:#234f34; --gold:#f2c230; --cream:#faf7f0; --ink:#1f2a24; --muted:#5d6b62; --line:#e4e0d4; --wa:#25d366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font:17px/1.6 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:600;line-height:1.15}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700}
+
+.demo{background:var(--gold);color:var(--ink);font-size:13px;text-align:center;padding:8px 16px;font-weight:600}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(250,247,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Lora,serif;font-weight:600;font-size:17px;line-height:1.1}
+.brand img{width:64px;height:auto;border-radius:6px}
+.nav-call{font-weight:700;font-size:15px;text-decoration:none;background:var(--green);color:#fff;padding:9px 16px;border-radius:999px;white-space:nowrap}
+
+.hero{position:relative;color:#fff}
+.hero-bg{position:absolute;inset:0;background:url(img/hero.jpg) center 30%/cover}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,48,33,.9) 0%,rgba(26,48,33,.72) 50%,rgba(26,48,33,.35) 100%)}
+.hero .wrap{position:relative;padding:84px 20px 92px}
+.hero h1{font-size:clamp(34px,5.5vw,56px);max-width:16ch;margin:12px 0 16px}
+.hero .eyebrow{color:var(--gold)}
+.hero p{font-size:19px;max-width:46ch;opacity:.95}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;padding:15px 22px;border-radius:999px;font-size:17px;transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#08311a}
+.btn-light{background:#fff;color:var(--green-d)}
+.btn svg{width:22px;height:22px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-weight:600;font-size:15px}
+.trust span::before{content:"✓ ";color:var(--gold)}
+
+section{padding:76px 0}
+.sec-head{max-width:640px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);margin-top:8px}
+.sec-head p{color:var(--muted);margin-top:10px}
+
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc li{list-style:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 18px 50px;position:relative;font-weight:600}
+.svc li::before{content:"";position:absolute;left:18px;top:21px;width:18px;height:18px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+
+.home-sec{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery figure{border-radius:16px;overflow:hidden;background:var(--cream)}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover}
+.gallery figcaption{padding:10px 12px;font-size:14px;color:var(--muted);font-weight:600}
+
+.sedes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sede{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;min-width:0}
+.phones a{min-width:0;overflow-wrap:anywhere}
+.sede h3{font-size:22px;margin-bottom:6px}
+.sede .addr{color:var(--muted);margin-bottom:16px}
+.phones{display:grid;gap:10px}
+.phones a{display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-weight:700}
+.phones a small{font-weight:600;color:var(--muted);font-size:13px}
+.phones a.wa{background:#eafbf0;border-color:#bfe9cf}
+.sede .map{margin-top:16px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.sede iframe{width:100%;height:200px;border:0;display:block}
+
+.final{background:var(--green);color:#fff;text-align:center}
+.final h2{font-size:clamp(28px,4vw,40px);max-width:22ch;margin:0 auto 12px}
+.final p{opacity:.9;max-width:50ch;margin:0 auto}
+.final .cta{justify-content:center}
+
+footer{padding:26px 0 100px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.fab{position:fixed;right:18px;bottom:18px;z-index:30;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+.fab svg{width:32px;height:32px;fill:#fff}
+
+@media (max-width:860px){
+  .svc{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .sedes{grid-template-columns:1fr}
+  .hero .wrap{padding:56px 20px 64px}
+  section{padding:56px 0}
+  .brand span{font-size:15px}
+}
+@media (max-width:380px){.brand img{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="demo">Muestra gratuita preparada por SV WebStudio para el Hogar Geriátrico Virgen del Carmen</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/logo.jpg" alt="Logo Virgen del Carmen S.A.C." width="64" height="29"><span>Hogar Geriátrico<br>Virgen del Carmen</span></a>
+    <a class="nav-call" href="tel:+51941991831">📞 Llamar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg" role="img" aria-label="Adultos mayores conversando y riendo"></div>
+  <div class="wrap">
+    <div class="eyebrow">Casa de reposo en Lince y Santa Beatriz</div>
+    <h1>Atención permanente para la tercera edad, como en familia.</h1>
+    <p>Más de 10 años cuidando a adultos mayores con médico de cabecera, personal capacitado y un ambiente cálido, limpio y seguro.</p>
+    <div class="cta">
+      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=51941991831&text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Hogar%20Geri%C3%A1trico%20Virgen%20del%20Carmen." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+        Consultar por WhatsApp
+      </a>
+      <a class="btn btn-light" href="tel:+51941991831">Llamar al 941 991 831</a>
+    </div>
+    <div class="trust"><span>Médico de cabecera</span><span>Atención permanente</span><span>Licencia municipal</span></div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Qué ofrecemos</div>
+      <h2>Cuidados pensados para su tranquilidad y la de su familia.</h2>
+    </div>
+    <ul class="svc">
+      <li>Personal capacitado</li>
+      <li>Médico preventivo y de cabecera</li>
+      <li>Administración de medicinas con orden médica</li>
+      <li>Atención de enfermedades crónicas</li>
+      <li>Cambios de posición cada 2 horas a pacientes postrados</li>
+      <li>Alimentación balanceada, calórica y proteica</li>
+      <li>Ambientes limpios y ordenados</li>
+      <li>Servicio de lavandería</li>
+      <li>Alojamiento con atención geriátrica especializada</li>
+    </ul>
+  </div>
+</section>
+
+<section class="home-sec" id="hogar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Nuestro hogar</div>
+      <h2>Un ambiente familiar, con dignidad y respeto.</h2>
+      <p>Nuestros cuidados se basan en el respeto a la dignidad e individualidad de cada residente.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/fachada.jpg" alt="Fachada del hogar en Lince" loading="lazy"><figcaption>Nuestra sede de Lince</figcaption></figure>
+      <figure><img src="img/habitacion.jpg" alt="Habitación de un residente" loading="lazy"><figcaption>Habitaciones cómodas</figcaption></figure>
+      <figure><img src="img/celebracion.jpg" alt="Celebración de cumpleaños con el personal" loading="lazy"><figcaption>Celebramos juntos</figcaption></figure>
+      <figure><img src="img/cuidado.jpg" alt="Cuidadora tomando la mano de una residente" loading="lazy"><figcaption>Acompañamiento diario</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Visítenos</div>
+      <h2>Dos sedes en Lima. Llámenos con un toque.</h2>
+    </div>
+    <div class="sedes">
+      <div class="sede">
+        <h3>Sede Lince</h3>
+        <div class="addr">Jr. Francisco de Zela 1645, Lince</div>
+        <div class="phones">
+          <a class="wa" href="https://api.whatsapp.com/send?phone=51941991831&text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Hogar%20Geri%C3%A1trico%20Virgen%20del%20Carmen." target="_blank" rel="noopener">941 991 831 <small>WhatsApp</small></a>
+          <a href="tel:+51944899120">944 899 120 <small>Celular</small></a>
+          <a href="tel:+5112541064">(01) 254-1064 <small>Fijo</small></a>
+        </div>
+        <div class="map"><iframe title="Mapa sede Lince" loading="lazy" src="https://www.google.com/maps?q=Jr.+Francisco+de+Zela+1645,+Lince,+Lima&output=embed"></iframe></div>
+      </div>
+      <div class="sede">
+        <h3>Sede Santa Beatriz</h3>
+        <div class="addr">Av. Alejandro Tirado 648, Santa Beatriz</div>
+        <div class="phones">
+          <a href="tel:+5117592242">(01) 759-2242 <small>Fijo</small></a>
+          <a href="mailto:anapacheco_645@hotmail.com">anapacheco_645@hotmail.com <small>Correo</small></a>
+        </div>
+        <div class="map"><iframe title="Mapa sede Santa Beatriz" loading="lazy" src="https://www.google.com/maps?q=Av.+Alejandro+Tirado+648,+Santa+Beatriz,+Lima&output=embed"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>¿Busca un lugar de confianza para su familiar?</h2>
+    <p>Escríbanos y le contamos cómo es un día en nuestro hogar. También puede visitarnos.</p>
+    <div class="cta">
+      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=51941991831&text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Hogar%20Geri%C3%A1trico%20Virgen%20del%20Carmen." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="btn btn-light" href="tel:+51941991831">Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Centro de Atención Residencial Mixto Virgen del Carmen S.A.C.</span>
+    <span>Muestra hecha por <a href="https://sv-web-studio.vercel.app/">SV WebStudio</a></span>
+  </div>
+</footer>
+
+<a class="fab" href="https://api.whatsapp.com/send?phone=51941991831&text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20Hogar%20Geri%C3%A1trico%20Virgen%20del%20Carmen." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+</a>
+
+</body>
+</html>
