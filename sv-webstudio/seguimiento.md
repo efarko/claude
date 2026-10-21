@@ -39,3 +39,4 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado (10, correos del 18/10): Consorcio Pimentel, Hornos Meneses (HYSERME), Air Tech Cold, Dr. Fernández Maldonado, Puertas Enrollables y Rejas, Dr. Corbacho, Orquesta Marlon Garay, Ventilación Sotelo, AR Fiber Elion, Fortexa.
 - Seguimiento 2: ninguno todavía (los seguimientos 1 del 19/10 cumplen 4 días el 23/10).
 - Bloqueados: ninguno.
+- Productora Roxste: Franco les mandó el diagnóstico y las 2 opciones (S/ 100 y S/ 250) por WhatsApp; lo leyeron. Esperando respuesta.
