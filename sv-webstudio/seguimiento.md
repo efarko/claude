@@ -40,3 +40,4 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 2: ninguno todavía (los seguimientos 1 del 19/10 cumplen 4 días el 23/10).
 - Bloqueados: ninguno.
 - Productora Roxste: Franco les mandó el diagnóstico y las 2 opciones (S/ 100 y S/ 250) por WhatsApp; lo leyeron. Esperando respuesta.
+- Productora Roxste: respondieron "Hablaré con la gerente". Seguimiento sugerido: viernes 24/10 si no responden.
