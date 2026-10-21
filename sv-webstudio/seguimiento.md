@@ -29,4 +29,6 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Rebotes nuevos: ninguno.
 
 ## 21/10/2026
+- Muestra publicada: https://hogar-virgen-del-carmen.vercel.app/ (verificada: carga con imágenes).
 - Hogar Geriátrico Virgen del Carmen: Franco le escribió a Ana por WhatsApp (941 991 831) con la propuesta de arreglo (S/ 100, pago al terminar), la pregunta por el acceso a Nicline/Arsys y la confirmación del fijo. Esperando respuesta.
+- Art & Glass Vitrales: sin respuesta de Anthony al WhatsApp.
