@@ -27,3 +27,6 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 2: ninguno pendiente aún (los hilos del 12 al 16/10 lo reciben desde el 23/10).
 - Bloqueados: ninguno.
 - Rebotes nuevos: ninguno.
+
+## 21/10/2026
+- Hogar Geriátrico Virgen del Carmen: Franco le escribió a Ana por WhatsApp (941 991 831) con la propuesta de arreglo (S/ 100, pago al terminar), la pregunta por el acceso a Nicline/Arsys y la confirmación del fijo. Esperando respuesta.
