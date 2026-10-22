@@ -41,3 +41,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Bloqueados: ninguno.
 - Productora Roxste: Franco les mandó el diagnóstico y las 2 opciones (S/ 100 y S/ 250) por WhatsApp; lo leyeron. Esperando respuesta.
 - Productora Roxste: respondieron "Hablaré con la gerente". Seguimiento sugerido: viernes 24/10 si no responden.
+
+## 22/10/2026 · revisión automática 4:51 pm
+- Respuestas nuevas por correo: ninguna. Productora Roxste y Ana (Virgen del Carmen) se siguen por WhatsApp.
+- Rebotes nuevos: ninguno.
+- Seguimiento 1 enviado (9, correos del 19/10): Restaurant Huanchaco, El Arte del Pan, Raíces Peruanas, Restaurante Moche, Chifa Kam Men, Catering J.A, Salma Boutique y Spa, Vet Clinic, Pavos y Chicharrones Santa Mónica.
+- Seguimiento 2: ninguno todavía. Los seguimientos 1 del 19/10 cumplen 4 días mañana (23/10).
+- Bloqueados: ninguno.
