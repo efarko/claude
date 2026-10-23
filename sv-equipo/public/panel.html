@@ -5,29 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>SV Equipo · Panel</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070a14" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/app.css">
 </head>
 <body>
-<header class="top"><div class="wrap wide">
-  <div class="bar-row">
-    <span class="brand">SV <b>Equipo</b> · Panel del dueño</span>
-    <span><a class="link-btn" href="/app">Mi ronda</a><button class="link-btn" id="out">Salir</button></span>
-  </div>
-  <div class="tabs" role="tablist" id="tabs">
-    <button class="tab" role="tab" data-v="hoy">Hoy</button>
-    <button class="tab" role="tab" data-v="equipo">Equipo <span class="count" id="c-pending"></span></button>
-    <button class="tab" role="tab" data-v="actividad">Actividad</button>
-    <button class="tab" role="tab" data-v="leads">Interesados</button>
-    <button class="tab" role="tab" data-v="prospectos">Prospectos</button>
+<header class="topbar"><div class="in">
+  <a class="brand" href="/panel"><span class="mark" aria-hidden="true">SV</span>SV Equipo <small>Panel</small></a>
+  <div class="top-actions">
+    <a class="link-btn" href="/app" id="to-app"></a>
+    <button class="link-btn" id="out" title="Salir"></button>
   </div>
 </div></header>
-<main class="wrap wide" id="view"></main>
+<div class="shell panel">
+  <aside class="side">
+    <nav class="nav" id="tabs" aria-label="Secciones del panel">
+      <a href="#hoy" data-v="hoy" data-i="home">Hoy</a>
+      <a href="#equipo" data-v="equipo" data-i="users">Equipo <span class="badge" id="c-pending" hidden></span></a>
+      <a href="#actividad" data-v="actividad" data-i="pulse">Actividad</a>
+      <a href="#leads" data-v="leads" data-i="star">Interesados</a>
+      <a href="#prospectos" data-v="prospectos" data-i="grid">Prospectos</a>
+    </nav>
+    <p class="hint side-tip">Solo tú ves este panel. Tu equipo entra a <b>Mi ronda</b> con su correo y su código.</p>
+  </aside>
+  <main class="main" id="view"></main>
+</div>
 
 <script type="module">
-import { api, h, toast, logout, fmtTime, fmtDate, fmtDay } from '/assets/common.js';
+import { api, h, toast, logout, fmtTime, fmtDate, fmtDay, icon } from '/assets/common.js';
+document.getElementById('out').append(icon('out'), h('span', {}, 'Salir'));
 document.getElementById('out').onclick = logout;
+document.getElementById('to-app').append(icon('wa'), h('span', {}, 'Mi ronda'));
+for (const a of document.querySelectorAll('#tabs a')) a.prepend(icon(a.dataset.i));
+const head = (eyebrow, title, extra) => h('div', { class: 'page-head' }, h('div', {}, h('p', { class: 'eyebrow' }, eyebrow), h('h1', {}, title)), extra || null);
+const setPending = (n) => { const b = document.getElementById('c-pending'); b.textContent = n || ''; b.hidden = !n; };
 const view = document.getElementById('view');
 let current = sessionStorage.getItem('sv-panel') || 'hoy';
 
@@ -40,42 +52,41 @@ const KINDS = {
 };
 const RES = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó' };
 const resChip = (r) => r && RES[r] ? h('span', { class: 'chip ' + (r === 'interested' ? 'ok' : r === 'not_interested' ? 'bad' : 'gray') }, RES[r]) : null;
-const kpi = (v, l, warn) => h('div', { class: 'kpi' + (warn ? ' warn' : '') }, h('div', { class: 'v' }, String(v)), h('div', { class: 'l' }, l));
+const kpi = (v, l, warn, dark) => h('div', { class: 'kpi' + (warn ? ' warn' : '') + (dark ? ' dark' : '') }, h('div', { class: 'v' }, String(v)), h('div', { class: 'l' }, l));
 const table = (heads, rows) => h('div', { class: 'table-wrap' }, h('table', {}, h('thead', {}, h('tr', {}, heads.map((x) => h('th', {}, x)))), h('tbody', {}, rows)));
 const STATUS = { pending: ['Pendiente', 'chip'], active: ['Activo', 'chip ok'], disabled: ['Desactivado', 'chip bad'], rejected: ['Rechazado', 'chip gray'] };
 
 function tabs() {
-  for (const b of document.querySelectorAll('#tabs .tab')) {
-    b.setAttribute('aria-selected', b.dataset.v === current);
-    b.onclick = () => { current = b.dataset.v; sessionStorage.setItem('sv-panel', current); go(); };
+  for (const b of document.querySelectorAll('#tabs a')) {
+    if (b.dataset.v === current) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    b.onclick = (e) => { e.preventDefault(); current = b.dataset.v; sessionStorage.setItem('sv-panel', current); go(); window.scrollTo({ top: 0 }); };
   }
 }
 
 async function go() {
   tabs();
-  view.replaceChildren(h('p', { class: 'muted', style: 'padding:20px 0' }, 'Cargando…'));
-  try { await VIEWS[current](); } catch (e) { view.replaceChildren(h('div', { class: 'empty', style: 'margin-top:16px' }, e.message)); }
+  view.replaceChildren(h('p', { class: 'muted', style: 'padding:8px 0' }, 'Cargando…'));
+  try { await VIEWS[current](); } catch (e) { view.replaceChildren(h('div', { class: 'empty' }, e.message)); }
 }
 
 async function refreshPending() {
-  try { const o = await api('admin?a=overview'); document.getElementById('c-pending').textContent = o.pending ? `(${o.pending})` : ''; return o; } catch (e) { return null; }
+  try { const o = await api('admin?a=overview'); setPending(o.pending); return o; } catch (e) { return null; }
 }
 
 const VIEWS = {
   async hoy() {
     const o = await api('admin?a=overview');
-    document.getElementById('c-pending').textContent = o.pending ? `(${o.pending})` : '';
+    setPending(o.pending);
     const team = o.team;
     const sum = (k) => team.reduce((a, t) => a + t[k], 0);
     const parts = [
-      h('h1', { style: 'margin-top:18px' }, `Hola, ${o.me.name.split(' ')[0]}`),
-      h('p', { class: 'sub' }, fmtDay(o.day).replace(/^./, (c) => c.toUpperCase())),
+      head(fmtDay(o.day), `Hola, ${o.me.name.split(' ')[0]}`),
     ];
     if (o.pending) parts.push(h('p', { class: 'hint warn', style: 'margin-top:14px' }, `Tienes ${o.pending} solicitud(es) de acceso esperando. `, h('a', { href: '#', onclick: (e) => { e.preventDefault(); current = 'equipo'; go(); } }, 'Revisar')));
     if (o.low) parts.push(h('div', { class: 'hint bad', style: 'margin-top:14px' }, h('b', {}, 'Quedan pocos prospectos. '), `WhatsApp: ${o.pool.wa} · llamadas: ${o.pool.calls}. `,
       h('a', { href: '#', onclick: (e) => { e.preventDefault(); current = 'prospectos'; go(); } }, 'Generar más')));
-    parts.push(h('h2', {}, 'Hoy'), h('div', { class: 'kpis' },
-      kpi(sum('wa'), 'WhatsApp enviados'), kpi(sum('calls'), 'Llamadas hechas'), kpi(sum('interested'), 'Interesados'),
+    parts.push(h('h2', {}, 'Hoy', h('small', {}, 'todo el equipo')), h('div', { class: 'kpis' },
+      kpi(sum('wa'), 'WhatsApp enviados'), kpi(sum('calls'), 'Llamadas hechas'), kpi(sum('interested'), 'Interesados', false, true),
       kpi(o.pool.wa, 'Quedan para WhatsApp', o.pool.wa <= o.lowLimit), kpi(o.pool.calls, 'Quedan para llamar', o.pool.calls <= o.lowLimit)));
     parts.push(h('h2', {}, 'Equipo hoy', h('small', {}, 'en vivo')), table(['Persona', 'WhatsApp', 'Llamadas', 'No contestó', 'No interesado', 'Interesados', 'Primera / última acción'],
       team.map((t) => h('tr', {}, h('td', {}, h('b', {}, t.name), h('br'), h('span', { class: 'small muted' }, t.email)),
@@ -93,7 +104,7 @@ const VIEWS = {
     const pending = users.filter((u) => u.status === 'pending');
     const others = users.filter((u) => u.status !== 'pending' && u.status !== 'rejected');
     const rejected = users.filter((u) => u.status === 'rejected');
-    const parts = [h('h2', {}, 'Solicitudes', h('small', {}, String(pending.length)))];
+    const parts = [head('Equipo', 'Tu equipo'), h('h2', {}, 'Solicitudes', h('small', {}, String(pending.length)))];
     parts.push(pending.length ? h('div', { class: 'grid2' }, pending.map((u) => {
       const send = h('input', { type: 'checkbox', checked: true });
       const out = h('div');
@@ -176,7 +187,7 @@ const VIEWS = {
     const who = h('select', { class: 'input' }, h('option', { value: '' }, 'Todas las personas'), users.map((u) => h('option', { value: u.id, selected: String(u.id) === state.user || null }, u.name)));
     who.onchange = () => { state.user = who.value; go(); };
     view.replaceChildren(
-      h('h2', {}, 'Registro de actividad', h('small', {}, `${d.rows.length} eventos`)),
+      head(`${d.rows.length} eventos`, 'Actividad'),
       h('div', { class: 'filters' }, day, who),
       h('div', { class: 'kpis', style: 'margin-bottom:12px' }, d.team.filter((t) => !state.user || String(t.id) === state.user).map((t) => kpi(`${t.wa} · ${t.calls}`, `${t.name.split(' ')[0]}: WhatsApp · llamadas`))),
       d.rows.length ? table(['Hora', 'Persona', 'Qué hizo', 'Prospecto', 'Detalle'], d.rows.map((r) => h('tr', {},
@@ -188,7 +199,7 @@ const VIEWS = {
 
   async leads() {
     const { rows } = await api('admin?a=leads');
-    view.replaceChildren(h('h2', {}, 'Interesados', h('small', {}, `${rows.length} en total · cierra estos primero`)),
+    view.replaceChildren(head(`${rows.length} en total · cierra estos primero`, 'Interesados'),
       rows.length ? h('div', { class: 'grid2' }, rows.map((r) => h('div', { class: 'card' + (r.status === 'client' ? ' done' : '') },
         h('div', { class: 'row' }, h('div', { class: 'name' }, r.name), r.status === 'client' ? h('span', { class: 'chip ok' }, 'Cliente') : h('span', { class: r.need === 'nueva' ? 'chip new' : 'chip' }, r.need === 'nueva' ? 'Web nueva' : 'Arreglo')),
         h('p', { class: 'problem' }, r.problem || ''),
@@ -204,22 +215,22 @@ const VIEWS = {
   async prospectos() {
     const o = await api('admin?a=overview');
     const state = VIEWS.prospectos.state ||= { q: '' };
-    const parts = [h('h2', {}, 'Bolsa de prospectos'), h('div', { class: 'kpis' },
+    const parts = [head('Prospectos', 'Bolsa de prospectos'), h('div', { class: 'kpis' },
       kpi(o.pool.wa, 'Disponibles para WhatsApp', o.pool.wa <= o.lowLimit), kpi(o.pool.calls, 'Disponibles para llamar hoy', o.pool.calls <= o.lowLimit),
       kpi(o.pool.calls_later, 'Para volver a llamar otro día'), kpi(o.totals.total, 'Total en el sistema'))];
     if (o.low) parts.push(h('p', { class: 'hint bad', style: 'margin-top:12px' }, `Quedan ${o.lowLimit} o menos en alguna bolsa. Genera más para que mañana tu equipo tenga números.`));
 
     const amount = h('input', { class: 'input', type: 'number', min: '10', max: '300', value: '60', style: 'max-width:120px' });
     const notes = h('input', { class: 'input', placeholder: 'Opcional: rubro o distrito (ej. dentistas en Surco)', maxlength: '300' });
-    parts.push(h('h2', {}, 'Generar más'), h('div', { class: 'card' },
-      h('p', { class: 'problem', style: 'margin:0' }, 'Envía el pedido a tu correo. Claude lo revisa en la rutina diaria, busca negocios nuevos y te responde con la lista lista para importar aquí abajo.'),
+    const genBox = h('div', {}, h('h2', {}, 'Generar más'), h('div', { class: 'card' },
+      h('p', { class: 'problem', style: 'margin:0' }, 'Envía el pedido a tu correo. Claude busca negocios nuevos y te responde con la lista para importarla aquí.'),
       h('div', { class: 'filters', style: 'margin:0' }, amount, notes),
       h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => { e.target.disabled = true; try { await api('admin?a=request_more', { amount: amount.value, notes: notes.value }); toast('Pedido enviado a tu correo'); } catch (err) { toast(err.message); } e.target.disabled = false; } }, 'Pedir prospectos nuevos'))));
 
     const file = h('input', { type: 'file', accept: '.json,application/json' });
     const paste = h('textarea', { class: 'input', rows: '5', placeholder: 'O pega aquí el JSON: [{"name":"…","problem":"…","need":"arreglo","wa":"9XXXXXXXX","phones":[{"label":"Fijo","tel":"(01) 234-5678"}]}]' });
     const result = h('div');
-    parts.push(h('h2', {}, 'Importar'), h('div', { class: 'card' }, file, paste, h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => {
+    const impBox = h('div', {}, h('h2', {}, 'Importar'), h('div', { class: 'card' }, file, paste, h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => {
       let text = paste.value.trim();
       if (!text && file.files[0]) text = await file.files[0].text();
       if (!text) return toast('Elige un archivo o pega la lista.');
@@ -233,6 +244,7 @@ const VIEWS = {
       } catch (err) { toast(err.message); }
       e.target.disabled = false;
     } }, 'Importar')), result));
+    parts.push(h('div', { class: 'cols' }, genBox, impBox));
 
     const q = h('input', { class: 'input', type: 'search', placeholder: 'Buscar por nombre o teléfono', value: state.q });
     const listBox = h('div');

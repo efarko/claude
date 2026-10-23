@@ -4,36 +4,57 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070a14" media="(prefers-color-scheme: dark)">
 <title>SV Equipo · Mi ronda</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/app.css">
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <div class="bar-row">
-    <span class="brand">SV <b>Equipo</b></span>
-    <span><a class="link-btn" href="/panel" id="to-panel" hidden>Panel</a><button class="link-btn" id="out">Salir</button></span>
+<header class="topbar"><div class="in">
+  <a class="brand" href="/app"><span class="mark" aria-hidden="true">SV</span>SV Equipo</a>
+  <div class="top-actions">
+    <span class="who" id="who"></span>
+    <a class="link-btn" href="/panel" id="to-panel" hidden>Panel</a>
+    <button class="link-btn" id="out" title="Salir"></button>
   </div>
-  <h1 id="hello">Tu ronda de hoy</h1>
-  <p class="sub" id="day"></p>
-  <div class="tabs" role="tablist">
-    <button class="tab" role="tab" id="t-wa" aria-selected="true">WhatsApp <span class="count" id="c-wa"></span></button>
-    <button class="tab" role="tab" id="t-calls" aria-selected="false">Llamadas <span class="count" id="c-calls"></span></button>
-  </div>
-  <div class="progress"><div class="meter"><span id="meter" style="width:0"></span></div><span id="meter-text"></span></div>
 </div></header>
 
-<main class="wrap">
-  <section id="v-wa"></section>
-  <section id="v-calls" hidden></section>
-</main>
+<div class="shell">
+  <aside class="side">
+    <div class="hello">
+      <p class="eyebrow">Ronda de hoy</p>
+      <h1 id="hello" style="margin-top:10px">Tu ronda</h1>
+      <p class="sub" id="day"></p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Tipo de contacto">
+      <button class="tab" role="tab" id="t-wa" aria-selected="true">
+        <span class="t-row"><span id="t-wa-l">WhatsApp</span><span class="count" id="c-wa"></span></span>
+        <span class="meter"><span id="m-wa" style="width:0"></span></span>
+      </button>
+      <button class="tab" role="tab" id="t-calls" aria-selected="false">
+        <span class="t-row"><span id="t-calls-l">Llamadas</span><span class="count" id="c-calls"></span></span>
+        <span class="meter brand"><span id="m-calls" style="width:0"></span></span>
+      </button>
+    </div>
+    <div class="stat-card" id="stats"></div>
+    <p class="hint side-tip"><b>Tip:</b> los números se reparten solos cada día y nadie más del equipo los tiene. Lo que no envíes hoy vuelve a la bolsa mañana.</p>
+  </aside>
+
+  <main class="main">
+    <section id="v-wa"></section>
+    <section id="v-calls" hidden></section>
+  </main>
+</div>
 
 <script type="module">
-import { api, h, toast, logout, fmtTime, fmtDay } from '/assets/common.js';
+import { api, h, toast, logout, fmtTime, fmtDay, icon, initials } from '/assets/common.js';
 const $ = (id) => document.getElementById(id);
 let data, tab = sessionStorage.getItem('sv-tab') || 'wa';
+$('out').append(icon('out'), h('span', {}, 'Salir'));
 $('out').onclick = logout;
+$('t-wa-l').prepend(icon('wa'));
+$('t-calls-l').prepend(icon('phone'));
 
 const needChip = (need) => need === 'nueva' ? h('span', { class: 'chip new' }, 'Web nueva') : h('span', { class: 'chip' }, 'Arreglo');
 const resChip = (r) => ({
@@ -47,6 +68,7 @@ async function load() {
   const u = data.user;
   $('hello').textContent = `Hola, ${u.name.split(' ')[0]}`;
   $('day').textContent = fmtDay(data.day).replace(/^./, (c) => c.toUpperCase());
+  $('who').replaceChildren(h('span', { class: 'avatar' }, initials(u.name)), h('span', { class: 'who-name' }, u.role));
   $('to-panel').hidden = !u.isOwner;
   $('t-wa').hidden = !u.canWa;
   $('t-calls').hidden = !u.canCalls;
@@ -55,7 +77,7 @@ async function load() {
   render();
 }
 
-function setTab(t) { tab = t; sessionStorage.setItem('sv-tab', t); render(); }
+function setTab(t) { tab = t; sessionStorage.setItem('sv-tab', t); render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 $('t-wa').onclick = () => setTab('wa');
 $('t-calls').onclick = () => setTab('calls');
 
@@ -65,66 +87,72 @@ function render() {
   $('v-wa').hidden = tab !== 'wa';
   $('v-calls').hidden = tab !== 'calls';
   const sent = data.wa.filter((w) => w.sent).length;
+  const waInt = data.wa.filter((w) => w.result === 'interested').length;
   $('c-wa').textContent = `${sent}/${data.wa.length}`;
+  $('m-wa').style.width = data.wa.length ? `${(sent / data.wa.length) * 100}%` : '0';
   const c = data.calls;
-  if (c) $('c-calls').textContent = `${c.done.length}`;
-  if (tab === 'wa') {
-    const total = data.wa.length || 1;
-    $('meter').style.width = `${(sent / total) * 100}%`;
-    $('meter-text').textContent = `${sent} de ${data.wa.length} enviados`;
-    renderWa();
-  } else if (c) {
-    $('meter').style.width = c.pending ? `${((c.pos - 1) / c.total) * 100}%` : c.batch ? '100%' : '0';
-    $('meter-text').textContent = c.batch ? `Bloque ${c.batch} · ${c.pending ? `${c.pos} de ${c.total}` : 'terminado'}` : 'Sin números';
-    renderCalls();
+  if (c) {
+    $('c-calls').textContent = c.pending ? `${c.pos}/${c.total}` : `${c.done.length} hechas`;
+    $('m-calls').style.width = c.pending ? `${((c.pos - 1) / c.total) * 100}%` : c.batch ? '100%' : '0';
   }
+  const callInt = c ? c.done.filter((d) => d.result === 'interested').length : 0;
+  $('stats').replaceChildren(
+    h('p', { class: 'label', style: 'margin:0' }, 'Tu día'),
+    h('div', { class: 'stat' }, 'WhatsApp enviados', h('b', {}, `${sent}`)),
+    c ? h('div', { class: 'stat' }, 'Llamadas hechas', h('b', {}, `${c.done.length}`)) : null,
+    h('div', { class: 'stat' }, 'Interesados', h('b', { style: 'color:var(--accent-ink)' }, `${waInt + callInt}`)),
+  );
+  if (tab === 'wa') renderWa(); else if (c) renderCalls();
 }
 
 function renderWa() {
   const v = $('v-wa');
   v.replaceChildren();
   if (!data.wa.length) {
-    v.append(h('div', { class: 'empty', style: 'margin-top:16px' }, 'Hoy no quedan números para WhatsApp. Ya le avisamos a Franco para que cargue más.'));
+    v.append(h('div', { class: 'empty' }, 'Hoy no quedan números para WhatsApp. Ya le avisamos a Franco para que cargue más.'));
     return;
   }
-  v.append(h('p', { class: 'hint', style: 'margin:16px 0 6px' },
-    h('b', {}, 'Cómo funciona: '), 'toca «Enviar por WhatsApp», se abre tu WhatsApp con el mensaje listo y solo le das enviar. Si te responden, márcalo aquí.'));
   const pending = data.wa.filter((w) => !w.sent), done = data.wa.filter((w) => w.sent);
-  v.append(h('h2', {}, 'Por enviar', h('small', {}, `${pending.length}`)));
-  v.append(h('div', { class: 'list' }, pending.length ? pending.map(waCard) : h('div', { class: 'empty' }, '¡Listo! Enviaste todos los de hoy 🎉')));
+  v.append(h('div', { class: 'page-head' },
+    h('div', {}, h('p', { class: 'eyebrow' }, icon('wa'), 'WhatsApp'), h('h2', { style: 'margin:0;font-size:26px' }, pending.length ? `Te quedan ${pending.length} por enviar` : '¡Enviaste todos los de hoy!')),
+  ));
+  v.append(h('p', { class: 'hint', style: 'margin-bottom:18px' },
+    h('b', {}, 'Cómo funciona: '), 'toca «Enviar por WhatsApp»: se abre tu WhatsApp con el mensaje listo y solo le das enviar. Si te responden, márcalo aquí.'));
+  v.append(pending.length ? h('div', { class: 'grid' }, pending.map(waCard)) : h('div', { class: 'empty' }, '¡Listo! Enviaste todos los de hoy 🎉 Revisa abajo quién te respondió.'));
   if (done.length) {
     v.append(h('h2', {}, 'Enviados', h('small', {}, `${done.length}`)));
-    v.append(h('div', { class: 'list' }, done.map(waCard)));
+    v.append(h('div', { class: 'grid' }, done.map(waCard)));
   }
 }
 
 function waCard(w) {
   const card = h('article', { class: 'card' + (w.sent && w.result ? ' done' : '') },
-    h('div', { class: 'row' }, h('div', { style: 'min-width:0' }, h('div', { class: 'name' }, w.name), h('p', { class: 'problem muted' }, w.problem || '')), needChip(w.need)),
+    h('div', { class: 'row' }, h('div', { style: 'min-width:0' }, h('div', { class: 'name' }, w.name), h('p', { class: 'problem' }, w.problem || '')), needChip(w.need)),
   );
   if (!w.sent) {
-    const send = h('a', { class: 'btn grow', href: w.link, target: '_blank', rel: 'noopener' }, 'Enviar por WhatsApp');
+    const send = h('a', { class: 'btn grow', href: w.link, target: '_blank', rel: 'noopener' }, icon('wa'), 'Enviar por WhatsApp');
     send.addEventListener('click', () => {
       fetch('/api/closer?a=wa_sent', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', 'X-SV': '1' }, body: JSON.stringify({ id: w.id }) })
         .then((r) => { if (!r.ok) throw 0; w.sent = true; setTimeout(render, 400); })
         .catch(() => toast('No se pudo marcar como enviado. Recarga la página.'));
     });
-    card.append(h('div', { class: 'actions' }, send, h('span', { class: 'num muted', style: 'align-self:center' }, w.phone)));
-    card.append(h('details', {}, h('summary', {}, 'Ver el mensaje'), h('p', { class: 'msg' }, w.msg)));
+    card.append(h('div', { class: 'actions' }, send, h('span', { class: 'num muted' }, w.phone)));
+    card.append(h('details', {}, h('summary', {}, 'Ver el mensaje'), h('p', { class: 'bubble', style: 'margin-top:10px' }, w.msg)));
   } else if (!w.result) {
-    card.append(h('div', { class: 'small muted' }, '✓ Enviado. ¿Te respondió?'));
+    card.append(h('div', { class: 'small muted', style: 'display:flex;align-items:center;gap:6px' }, icon('check'), 'Enviado. ¿Te respondió?'));
     const mark = (result) => async (e) => {
       let note = null;
       if (result === 'interested') note = prompt('Nota para Franco (opcional): ¿qué dijo, con quién hablaste?') ?? null;
-      e.target.disabled = true;
+      const btn = e.currentTarget;
+      btn.disabled = true;
       try { await api('closer?a=wa_result', { id: w.id, result, note }); w.result = result; toast(result === 'interested' ? '¡Bien! Le avisamos a Franco.' : 'Anotado.'); render(); }
-      catch (err) { toast(err.message); e.target.disabled = false; }
+      catch (err) { toast(err.message); btn.disabled = false; }
     };
     card.append(h('div', { class: 'actions' },
-      h('button', { class: 'btn sm grow', onclick: mark('interested') }, '⭐ Le interesa'),
+      h('button', { class: 'btn sm grow', onclick: mark('interested') }, icon('star'), 'Le interesa'),
       h('button', { class: 'btn sm ghost grow', onclick: mark('not_interested') }, 'No le interesa')));
   } else {
-    card.append(h('div', { class: 'row' }, h('span', { class: 'small muted' }, '✓ Enviado'), resChip(w.result)));
+    card.append(h('div', { class: 'row' }, h('span', { class: 'small muted' }, 'Enviado'), resChip(w.result)));
   }
   return card;
 }
@@ -134,67 +162,76 @@ function renderCalls() {
   v.replaceChildren();
   const cur = c.current;
   if (cur) {
-    v.append(h('h2', {}, `Llamada ${c.pos} de ${c.total}`, h('small', {}, cur.attempts ? `Intento ${cur.attempts + 1}` : 'Primer intento')));
+    v.append(h('div', { class: 'page-head' },
+      h('div', {}, h('p', { class: 'eyebrow' }, icon('phone'), `Bloque ${c.batch} · llamada ${c.pos} de ${c.total}`),
+        h('h2', { style: 'margin:0;font-size:26px' }, cur.attempts ? `Intento ${cur.attempts + 1}: vuelve a llamar` : 'Tu llamada actual')),
+    ));
     v.append(callCard(cur));
     if (c.pending > 1) {
       v.append(h('h2', {}, 'Siguientes', h('small', {}, `${c.pending - 1} bloqueados`)));
-      v.append(h('p', { class: 'small muted', style: 'margin:-4px 0 8px' }, 'Se desbloquean de uno en uno cuando marcas el resultado de la llamada actual.'));
+      v.append(h('p', { class: 'small muted', style: 'margin:-4px 0 10px' }, 'Se desbloquean de uno en uno cuando marcas el resultado de la llamada actual.'));
       const start = c.pos + 1;
       v.append(h('div', { class: 'locked', 'aria-label': `${c.pending - 1} llamadas bloqueadas` },
         Array.from({ length: c.pending - 1 }, (_, i) => h('span', { title: 'Bloqueado' }, String(start + i)))));
     }
   } else {
-    const box = h('div', { class: 'card', style: 'margin-top:16px;text-align:center' });
+    const box = h('div', { class: 'card hot', style: 'text-align:center;justify-items:center;padding:36px 24px' });
+    box.append(h('p', { class: 'eyebrow' }, icon('phone'), 'Llamadas'));
     if (c.canMore) {
-      box.append(h('p', { class: 'name' }, c.batch ? `¡Terminaste el bloque ${c.batch}! 💪` : 'Listo para llamar'),
-        h('p', { class: 'problem muted' }, `Puedes pedir ${c.batchSize} números más.`));
-      const b = h('button', { class: 'btn block' }, `Generar ${c.batchSize} más`);
+      box.append(h('h2', { style: 'margin:0;font-size:26px;display:block' }, c.batch ? `¡Terminaste el bloque ${c.batch}! 💪` : 'Listo para llamar'),
+        h('p', { class: 'sub' }, `Puedes pedir ${c.batchSize} números más.`));
+      const b = h('button', { class: 'btn', style: 'min-width:240px' }, `Generar ${c.batchSize} más`);
       b.onclick = async () => { b.disabled = true; try { await api('closer?a=more_calls', {}); await load(); } catch (e) { toast(e.message); b.disabled = false; } };
       box.append(b);
     } else {
-      box.append(h('p', { class: 'name' }, c.batch ? `¡Terminaste el bloque ${c.batch}! 💪` : 'Sin números por ahora'),
-        h('p', { class: 'problem muted' }, 'Por hoy no quedan más números para llamar. Ya le avisamos a Franco para que cargue más.'));
+      box.append(h('h2', { style: 'margin:0;font-size:26px;display:block' }, c.batch ? `¡Terminaste el bloque ${c.batch}! 💪` : 'Sin números por ahora'),
+        h('p', { class: 'sub' }, 'Por hoy no quedan más números para llamar. Ya le avisamos a Franco para que cargue más.'));
     }
     v.append(box);
   }
   if (c.done.length) {
     v.append(h('h2', {}, 'Llamadas de hoy', h('small', {}, `${c.done.length}`)));
-    v.append(h('div', { class: 'list' }, c.done.map((d) => h('div', { class: 'card done', style: 'padding:10px 14px' },
-      h('div', { class: 'row' }, h('span', { class: 'name', style: 'font-size:15px' }, d.name), resChip(d.result)),
+    v.append(h('div', { class: 'grid' }, c.done.map((d) => h('div', { class: 'card flat' },
+      h('div', { class: 'row', style: 'align-items:center' }, h('span', { class: 'name', style: 'font-size:15px' }, d.name), resChip(d.result)),
       d.note ? h('span', { class: 'small muted' }, d.note) : null,
-      h('span', { class: 'small muted' }, fmtTime(d.at))))));
+      h('span', { class: 'small muted num' }, fmtTime(d.at))))));
   }
 }
 
 function callCard(p) {
   let dialed = p.dialed;
-  const card = h('article', { class: 'card hot' },
-    h('div', { class: 'row' }, h('div', { style: 'min-width:0' }, h('div', { class: 'name' }, p.name), h('p', { class: 'problem' }, p.problem || '')), needChip(p.need)));
-  if (p.waDone) card.append(h('p', { class: 'small muted', style: 'margin:0' }, 'Ya le escribieron por WhatsApp: pregúntale si vio el mensaje.'));
-
   const results = h('div', { class: 'results' });
   const note = h('textarea', { class: 'input', placeholder: 'Nota (opcional): con quién hablaste, a qué número enviar la muestra…', maxlength: '500', rows: '2' });
-  const lockHint = h('p', { class: 'hint warn', style: 'margin:0' }, 'Toca «Llamar» primero. Después marca cómo te fue para ver el siguiente número.');
-  const opts = [['interested', '⭐ Interesado', 'ok'], ['not_interested', 'No interesado', 'bad'], ['no_answer', 'No contestó', 'na']];
+  const lockHint = h('p', { class: 'hint warn', style: 'display:flex;gap:8px;align-items:flex-start' }, icon('lock'), h('span', {}, 'Toca «Llamar» primero. Después marca cómo te fue para ver el siguiente número.'));
+  const opts = [['interested', 'Interesado', 'ok'], ['not_interested', 'No interesado', 'bad'], ['no_answer', 'No contestó', 'na']];
   const btns = opts.map(([r, label, cls]) => h('button', { class: `res ${cls}`, disabled: !dialed, onclick: () => send(r, label) }, label));
   results.append(...btns);
   const unlock = () => { dialed = true; btns.forEach((b) => (b.disabled = false)); lockHint.hidden = true; };
   if (dialed) lockHint.hidden = true;
 
   const phones = h('div', { class: 'actions' }, (p.phones || []).map((ph) => {
-    const a = h('a', { class: 'btn dark grow', href: 'tel:' + ph.tel }, `📞 Llamar · ${ph.label}`, h('span', { class: 'num' }, ph.show));
+    const a = h('a', { class: 'btn dark grow', href: 'tel:' + ph.tel }, icon('phone'), `Llamar · ${ph.label}`, h('span', { class: 'num' }, ph.show));
     a.addEventListener('click', () => {
       fetch('/api/closer?a=dial', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', 'X-SV': '1' }, body: JSON.stringify({ id: p.id }) }).catch(() => {});
       setTimeout(unlock, 300);
     });
     return a;
   }));
-  card.append(phones);
 
-  const script = h('div', { class: 'script' }, p.script.slice(0, 3).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s)));
-  const extra = h('details', {}, h('summary', {}, 'Si te dice… (respuestas rápidas)'), h('div', { class: 'script', style: 'margin-top:8px' }, p.script.slice(3).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s))));
-  card.append(h('div', {}, h('p', { class: 'small muted', style: 'margin:0 0 6px;font-weight:700' }, 'QUÉ DECIR'), script), extra);
-  card.append(h('div', {}, h('p', { class: 'small muted', style: 'margin:0 0 6px;font-weight:700' }, '¿CÓMO TE FUE?'), results), lockHint, note);
+  const left = h('div', { class: 'call-col' },
+    h('div', { class: 'row' }, h('div', { style: 'min-width:0' }, h('div', { class: 'name', style: 'font-size:22px' }, p.name), h('p', { class: 'problem' }, p.problem || '')), needChip(p.need)),
+    p.waDone ? h('p', { class: 'hint ok', style: 'display:flex;gap:8px' }, icon('wa'), h('span', {}, 'Ya le escribieron por WhatsApp: pregúntale si vio el mensaje.')) : null,
+    phones,
+    h('div', {}, h('p', { class: 'label' }, '¿Cómo te fue?'), results),
+    lockHint,
+    note,
+  );
+  const right = h('div', { class: 'call-col script-col' },
+    h('p', { class: 'label', style: 'margin:0' }, 'Qué decir'),
+    h('div', { class: 'script' }, p.script.slice(0, 3).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s))),
+    h('details', {}, h('summary', {}, 'Si te dice… (respuestas rápidas)'), h('div', { class: 'script', style: 'margin-top:10px' }, p.script.slice(3).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s)))),
+  );
+  const card = h('article', { class: 'card hot call', style: 'padding:22px' }, left, right);
 
   async function send(result, label) {
     if (result === 'no_answer' && !confirm('¿No contestó? Se volverá a llamar otro día.')) return;

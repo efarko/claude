@@ -4,67 +4,99 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070a14" media="(prefers-color-scheme: dark)">
 <title>SV Equipo · Ingreso</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/app.css">
 </head>
 <body>
-<main class="auth">
-  <p class="logo">SV <b>Equipo</b></p>
-  <p class="sub" style="margin-bottom:22px">La ronda diaria de WhatsApp y llamadas de SV WebStudio.</p>
-
-  <div class="tabs" role="tablist" style="margin-bottom:22px">
-    <button class="tab" role="tab" id="t-login" aria-selected="true">Entrar</button>
-    <button class="tab" role="tab" id="t-reg" aria-selected="false">Pedir acceso</button>
-  </div>
-
-  <form id="f-login" novalidate>
-    <div class="field"><label for="l-email">Tu correo</label>
-      <input class="input" id="l-email" type="email" autocomplete="email" inputmode="email" required></div>
-    <div class="field"><label for="l-code">Código de acceso (6 dígitos)</label>
-      <input class="input code-input" id="l-code" inputmode="numeric" autocomplete="off" maxlength="6" pattern="\d{6}" required>
-      <span class="small muted">Es el que te pasó Franco cuando aprobó tu solicitud.</span></div>
-    <button class="btn block" type="submit">Continuar</button>
-    <p class="error" id="l-err" role="alert"></p>
-  </form>
-
-  <form id="f-otp" novalidate hidden>
-    <div class="hint" style="margin-bottom:16px">Te enviamos un código nuevo a <b id="o-to"></b>. Revisa también Spam o Promociones.</div>
-    <div class="field"><label for="o-code">Código del correo</label>
-      <input class="input code-input" id="o-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required></div>
-    <button class="btn block" type="submit">Entrar</button>
-    <p class="error" id="o-err" role="alert"></p>
-    <div class="actions" style="justify-content:space-between">
-      <button class="link-btn" type="button" id="o-back">← Volver</button>
-      <button class="link-btn" type="button" id="o-resend">Reenviar código</button>
+<div class="auth-page">
+  <section class="auth-feature" aria-hidden="true">
+    <span class="brand"><span class="mark">SV</span>SV WebStudio</span>
+    <div>
+      <p class="eyebrow">Equipo · uso interno</p>
+      <h2>Tu ronda diaria, <em>lista en un toque.</em></h2>
+      <p>Cada día recibes tus propios números, con el mensaje y el guion listos. Tú solo envías, llamas y marcas cómo te fue.</p>
+      <ul class="feat-list" id="feats">
+        <li data-i="wa"><div>15 WhatsApp al día<span>Distintos para cada persona, con el mensaje ya escrito.</span></div></li>
+        <li data-i="phone"><div>Llamadas en bloques de 20<span>Con guion para cada negocio y respuestas rápidas.</span></div></li>
+        <li data-i="star"><div>Los interesados llegan al instante<span>Franco recibe el aviso apenas marcas «Interesado».</span></div></li>
+      </ul>
     </div>
-  </form>
+    <div class="chats">
+      <div>Hola, sí, ¿me manda la muestra?<small>10:42</small></div>
+      <div>¡Claro! Se la envío hoy mismo 🙌<small>10:43</small></div>
+    </div>
+  </section>
 
-  <form id="f-reg" novalidate hidden>
-    <div class="field"><label for="r-name">Nombre y apellido</label>
-      <input class="input" id="r-name" autocomplete="name" required maxlength="80"></div>
-    <div class="field"><label for="r-email">Correo</label>
-      <input class="input" id="r-email" type="email" autocomplete="email" inputmode="email" required></div>
-    <div class="field"><label for="r-phone">Celular (opcional)</label>
-      <input class="input" id="r-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20"></div>
-    <button class="btn block" type="submit">Enviar solicitud</button>
-    <p class="error" id="r-err" role="alert"></p>
-  </form>
+  <main class="auth-main">
+    <div class="auth-box">
+      <span class="brand"><span class="mark" aria-hidden="true">SV</span>SV Equipo</span>
+      <p class="eyebrow">SV WebStudio · Equipo</p>
+      <h1 id="title">Entra a tu ronda</h1>
+      <p class="sub" id="subtitle">Usa tu correo y el código de 6 dígitos que te dio Franco.</p>
 
-  <div id="reg-ok" class="card" hidden>
-    <p class="name">Solicitud enviada ✅</p>
-    <p class="problem" id="reg-ok-text">Franco recibió tu solicitud. Cuando la apruebe, te pasará tu código de acceso de 6 dígitos y podrás entrar con tu correo.</p>
-    <button class="btn ghost" type="button" id="reg-ok-back">Ir a «Entrar»</button>
-  </div>
-</main>
+      <div class="seg" role="tablist">
+        <button role="tab" id="t-login" aria-selected="true">Entrar</button>
+        <button role="tab" id="t-reg" aria-selected="false">Pedir acceso</button>
+      </div>
+
+      <form id="f-login" novalidate>
+        <div class="field"><label for="l-email">Tu correo</label>
+          <input class="input" id="l-email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" required></div>
+        <div class="field"><label for="l-code">Código de acceso</label>
+          <input class="input code-input" id="l-code" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="••••••" required></div>
+        <button class="btn block" type="submit">Continuar</button>
+        <p class="error" id="l-err" role="alert"></p>
+      </form>
+
+      <form id="f-otp" novalidate hidden>
+        <p class="hint" style="margin-bottom:18px">Te enviamos un código nuevo a <b id="o-to"></b>. Revisa también Spam o Promociones.</p>
+        <div class="field"><label for="o-code">Código del correo</label>
+          <input class="input code-input" id="o-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••" required></div>
+        <button class="btn block" type="submit">Entrar</button>
+        <p class="error" id="o-err" role="alert"></p>
+        <div class="actions" style="justify-content:space-between">
+          <button class="link-btn" type="button" id="o-back">← Volver</button>
+          <button class="link-btn" type="button" id="o-resend">Reenviar código</button>
+        </div>
+      </form>
+
+      <form id="f-reg" novalidate hidden>
+        <div class="field"><label for="r-name">Nombre y apellido</label>
+          <input class="input" id="r-name" autocomplete="name" required maxlength="80"></div>
+        <div class="field"><label for="r-email">Correo</label>
+          <input class="input" id="r-email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@gmail.com" required></div>
+        <div class="field"><label for="r-phone">Celular <span class="muted">(opcional)</span></label>
+          <input class="input" id="r-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20"></div>
+        <button class="btn block" type="submit">Enviar solicitud</button>
+        <p class="error" id="r-err" role="alert"></p>
+      </form>
+
+      <div id="reg-ok" class="card" hidden>
+        <p class="eyebrow" style="color:var(--accent-ink)">Solicitud enviada</p>
+        <p class="name" style="font-size:20px">¡Listo! Ya le llegó a Franco.</p>
+        <p class="problem" id="reg-ok-text">Cuando la apruebe, te pasará tu código de acceso de 6 dígitos y podrás entrar con tu correo.</p>
+        <button class="btn ghost" type="button" id="reg-ok-back">Ir a «Entrar»</button>
+      </div>
+    </div>
+  </main>
+</div>
 <script type="module">
-import { api } from '/assets/common.js';
+import { api, icon } from '/assets/common.js';
 const $ = (id) => document.getElementById(id);
 let lastLogin = null;
+for (const li of document.querySelectorAll('#feats li')) li.prepend(icon(li.dataset.i));
 
 try { const { user } = await api('auth?a=me'); location.replace(user.isOwner ? '/panel' : '/app'); } catch {}
 
+const COPY = {
+  login: ['Entra a tu ronda', 'Usa tu correo y el código de 6 dígitos que te dio Franco.'],
+  otp: ['Revisa tu correo', 'Por seguridad, cada vez que entras te mandamos un código nuevo.'],
+  reg: ['Pide tu acceso', 'Franco recibe tu solicitud y, si la aprueba, te pasa tu código.'],
+  regok: ['Solicitud enviada', 'Te avisaremos cuando esté aprobada.'],
+};
 function show(which) {
   $('t-login').setAttribute('aria-selected', which !== 'reg');
   $('t-reg').setAttribute('aria-selected', which === 'reg');
@@ -72,6 +104,8 @@ function show(which) {
   $('f-otp').hidden = which !== 'otp';
   $('f-reg').hidden = which !== 'reg';
   $('reg-ok').hidden = which !== 'regok';
+  $('title').textContent = COPY[which][0];
+  $('subtitle').textContent = COPY[which][1];
 }
 $('t-login').onclick = () => show('login');
 $('t-reg').onclick = () => show('reg');
@@ -108,15 +142,15 @@ $('f-otp').onsubmit = (e) => { e.preventDefault(); submit(e.target, 'o-err', asy
 
 $('o-resend').onclick = async () => {
   $('o-err').textContent = '';
-  try { await start(lastLogin.email, lastLogin.code); $('o-err').textContent = ''; $('o-to').textContent += ' (reenviado)'; }
+  try { await start(lastLogin.email, lastLogin.code); $('o-to').textContent += ' (reenviado)'; }
   catch (e) { $('o-err').textContent = e.message; }
 };
 
 $('f-reg').onsubmit = (e) => { e.preventDefault(); submit(e.target, 'r-err', async () => {
   const r = await api('auth?a=register', { name: $('r-name').value, email: $('r-email').value, phone: $('r-phone').value });
+  show('regok');
   if (r.owner) $('reg-ok-text').textContent = 'Eres el dueño: tu cuenta ya está activa y te enviamos tu código de acceso al correo.';
   $('l-email').value = $('r-email').value.trim();
-  show('regok');
 }); };
 </script>
 </body>
