@@ -1,5 +1,7 @@
 # Chifa Apolo: carta digital con pedidos por WhatsApp (demo)
 
+Publicada en https://chifa-apolo-carta.vercel.app (QR: `qr-chifa-apolo.png`, sticker: `sticker-qr-chifa-apolo.png`).
+
 Página única (`index.html`) sin dependencias. Muestra la carta del local, deja armar el pedido
 (acompañamiento, entrada, cambio de proteína, nota y cantidad) y lo envía ordenado por WhatsApp.
 
