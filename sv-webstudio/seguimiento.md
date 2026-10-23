@@ -48,3 +48,11 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado (9, correos del 19/10): Restaurant Huanchaco, El Arte del Pan, Raíces Peruanas, Restaurante Moche, Chifa Kam Men, Catering J.A, Salma Boutique y Spa, Vet Clinic, Pavos y Chicharrones Santa Mónica.
 - Seguimiento 2: ninguno todavía. Los seguimientos 1 del 19/10 cumplen 4 días mañana (23/10).
 - Bloqueados: ninguno.
+
+## 23/10/2026 · revisión automática 4:51 pm
+- Respuestas nuevas de prospectos: ninguna.
+- Rebotes nuevos: Florería Virgen de Chapi (floreriavirgendchapi@gmail.com, la dirección no existe; correo enviado hoy).
+- Seguimiento 2 (el último) enviado a 20 hilos, los más antiguos primero: Enfoque Empresarial, Sra. Gladys (Estudio Contable), CPC Malca, Dr. Enciso, Habilítate, Fisio Llantén, Notaría Salvatierra, Arbaiza Abogados, Concilia San Miguel, Esperanza para el Futuro, Abog. Katherine G., AQL Abogados, Hostal Los Sauces, Tecnolentes, Academia Hence, MNS Servicios Generales, Viajes Amazonas, Recolecta Ambiental, Nido Aridane, Fibrasin.
+- Seguimiento 1: ninguno hoy (se usó el tope de 20 en los seguimientos 2).
+- Bloqueados: ninguno.
+- Pendiente para mañana (24/10), más antiguos primero: seguimiento 2 a unos 30 hilos del 14 al 16/10 (Mussarq, Vidriería Provisur, Transporte DIJAC, Pepakel, Perú Textil, Hospital a Domicilio, Cruz de Motupe, Envasados Industriales, Cristo Morado, Carbomet, Segurteg, ZEDI, Villa Marina, MECSAC, Electrónica Gedeón, Magic Stone, Graphotec, Diesel Cuadros, Alsumyser, adrimar9498, Bolsas y Plásticos, Manitos Traviesas, Mecatrónica Peruana, SEIGE, Mueblería Palomino, JH Soluciones, INEGSA, Compusama, janetuesta175, Broncería Hernández, Solipal); seguimiento 1 a los 9 correos del 20/10 y a los del 21/10. Con el tope de 20 por día, esto tarda unos 3 días.

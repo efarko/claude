@@ -11,3 +11,4 @@
 | Estudio Milian | informes@estudiomilian.com.pe | 19/10/2026 |
 | Helados San Miguel | catmi.chel@hotmail.com | 19/10/2026 |
 | Cousin Import | ventas1@cousinimport.com.pe | 21/10/2026 |
+| Florería Virgen de Chapi | floreriavirgendchapi@gmail.com | 23/10/2026 |
