@@ -8,7 +8,7 @@ Sistema interno de SV WebStudio para la ronda diaria de WhatsApp y llamadas.
 
 ## Instalación en Vercel (una sola vez)
 
-1. **Importar el proyecto:** vercel.com/new → elige el repositorio → **Root Directory: `sv-equipo`** → Deploy.
+1. **Importar el proyecto:** vercel.com/new → elige el repositorio → **Root Directory: `sv-equipo`** → Deploy. En Settings → Environments → Production, la rama de producción debe ser la que tiene este código (hoy `claude/elegant-rubin-0f0oly`).
 2. **Base de datos:** en el proyecto → Storage → Create → **Neon (Postgres)** → conéctala al proyecto. Esto crea `DATABASE_URL` sola.
 3. **Variables** (Settings → Environment Variables):
    - `OWNER_EMAIL`: tu correo (el que será dueño).
