@@ -1,0 +1,10 @@
+{
+  "name": "sv-equipo",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "nodemailer": "6.9.16",
+    "postgres": "3.4.5"
+  }
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>SV Equipo · Ingreso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<main class="auth">
+  <p class="logo">SV <b>Equipo</b></p>
+  <p class="sub" style="margin-bottom:22px">La ronda diaria de WhatsApp y llamadas de SV WebStudio.</p>
+
+  <div class="tabs" role="tablist" style="margin-bottom:22px">
+    <button class="tab" role="tab" id="t-login" aria-selected="true">Entrar</button>
+    <button class="tab" role="tab" id="t-reg" aria-selected="false">Pedir acceso</button>
+  </div>
+
+  <form id="f-login" novalidate>
+    <div class="field"><label for="l-email">Tu correo</label>
+      <input class="input" id="l-email" type="email" autocomplete="email" inputmode="email" required></div>
+    <div class="field"><label for="l-code">Código de acceso (6 dígitos)</label>
+      <input class="input code-input" id="l-code" inputmode="numeric" autocomplete="off" maxlength="6" pattern="\d{6}" required>
+      <span class="small muted">Es el que te pasó Franco cuando aprobó tu solicitud.</span></div>
+    <button class="btn block" type="submit">Continuar</button>
+    <p class="error" id="l-err" role="alert"></p>
+  </form>
+
+  <form id="f-otp" novalidate hidden>
+    <div class="hint" style="margin-bottom:16px">Te enviamos un código nuevo a <b id="o-to"></b>. Revisa también Spam o Promociones.</div>
+    <div class="field"><label for="o-code">Código del correo</label>
+      <input class="input code-input" id="o-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required></div>
+    <button class="btn block" type="submit">Entrar</button>
+    <p class="error" id="o-err" role="alert"></p>
+    <div class="actions" style="justify-content:space-between">
+      <button class="link-btn" type="button" id="o-back">← Volver</button>
+      <button class="link-btn" type="button" id="o-resend">Reenviar código</button>
+    </div>
+  </form>
+
+  <form id="f-reg" novalidate hidden>
+    <div class="field"><label for="r-name">Nombre y apellido</label>
+      <input class="input" id="r-name" autocomplete="name" required maxlength="80"></div>
+    <div class="field"><label for="r-email">Correo</label>
+      <input class="input" id="r-email" type="email" autocomplete="email" inputmode="email" required></div>
+    <div class="field"><label for="r-phone">Celular (opcional)</label>
+      <input class="input" id="r-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20"></div>
+    <button class="btn block" type="submit">Enviar solicitud</button>
+    <p class="error" id="r-err" role="alert"></p>
+  </form>
+
+  <div id="reg-ok" class="card" hidden>
+    <p class="name">Solicitud enviada ✅</p>
+    <p class="problem" id="reg-ok-text">Franco recibió tu solicitud. Cuando la apruebe, te pasará tu código de acceso de 6 dígitos y podrás entrar con tu correo.</p>
+    <button class="btn ghost" type="button" id="reg-ok-back">Ir a «Entrar»</button>
+  </div>
+</main>
+<script type="module">
+import { api } from '/assets/common.js';
+const $ = (id) => document.getElementById(id);
+let lastLogin = null;
+
+try { const { user } = await api('auth?a=me'); location.replace(user.isOwner ? '/panel' : '/app'); } catch {}
+
+function show(which) {
+  $('t-login').setAttribute('aria-selected', which !== 'reg');
+  $('t-reg').setAttribute('aria-selected', which === 'reg');
+  $('f-login').hidden = which !== 'login';
+  $('f-otp').hidden = which !== 'otp';
+  $('f-reg').hidden = which !== 'reg';
+  $('reg-ok').hidden = which !== 'regok';
+}
+$('t-login').onclick = () => show('login');
+$('t-reg').onclick = () => show('reg');
+$('o-back').onclick = () => show('login');
+$('reg-ok-back').onclick = () => show('login');
+for (const id of ['l-code', 'o-code']) $(id).addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); });
+
+async function submit(form, errId, fn) {
+  const btn = form.querySelector('button[type=submit]');
+  $(errId).textContent = '';
+  btn.disabled = true;
+  try { await fn(); } catch (e) { $(errId).textContent = e.message; } finally { btn.disabled = false; }
+}
+
+async function start(email, code) {
+  const r = await api('auth?a=start', { email, code });
+  lastLogin = { email, code };
+  $('o-to').textContent = r.to;
+  $('o-code').value = '';
+  show('otp');
+  $('o-code').focus();
+}
+
+$('f-login').onsubmit = (e) => { e.preventDefault(); submit(e.target, 'l-err', async () => {
+  const email = $('l-email').value.trim(), code = $('l-code').value.trim();
+  if (!email || code.length !== 6) throw new Error('Escribe tu correo y los 6 dígitos de tu código.');
+  await start(email, code);
+}); };
+
+$('f-otp').onsubmit = (e) => { e.preventDefault(); submit(e.target, 'o-err', async () => {
+  const r = await api('auth?a=verify', { otp: $('o-code').value.trim() });
+  location.replace(r.next);
+}); };
+
+$('o-resend').onclick = async () => {
+  $('o-err').textContent = '';
+  try { await start(lastLogin.email, lastLogin.code); $('o-err').textContent = ''; $('o-to').textContent += ' (reenviado)'; }
+  catch (e) { $('o-err').textContent = e.message; }
+};
+
+$('f-reg').onsubmit = (e) => { e.preventDefault(); submit(e.target, 'r-err', async () => {
+  const r = await api('auth?a=register', { name: $('r-name').value, email: $('r-email').value, phone: $('r-phone').value });
+  if (r.owner) $('reg-ok-text').textContent = 'Eres el dueño: tu cuenta ya está activa y te enviamos tu código de acceso al correo.';
+  $('l-email').value = $('r-email').value.trim();
+  show('regok');
+}); };
+</script>
+</body>
+</html>

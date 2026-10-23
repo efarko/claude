@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>SV Equipo · Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<header class="top"><div class="wrap wide">
+  <div class="bar-row">
+    <span class="brand">SV <b>Equipo</b> · Panel del dueño</span>
+    <span><a class="link-btn" href="/app">Mi ronda</a><button class="link-btn" id="out">Salir</button></span>
+  </div>
+  <div class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" data-v="hoy">Hoy</button>
+    <button class="tab" role="tab" data-v="equipo">Equipo <span class="count" id="c-pending"></span></button>
+    <button class="tab" role="tab" data-v="actividad">Actividad</button>
+    <button class="tab" role="tab" data-v="leads">Interesados</button>
+    <button class="tab" role="tab" data-v="prospectos">Prospectos</button>
+  </div>
+</div></header>
+<main class="wrap wide" id="view"></main>
+
+<script type="module">
+import { api, h, toast, logout, fmtTime, fmtDate, fmtDay } from '/assets/common.js';
+document.getElementById('out').onclick = logout;
+const view = document.getElementById('view');
+let current = sessionStorage.getItem('sv-panel') || 'hoy';
+
+const KINDS = {
+  login: 'Entró', login_fail: 'Código de acceso incorrecto', otp_sent: 'Pidió código por correo', otp_fail: 'Código del correo incorrecto',
+  register: 'Pidió acceso', wa_sent: 'Envió WhatsApp', wa_result: 'Respuesta de WhatsApp', dial: 'Tocó Llamar', call_result: 'Resultado de llamada',
+  more_calls: 'Generó más llamadas', import: 'Importó prospectos', request_more: 'Pidió más prospectos',
+  user_approve: 'Aprobó a', user_reject: 'Rechazó a', user_disable: 'Desactivó a', user_enable: 'Reactivó a', user_role: 'Cambió el rol de', user_code: 'Nuevo código para',
+  role_create: 'Creó el rol', role_edit: 'Editó el rol', role_delete: 'Borró el rol', prospect_block: 'Bloqueó', prospect_unblock: 'Desbloqueó', prospect_client: 'Marcó como cliente',
+};
+const RES = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó' };
+const resChip = (r) => r && RES[r] ? h('span', { class: 'chip ' + (r === 'interested' ? 'ok' : r === 'not_interested' ? 'bad' : 'gray') }, RES[r]) : null;
+const kpi = (v, l, warn) => h('div', { class: 'kpi' + (warn ? ' warn' : '') }, h('div', { class: 'v' }, String(v)), h('div', { class: 'l' }, l));
+const table = (heads, rows) => h('div', { class: 'table-wrap' }, h('table', {}, h('thead', {}, h('tr', {}, heads.map((x) => h('th', {}, x)))), h('tbody', {}, rows)));
+const STATUS = { pending: ['Pendiente', 'chip'], active: ['Activo', 'chip ok'], disabled: ['Desactivado', 'chip bad'], rejected: ['Rechazado', 'chip gray'] };
+
+function tabs() {
+  for (const b of document.querySelectorAll('#tabs .tab')) {
+    b.setAttribute('aria-selected', b.dataset.v === current);
+    b.onclick = () => { current = b.dataset.v; sessionStorage.setItem('sv-panel', current); go(); };
+  }
+}
+
+async function go() {
+  tabs();
+  view.replaceChildren(h('p', { class: 'muted', style: 'padding:20px 0' }, 'Cargando…'));
+  try { await VIEWS[current](); } catch (e) { view.replaceChildren(h('div', { class: 'empty', style: 'margin-top:16px' }, e.message)); }
+}
+
+async function refreshPending() {
+  try { const o = await api('admin?a=overview'); document.getElementById('c-pending').textContent = o.pending ? `(${o.pending})` : ''; return o; } catch (e) { return null; }
+}
+
+const VIEWS = {
+  async hoy() {
+    const o = await api('admin?a=overview');
+    document.getElementById('c-pending').textContent = o.pending ? `(${o.pending})` : '';
+    const team = o.team;
+    const sum = (k) => team.reduce((a, t) => a + t[k], 0);
+    const parts = [
+      h('h1', { style: 'margin-top:18px' }, `Hola, ${o.me.name.split(' ')[0]}`),
+      h('p', { class: 'sub' }, fmtDay(o.day).replace(/^./, (c) => c.toUpperCase())),
+    ];
+    if (o.pending) parts.push(h('p', { class: 'hint warn', style: 'margin-top:14px' }, `Tienes ${o.pending} solicitud(es) de acceso esperando. `, h('a', { href: '#', onclick: (e) => { e.preventDefault(); current = 'equipo'; go(); } }, 'Revisar')));
+    if (o.low) parts.push(h('div', { class: 'hint bad', style: 'margin-top:14px' }, h('b', {}, 'Quedan pocos prospectos. '), `WhatsApp: ${o.pool.wa} · llamadas: ${o.pool.calls}. `,
+      h('a', { href: '#', onclick: (e) => { e.preventDefault(); current = 'prospectos'; go(); } }, 'Generar más')));
+    parts.push(h('h2', {}, 'Hoy'), h('div', { class: 'kpis' },
+      kpi(sum('wa'), 'WhatsApp enviados'), kpi(sum('calls'), 'Llamadas hechas'), kpi(sum('interested'), 'Interesados'),
+      kpi(o.pool.wa, 'Quedan para WhatsApp', o.pool.wa <= o.lowLimit), kpi(o.pool.calls, 'Quedan para llamar', o.pool.calls <= o.lowLimit)));
+    parts.push(h('h2', {}, 'Equipo hoy', h('small', {}, 'en vivo')), table(['Persona', 'WhatsApp', 'Llamadas', 'No contestó', 'No interesado', 'Interesados', 'Primera / última acción'],
+      team.map((t) => h('tr', {}, h('td', {}, h('b', {}, t.name), h('br'), h('span', { class: 'small muted' }, t.email)),
+        h('td', { class: 'n' }, t.wa), h('td', { class: 'n' }, t.calls), h('td', { class: 'n' }, t.no_answer), h('td', { class: 'n' }, t.not_interested), h('td', { class: 'n' }, t.interested),
+        h('td', { class: 'small' }, t.first_at ? `${fmtTime(t.first_at)} – ${fmtTime(t.last_at)}` : '—')))));
+    parts.push(h('h2', {}, 'Últimos 7 días'), table(['Día', 'WhatsApp', 'Llamadas', 'Interesados'],
+      o.week.length ? o.week.map((w) => h('tr', {}, h('td', {}, fmtDay(w.day)), h('td', { class: 'n' }, w.wa), h('td', { class: 'n' }, w.calls), h('td', { class: 'n' }, w.interested)))
+        : h('tr', {}, h('td', { colspan: '4', class: 'muted' }, 'Todavía no hay actividad.'))));
+    parts.push(h('p', { class: 'small muted', style: 'margin-top:18px' }, `Total en el sistema: ${o.totals.total} prospectos · ${o.totals.interested} interesados · ${o.totals.clients} clientes · ${o.totals.blocked} bloqueados.`));
+    view.replaceChildren(...parts);
+  },
+
+  async equipo() {
+    const { users, roles } = await api('admin?a=users');
+    const pending = users.filter((u) => u.status === 'pending');
+    const others = users.filter((u) => u.status !== 'pending' && u.status !== 'rejected');
+    const rejected = users.filter((u) => u.status === 'rejected');
+    const parts = [h('h2', {}, 'Solicitudes', h('small', {}, String(pending.length)))];
+    parts.push(pending.length ? h('div', { class: 'grid2' }, pending.map((u) => {
+      const send = h('input', { type: 'checkbox', checked: true });
+      const out = h('div');
+      return h('div', { class: 'card' },
+        h('div', { class: 'name' }, u.name), h('div', { class: 'small muted' }, `${u.email}${u.phone ? ' · ' + u.phone : ''} · pidió ${fmtDate(u.created_at)}`),
+        h('label', { class: 'check' }, send, 'Enviarle su código de acceso por correo'),
+        h('div', { class: 'actions' },
+          h('button', { class: 'btn sm grow', onclick: async (e) => { e.target.disabled = true; try {
+            const r = await api('admin?a=user', { id: u.id, op: 'approve', send: send.checked });
+            if (r.code) { out.replaceChildren(h('p', { class: 'hint' }, 'Aprobado. Pásale este código: ', h('span', { class: 'codebox' }, r.code))); toast('Aprobado'); setTimeout(go, 15000); }
+            else { toast(`Aprobado. Le enviamos su código a ${u.email}`); go(); }
+            refreshPending();
+          } catch (err) { toast(err.message); e.target.disabled = false; } } }, 'Aprobar'),
+          h('button', { class: 'btn sm danger grow', onclick: async () => { if (!confirm(`¿Rechazar a ${u.name}?`)) return; try { await api('admin?a=user', { id: u.id, op: 'reject' }); toast('Rechazado'); go(); refreshPending(); } catch (err) { toast(err.message); } } }, 'Rechazar')),
+        out);
+    })) : h('div', { class: 'empty' }, 'No hay solicitudes nuevas. Comparte el link del sistema para que tu equipo pida acceso.'));
+
+    parts.push(h('h2', {}, 'Personas', h('small', {}, String(others.length))));
+    parts.push(table(['Nombre', 'Rol', 'Estado', 'Último ingreso', 'Acciones'], others.map((u) => {
+      const sel = u.is_owner ? h('span', {}, u.role_label) : h('select', { class: 'input', style: 'min-height:38px;padding:6px 10px;min-width:130px' },
+        roles.filter((r) => !r.is_owner).map((r) => h('option', { value: r.name, selected: r.name === u.role || null }, r.label)));
+      if (!u.is_owner) sel.onchange = async () => { try { await api('admin?a=user', { id: u.id, op: 'role', role: sel.value }); toast('Rol cambiado'); } catch (e) { toast(e.message); go(); } };
+      const out = h('div');
+      const acts = h('div', { class: 'actions' });
+      acts.append(h('button', { class: 'btn sm ghost', onclick: async () => {
+        const mail = confirm(`Nuevo código para ${u.name}.\n\n¿Se lo enviamos por correo? (Cancelar = solo mostrarlo aquí)`);
+        try { const r = await api('admin?a=user', { id: u.id, op: 'code', send: mail }); out.replaceChildren(r.code ? h('p', { class: 'hint small' }, 'Nuevo código: ', h('span', { class: 'codebox' }, r.code)) : h('p', { class: 'hint small' }, `Enviado a ${u.email}`)); }
+        catch (e) { toast(e.message); }
+      } }, 'Nuevo código'));
+      if (!u.is_owner) {
+        if (u.status === 'active') acts.append(h('button', { class: 'btn sm danger', onclick: async () => { if (!confirm(`¿Desactivar a ${u.name}? Se cerrará su sesión y sus números de hoy vuelven a la bolsa.`)) return; try { await api('admin?a=user', { id: u.id, op: 'disable' }); toast('Desactivado'); go(); } catch (e) { toast(e.message); } } }, 'Desactivar'));
+        else if (u.status === 'disabled') acts.append(h('button', { class: 'btn sm', onclick: async () => { try { await api('admin?a=user', { id: u.id, op: 'enable' }); toast('Reactivado'); go(); } catch (e) { toast(e.message); } } }, 'Reactivar'));
+      }
+      const [label, cls] = STATUS[u.status];
+      return h('tr', {}, h('td', {}, h('b', {}, u.name), h('br'), h('span', { class: 'small muted' }, u.email)), h('td', {}, sel),
+        h('td', {}, h('span', { class: cls }, label), u.locked ? h('div', { class: 'small', style: 'color:var(--bad)' }, 'Bloqueado 15 min por intentos') : null),
+        h('td', { class: 'small' }, u.last_login ? fmtDate(u.last_login) : '—'), h('td', {}, acts, out));
+    })));
+    if (rejected.length) parts.push(h('details', { style: 'margin-top:10px' }, h('summary', {}, `Rechazados (${rejected.length})`), h('p', {}, rejected.map((u) => `${u.name} <${u.email}>`).join(' · '))));
+
+    parts.push(h('h2', {}, 'Roles', h('small', {}, 'todos los nuevos entran como Closer')));
+    parts.push(table(['Rol', 'WhatsApp al día', 'Llamadas por bloque', 'Personas', ''], roles.map((r) => h('tr', {},
+      h('td', { style: 'white-space:nowrap' }, h('b', {}, r.label), r.is_owner ? h('span', { class: 'small muted' }, ' · solo tú') : null),
+      h('td', { class: 'n' }, r.can_wa ? r.wa_daily : '—'), h('td', { class: 'n' }, r.can_calls ? r.call_batch : '—'), h('td', { class: 'n' }, r.users),
+      h('td', {}, r.is_owner ? null : h('div', { class: 'actions' },
+        h('button', { class: 'btn sm ghost', onclick: () => roleForm(r) }, 'Editar'),
+        r.name !== 'closer' ? h('button', { class: 'btn sm danger', onclick: async () => { if (!confirm(`¿Borrar el rol ${r.label}?`)) return; try { await api('admin?a=role_delete', { name: r.name }); go(); } catch (e) { toast(e.message); } } }, 'Borrar') : null))))));
+    const formBox = h('div', { id: 'role-form' });
+    parts.push(h('div', { class: 'actions', style: 'margin-top:10px' }, h('button', { class: 'btn sm', onclick: () => roleForm() }, '+ Crear rol')), formBox);
+    view.replaceChildren(...parts);
+
+    function roleForm(r = {}) {
+      const label = h('input', { class: 'input', value: r.label || '', placeholder: 'Ej.: Solo llamadas', maxlength: '40' });
+      const cw = h('input', { type: 'checkbox', checked: r.name ? r.can_wa : true });
+      const cc = h('input', { type: 'checkbox', checked: r.name ? r.can_calls : true });
+      const wd = h('input', { class: 'input', type: 'number', min: '1', max: '200', value: r.wa_daily ?? 15 });
+      const cb = h('input', { class: 'input', type: 'number', min: '1', max: '200', value: r.call_batch ?? 20 });
+      formBox.replaceChildren(h('div', { class: 'card', style: 'margin-top:10px;max-width:520px' },
+        h('div', { class: 'name' }, r.name ? `Editar rol: ${r.label}` : 'Nuevo rol'),
+        h('div', { class: 'field' }, h('label', {}, 'Nombre del rol'), label),
+        h('label', { class: 'check' }, cw, 'Hace WhatsApp'), h('div', { class: 'field' }, h('label', {}, 'WhatsApp por día'), wd),
+        h('label', { class: 'check' }, cc, 'Hace llamadas'), h('div', { class: 'field' }, h('label', {}, 'Llamadas por bloque'), cb),
+        h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async () => {
+          try { await api('admin?a=role_save', { name: r.name, label: label.value, can_wa: cw.checked, can_calls: cc.checked, wa_daily: wd.value, call_batch: cb.value }); toast('Rol guardado'); go(); }
+          catch (e) { toast(e.message); }
+        } }, 'Guardar'), h('button', { class: 'btn sm ghost', onclick: () => formBox.replaceChildren() }, 'Cancelar'))));
+      label.focus();
+    }
+  },
+
+  async actividad() {
+    const state = VIEWS.actividad.state ||= { day: null, user: '' };
+    const qs = new URLSearchParams({ a: 'activity' });
+    if (state.day) qs.set('day', state.day);
+    if (state.user) qs.set('user', state.user);
+    const [d, { users }] = await Promise.all([api('admin?' + qs), api('admin?a=users')]);
+    state.day = d.day;
+    const day = h('input', { class: 'input', type: 'date', value: d.day });
+    day.onchange = () => { state.day = day.value; go(); };
+    const who = h('select', { class: 'input' }, h('option', { value: '' }, 'Todas las personas'), users.map((u) => h('option', { value: u.id, selected: String(u.id) === state.user || null }, u.name)));
+    who.onchange = () => { state.user = who.value; go(); };
+    view.replaceChildren(
+      h('h2', {}, 'Registro de actividad', h('small', {}, `${d.rows.length} eventos`)),
+      h('div', { class: 'filters' }, day, who),
+      h('div', { class: 'kpis', style: 'margin-bottom:12px' }, d.team.filter((t) => !state.user || String(t.id) === state.user).map((t) => kpi(`${t.wa} · ${t.calls}`, `${t.name.split(' ')[0]}: WhatsApp · llamadas`))),
+      d.rows.length ? table(['Hora', 'Persona', 'Qué hizo', 'Prospecto', 'Detalle'], d.rows.map((r) => h('tr', {},
+        h('td', { class: 'small num' }, fmtTime(r.at)), h('td', {}, r.user_name || '—'), h('td', {}, KINDS[r.kind] || r.kind),
+        h('td', {}, r.prospect || ''), h('td', { class: 'small' }, resChip(r.result) || (r.result && !RES[r.result] ? r.result : ''), r.note ? ` ${r.note}` : '', ['login_fail', 'otp_fail', 'register', 'login'].includes(r.kind) && r.ip ? h('span', { class: 'muted' }, ` IP ${r.ip}`) : null))))
+        : h('div', { class: 'empty' }, 'Sin actividad ese día.'),
+    );
+  },
+
+  async leads() {
+    const { rows } = await api('admin?a=leads');
+    view.replaceChildren(h('h2', {}, 'Interesados', h('small', {}, `${rows.length} en total · cierra estos primero`)),
+      rows.length ? h('div', { class: 'grid2' }, rows.map((r) => h('div', { class: 'card' + (r.status === 'client' ? ' done' : '') },
+        h('div', { class: 'row' }, h('div', { class: 'name' }, r.name), r.status === 'client' ? h('span', { class: 'chip ok' }, 'Cliente') : h('span', { class: r.need === 'nueva' ? 'chip new' : 'chip' }, r.need === 'nueva' ? 'Web nueva' : 'Arreglo')),
+        h('p', { class: 'problem' }, r.problem || ''),
+        r.note ? h('p', { class: 'msg', style: 'margin:0' }, `📝 ${r.note}`) : null,
+        h('p', { class: 'small muted', style: 'margin:0' }, `${r.channel} · ${r.by_name || '—'} · ${fmtDate(r.interested_at)}`),
+        h('div', { class: 'actions' },
+          r.wa ? h('a', { class: 'btn sm grow', href: `https://wa.me/51${r.wa.replace(/\D/g, '')}`, target: '_blank', rel: 'noopener' }, `WhatsApp ${r.wa}`) : null,
+          (r.phones || []).slice(0, 2).map((p) => h('a', { class: 'btn sm dark grow', href: 'tel:' + p.tel }, `📞 ${p.show}`)),
+          r.status !== 'client' ? h('button', { class: 'btn sm ghost', onclick: async () => { try { await api('admin?a=prospect', { id: r.id, op: 'client' }); toast('¡Marcado como cliente!'); go(); } catch (e) { toast(e.message); } } }, '✓ Ya es cliente') : null))))
+        : h('div', { class: 'empty' }, 'Todavía no hay interesados. Aparecen aquí apenas un closer marca «Interesado» (y te llega un correo).'));
+  },
+
+  async prospectos() {
+    const o = await api('admin?a=overview');
+    const state = VIEWS.prospectos.state ||= { q: '' };
+    const parts = [h('h2', {}, 'Bolsa de prospectos'), h('div', { class: 'kpis' },
+      kpi(o.pool.wa, 'Disponibles para WhatsApp', o.pool.wa <= o.lowLimit), kpi(o.pool.calls, 'Disponibles para llamar hoy', o.pool.calls <= o.lowLimit),
+      kpi(o.pool.calls_later, 'Para volver a llamar otro día'), kpi(o.totals.total, 'Total en el sistema'))];
+    if (o.low) parts.push(h('p', { class: 'hint bad', style: 'margin-top:12px' }, `Quedan ${o.lowLimit} o menos en alguna bolsa. Genera más para que mañana tu equipo tenga números.`));
+
+    const amount = h('input', { class: 'input', type: 'number', min: '10', max: '300', value: '60', style: 'max-width:120px' });
+    const notes = h('input', { class: 'input', placeholder: 'Opcional: rubro o distrito (ej. dentistas en Surco)', maxlength: '300' });
+    parts.push(h('h2', {}, 'Generar más'), h('div', { class: 'card' },
+      h('p', { class: 'problem', style: 'margin:0' }, 'Envía el pedido a tu correo. Claude lo revisa en la rutina diaria, busca negocios nuevos y te responde con la lista lista para importar aquí abajo.'),
+      h('div', { class: 'filters', style: 'margin:0' }, amount, notes),
+      h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => { e.target.disabled = true; try { await api('admin?a=request_more', { amount: amount.value, notes: notes.value }); toast('Pedido enviado a tu correo'); } catch (err) { toast(err.message); } e.target.disabled = false; } }, 'Pedir prospectos nuevos'))));
+
+    const file = h('input', { type: 'file', accept: '.json,application/json' });
+    const paste = h('textarea', { class: 'input', rows: '5', placeholder: 'O pega aquí el JSON: [{"name":"…","problem":"…","need":"arreglo","wa":"9XXXXXXXX","phones":[{"label":"Fijo","tel":"(01) 234-5678"}]}]' });
+    const result = h('div');
+    parts.push(h('h2', {}, 'Importar'), h('div', { class: 'card' }, file, paste, h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => {
+      let text = paste.value.trim();
+      if (!text && file.files[0]) text = await file.files[0].text();
+      if (!text) return toast('Elige un archivo o pega la lista.');
+      let items; try { items = JSON.parse(text); } catch { return toast('El JSON no es válido.'); }
+      e.target.disabled = true;
+      try {
+        const r = await api('admin?a=import', Array.isArray(items) ? { items } : items);
+        result.replaceChildren(h('p', { class: 'hint' }, `✅ ${r.added} nuevos · ${r.skipped} ya estaban · ${r.invalid} con error. Ahora: WhatsApp ${r.pool.wa}, llamadas ${r.pool.calls}.`),
+          r.errors.length ? h('details', {}, h('summary', {}, 'Ver errores'), h('p', { class: 'msg' }, r.errors.join('\n'))) : null);
+        paste.value = ''; file.value = '';
+      } catch (err) { toast(err.message); }
+      e.target.disabled = false;
+    } }, 'Importar')), result));
+
+    const q = h('input', { class: 'input', type: 'search', placeholder: 'Buscar por nombre o teléfono', value: state.q });
+    const listBox = h('div');
+    parts.push(h('h2', {}, 'Buscar prospecto'), h('div', { class: 'filters' }, q), listBox);
+    view.replaceChildren(...parts);
+    let t;
+    q.oninput = () => { clearTimeout(t); t = setTimeout(() => { state.q = q.value; search(); }, 300); };
+    search();
+
+    async function search() {
+      const { rows } = await api('admin?a=prospects&q=' + encodeURIComponent(state.q));
+      const st = (r) => r.status === 'blocked' ? h('span', { class: 'chip bad' }, 'Bloqueado') : r.status === 'client' ? h('span', { class: 'chip ok' }, 'Cliente')
+        : r.interested_at ? h('span', { class: 'chip ok' }, 'Interesado') : null;
+      const ch = (s, res) => s === 'none' ? '—' : s === 'pool' ? 'En bolsa' : s === 'assigned' ? 'Asignado hoy' : (RES[res] || (res ? res.replace(/^(wa|call)_/, '→ ') : 'Hecho'));
+      listBox.replaceChildren(rows.length ? table(['Negocio', 'WhatsApp', 'Llamada', 'Closer', ''], rows.map((r) => h('tr', {},
+        h('td', {}, h('b', {}, r.name), ' ', st(r), h('br'), h('span', { class: 'small muted' }, r.problem || '')),
+        h('td', { class: 'small' }, r.wa || '—', h('br'), ch(r.wa_state, r.wa_result)),
+        h('td', { class: 'small' }, ch(r.call_state, r.call_result), r.call_attempts ? ` (${r.call_attempts} int.)` : '', r.call_next && r.call_state === 'pool' ? h('br') : null, r.call_next && r.call_state === 'pool' ? `desde ${r.call_next}` : null),
+        h('td', { class: 'small' }, r.owner_name || '—'),
+        h('td', {}, r.status === 'blocked'
+          ? h('button', { class: 'btn sm ghost', onclick: () => op(r.id, 'unblock') }, 'Desbloquear')
+          : h('button', { class: 'btn sm danger', onclick: () => { if (confirm(`¿No volver a contactar a ${r.name}?`)) op(r.id, 'block'); } }, 'No contactar')))))
+        : h('div', { class: 'empty' }, 'Sin resultados.'));
+    }
+    async function op(id, o) { try { await api('admin?a=prospect', { id, op: o }); toast('Listo'); search(); } catch (e) { toast(e.message); } }
+  },
+};
+
+go();
+refreshPending();
+</script>
+</body>
+</html>
