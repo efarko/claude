@@ -63,3 +63,12 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
   - Muestra publicada: https://canitas-felices.vercel.app (demo en `demos/canitas-felices/`, fotos referenciales de sus volantes).
   - Propuesta enviada 4:25 pm: S/ 300 precio cerrado, dominio aparte (~S/ 60/año), 50% + 50%, garantía 100%, lista en 48 h desde que envíen fotos, 3 rondas de ajustes.
   - Siguiente: la administradora lo ve esta noche. Si no responden, recordatorio el 25/10 a mediodía.
+
+## 24/10/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna. (El lead del día, Canitas Felices, llegó por WhatsApp: ver sección anterior.)
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 20 hilos del 14 y 15/10: Mussarq, Vidriería Provisur, Transporte DIJAC, Pepakel (Ing. Alarcón), Perú Textil, Hospital a Domicilio, Cruz de Motupe, Envasados Industriales, Transportes CM (Cristo Morado), Carbomet, Segurteg, ZEDI Industrial, Villa Marina, MECSAC, Electrónica Gedeón, Magic Stone R&C, Graphotec, Diesel Cuadros, Alsumyser, Nelly Olchauski.
+- Seguimiento 1: ninguno hoy (tope de 20 usado).
+- Bloqueados: ninguno.
+- Pendiente para el 25/10: seguimiento 2 a Bolsas y Plásticos, Manitos Traviesas y los 10 hilos del 16/10 (Mecatrónica Peruana, SEIGE, Mueblería Palomino, JH Soluciones, INEGSA, Compusama, janetuesta175, Broncería Hernández, Solipal); seguimiento 1 a los correos del 20/10 y 21/10.
+- SV Equipo: llegaron solicitudes de acceso de Andres Reyes y Douglas Salas (y una de franco.valladares@gmail.com). Franco pidió 60 prospectos nuevos desde el panel (3:26 pm).
