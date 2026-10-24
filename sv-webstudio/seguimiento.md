@@ -56,3 +56,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1: ninguno hoy (se usó el tope de 20 en los seguimientos 2).
 - Bloqueados: ninguno.
 - Pendiente para mañana (24/10), más antiguos primero: seguimiento 2 a unos 30 hilos del 14 al 16/10 (Mussarq, Vidriería Provisur, Transporte DIJAC, Pepakel, Perú Textil, Hospital a Domicilio, Cruz de Motupe, Envasados Industriales, Cristo Morado, Carbomet, Segurteg, ZEDI, Villa Marina, MECSAC, Electrónica Gedeón, Magic Stone, Graphotec, Diesel Cuadros, Alsumyser, adrimar9498, Bolsas y Plásticos, Manitos Traviesas, Mecatrónica Peruana, SEIGE, Mueblería Palomino, JH Soluciones, INEGSA, Compusama, janetuesta175, Broncería Hernández, Solipal); seguimiento 1 a los 9 correos del 20/10 y a los del 21/10. Con el tope de 20 por día, esto tarda unos 3 días.
+
+## 24/10/2026 · lead caliente por WhatsApp
+- **El Hogar de las Canitas Felices** (casa de reposo, Jr. León Velarde 905, Lince · 947 116 973 / 920 306 164). Contacto: Dr. Víctor Sáenz, director médico; decide la administradora.
+  - Respondió al WhatsApp de la ronda nueva (lista nuevos-24-oct). Mandó servicios, dirección y volantes.
+  - Muestra publicada: https://canitas-felices.vercel.app (demo en `demos/canitas-felices/`, fotos referenciales de sus volantes).
+  - Propuesta enviada 4:25 pm: S/ 300 precio cerrado, dominio aparte (~S/ 60/año), 50% + 50%, garantía 100%, lista en 48 h desde que envíen fotos, 3 rondas de ajustes.
+  - Siguiente: la administradora lo ve esta noche. Si no responden, recordatorio el 25/10 a mediodía.
