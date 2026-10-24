@@ -28,7 +28,8 @@ export async function poolCounts(db, day = today()) {
 }
 
 async function assignWa(tx, u, day) {
-  const [{ have }] = await tx`select count(*)::int as have from prospects where wa_user = ${u.id} and wa_day = ${day}`;
+  const [{ have }] = await tx`select count(*)::int as have from prospects
+    where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'`;
   const need = u.wa_daily - have;
   if (need <= 0) return 0;
   const rows = await tx`

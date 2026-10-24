@@ -112,7 +112,7 @@ function renderWa() {
     v.append(h('div', { class: 'empty' }, 'Hoy no quedan números para WhatsApp. Ya le avisamos a Franco para que cargue más.'));
     return;
   }
-  const pending = data.wa.filter((w) => !w.sent), done = data.wa.filter((w) => w.sent);
+  const pending = data.wa.filter((w) => !w.sent), done = data.wa.filter((w) => w.sent && w.result !== 'already');
   v.append(h('div', { class: 'page-head' },
     h('div', {}, h('p', { class: 'eyebrow' }, icon('wa'), 'WhatsApp'), h('h2', { style: 'margin:0;font-size:26px' }, pending.length ? `Te quedan ${pending.length} por enviar` : '¡Enviaste todos los de hoy!')),
   ));
@@ -137,7 +137,14 @@ function waCard(w) {
         .catch(() => toast('No se pudo marcar como enviado. Recarga la página.'));
     });
     card.append(h('div', { class: 'actions' }, send, h('span', { class: 'num muted' }, w.phone)));
-    card.append(h('details', {}, h('summary', {}, 'Ver el mensaje'), h('p', { class: 'bubble', style: 'margin-top:10px' }, w.msg)));
+    const skip = h('button', { class: 'link-btn', style: 'padding:4px 0;font-size:13px' }, 'Ya le había escrito antes');
+    skip.onclick = async () => {
+      if (!confirm(`¿Ya le habías escrito a ${w.name}? Lo quitamos de tu lista y te damos otro número en su lugar.`)) return;
+      skip.disabled = true;
+      try { await api('closer?a=wa_skip', { id: w.id }); toast('Listo, te dimos otro número.'); await load(); }
+      catch (e) { toast(e.message); skip.disabled = false; }
+    };
+    card.append(h('div', { class: 'row', style: 'align-items:center' }, h('details', {}, h('summary', {}, 'Ver el mensaje'), h('p', { class: 'bubble', style: 'margin-top:10px' }, w.msg)), skip));
   } else if (!w.result) {
     card.append(h('div', { class: 'small muted', style: 'display:flex;align-items:center;gap:6px' }, icon('check'), 'Enviado. ¿Te respondió?'));
     const mark = (result) => async (e) => {
@@ -228,8 +235,8 @@ function callCard(p) {
   );
   const right = h('div', { class: 'call-col script-col' },
     h('p', { class: 'label', style: 'margin:0' }, 'Qué decir'),
-    h('div', { class: 'script' }, p.script.slice(0, 3).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s))),
-    h('details', {}, h('summary', {}, 'Si te dice… (respuestas rápidas)'), h('div', { class: 'script', style: 'margin-top:10px' }, p.script.slice(3).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s)))),
+    h('div', { class: 'script' }, p.script.filter((s) => s.main).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s))),
+    h('details', {}, h('summary', {}, 'Si te dice… (respuestas rápidas)'), h('div', { class: 'script', style: 'margin-top:10px' }, p.script.filter((s) => !s.main).map((s) => h('div', { class: 'step' }, h('b', {}, s.t), s.s)))),
   );
   const card = h('article', { class: 'card hot call', style: 'padding:22px' }, left, right);
 

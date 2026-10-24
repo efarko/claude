@@ -48,9 +48,9 @@ const KINDS = {
   register: 'Pidió acceso', wa_sent: 'Envió WhatsApp', wa_result: 'Respuesta de WhatsApp', dial: 'Tocó Llamar', call_result: 'Resultado de llamada',
   more_calls: 'Generó más llamadas', import: 'Importó prospectos', request_more: 'Pidió más prospectos',
   user_approve: 'Aprobó a', user_reject: 'Rechazó a', user_disable: 'Desactivó a', user_enable: 'Reactivó a', user_role: 'Cambió el rol de', user_code: 'Nuevo código para',
-  role_create: 'Creó el rol', role_edit: 'Editó el rol', role_delete: 'Borró el rol', prospect_block: 'Bloqueó', prospect_unblock: 'Desbloqueó', prospect_client: 'Marcó como cliente',
+  role_create: 'Creó el rol', role_edit: 'Editó el rol', role_delete: 'Borró el rol', prospect_block: 'Bloqueó', prospect_unblock: 'Desbloqueó', prospect_client: 'Marcó como cliente', wa_skip: 'Ya le había escrito antes', wa_mark_source: 'Marcó una lista como ya escrita',
 };
-const RES = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó' };
+const RES = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó', already: 'Ya escrito antes' };
 const resChip = (r) => r && RES[r] ? h('span', { class: 'chip ' + (r === 'interested' ? 'ok' : r === 'not_interested' ? 'bad' : 'gray') }, RES[r]) : null;
 const kpi = (v, l, warn, dark) => h('div', { class: 'kpi' + (warn ? ' warn' : '') + (dark ? ' dark' : '') }, h('div', { class: 'v' }, String(v)), h('div', { class: 'l' }, l));
 const table = (heads, rows) => h('div', { class: 'table-wrap' }, h('table', {}, h('thead', {}, h('tr', {}, heads.map((x) => h('th', {}, x)))), h('tbody', {}, rows)));
@@ -245,6 +245,16 @@ const VIEWS = {
       e.target.disabled = false;
     } }, 'Importar')), result));
     parts.push(h('div', { class: 'cols' }, genBox, impBox));
+
+    const { rows: sources } = await api('admin?a=sources');
+    parts.push(h('h2', {}, 'Listas cargadas', h('small', {}, 'por importación')), table(['Lista', 'Negocios', 'Sin escribir por WhatsApp', ''],
+      sources.map((src) => h('tr', {}, h('td', {}, h('b', {}, src.source), h('br'), h('span', { class: 'small muted' }, `cargada ${fmtDate(src.created_at)}`)),
+        h('td', { class: 'n' }, src.total), h('td', { class: 'n' }, src.wa_left),
+        h('td', {}, src.wa_left ? h('button', { class: 'btn sm ghost', onclick: async (e) => {
+          if (!confirm(`¿Ya les escribiste por WhatsApp a los ${src.wa_left} negocios de «${src.source}»?\n\nNo volverán a salir en la ronda de WhatsApp (sí en llamadas), y los de hoy se reemplazan por otros.`)) return;
+          e.currentTarget.disabled = true;
+          try { const r = await api('admin?a=wa_mark_source', { source: src.source }); toast(`Listo: ${r.marked} marcados como ya escritos`); go(); } catch (err) { toast(err.message); }
+        } }, 'Ya les escribí a todos') : h('span', { class: 'small muted' }, '—'))))));
 
     const q = h('input', { class: 'input', type: 'search', placeholder: 'Buscar por nombre o teléfono', value: state.q });
     const listBox = h('div');

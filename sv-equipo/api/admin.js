@@ -264,6 +264,34 @@ export default handler({
     },
   },
 
+  sources: {
+    method: 'GET',
+    async run({ req }) {
+      await owner(req);
+      const rows = await sql`
+        select coalesce(source, 'sin nombre') as source, count(*)::int as total,
+               count(*) filter (where wa_state in ('pool','assigned'))::int as wa_left,
+               min(created_at) as created_at
+          from prospects group by 1 order by min(created_at)`;
+      return { rows };
+    },
+  },
+
+  wa_mark_source: {
+    method: 'POST',
+    async run({ req, body, ip }) {
+      const me = await owner(req);
+      const source = String(body.source || '').slice(0, 60);
+      if (!source) fail(400, 'Lista no válida');
+      const rows = await sql`
+        update prospects set wa_state = 'done', wa_result = 'already', wa_at = now()
+         where coalesce(source, 'sin nombre') = ${source} and wa_state in ('pool','assigned') and status = 'active'
+        returning id`;
+      await log(sql, { userId: me.id, kind: 'wa_mark_source', result: String(rows.length), note: source, ip });
+      return { ok: true, marked: rows.length };
+    },
+  },
+
   prospect: {
     method: 'POST',
     async run({ req, body, ip }) {

@@ -38,7 +38,7 @@ export default handler({
 
       const wa = u.can_wa ? await sql`
         select id, name, problem, need, wa_phone, wa_msg, wa_state, wa_result from prospects
-         where wa_user = ${u.id} and wa_day = ${day}
+         where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'
          order by (wa_state = 'done'), priority desc, id` : [];
 
       let calls = null;
@@ -92,6 +92,19 @@ export default handler({
         return { ok: true };
       }
       await log(sql, { userId: u.id, kind: 'wa_sent', prospectId: id, ip });
+      return { ok: true };
+    },
+  },
+
+  wa_skip: {
+    method: 'POST',
+    async run({ req, body, ip }) {
+      const u = await currentUser(req);
+      const id = pid(body.id);
+      const [p] = await sql`update prospects set wa_state = 'done', wa_result = 'already', wa_at = now()
+        where id = ${id} and wa_user = ${u.id} and wa_day = ${today()} and wa_state = 'assigned' returning id`;
+      if (!p) fail(409, 'Ese número ya no está en tu lista de hoy.');
+      await log(sql, { userId: u.id, kind: 'wa_skip', prospectId: id, ip });
       return { ok: true };
     },
   },
