@@ -14,6 +14,7 @@ create table if not exists roles (
 );
 insert into roles(name, label, is_owner) values ('owner', 'Dueño', true) on conflict do nothing;
 insert into roles(name, label) values ('closer', 'Closer') on conflict do nothing;
+insert into roles(name, label, is_owner) values ('socio', 'Socio (dueño)', true) on conflict do nothing;
 
 create table if not exists users (
   id serial primary key,

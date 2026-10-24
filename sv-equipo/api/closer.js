@@ -3,7 +3,7 @@ import { handler, fail, baseUrl } from '../lib/http.js';
 import { currentUser } from '../lib/auth.js';
 import { prepareDay, moreCalls, callableCount, MAX_NO_ANSWER } from '../lib/assign.js';
 import { waLink, waMessage, callScript, showPhone } from '../lib/msg.js';
-import { sendMail, ownerEmail } from '../lib/mail.js';
+import { sendMail, ownerEmails } from '../lib/mail.js';
 
 const RESULTS = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó' };
 
@@ -13,7 +13,7 @@ const pid = (v) => { const n = Number(v); if (!Number.isInteger(n) || n <= 0) fa
 async function notifyLead(req, u, p, channel, note) {
   try {
     await sendMail({
-      to: ownerEmail(),
+      to: await ownerEmails(),
       subject: `[SV Equipo] Interesado: ${p.name} (${u.name})`,
       text: `${u.name} marcó a ${p.name} como INTERESADO por ${channel}.\n\nProblema: ${p.problem || '—'}\nNecesita: ${p.need === 'nueva' ? 'web nueva' : 'arreglo'}\nWhatsApp: ${p.wa_phone ? showPhone(p.wa_phone) : '—'}\nTeléfonos: ${(p.phones || []).map((x) => `${x.label} ${x.show}`).join(' · ') || '—'}\nNota: ${note || '—'}\n\nPanel: ${baseUrl(req)}/panel\n`,
     });

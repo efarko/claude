@@ -1,6 +1,6 @@
 // Reparto de prospectos. Todo corre bajo un candado global para que dos usuarios nunca reciban el mismo número.
 import { sql, today, log } from './db.js';
-import { sendMail, ownerEmail } from './mail.js';
+import { sendMail, ownerEmails } from './mail.js';
 
 const LOCK = 727002;
 export const LOW_POOL = 15;
@@ -131,7 +131,7 @@ async function maybeLowAlert(day) {
   if (!ins) return;
   try {
     await sendMail({
-      to: ownerEmail(),
+      to: await ownerEmails(),
       subject: `[SV Equipo] Quedan pocos prospectos (WhatsApp ${c.wa} · llamadas ${c.calls})`,
       text: `Quedan ${c.wa} prospectos para WhatsApp y ${c.calls} para llamar hoy (${c.calls_later} esperan para otro día).\n\nEntra al panel → Prospectos → «Generar más» o «Importar».\n`,
     });

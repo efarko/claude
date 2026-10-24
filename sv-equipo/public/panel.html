@@ -48,7 +48,7 @@ const KINDS = {
   register: 'Pidió acceso', wa_sent: 'Envió WhatsApp', wa_result: 'Respuesta de WhatsApp', dial: 'Tocó Llamar', call_result: 'Resultado de llamada',
   more_calls: 'Generó más llamadas', import: 'Importó prospectos', request_more: 'Pidió más prospectos',
   user_approve: 'Aprobó a', user_reject: 'Rechazó a', user_disable: 'Desactivó a', user_enable: 'Reactivó a', user_role: 'Cambió el rol de', user_code: 'Nuevo código para',
-  role_create: 'Creó el rol', role_edit: 'Editó el rol', role_delete: 'Borró el rol', prospect_block: 'Bloqueó', prospect_unblock: 'Desbloqueó', prospect_client: 'Marcó como cliente', wa_skip: 'Ya le había escrito antes', wa_mark_source: 'Marcó una lista como ya escrita',
+  role_create: 'Creó el rol', role_edit: 'Editó el rol', role_delete: 'Borró el rol', prospect_block: 'Bloqueó', prospect_unblock: 'Desbloqueó', prospect_client: 'Marcó como cliente', user_wa_reset: 'Reinició los WhatsApp de hoy de', wa_skip: 'Ya le había escrito antes', wa_mark_source: 'Marcó una lista como ya escrita',
 };
 const RES = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó', already: 'Ya escrito antes' };
 const resChip = (r) => r && RES[r] ? h('span', { class: 'chip ' + (r === 'interested' ? 'ok' : r === 'not_interested' ? 'bad' : 'gray') }, RES[r]) : null;
@@ -100,7 +100,8 @@ const VIEWS = {
   },
 
   async equipo() {
-    const { users, roles } = await api('admin?a=users');
+    const { users, roles, me } = await api('admin?a=users');
+    const main = me.role === 'owner';
     const pending = users.filter((u) => u.status === 'pending');
     const others = users.filter((u) => u.status !== 'pending' && u.status !== 'rejected');
     const rejected = users.filter((u) => u.status === 'rejected');
@@ -124,17 +125,26 @@ const VIEWS = {
 
     parts.push(h('h2', {}, 'Personas', h('small', {}, String(others.length))));
     parts.push(table(['Nombre', 'Rol', 'Estado', 'Último ingreso', 'Acciones'], others.map((u) => {
-      const sel = u.is_owner ? h('span', {}, u.role_label) : h('select', { class: 'input', style: 'min-height:38px;padding:6px 10px;min-width:130px' },
-        roles.filter((r) => !r.is_owner).map((r) => h('option', { value: r.name, selected: r.name === u.role || null }, r.label)));
-      if (!u.is_owner) sel.onchange = async () => { try { await api('admin?a=user', { id: u.id, op: 'role', role: sel.value }); toast('Rol cambiado'); } catch (e) { toast(e.message); go(); } };
+      const self = u.id === me.id;
+      const canEdit = u.role !== 'owner' && (u.role !== 'socio' || main);
+      const sel = !canEdit ? h('span', {}, u.role_label) : h('select', { class: 'input', style: 'min-height:38px;padding:6px 10px;min-width:150px' },
+        roles.filter((r) => r.name !== 'owner' && (!r.is_owner || main)).map((r) => h('option', { value: r.name, selected: r.name === u.role || null }, r.label)));
+      if (canEdit) sel.onchange = async () => {
+        if (sel.value === 'socio' && !confirm(`¿Hacer socio a ${u.name}?\n\nTendrá acceso completo a este panel: verá toda la actividad, podrá aprobar personas e importar prospectos, y le llegarán los mismos avisos que a ti.`)) { sel.value = u.role; return; }
+        try { await api('admin?a=user', { id: u.id, op: 'role', role: sel.value }); toast('Rol cambiado'); } catch (e) { toast(e.message); go(); }
+      };
       const out = h('div');
       const acts = h('div', { class: 'actions' });
-      acts.append(h('button', { class: 'btn sm ghost', onclick: async () => {
+      if (u.status === 'active' && (canEdit || self)) acts.append(h('button', { class: 'btn sm ghost', title: 'Si los números de hoy ya estaban contactados, dale otros 15', onclick: async () => {
+        if (!confirm(`¿Reiniciar los WhatsApp de hoy de ${self ? 'tu ronda' : u.name}?\n\nLos que ya marcó (salvo los interesados) dejan de contar y le damos números nuevos. Úsalo si esos negocios ya habían sido contactados antes.`)) return;
+        try { const r = await api('admin?a=user', { id: u.id, op: 'wa_reset' }); toast(`Listo: ${r.reset} reemplazados. Recarga «Mi ronda».`); } catch (e) { toast(e.message); }
+      } }, 'Reiniciar WhatsApp de hoy'));
+      if (canEdit || self) acts.append(h('button', { class: 'btn sm ghost', onclick: async () => {
         const mail = confirm(`Nuevo código para ${u.name}.\n\n¿Se lo enviamos por correo? (Cancelar = solo mostrarlo aquí)`);
         try { const r = await api('admin?a=user', { id: u.id, op: 'code', send: mail }); out.replaceChildren(r.code ? h('p', { class: 'hint small' }, 'Nuevo código: ', h('span', { class: 'codebox' }, r.code)) : h('p', { class: 'hint small' }, `Enviado a ${u.email}`)); }
         catch (e) { toast(e.message); }
       } }, 'Nuevo código'));
-      if (!u.is_owner) {
+      if (canEdit) {
         if (u.status === 'active') acts.append(h('button', { class: 'btn sm danger', onclick: async () => { if (!confirm(`¿Desactivar a ${u.name}? Se cerrará su sesión y sus números de hoy vuelven a la bolsa.`)) return; try { await api('admin?a=user', { id: u.id, op: 'disable' }); toast('Desactivado'); go(); } catch (e) { toast(e.message); } } }, 'Desactivar'));
         else if (u.status === 'disabled') acts.append(h('button', { class: 'btn sm', onclick: async () => { try { await api('admin?a=user', { id: u.id, op: 'enable' }); toast('Reactivado'); go(); } catch (e) { toast(e.message); } } }, 'Reactivar'));
       }
@@ -147,7 +157,7 @@ const VIEWS = {
 
     parts.push(h('h2', {}, 'Roles', h('small', {}, 'todos los nuevos entran como Closer')));
     parts.push(table(['Rol', 'WhatsApp al día', 'Llamadas por bloque', 'Personas', ''], roles.map((r) => h('tr', {},
-      h('td', { style: 'white-space:nowrap' }, h('b', {}, r.label), r.is_owner ? h('span', { class: 'small muted' }, ' · solo tú') : null),
+      h('td', { style: 'white-space:nowrap' }, h('b', {}, r.label), r.name === 'owner' ? h('span', { class: 'small muted' }, ' · cuenta principal') : r.is_owner ? h('span', { class: 'small muted' }, ' · acceso al panel') : null),
       h('td', { class: 'n' }, r.can_wa ? r.wa_daily : '—'), h('td', { class: 'n' }, r.can_calls ? r.call_batch : '—'), h('td', { class: 'n' }, r.users),
       h('td', {}, r.is_owner ? null : h('div', { class: 'actions' },
         h('button', { class: 'btn sm ghost', onclick: () => roleForm(r) }, 'Editar'),

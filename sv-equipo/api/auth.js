@@ -1,6 +1,6 @@
 import { sql, log } from '../lib/db.js';
 import { handler, fail, cookies, setCookie, baseUrl } from '../lib/http.js';
-import { sendMail, ownerEmail } from '../lib/mail.js';
+import { sendMail, ownerEmail, ownerEmails } from '../lib/mail.js';
 import {
   newCode, newToken, sha, hashCode, sameHash, normEmail, validEmail, currentUser, SESSION_HOURS,
 } from '../lib/auth.js';
@@ -39,6 +39,7 @@ export default handler({
 
       const code = newCode();
       const panel = `${baseUrl(req)}/panel`;
+      const notify = isOwner ? null : await ownerEmails();
       await sql.begin(async (tx) => {
         let id;
         if (existing) {
@@ -62,7 +63,7 @@ export default handler({
           });
         } else {
           await sendMail({
-            to: ownerEmail(),
+            to: notify,
             subject: `[SV Equipo] Nueva solicitud: ${name}`,
             text: `Nueva solicitud para entrar al equipo:\n\nNombre: ${name}\nCorreo: ${email}\nTeléfono: ${phone || '—'}\n\nCódigo de acceso: ${code}\n\nSi la aceptas:\n1. Apruébala en el panel: ${panel}\n2. Reenvíale este código (o marca «enviarle el código por correo» al aprobar).\n\nSi no la aceptas, recházala en el panel. Sin tu aprobación el código no sirve.\n`,
           });

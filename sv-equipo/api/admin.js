@@ -62,7 +62,7 @@ export default handler({
   users: {
     method: 'GET',
     async run({ req }) {
-      await owner(req);
+      const me = await owner(req);
       const users = await sql`
         select u.id, u.name, u.email, u.phone, u.role, r.label as role_label, r.is_owner, u.status,
                u.created_at, u.approved_at, u.last_login, (u.pending_code is not null) as has_pending_code,
@@ -70,7 +70,7 @@ export default handler({
           from users u join roles r on r.name = u.role
          order by case u.status when 'pending' then 0 when 'active' then 1 else 2 end, u.created_at desc`;
       const roles = await sql`select r.*, (select count(*)::int from users u where u.role = r.name) as users from roles r order by is_owner desc, created_at`;
-      return { users, roles };
+      return { users, roles, me: { id: me.id, role: me.role } };
     },
   },
 
@@ -82,7 +82,10 @@ export default handler({
       const [u] = await sql`select u.*, r.is_owner from users u join roles r on r.name = u.role where u.id = ${id}`;
       if (!u) fail(404, 'Usuario no encontrado');
       const op = body.op;
-      if (u.is_owner && op !== 'code') fail(400, 'No puedes cambiar la cuenta del dueño.');
+      const main = me.role === 'owner';
+      const self = u.id === me.id;
+      if (u.role === 'owner' && !(self && (op === 'code' || op === 'wa_reset'))) fail(400, 'No puedes cambiar la cuenta del dueño principal.');
+      if (u.role === 'socio' && !main && !(self && (op === 'code' || op === 'wa_reset'))) fail(403, 'Solo el dueño principal puede cambiar la cuenta de un socio.');
       const login = `${baseUrl(req)}/`;
       let out = { ok: true };
 
@@ -94,7 +97,7 @@ export default handler({
           await sendMail({
             to: u.email,
             subject: '[SV Equipo] ¡Bienvenido! Tu código de acceso',
-            text: `Hola ${u.name}:\n\nFranco aprobó tu ingreso al equipo de SV WebStudio.\n\nTu código de acceso: ${code}\n\nEntra en ${login} con tu correo y este código. Cada vez que entres te llegará además un código nuevo a este correo para confirmar que eres tú.\n\nNo compartas tu código con nadie.\n`,
+            text: `Hola ${u.name}:\n\nTu ingreso al equipo de SV WebStudio fue aprobado.\n\nTu código de acceso: ${code}\n\nEntra en ${login} con tu correo y este código. Cada vez que entres te llegará además un código nuevo a este correo para confirmar que eres tú.\n\nNo compartas tu código con nadie.\n`,
           });
         }
         await sql`update users set status = 'active', approved_at = now(), pending_code = null where id = ${id}`;
@@ -114,8 +117,19 @@ export default handler({
         await sql`update users set status = 'active', fails = 0, locked_until = null where id = ${id}`;
       } else if (op === 'role') {
         const [r] = await sql`select * from roles where name = ${String(body.role || '')}`;
-        if (!r || r.is_owner) fail(400, 'Rol no válido');
+        if (!r || r.name === 'owner') fail(400, 'Rol no válido');
+        if (r.is_owner && !main) fail(403, 'Solo el dueño principal puede nombrar socios.');
         await sql`update users set role = ${r.name} where id = ${id}`;
+      } else if (op === 'wa_reset') {
+        // Los WhatsApp de hoy ya terminados (sin interesados) dejan de contar y se reemplazan por otros nuevos.
+        const rows = await sql`
+          update prospects set wa_result = 'already',
+                 call_state = case when call_state = 'done' and call_result like 'wa\_%' then 'pool' else call_state end,
+                 call_result = case when call_state = 'done' and call_result like 'wa\_%' then null else call_result end
+           where wa_user = ${id} and wa_day = ${today()} and wa_state = 'done'
+             and (wa_result is null or wa_result = 'not_interested')
+          returning id`;
+        out = { ok: true, reset: rows.length };
       } else if (op === 'code') {
         if (u.status !== 'active' && u.status !== 'pending') fail(409, 'Activa la cuenta primero.');
         const code = newCode();
@@ -161,7 +175,7 @@ export default handler({
     async run({ req, body, ip }) {
       const me = await owner(req);
       const name = String(body.name || '');
-      if (name === 'owner' || name === 'closer') fail(400, 'Ese rol no se puede borrar.');
+      if (name === 'owner' || name === 'closer' || name === 'socio') fail(400, 'Ese rol no se puede borrar.');
       const [{ n }] = await sql`select count(*)::int as n from users where role = ${name}`;
       if (n) fail(409, 'Primero cambia de rol a los usuarios que lo tienen.');
       await sql`delete from roles where name = ${name}`;
