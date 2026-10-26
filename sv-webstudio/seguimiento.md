@@ -72,3 +72,11 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Bloqueados: ninguno.
 - Pendiente para el 25/10: seguimiento 2 a Bolsas y Plásticos, Manitos Traviesas y los 10 hilos del 16/10 (Mecatrónica Peruana, SEIGE, Mueblería Palomino, JH Soluciones, INEGSA, Compusama, janetuesta175, Broncería Hernández, Solipal); seguimiento 1 a los correos del 20/10 y 21/10.
 - SV Equipo: llegaron solicitudes de acceso de Andres Reyes y Douglas Salas (y una de franco.valladares@gmail.com). Franco pidió 60 prospectos nuevos desde el panel (3:26 pm).
+
+## 26/10/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna en los últimos 3 días. Canitas Felices sigue por WhatsApp (esperando respuesta de la administradora).
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 11 hilos del 15 y 16/10: Bolsas & Plásticos Embalajes RM, Manitos Traviesas, Mecatrónica Peruana, SEIGE, Mueblería Palomino, JH Soluciones Portátiles, INEGSA, Compusama, Centro de Terapia Física y Rehabilitación (janetuesta175), Broncería Hernández, Solipal Elettrica.
+- Seguimiento 1 enviado a los 9 correos del 20/10: Cortinas Cruzado, Automotriz Los Bólidos, Electrodomésticos Zambrano, Podóloga E. Flórez Rojas, Kids Center, Salud Dental Camacho, Cerdent, Instituto Vital, Cardiomedic.
+- Bloqueados: ninguno.
+- Pendiente para el 27/10: seguimiento 1 a los correos del 21/10, 22/10 y 23/10 (los del 24/10 cuando cumplan 3 días).
