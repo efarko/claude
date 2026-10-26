@@ -37,7 +37,7 @@ export default handler({
       const day = today();
 
       const wa = u.can_wa ? await sql`
-        select id, name, problem, need, wa_phone, wa_msg, wa_state, wa_result, demo_url from prospects
+        select id, name, problem, need, wa_phone, wa_msg, wa_state, wa_result, demo_url, source from prospects
          where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'
          order by (wa_state = 'done'), (demo_url is not null) desc, priority desc, id` : [];
 
