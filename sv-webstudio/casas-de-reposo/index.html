@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Webs para casas de reposo en Lima | SV WebStudio</title>
+<meta name="description" content="Páginas web para casas de reposo y centros geriátricos de Lima: fotos reales, servicios, horarios de visita, sedes en el mapa y WhatsApp en un toque. Muestra gratis en 48 horas.">
+<meta property="og:title" content="Webs para casas de reposo en Lima · SV WebStudio">
+<meta property="og:description" content="Las familias comparan varias casas de reposo desde el celular. Te preparamos gratis una muestra de tu web en 48 horas.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e142a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f5f8;--surface:#fbfcfe;--sunk:#e8eaf1;--ink:#0e142a;--muted:#565d73;--line:#d6dae4;
+  --accent:#25d366;--on-accent:#06170d;--accent-ink:#0d5c2c;--brand:#2d87ff;--brand-ink:#1c5cc6;
+  --feature-bg:#0e142a;--feature-ink:#f1f3f9;--feature-muted:#a8b0c9;--feature-line:#232c48;
+  --shadow:0 30px 60px -30px rgb(14 20 42 / .35);--r-card:22px;--r-phone:34px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --font:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#070a14;--surface:#0e142a;--sunk:#141c33;--ink:#eceef5;--muted:#a3aac2;--line:#242c46;
+    --accent-ink:#5ce08d;--brand-ink:#8ec0ff;--feature-bg:#10254a;--feature-ink:#eceef5;
+    --feature-muted:#a7b4cc;--feature-line:#1c5cc6;--shadow:0 30px 60px -30px rgb(0 0 0 / .7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#070a14;--surface:#0e142a;--sunk:#141c33;--ink:#eceef5;--muted:#a3aac2;--line:#242c46;
+  --accent-ink:#5ce08d;--brand-ink:#8ec0ff;--feature-bg:#10254a;--feature-ink:#eceef5;
+  --feature-muted:#a7b4cc;--feature-line:#1c5cc6;--shadow:0 30px 60px -30px rgb(0 0 0 / .7);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--font);overflow-x:hidden}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink)}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:650;text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,62px)}
+h2{font-size:clamp(28px,4.2vw,42px)}
+h3{font-size:19px;letter-spacing:-.01em}
+p{text-wrap:pretty}
+.muted{color:var(--muted)}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--accent);color:var(--on-accent);box-shadow:0 10px 24px -12px rgb(37 211 102 / .7)}
+.btn-wa:hover{box-shadow:0 14px 30px -12px rgb(37 211 102 / .85)}
+.btn-ghost{border:1px solid var(--line);background:var(--surface)}
+.btn svg{width:20px;height:20px}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:8px}
+
+/* Barra */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:650;text-decoration:none;letter-spacing:-.01em}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--bg);font:600 13px/1 var(--mono)}
+.top .btn{min-height:40px;padding:0 16px;font-size:14px}
+
+/* Hero */
+.hero{padding:56px 0 72px}
+.hero .wrap{display:grid;gap:48px;align-items:center}
+@media (min-width:900px){.hero .wrap{grid-template-columns:1.1fr .9fr}}
+.hero h1{margin:16px 0 18px}
+.hero .lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:56ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-size:14px;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+/* Teléfono de ejemplo */
+.phone-stage{display:grid;place-items:center;position:relative}
+.phone{width:min(300px,82vw);aspect-ratio:9/18.5;border-radius:var(--r-phone);background:#0b0f1e;padding:10px;box-shadow:var(--shadow);position:relative}
+.screen{height:100%;border-radius:26px;overflow:hidden;background:#fffaf4;color:#2a2219;display:flex;flex-direction:column;font-size:11px}
+.s-band{background:#2d87ff;color:#fff;font:500 8.5px/1 var(--mono);text-align:center;padding:6px 4px;letter-spacing:.05em}
+.s-hero{padding:16px 14px 14px;background:linear-gradient(160deg,#f3e3cf,#fffaf4)}
+.s-hero small{font:500 8px/1 var(--mono);letter-spacing:.08em;color:#9a6b3a;text-transform:uppercase}
+.s-hero strong{display:block;font-size:17px;line-height:1.15;margin:6px 0 6px;letter-spacing:-.01em}
+.s-hero p{color:#6b5a48;font-size:10px;line-height:1.4}
+.s-btn{margin-top:10px;display:flex;gap:6px}
+.s-btn i{flex:1;font-style:normal;text-align:center;padding:7px 0;border-radius:999px;font-weight:600;font-size:9.5px}
+.s-btn i:first-child{background:#25d366;color:#06170d}
+.s-btn i:last-child{border:1px solid #d9c6ae}
+.s-photos{display:grid;grid-template-columns:1.3fr 1fr;gap:5px;padding:0 14px}
+.s-photos div{border-radius:10px;background:linear-gradient(135deg,#d7c2a6,#b99a76);min-height:58px}
+.s-photos div:nth-child(2){background:linear-gradient(135deg,#c9d7c3,#94ad8c)}
+.s-photos div:nth-child(3){grid-column:1/-1;min-height:40px;background:linear-gradient(135deg,#e5d5c1,#cdb394)}
+.s-list{padding:12px 14px;display:grid;gap:6px}
+.s-list div{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #eee2d3;border-radius:10px;padding:7px 9px;font-size:9.5px}
+.s-list div b{font-weight:600}
+.s-list div span{color:#9a6b3a;font:500 8px/1 var(--mono)}
+.s-wa{margin:auto 12px 12px;background:#25d366;color:#06170d;border-radius:14px;padding:9px;text-align:center;font-weight:650;font-size:10.5px}
+.tag{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:13px;box-shadow:var(--shadow);width:176px;line-height:1.3}
+.tag b{display:block;font-size:12px;font-family:var(--mono);font-weight:500;color:var(--brand-ink);margin-bottom:2px}
+.tag.t1{right:calc(50% + 128px);top:42%}
+.tag.t2{left:calc(50% + 128px);bottom:16%}
+@media (max-width:1180px){.tag{display:none}}
+.ex-note{margin-top:14px;font-size:13px;color:var(--muted);text-align:center}
+
+/* Secciones */
+section{padding:72px 0}
+.head{max-width:680px;margin-bottom:36px}
+.head h2{margin:12px 0 12px}
+.head p{color:var(--muted);font-size:18px}
+
+/* Lo que buscan las familias */
+.grid{display:grid;gap:14px}
+@media (min-width:700px){.grid.c2{grid-template-columns:repeat(2,1fr)}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:24px}
+.card .n{font:500 12px/1 var(--mono);color:var(--brand-ink)}
+.card h3{margin:12px 0 8px}
+.card p{color:var(--muted);font-size:16px}
+
+/* Fallos reales */
+.dark{background:var(--feature-bg);color:var(--feature-ink)}
+.dark .eyebrow{color:#8ec0ff}
+.dark .head p{color:var(--feature-muted)}
+.fails{display:grid;gap:12px}
+@media (min-width:760px){.fails{grid-template-columns:repeat(2,1fr)}}
+.fail{border:1px solid var(--feature-line);border-radius:18px;padding:20px 20px 20px 54px;position:relative}
+.fail::before{content:"✕";position:absolute;left:18px;top:18px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgb(255 90 90 / .16);color:#ff8a8a;font-size:12px;font-weight:700}
+.fail b{display:block;margin-bottom:4px}
+.fail span{color:var(--feature-muted);font-size:15px}
+.fails-note{margin-top:20px;font-size:14px;color:var(--feature-muted)}
+
+/* Incluye */
+.incl{display:grid;gap:10px}
+@media (min-width:700px){.incl{grid-template-columns:repeat(2,1fr)}}
+.incl li{list-style:none;display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.incl li svg{flex:none;width:22px;height:22px;color:var(--accent-ink);margin-top:1px}
+.incl{padding:0}
+
+/* Pasos */
+.steps{display:grid;gap:14px;counter-reset:s}
+@media (min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{counter-increment:s;padding:24px;border-radius:var(--r-card);background:var(--sunk)}
+.step::before{content:"0" counter(s);font:500 13px/1 var(--mono);color:var(--brand-ink)}
+.step h3{margin:14px 0 8px}
+.step p{color:var(--muted);font-size:16px}
+
+/* Precios */
+.prices{display:grid;gap:14px}
+@media (min-width:820px){.prices{grid-template-columns:repeat(2,1fr)}}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:28px;display:flex;flex-direction:column;gap:14px;position:relative}
+.price.rec{border:2px solid var(--brand)}
+.price .badge{position:absolute;top:-12px;left:24px;background:var(--brand);color:#fff;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+.amount{font-size:44px;font-weight:650;letter-spacing:-.03em;line-height:1}
+.amount small{font-size:15px;color:var(--muted);font-weight:500;letter-spacing:0}
+.price ul{padding:0;display:grid;gap:8px}
+.price li{list-style:none;padding-left:26px;position:relative;font-size:16px}
+.price li::before{content:"";position:absolute;left:4px;top:7px;width:11px;height:6px;border-left:2px solid var(--accent-ink);border-bottom:2px solid var(--accent-ink);transform:rotate(-45deg)}
+.price .btn{margin-top:auto}
+.fine{margin-top:18px;font-size:14px;color:var(--muted)}
+.guar{margin-top:20px;display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:18px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line))}
+.guar svg{flex:none;width:26px;height:26px;color:var(--accent-ink)}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--muted);transition:transform .3s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:var(--muted);max-width:70ch}
+
+/* Final */
+.final{text-align:center}
+.final .card{padding:clamp(28px,6vw,56px);background:var(--feature-bg);color:var(--feature-ink);border:0}
+.final p{color:var(--feature-muted);max-width:52ch;margin:14px auto 26px;font-size:18px}
+.final .cta-row{justify-content:center}
+.final .btn-ghost{background:transparent;border-color:var(--feature-line);color:var(--feature-ink)}
+footer{padding:36px 0 110px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between}
+footer a{text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* WhatsApp flotante en celular */
+.float{position:fixed;left:16px;right:16px;bottom:14px;z-index:30;display:none}
+@media (max-width:700px){.float{display:flex}.top .btn{display:none}}
+.float .btn{width:100%}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="https://sv-web-studio.vercel.app/"><b>SV</b> SV WebStudio</a>
+    <a class="btn btn-wa" href="https://wa.me/51957636046?text=Hola%20Franco%2C%20tengo%20una%20casa%20de%20reposo%20y%20quiero%20ver%20la%20muestra%20gratis%20de%20mi%20web" target="_blank" rel="noopener">Pedir muestra gratis</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Para casas de reposo y centros geriátricos de Lima</span>
+      <h1>La familia que busca dónde cuidar a su mamá elige desde el celular.</h1>
+      <p class="lead">Antes de llamar, compara 3 o 4 casas de reposo: mira fotos, servicios, horarios de visita y qué tan fácil es escribir. Hacemos que la tuya sea la que les da confianza y la que reciben por WhatsApp.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/51957636046?text=Hola%20Franco%2C%20tengo%20una%20casa%20de%20reposo%20y%20quiero%20ver%20la%20muestra%20gratis%20de%20mi%20web" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6 0l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></svg>
+          Quiero mi muestra gratis
+        </a>
+        <a class="btn btn-ghost" href="#precios">Ver precios</a>
+      </div>
+      <div class="trust">
+        <span>Muestra con tus fotos en 48 h</span>
+        <span>Precio cerrado antes de empezar</span>
+        <span>Si no te convence, no pagas</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="phone-stage">
+        <div class="phone" role="img" aria-label="Ejemplo de cómo se ve en el celular la web de una casa de reposo">
+          <div class="screen">
+            <div class="s-band">EJEMPLO · SV WEBSTUDIO</div>
+            <div class="s-hero">
+              <small>Casa de reposo · Lince</small>
+              <strong>Cuidado con cariño, las 24 horas</strong>
+              <p>Enfermería permanente, médico geriatra y visitas todos los días.</p>
+              <div class="s-btn"><i>WhatsApp</i><i>Llamar</i></div>
+            </div>
+            <div class="s-photos"><div></div><div></div><div></div></div>
+            <div class="s-list">
+              <div><b>Enfermería 24 h</b><span>INCLUIDO</span></div>
+              <div><b>Visitas</b><span>9:00–18:00</span></div>
+              <div><b>Terapia física</b><span>LUN–SÁB</span></div>
+              <div><b>Sedes</b><span>2 · VER MAPA</span></div>
+              <div><b>Reseñas de familias</b><span>VER EN GOOGLE</span></div>
+            </div>
+            <div class="s-wa">Coordinar una visita por WhatsApp</div>
+          </div>
+        </div>
+        <div class="tag t1"><b>Un toque</b>Llaman o escriben sin copiar números</div>
+        <div class="tag t2"><b>Confianza</b>Fotos reales de habitaciones y equipo</div>
+      </div>
+      <p class="ex-note">Ejemplo ilustrativo. Tu muestra se hace con tus fotos, tus sedes y tus datos.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Qué buscan las familias</span>
+      <h2>Una decisión difícil se toma con confianza, no con un número que no conecta.</h2>
+      <p>Quien busca casa de reposo suele ser un hijo o una hija, con prisa y con culpa. Necesita ver rápido estas cuatro cosas.</p>
+    </div>
+    <div class="grid c2">
+      <div class="card"><span class="n">01</span><h3>Cómo es el lugar por dentro</h3><p>Habitaciones, áreas comunes, comedor y jardín, con fotos reales y actuales. Es lo primero que miran.</p></div>
+      <div class="card"><span class="n">02</span><h3>Quién va a cuidar a su familiar</h3><p>Enfermería, médico, terapia física, nutrición. Si hay un director médico, su nombre da tranquilidad.</p></div>
+      <div class="card"><span class="n">03</span><h3>Visitas, sedes y cómo llegar</h3><p>Horarios de visita, dirección de cada sede con mapa y si hay estacionamiento cerca.</p></div>
+      <div class="card"><span class="n">04</span><h3>Escribir sin complicarse</h3><p>Un botón de WhatsApp que abre el chat de verdad y un teléfono que llama con un toque.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Lo que encontramos revisando webs de Lima</span>
+      <h2>Fallos que hacen perder familias sin que el dueño se entere.</h2>
+      <p>Revisamos desde el celular webs de casas de reposo y centros geriátricos de Lima. Estos son fallos reales que vimos más de una vez.</p>
+    </div>
+    <div class="fails">
+      <div class="fail"><b>El teléfono marca a otro país</b><span>El número se ve bien, pero al tocarlo llama con el código de Colombia o a un número antiguo.</span></div>
+      <div class="fail"><b>Botones que solo dicen “Button”</b><span>Quedaron sin texto ni enlace desde que se armó la web con una plantilla.</span></div>
+      <div class="fail"><b>No hay WhatsApp</b><span>La familia tiene que copiar el número a mano. Muchos no lo hacen y pasan a la siguiente opción.</span></div>
+      <div class="fail"><b>Fotos y fechas viejas</b><span>El pie dice © 2020 y las fotos no muestran cómo está el lugar hoy.</span></div>
+    </div>
+    <p class="fails-note">¿Quieres saber si tu web tiene alguno? Escríbenos y te mandamos la revisión gratis.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Qué incluye tu web</span>
+      <h2>Todo lo que una familia necesita para decidirse, en una sola página.</h2>
+    </div>
+    <ul class="incl">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>Galería de fotos reales</b> de habitaciones, áreas comunes y actividades.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>Servicios claros:</b> enfermería, médico, terapia, nutrición, estancia temporal o permanente.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>Una sección por sede</b> con mapa, teléfono y WhatsApp propios.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>Horarios de visita</b> y botón para coordinar una visita por WhatsApp.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>Preguntas frecuentes</b> que te ahorran llamadas: qué llevar, cómo es el ingreso, qué incluye.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>Pensada para el celular</b> y rápida, aunque la familia esté con mala señal.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Primero la ves con tus fotos. Después decides.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Te armamos la muestra</h3><p>Con las fotos y datos que ya tienes (web, Facebook o volantes). La recibes en tu WhatsApp en unas 48 horas, gratis.</p></div>
+      <div class="step"><h3>La ajustamos contigo</h3><p>Si te gusta, te pasamos el precio cerrado. Cambiamos textos, fotos y lo que haga falta según tu plan.</p></div>
+      <div class="step"><h3>La publicamos en tu dominio</h3><p>Queda a tu nombre. Si quieres, nos encargamos de los cambios cada mes para que siempre esté al día.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="precios" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Precios de lanzamiento · hasta el 31/12</span>
+      <h2>Pago único. La web es tuya.</h2>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <h3>Presencia digital</h3>
+        <div class="amount">S/ 300 <small>pago único</small></div>
+        <ul>
+          <li>Hasta 5 secciones</li>
+          <li>Botón de WhatsApp y teléfono que llama en un toque</li>
+          <li>Entrega en 3 a 5 días hábiles</li>
+          <li>1 ronda de ajustes</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/51957636046?text=Hola%20Franco%2C%20tengo%20una%20casa%20de%20reposo%20y%20me%20interesa%20el%20plan%20de%20S%2F%20300" target="_blank" rel="noopener">Quiero este plan</a>
+      </div>
+      <div class="price rec">
+        <span class="badge">Recomendado para casas de reposo</span>
+        <h3>Estrategia y conversión</h3>
+        <div class="amount">S/ 500 <small>pago único</small></div>
+        <ul>
+          <li>Todo lo del plan anterior</li>
+          <li>Galería completa y una sección por sede</li>
+          <li>Textos escritos contigo, pensados para las familias</li>
+          <li>Enlace desde tu Instagram, Facebook y TikTok</li>
+          <li>Entrega en 7 a 10 días hábiles · 3 rondas de ajustes</li>
+        </ul>
+        <a class="btn btn-wa" href="https://wa.me/51957636046?text=Hola%20Franco%2C%20tengo%20una%20casa%20de%20reposo%20y%20me%20interesa%20el%20plan%20de%20S%2F%20500" target="_blank" rel="noopener">Quiero este plan</a>
+      </div>
+    </div>
+    <p class="fine">Mantenimiento opcional: S/ 60 al mes por cambios de fotos, textos y horarios, y gestión del hosting. Dominio y hosting aparte, a tu nombre.</p>
+    <div class="guar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+      <p><b>Garantía:</b> la muestra no cuesta nada y, si no entregamos lo acordado, te devolvemos el 100% de lo que pagaste.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <div class="head">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que nos suelen preguntar</h2>
+    </div>
+    <details><summary>Ya tengo una web. ¿Igual me sirve?</summary><p>Sí. Si tu web funciona y solo tiene fallos puntuales (teléfonos, WhatsApp, fechas, botones), muchas veces basta con arreglarla, sin rehacerla. Te decimos con honestidad qué conviene.</p></details>
+    <details><summary>No tengo buenas fotos. ¿Qué hago?</summary><p>Para la muestra usamos lo que ya tengas. Para la versión final te decimos qué fotos tomar con el celular (habitaciones, áreas comunes, equipo) y cómo, para que se vean bien.</p></details>
+    <details><summary>¿Necesito tener dominio?</summary><p>No es obligatorio para empezar. Si no lo tienes, te ayudamos a comprarlo a tu nombre (un .com cuesta alrededor de S/ 60 al año). Si ya lo tienes, la publicamos ahí.</p></details>
+    <details><summary>¿Tengo varias sedes. Cuesta más?</summary><p>No en el plan de S/ 500: cada sede tiene su sección con mapa, teléfono y WhatsApp propios.</p></details>
+    <details><summary>¿Cómo se paga?</summary><p>50% para empezar y 50% cuando la web está publicada, por transferencia, Yape o Plin.</p></details>
+  </div>
+</section>
+
+<section class="final" style="padding-top:0">
+  <div class="wrap">
+    <div class="card">
+      <h2>¿Vemos cómo quedaría la web de tu casa de reposo?</h2>
+      <p>Mándanos el nombre o el enlace de tu Facebook o web. En unas 48 horas tienes la muestra en tu WhatsApp, sin compromiso.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/51957636046?text=Hola%20Franco%2C%20tengo%20una%20casa%20de%20reposo%20y%20quiero%20ver%20la%20muestra%20gratis%20de%20mi%20web" target="_blank" rel="noopener">Escribir a Franco</a>
+        <a class="btn btn-ghost" href="https://wa.me/51916068187?text=Hola%20Jes%C3%BAs%2C%20tengo%20una%20casa%20de%20reposo%20y%20quiero%20ver%20la%20muestra%20gratis%20de%20mi%20web" target="_blank" rel="noopener">Escribir a Jesús</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>SV WebStudio · Landing pages para negocios de Lima · Franco Valladares y Jesús Salas</span>
+    <span><a href="https://sv-web-studio.vercel.app/">Ver proyectos</a> · <a href="https://www.instagram.com/sv.webstudio/" target="_blank" rel="noopener">@sv.webstudio</a> · <a href="mailto:sv.webstudio2026@gmail.com">sv.webstudio2026@gmail.com</a></span>
+  </div>
+</footer>
+
+<div class="float">
+  <a class="btn btn-wa" href="https://wa.me/51957636046?text=Hola%20Franco%2C%20tengo%20una%20casa%20de%20reposo%20y%20quiero%20ver%20la%20muestra%20gratis%20de%20mi%20web" target="_blank" rel="noopener">Pedir mi muestra gratis por WhatsApp</a>
+</div>
+</body>
+</html>
