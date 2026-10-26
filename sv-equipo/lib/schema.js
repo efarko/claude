@@ -87,6 +87,13 @@ create table if not exists prospects (
 );
 alter table prospects add column if not exists reserved_for int references users(id) on delete set null;
 alter table prospects add column if not exists demo_url text;
+-- Una sola vez (26/10): el dueño hace 5 con muestra (fuera del tope) + 10 normales.
+do $$ begin
+  if not exists (select 1 from meta where k = 'owner_wa_10') then
+    update roles set wa_daily = 10 where name = 'owner';
+    insert into meta (k, v) values ('owner_wa_10', '1');
+  end if;
+end $$;
 create index if not exists prospects_wa on prospects (wa_state, priority desc, id);
 create index if not exists prospects_call on prospects (call_state, priority desc, id);
 create index if not exists prospects_wa_user on prospects (wa_user, wa_day);

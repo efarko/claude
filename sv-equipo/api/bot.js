@@ -18,7 +18,8 @@ export default handler({
     async run({ req }) {
       bot(req);
       const names = await sql`select name from prospects order by id`;
-      return { pool: await poolCounts(sql), names: names.map((n) => n.name) };
+      const [owner] = await sql`select wa_daily from roles where name = 'owner'`;
+      return { pool: await poolCounts(sql), owner_wa_daily: owner?.wa_daily, names: names.map((n) => n.name) };
     },
   },
 
