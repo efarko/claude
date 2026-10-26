@@ -1,10 +1,13 @@
 # Cierres de esta semana · SV WebStudio (desde el lun 26/10)
 
-Regla de la semana: **no buscar clientes nuevos hasta mover estos tres**. Cada mensaje está listo para copiar. Si no contestan en el plazo indicado, **llama** (de 10 a 12 o de 3 a 6).
+**Activo: solo Canitas Felices.** Si no contesta en el plazo indicado, **llama** (de 10 a 12 o de 3 a 6).
 
-Orden: 1) Canitas Felices · 2) Virgen del Carmen · 3) Roxste.
+**Descartados** (no respondieron; no se les escribe más):
+- Art & Glass Vitrales (26/10)
+- Hogar Geriátrico Virgen del Carmen (26/10)
+- Productora Roxste (26/10)
 
-Art & Glass Vitrales queda **descartado**: no respondió el WhatsApp. No se le escribe más.
+Sus secciones quedan abajo solo como referencia.
 
 ---
 
@@ -34,7 +37,7 @@ Art & Glass Vitrales queda **descartado**: no respondió el WhatsApp. No se le e
 
 ---
 
-## 2. Hogar Geriátrico Virgen del Carmen · arreglo de S/ 100, después web nueva de S/ 500
+## 2. DESCARTADO · Hogar Geriátrico Virgen del Carmen · arreglo de S/ 100, después web nueva de S/ 500
 
 - **Contacto:** Sra. Ana Pacheco · WhatsApp **941 991 831**
 - **Web actual:** hogargeriatricovirgendelcarmen.com (Nicline/Arsys)
@@ -52,7 +55,7 @@ Art & Glass Vitrales queda **descartado**: no respondió el WhatsApp. No se le e
 
 ---
 
-## 3. Productora Roxste · arreglo de S/ 100 o de S/ 250
+## 3. DESCARTADO · Productora Roxste · arreglo de S/ 100 o de S/ 250
 
 - **WhatsApp:** 922 731 048
 - **Diagnóstico:** `sv-webstudio/clientes/roxste/diagnostico.md` (rama `claude/elegant-rubin-0f0oly`). En resumen: el número no se puede tocar, la web tarda ~11,6 s en cargar en el celular y los botones flotantes tapan el menú.
