@@ -23,20 +23,23 @@ export async function poolCounts(db, day = today()) {
     select count(*) filter (where wa_state = 'pool')::int as wa,
            count(*) filter (where call_state = 'pool' and (call_next is null or call_next <= ${day}))::int as calls,
            count(*) filter (where call_state = 'pool' and call_next > ${day})::int as calls_later
-      from prospects where status = 'active'`;
+      from prospects where status = 'active' and reserved_for is null`;
   return c;
 }
 
 async function assignWa(tx, u, day) {
+  // Los reservados (con muestra) entran siempre y no cuentan para el tope diario.
+  await tx`update prospects set wa_state = 'assigned', wa_user = ${u.id}, wa_day = ${day}, owner_id = ${u.id}
+            where status = 'active' and wa_state = 'pool' and reserved_for = ${u.id}`;
   const [{ have }] = await tx`select count(*)::int as have from prospects
-    where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'`;
+    where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already' and reserved_for is distinct from ${u.id}`;
   const need = u.wa_daily - have;
   if (need <= 0) return 0;
   const rows = await tx`
     with picked as (
       select id from prospects
        where status = 'active' and wa_state = 'pool'
-         and (owner_id is null or owner_id = ${u.id})
+         and (owner_id is null or owner_id = ${u.id}) and reserved_for is null
          and not (call_state = 'assigned' or (call_state = 'done' and call_day = ${day}))
        order by (owner_id = ${u.id}) desc nulls last, priority desc, id
        limit ${need})
@@ -50,7 +53,7 @@ async function assignWa(tx, u, day) {
 const callableFor = (db, u, day) => db`
        where status = 'active' and call_state = 'pool'
          and (call_next is null or call_next <= ${day})
-         and (owner_id is null or owner_id = ${u.id})
+         and (owner_id is null or owner_id = ${u.id}) and (reserved_for is null or reserved_for = ${u.id})
          and not (wa_state = 'assigned' or (wa_state = 'done' and wa_day = ${day}))`;
 
 export async function callableCount(db, u, day) {

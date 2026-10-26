@@ -1,5 +1,6 @@
 // Normaliza la lista que se pega o sube en el panel antes de guardarla.
 import { showPhone } from './msg.js';
+import { sql } from './db.js';
 
 const str = (v, max) => {
   const s = String(v ?? '').replace(/\s+/g, ' ').trim();
@@ -49,6 +50,7 @@ export function normalize(raw) {
   if (!wa && !phones.length) return { error: `${name}: sin teléfono válido` };
   const need = ['arreglo', 'nueva'].includes(raw.need ?? raw.type) ? (raw.need ?? raw.type) : 'arreglo';
   const prio = Number(raw.priority ?? 0);
+  const demo = str(raw.demo ?? raw.muestra, 200);
   return {
     row: {
       name,
@@ -66,6 +68,32 @@ export function normalize(raw) {
       wa_state: wa ? 'pool' : 'none',
       call_state: phones.length ? 'pool' : 'none',
       source: str(raw.source, 60),
+      demo_url: demo && /^https:\/\/[^\s]+$/.test(demo) ? demo : null,
     },
   };
+}
+
+// Guarda prospectos ya normalizados. extra se aplica a todas las filas (ej. reserved_for).
+export async function importItems(items, extra = {}) {
+  const errors = [];
+  const rows = [];
+  const seen = new Set();
+  for (const raw of items) {
+    const { row, error } = normalize(raw || {});
+    if (error) { errors.push(error); continue; }
+    if (seen.has(row.name_key) || (row.wa_phone && seen.has(row.wa_phone))) continue;
+    seen.add(row.name_key);
+    if (row.wa_phone) seen.add(row.wa_phone);
+    rows.push({ ...row, reserved_for: null, ...extra });
+  }
+  let added = 0;
+  for (let i = 0; i < rows.length; i += 200) {
+    const chunk = rows.slice(i, i + 200).map((r) => ({ ...r, phones: JSON.stringify(r.phones) }));
+    const res = await sql`insert into prospects ${sql(chunk, 'name', 'name_key', 'category', 'district', 'web', 'problem', 'need', 'priority',
+      'wa_phone', 'wa_msg', 'phones', 'call_script', 'wa_state', 'call_state', 'source', 'demo_url', 'reserved_for')} on conflict do nothing returning id`;
+    added += res.length;
+  }
+  // phones llega como texto: lo convierto a jsonb real.
+  await sql`update prospects set phones = (phones #>> '{}')::jsonb where jsonb_typeof(phones) = 'string'`;
+  return { added, skipped: rows.length - added, errors };
 }

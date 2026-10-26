@@ -37,9 +37,9 @@ export default handler({
       const day = today();
 
       const wa = u.can_wa ? await sql`
-        select id, name, problem, need, wa_phone, wa_msg, wa_state, wa_result from prospects
+        select id, name, problem, need, wa_phone, wa_msg, wa_state, wa_result, demo_url from prospects
          where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'
-         order by (wa_state = 'done'), priority desc, id` : [];
+         order by (wa_state = 'done'), (demo_url is not null) desc, priority desc, id` : [];
 
       let calls = null;
       if (u.can_calls) {
@@ -72,7 +72,7 @@ export default handler({
         day,
         wa: wa.map((p) => ({
           id: p.id, name: p.name, problem: p.problem, need: p.need, phone: showPhone(p.wa_phone),
-          msg: waMessage(p, u.name), link: waLink(p, u.name), sent: p.wa_state === 'done', result: p.wa_result,
+          msg: waMessage(p, u.name), link: waLink(p, u.name), sent: p.wa_state === 'done', result: p.wa_result, demo: p.demo_url,
         })),
         calls,
       };

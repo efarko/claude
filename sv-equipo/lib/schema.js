@@ -85,6 +85,8 @@ create table if not exists prospects (
   source text,
   created_at timestamptz not null default now()
 );
+alter table prospects add column if not exists reserved_for int references users(id) on delete set null;
+alter table prospects add column if not exists demo_url text;
 create index if not exists prospects_wa on prospects (wa_state, priority desc, id);
 create index if not exists prospects_call on prospects (call_state, priority desc, id);
 create index if not exists prospects_wa_user on prospects (wa_user, wa_day);

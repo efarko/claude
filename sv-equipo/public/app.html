@@ -127,7 +127,7 @@ function renderWa() {
 
 function waCard(w) {
   const card = h('article', { class: 'card' + (w.sent && w.result ? ' done' : '') },
-    h('div', { class: 'row' }, h('div', { style: 'min-width:0' }, h('div', { class: 'name' }, w.name), h('p', { class: 'problem' }, w.problem || '')), needChip(w.need)),
+    h('div', { class: 'row' }, h('div', { style: 'min-width:0' }, h('div', { class: 'name' }, w.name), h('p', { class: 'problem' }, w.problem || '')), w.demo ? h('a', { class: 'chip ok', href: w.demo, target: '_blank', rel: 'noopener' }, 'Muestra lista') : needChip(w.need)),
   );
   if (!w.sent) {
     const send = h('a', { class: 'btn grow', href: w.link, target: '_blank', rel: 'noopener' }, icon('wa'), 'Enviar por WhatsApp');

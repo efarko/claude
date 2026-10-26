@@ -3,7 +3,7 @@ import { handler, fail, baseUrl } from '../lib/http.js';
 import { currentUser, newCode, hashCode } from '../lib/auth.js';
 import { sendMail, ownerEmail } from '../lib/mail.js';
 import { poolCounts, releaseStale, LOW_POOL } from '../lib/assign.js';
-import { normalize } from '../lib/import.js';
+import { importItems } from '../lib/import.js';
 import { showPhone } from '../lib/msg.js';
 
 const owner = (req) => currentUser(req, { owner: true });
@@ -191,27 +191,7 @@ export default handler({
       const items = Array.isArray(body) ? body : Array.isArray(body.items) ? body.items : body.prospects;
       if (!Array.isArray(items) || !items.length) fail(400, 'No encontré prospectos en el archivo.');
       if (items.length > 3000) fail(400, 'Máximo 3000 prospectos por vez.');
-      const errors = [];
-      const rows = [];
-      const seen = new Set();
-      for (const raw of items) {
-        const { row, error } = normalize(raw || {});
-        if (error) { errors.push(error); continue; }
-        if (seen.has(row.name_key) || (row.wa_phone && seen.has(row.wa_phone))) { continue; }
-        seen.add(row.name_key);
-        if (row.wa_phone) seen.add(row.wa_phone);
-        rows.push(row);
-      }
-      let added = 0;
-      for (let i = 0; i < rows.length; i += 200) {
-        const chunk = rows.slice(i, i + 200).map((r) => ({ ...r, phones: JSON.stringify(r.phones) }));
-        const res = await sql`insert into prospects ${sql(chunk, 'name', 'name_key', 'category', 'district', 'web', 'problem', 'need', 'priority',
-          'wa_phone', 'wa_msg', 'phones', 'call_script', 'wa_state', 'call_state', 'source')} on conflict do nothing returning id`;
-        added += res.length;
-      }
-      // phones llega como texto: lo convierto a jsonb real.
-      await sql`update prospects set phones = (phones #>> '{}')::jsonb where jsonb_typeof(phones) = 'string'`;
-      const skipped = rows.length - added;
+      const { added, skipped, errors } = await importItems(items);
       await log(sql, { userId: me.id, kind: 'import', result: String(added), note: `${added} nuevos, ${skipped} repetidos, ${errors.length} con error`, ip });
       return { ok: true, added, skipped, errors: errors.slice(0, 30), invalid: errors.length, pool: await poolCounts(sql) };
     },
