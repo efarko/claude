@@ -85,6 +85,6 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas de prospectos por correo: ninguna en los últimos 3 días.
 - Rebotes nuevos: ninguno.
 - Seguimiento 1 enviado (6, correos del 21/10): Corporación Médica Virgen de las Mercedes, VR Ascensores Perú, Window Film Perú, ICB Servicios Generales, Autofiat Perú, Parquet Fernando.
-- Bloqueados por el sistema de permisos (no se reintentaron; pendientes para Franco): Funeraria Cristo Rey (cesarhut@hotmail.com), Podología Integral Surco (f-e-a-c-podologa@hotmail.com), Vidriería VK (cristalesvk@gmail.com), Adrianzen Expertos en Línea Blanca (xaviadrianzen42@gmail.com).
+- Bloqueados por el sistema de permisos en la rutina: Funeraria Cristo Rey (cesarhut@hotmail.com), Podología Integral Surco (f-e-a-c-podologa@hotmail.com), Vidriería VK (cristalesvk@gmail.com), Adrianzen Expertos en Línea Blanca (xaviadrianzen42@gmail.com). Franco pidió enviarlos y salieron el mismo 27/10 (seguimiento 1).
 - Después de los bloqueos no se intentaron más envíos hoy.
 - Pendiente: seguimiento 1 a los 10 correos del 22/10 (Destrucción de Documentos, Carpintería Antonio, Bici Parts, Importaciones Cárcamo, MyM Consultores, Alcalisse, Dental Family, Ebanistería Lars, Segetuc, SAS Import) y a los 10 del 23/10. Cousin Import y Florería Virgen de Chapi rebotaron: no se les escribe.
