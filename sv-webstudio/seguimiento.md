@@ -88,3 +88,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Bloqueados por el sistema de permisos en la rutina: Funeraria Cristo Rey (cesarhut@hotmail.com), Podología Integral Surco (f-e-a-c-podologa@hotmail.com), Vidriería VK (cristalesvk@gmail.com), Adrianzen Expertos en Línea Blanca (xaviadrianzen42@gmail.com). Franco pidió enviarlos y salieron el mismo 27/10 (seguimiento 1).
 - Después de los bloqueos no se intentaron más envíos hoy.
 - Pendiente: seguimiento 1 a los 10 correos del 22/10 (Destrucción de Documentos, Carpintería Antonio, Bici Parts, Importaciones Cárcamo, MyM Consultores, Alcalisse, Dental Family, Ebanistería Lars, Segetuc, SAS Import) y a los 10 del 23/10. Cousin Import y Florería Virgen de Chapi rebotaron: no se les escribe.
+
+## 28/10/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna en los últimos 3 días.
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 9 hilos del 17/10 (su seguimiento 1 fue el 20/10): Almir Confecciones, Ortopedia y Podología De Pie, Distribuidora Fresquito, Servsum, Avícola Señor Pollo, Sport Grass Perú, Centherplast, Agencia de Empleos Clarita, Bea Fotógrafa.
+- Bloqueado por el sistema de permisos (no se reintentó): Romero Automotriz (ahuaraca@romeroconversionesagas.com), seguimiento 2. Después del bloqueo no se intentaron más envíos hoy.
+- Pendiente, más antiguos primero: seguimiento 2 a Romero Automotriz, a los 10 hilos del 18/10 (Consorcio Pimentel, Hornos Meneses, Air Tech Cold, Dr. Fernández Maldonado, Puertas Enrollables y Rejas, Dr. Corbacho, Orquesta Marlon Garay, Ventilación Sotelo, AR Fiber Elion, Fortexa) y a los 9 del 19/10; seguimiento 1 a los 10 correos del 22/10 y a los 10 del 23/10.
