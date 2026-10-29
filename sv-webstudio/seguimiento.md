@@ -95,3 +95,12 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 2 (el último) enviado a 9 hilos del 17/10 (su seguimiento 1 fue el 20/10): Almir Confecciones, Ortopedia y Podología De Pie, Distribuidora Fresquito, Servsum, Avícola Señor Pollo, Sport Grass Perú, Centherplast, Agencia de Empleos Clarita, Bea Fotógrafa.
 - Bloqueado por el sistema de permisos (no se reintentó): Romero Automotriz (ahuaraca@romeroconversionesagas.com), seguimiento 2. Después del bloqueo no se intentaron más envíos hoy.
 - Pendiente, más antiguos primero: seguimiento 2 a Romero Automotriz, a los 10 hilos del 18/10 (Consorcio Pimentel, Hornos Meneses, Air Tech Cold, Dr. Fernández Maldonado, Puertas Enrollables y Rejas, Dr. Corbacho, Orquesta Marlon Garay, Ventilación Sotelo, AR Fiber Elion, Fortexa) y a los 9 del 19/10; seguimiento 1 a los 10 correos del 22/10 y a los 10 del 23/10.
+
+## 29/10/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna en los últimos 3 días.
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 10 hilos del 18/10: Consorcio Pimentel, Hornos Meneses (HYSERME), Ventilación Industrial Sotelo, AR Fiber Elion, Air Tech Cold, Fortexa, Puertas Enrollables y Rejas, Dr. Fernández Maldonado, Dr. Corbacho, Orquesta Marlon Garay.
+- Seguimiento 2 (el último) enviado a 9 hilos del 19/10: Restaurant Huanchaco, El Arte del Pan, Raíces Peruanas, Restaurante Moche, Chifa Kam Men, Catering JA, Salma Boutique y Spa, Vet Clinic, Pavos y Chicharrones Santa Mónica.
+- Seguimiento 1 enviado (1): Carpintería Antonio (freddyanmar76@gmail.com), correo del 22/10.
+- Bloqueados hoy: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz (bloqueado el 28/10; no se reintentó).
+- Pendiente para el 30/10: seguimiento 2 a los 9 hilos del 20/10 (su seguimiento 1 fue el 26/10); seguimiento 1 a los otros 9 correos del 22/10 y a los 10 del 23/10.
