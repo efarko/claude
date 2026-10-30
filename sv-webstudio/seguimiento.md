@@ -104,3 +104,12 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado (1): Carpintería Antonio (freddyanmar76@gmail.com), correo del 22/10.
 - Bloqueados hoy: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz (bloqueado el 28/10; no se reintentó).
 - Pendiente para el 30/10: seguimiento 2 a los 9 hilos del 20/10 (su seguimiento 1 fue el 26/10); seguimiento 1 a los otros 9 correos del 22/10 y a los 10 del 23/10.
+
+## 30/10/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna en los últimos 3 días.
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 9 hilos del 20/10: Cortinas Cruzado, Automotriz Los Bólidos, Electrodomésticos Zambrano, Podóloga E. Flórez Rojas, Kids Center, Salud Dental Camacho, Cerdent, Instituto Vital, Cardiomedic.
+- Seguimiento 1 enviado a los 9 correos restantes del 22/10: Trituración Moisés (destrucción de documentos), Importaciones Cárcamo, MyM Consultores, Segetuc, SAS Import, Bici Parts, Alcalisse, Dental Family, Ebanistería Lars.
+- Seguimiento 1 enviado a 2 correos del 23/10: Tecniservice, Terrazos y Pulidos Alemao.
+- Bloqueados hoy: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz (bloqueado el 28/10).
+- Pendiente para el 31/10: seguimiento 2 a los 10 hilos del 21/10 (seguimiento 1 el 27/10); seguimiento 1 a los 7 correos restantes del 23/10 y a los del 24/10.
