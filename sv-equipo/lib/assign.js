@@ -28,13 +28,29 @@ export async function poolCounts(db, day = today()) {
 }
 
 async function assignWa(tx, u, day) {
-  // Los reservados (con muestra) entran siempre y no cuentan para el tope diario.
-  await tx`update prospects set wa_state = 'assigned', wa_user = ${u.id}, wa_day = ${day}, owner_id = ${u.id}
-            where status = 'active' and wa_state = 'pool' and reserved_for = ${u.id}`;
+  // Tope diario total: incluye los reservados con muestra. Lo marcado «ya le había escrito» no cuenta.
   const [{ have }] = await tx`select count(*)::int as have from prospects
-    where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already' and reserved_for is distinct from ${u.id}`;
-  const need = u.wa_daily - have;
+    where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'`;
+  if (have > u.wa_daily) {
+    // Si sobran (p. ej. tras cambiar el tope), los que aún no se enviaron vuelven a la bolsa, primero los normales.
+    await tx`update prospects set wa_state = 'pool', wa_user = null, wa_day = null
+      where id in (select id from prospects where wa_user = ${u.id} and wa_day = ${day} and wa_state = 'assigned'
+                   order by (reserved_for is not null), priority, id desc limit ${have - u.wa_daily})`;
+    return 0;
+  }
+  let need = u.wa_daily - have;
   if (need <= 0) return 0;
+  // Primero los reservados para esta persona (con muestra), luego la bolsa general.
+  const mine = await tx`
+    with picked as (
+      select id from prospects
+       where status = 'active' and wa_state = 'pool' and reserved_for = ${u.id}
+       order by priority desc, id limit ${need})
+    update prospects p set wa_state = 'assigned', wa_user = ${u.id}, wa_day = ${day}, owner_id = ${u.id}
+      from picked where p.id = picked.id
+    returning p.id`;
+  need -= mine.length;
+  if (need <= 0) return mine.length;
   const rows = await tx`
     with picked as (
       select id from prospects
@@ -46,7 +62,7 @@ async function assignWa(tx, u, day) {
     update prospects p set wa_state = 'assigned', wa_user = ${u.id}, wa_day = ${day}, owner_id = coalesce(p.owner_id, ${u.id})
       from picked where p.id = picked.id
     returning p.id`;
-  return rows.length;
+  return mine.length + rows.length;
 }
 
 // Números que este usuario podría llamar hoy.

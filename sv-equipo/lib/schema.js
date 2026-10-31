@@ -94,7 +94,7 @@ do $$ begin
     insert into meta (k, v) values ('owner_wa_10', '1');
   end if;
 end $$;
--- Una sola vez (31/10): el dueño vuelve a 15 normales (las 5 con muestra siguen fuera del tope).
+-- Una sola vez (31/10): el dueño vuelve a 15 por día (desde el 31/10 el tope incluye los que traen muestra).
 do $$ begin
   if not exists (select 1 from meta where k = 'owner_wa_15') then
     update roles set wa_daily = 15 where name = 'owner';
