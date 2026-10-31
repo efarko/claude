@@ -113,3 +113,12 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado a 2 correos del 23/10: Tecniservice, Terrazos y Pulidos Alemao.
 - Bloqueados hoy: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz (bloqueado el 28/10).
 - Pendiente para el 31/10: seguimiento 2 a los 10 hilos del 21/10 (seguimiento 1 el 27/10); seguimiento 1 a los 7 correos restantes del 23/10 y a los del 24/10.
+
+## 31/10/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna en los últimos 3 días.
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 10 hilos del 21/10: Corporación Médica Virgen de las Mercedes, VR Ascensores Perú, Window Film Perú, ICB Servicios Generales, Autofiat Perú, Parquet Fernando, Funeraria Cristo Rey, Podología Integral Surco, Vidriería VK, Adrianzen Expertos en Línea Blanca.
+- Seguimiento 1 enviado a los 8 correos restantes del 23/10: Dra. Juana Díaz Arévalo, Dr. Ernesto Rosales Turriate, VIMER (vimersac), JL León & Asociados, Multi Industrias Metálicas, Señacril, Santa Agustina Automotores, Centro Geriátrico Regalito de Dios.
+- Seguimiento 1 enviado a 2 correos del 24/10: Creative Home, Avalec.
+- Bloqueados hoy: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz (bloqueado el 28/10).
+- Pendiente para el 2/11 (lunes): seguimiento 2 a los 11 hilos del 22/10 y 2 del 23/10 que recibieron seguimiento 1 el 30/10 (vencen el 3/11); seguimiento 1 a los correos restantes del 24/10 (STG, Pintura Avendaño, Casa de Reposo Emmanuel, Copyimpresoras Edsel, Decogarden, MST Perú, World Safety, El Vegetariano Sayel).
