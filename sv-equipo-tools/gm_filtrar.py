@@ -11,7 +11,7 @@ try:
         n, _, w = l.rstrip('\n').partition('\t'); known.add(norm(n)); known_wa.add(w.strip())
 except FileNotFoundError: pass
 EXCL = re.compile(r'canitas|virgen del carmen|roxste|art ?& ?glass', re.I)
-CHAINS = re.compile(r'multident|dentavida|sanna|auna|clinica internacional|ricardo palma|san pablo|javier prado|oncosalud|vitalia|cuidado de la salud|essalud|minsa|hospital|policlinico municipal|smile ?care|orthoplus', re.I)
+CHAINS = re.compile(r'multident|dentavida|sanna|auna|clinica internacional|ricardo palma|san pablo|javier prado|oncosalud|vitalia|cuidado de la salud|essalud|minsa|hospital|policlinico municipal|municipal|ciam|centro de salud|puesto de salud|^casa del adulto mayor$|smile ?care|orthoplus', re.I)
 SOCIAL = re.compile(r'facebook|instagram|tiktok|linktr|wa\.me|whatsapp|gurugo|paginasamarillas|doctoralia|google\.com|business\.site|youtube', re.I)
 RUBRO = [(r'reposo|geri|adulto mayor|ancian', 'casas de reposo'), (r'pod[oó]log', 'podología'), (r'fisio|terapia f[ií]sica|rehabilit', 'fisioterapia'),
          (r'dental|dentista|odont', 'clínica dental'), (r'lenguaje', 'terapia de lenguaje'), (r'psic', 'psicología'), (r'veterin', 'veterinaria'), (r'est[eé]tic|spa', 'centro de estética')]
