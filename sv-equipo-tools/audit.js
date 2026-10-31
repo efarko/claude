@@ -5,14 +5,15 @@ const items = JSON.parse(fs.readFileSync(process.argv[2]));
 (async () => {
   const b = await chromium.launch();
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1' });
+  await ctx.route('**/*', r => ['image', 'media', 'font'].includes(r.request().resourceType()) ? r.abort() : r.continue());
   for (const it of items) {
     if (it.problem || (it.skip && !/no cargó/.test(it.skip))) continue;
     delete it.skip;
     const p = await ctx.newPage();
     if (!it.web) { it.problem = 'no tienen una página web propia'; it.need = 'nueva'; continue; }
     try {
-      const r = await p.goto(it.web, { timeout: 30000, waitUntil: 'domcontentloaded' });
-      await p.waitForTimeout(2500);
+      const r = await p.goto(it.web, { timeout: 20000, waitUntil: 'domcontentloaded' });
+      await p.waitForTimeout(1500);
       if (!r || r.status() >= 400) { it.problem = 'su página web ya no carga'; it.need = 'nueva'; await p.close(); continue; }
       const info = await p.evaluate(() => {
         const as = [...document.querySelectorAll('a')].map(a => a.getAttribute('href') || '');
