@@ -230,12 +230,12 @@ const VIEWS = {
       kpi(o.pool.calls_later, 'Para volver a llamar otro día'), kpi(o.totals.total, 'Total en el sistema'))];
     if (o.low) parts.push(h('p', { class: 'hint bad', style: 'margin-top:12px' }, `Quedan ${o.lowLimit} o menos en alguna bolsa. Genera más para que mañana tu equipo tenga números.`));
 
-    const amount = h('input', { class: 'input', type: 'number', min: '10', max: '300', value: '60', style: 'max-width:120px' });
+    const amount = h('input', { class: 'input', type: 'number', min: '10', max: '60', value: '30', style: 'max-width:120px', 'aria-label': 'Cantidad' });
     const notes = h('input', { class: 'input', placeholder: 'Opcional: rubro o distrito (ej. dentistas en Surco)', maxlength: '300' });
     const genBox = h('div', {}, h('h2', {}, 'Generar más'), h('div', { class: 'card' },
-      h('p', { class: 'problem', style: 'margin:0' }, 'Envía el pedido a tu correo. Claude busca negocios nuevos y te responde con la lista para importarla aquí.'),
+      h('p', { class: 'problem', style: 'margin:0' }, 'Claude busca negocios nuevos de Lima (máximo 60 por pedido) y los carga solos en la bolsa. Tarda entre 30 y 60 minutos.'),
       h('div', { class: 'filters', style: 'margin:0' }, amount, notes),
-      h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => { e.target.disabled = true; try { await api('admin?a=request_more', { amount: amount.value, notes: notes.value }); toast('Pedido enviado a tu correo'); } catch (err) { toast(err.message); } e.target.disabled = false; } }, 'Pedir prospectos nuevos'))));
+      h('div', { class: 'actions' }, h('button', { class: 'btn sm', onclick: async (e) => { e.target.disabled = true; try { const r = await api('admin?a=request_more', { amount: amount.value, notes: notes.value }); toast(r.mode === 'fire' ? `Buscando ${r.amount} prospectos nuevos. Aparecen aquí en 30 a 60 minutos.` : 'Pedido enviado a tu correo'); } catch (err) { toast(err.message); } e.target.disabled = false; } }, 'Pedir prospectos nuevos'))));
 
     const file = h('input', { type: 'file', accept: '.json,application/json' });
     const paste = h('textarea', { class: 'input', rows: '5', placeholder: 'O pega aquí el JSON: [{"name":"…","problem":"…","need":"arreglo","wa":"9XXXXXXXX","phones":[{"label":"Fijo","tel":"(01) 234-5678"}]}]' });

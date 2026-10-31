@@ -2,7 +2,8 @@ import crypto from 'node:crypto';
 import { sql, getSecret } from './db.js';
 import { cookies, fail } from './http.js';
 
-export const SESSION_HOURS = 12;
+// La sesión dura 30 días en ese dispositivo; «Salir» la cierra antes.
+export const SESSION_HOURS = 24 * 30;
 
 export function newCode() {
   return String(crypto.randomInt(0, 1_000_000)).padStart(6, '0');

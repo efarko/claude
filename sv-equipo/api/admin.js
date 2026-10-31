@@ -197,20 +197,44 @@ export default handler({
     },
   },
 
+  // Con ROUTINE_FIRE_URL y ROUTINE_FIRE_TOKEN lanza la tarea «Prospectos a pedido» de Claude, que busca
+  // negocios y los carga sola por api/bot. Sin esas variables, manda el pedido al correo como antes.
   request_more: {
     method: 'POST',
     async run({ req, body, ip }) {
       const me = await owner(req);
-      const amount = Math.max(10, Math.min(300, Math.round(Number(body.amount) || 60)));
+      const amount = Math.max(10, Math.min(60, Math.round(Number(body.amount) || 30)));
+      const notes = String(body.notes || '').replace(/\s+/g, ' ').trim().slice(0, 200);
       const pool = await poolCounts(sql);
+      const fireUrl = process.env.ROUTINE_FIRE_URL, fireToken = process.env.ROUTINE_FIRE_TOKEN;
+      if (fireUrl && fireToken) {
+        const [busy] = await sql`select v from meta where k = 'gen_fired' and v::timestamptz > now() - interval '40 minutes'`;
+        if (busy) fail(429, 'Ya hay una búsqueda en curso. Los nuevos aparecen aquí en cuanto termine.');
+        const r = await fetch(fireUrl, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${fireToken}`, 'anthropic-beta': 'experimental-cc-routine-2026-04-01',
+            'anthropic-version': '2023-06-01', 'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ text: `cantidad=${amount}\nrubro=${notes || 'cualquiera'}\nquedan_whatsapp=${pool.wa}` }),
+        });
+        if (!r.ok) {
+          console.error('routine fire', r.status, (await r.text()).slice(0, 300));
+          fail(502, 'No se pudo iniciar la búsqueda. Intenta de nuevo en unos minutos.');
+        }
+        await sql`insert into meta (k, v) values ('gen_fired', ${new Date().toISOString()})
+                  on conflict (k) do update set v = excluded.v`;
+        await log(sql, { userId: me.id, kind: 'request_more', result: String(amount), note: notes || null, ip });
+        return { ok: true, mode: 'fire', amount };
+      }
       const names = await sql`select name from prospects order by id`;
       await sendMail({
         to: ownerEmail(),
         subject: `[SV Equipo] Pedido de prospectos: ${amount} nuevos`,
-        text: `Pedido desde el panel (${new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' })}).\n\nQuedan: WhatsApp ${pool.wa} · llamadas ${pool.calls} (${pool.calls_later} para otro día).\nSe piden: ${amount} negocios nuevos de Lima con fallas en su web o sin web.${body.notes ? `\nIndicaciones: ${String(body.notes).slice(0, 500)}` : ''}\n\nFormato: JSON para «Importar» del panel → [{"name","problem","need":"arreglo|nueva","wa":"9XXXXXXXX","phones":[{"label","tel"}],"category","district","web"}]\n\nYa están en el sistema (no repetir): ${names.map((n) => n.name).join(' · ')}\n`,
+        text: `Pedido desde el panel (${new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' })}).\n\nQuedan: WhatsApp ${pool.wa} · llamadas ${pool.calls} (${pool.calls_later} para otro día).\nSe piden: ${amount} negocios nuevos de Lima con fallas en su web o sin web.${notes ? `\nIndicaciones: ${notes}` : ''}\n\nFormato: JSON para «Importar» del panel → [{"name","problem","need":"arreglo|nueva","wa":"9XXXXXXXX","phones":[{"label","tel"}],"category","district","web"}]\n\nYa están en el sistema (no repetir): ${names.map((n) => n.name).join(' · ')}\n`,
       });
       await log(sql, { userId: me.id, kind: 'request_more', result: String(amount), ip });
-      return { ok: true };
+      return { ok: true, mode: 'mail', amount };
     },
   },
 

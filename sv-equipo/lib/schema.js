@@ -94,6 +94,13 @@ do $$ begin
     insert into meta (k, v) values ('owner_wa_10', '1');
   end if;
 end $$;
+-- Una sola vez (31/10): el dueño vuelve a 15 normales (las 5 con muestra siguen fuera del tope).
+do $$ begin
+  if not exists (select 1 from meta where k = 'owner_wa_15') then
+    update roles set wa_daily = 15 where name = 'owner';
+    insert into meta (k, v) values ('owner_wa_15', '1');
+  end if;
+end $$;
 create index if not exists prospects_wa on prospects (wa_state, priority desc, id);
 create index if not exists prospects_call on prospects (call_state, priority desc, id);
 create index if not exists prospects_wa_user on prospects (wa_user, wa_day);
