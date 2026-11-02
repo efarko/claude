@@ -2,19 +2,22 @@
 # Deja solo los que tienen un fallo comprobado, ordena por interés y arma el mensaje de WhatsApp con sus reseñas de Google.
 import json, sys, os, re
 GEN = set("""dentista dentistas implantes implante dentales dental clinica clínica consultorio odontologico odontológico odontologia odontología centro
-ortodoncia protesis prótesis endodoncia brackets blanqueamiento urgencias especialistas especializada especializado
+casa casas reposo geriatrico geriátrico residencia hogar asilo carillas ortodoncia protesis prótesis endodoncia brackets blanqueamiento urgencias especialistas especializada especializado
 podologia podología masajes terapia terapias fisica física fisioterapia psicologo psicólogo psicologa psicóloga veterinaria en y de la el los las del
 miraflores surco santiago san isidro borja molina barranco lince jesus jesús maria maría pueblo libre magdalena miguel surquillo lima peru perú""".split())
-def _generico(t): return all(w.lower().strip('.,"“”') in GEN for w in t.split())
+def _generico(t): return all(w.lower().strip('.,"“”-') in GEN for w in t.split())
 def corto(n):
     """Nombre para el saludo: sin la cola de palabras clave, sedes ni paréntesis que algunos ponen en Google Maps."""
     t = re.sub(r'\s*\(.*?\)\s*', ' ', n).strip()
     # comillas: «PODOLOGIA “PARDO”» -> PODOLOGIA PARDO; «PODOVITAL "podología y masajes…"» -> PODOVITAL
-    t = re.sub(r'\s*["“]([^"”]*)["”]?.*$', lambda m: '' if len(m.group(1).split()) >= 3 else ' ' + m.group(1).strip(), t).strip()
-    partes = [re.sub(r'^mejor\s+|\s+sede\b.*$', '', p, flags=re.I).strip() for p in re.split(r'\s[-|–]\s|:\s|\.\s', t)]
+    m = re.match(r'^(.*?)\s*["“]([^"”]*)["”]?.*$', t)
+    if m:  # entre comillas: se queda si lo de antes es genérico o si es corto (PODOLOGIA “PARDO”)
+        antes, dentro = m.group(1).strip(), m.group(2).strip()
+        t = (antes + ' ' + dentro).strip() if (not antes or _generico(antes) or len(dentro.split()) < 3) else antes
+    partes = [re.sub(r'^mejor\s+|\s+sede\b.*$', '', p, flags=re.I).strip() for p in re.split(r'\s(?:\|\||[-|–])\s|:\s|(?<!\bDr)(?<!\bDra)(?<!\bSr)(?<!\bSra)\.\s', t)]
     partes = [p for p in partes if p]
     propias = [p for p in partes if not _generico(p)]
-    if not propias: return t
+    if not propias: return t if len(t) <= 40 or not partes else partes[0]
     return propias[0]
 def dominio(w): return re.sub(r'^https?://(www\.)?', '', w or '').split('/')[0].lower()
 src, dst, fecha = sys.argv[1:]

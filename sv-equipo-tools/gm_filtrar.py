@@ -30,7 +30,7 @@ except FileNotFoundError: pass
 for n in json.load(open(status)).get('names', []):
     if marca(n) and len(marca(n)) >= 6: known_marca[marca(n)].add('*')
 EXCL = re.compile(r'canitas|virgen del carmen|roxste|art ?& ?glass', re.I)
-CHAINS = re.compile(r'multident|dentavida|sanna|auna|clinica internacional|ricardo palma|san pablo|javier prado|oncosalud|vitalia|cuidado de la salud|essalud|minsa|hospital|policlinico municipal|municipal|ciam|centro de salud|puesto de salud|^casa del adulto mayor$|smile ?care|orthoplus|hermanitas|desamparados|parroquia|beneficencia|congregaci', re.I)
+CHAINS = re.compile(r'multident|dentavida|sanna|auna|clinica internacional|ricardo palma|san pablo|javier prado|oncosalud|vitalia|cuidado de la salud|essalud|minsa|hospital|policlinico municipal|municipal|ciam|centro de salud|puesto de salud|^casa del adulto mayor$|smile ?care|orthoplus|hermanitas|desamparados|parroquia|beneficencia|congregaci|solidari', re.I)
 SOCIAL = re.compile(r'facebook|instagram|tiktok|linktr|wa\.me|wa\.link|bit\.ly|beacons|taplink|whatsapp|gurugo|paginasamarillas|doctoralia|google\.com|business\.site|youtube', re.I)
 RUBRO = [(r'reposo|geri|adulto mayor|ancian', 'casas de reposo'), (r'pod[oó]log', 'podología'), (r'fisio|terapia f[ií]sica|rehabilit', 'fisioterapia'),
          (r'dental|dentista|odont|ortodon', 'clínica dental'), (r'lenguaje', 'terapia de lenguaje'), (r'psic', 'psicología'), (r'veterin', 'veterinaria'), (r'est[eé]tic|spa', 'centro de estética')]
