@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrianzen · Expertos en Línea Blanca · Puente Piedra</title>
+<meta name="description" content="Reparación de cocinas, conversión a gas natural, lavadoras y refrigeradoras a domicilio en Puente Piedra y Lima Norte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c1a2b; --ink-2:#13263d; --paper:#f5f8fb; --white:#fff; --muted:#5b6b7d; --line:#dde5ee;
+  --brand:#1f6feb; --brand-2:#0b4fbf; --flame:#ff7a1a; --wa:#25d366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--flame);font-weight:700}
+
+.demo{background:var(--flame);color:#fff;font-size:13px;text-align:center;padding:8px 16px;font-weight:600}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand{font-weight:800;font-size:18px;text-decoration:none;white-space:nowrap}
+.brand span{color:var(--brand)}
+.nav-wa{font-size:14px;font-weight:700;text-decoration:none;background:var(--wa);color:#08311a;padding:9px 14px;border-radius:999px;white-space:nowrap}
+
+.hero{background:linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 60%,#1b3a5c 100%);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:64px 20px 72px}
+.hero h1{font-size:clamp(34px,5.6vw,56px);margin:14px 0 16px}
+.hero h1 em{font-style:normal;color:var(--flame)}
+.hero p.lead{font-size:18px;color:#c4d2e2;max-width:50ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:999px;font-size:16px;transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#08311a}
+.btn-ghost{border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn svg{width:20px;height:20px;flex:none}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.badges span{font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:7px 12px;border-radius:999px;color:#dbe6f2}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:26px}
+.hero-card h3{font-size:18px;margin-bottom:14px}
+.hero-card ul{list-style:none;display:grid;gap:12px}
+.hero-card li{display:flex;gap:12px;align-items:flex-start;color:#dbe6f2;font-size:15px}
+.hero-card li b{color:#fff;display:block}
+.dot{width:28px;height:28px;border-radius:9px;background:rgba(255,122,26,.18);display:grid;place-items:center;flex:none}
+.dot svg{width:16px;height:16px;stroke:var(--flame)}
+
+section{padding:72px 0}
+.head{max-width:640px;margin-bottom:34px}
+.head h2{font-size:clamp(28px,4vw,40px);margin:10px 0 10px}
+.head p{color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.ico{width:52px;height:52px;border-radius:14px;background:#eaf2ff;display:grid;place-items:center}
+.ico svg{width:28px;height:28px;stroke:var(--brand)}
+.card h3{font-size:19px}
+.card p{color:var(--muted);font-size:15px}
+.card ul{list-style:none;font-size:14px;color:var(--ink);display:grid;gap:4px;margin-top:auto;padding-top:6px}
+.card li::before{content:"✓ ";color:var(--brand);font-weight:700}
+
+.gas{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gas .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.gas-box{background:linear-gradient(150deg,#fff3e8,#ffe4cc);border-radius:22px;padding:30px}
+.gas-box h3{font-size:22px;margin-bottom:12px}
+.gas-box ol{padding-left:20px;display:grid;gap:8px;color:#3d2a17}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:24px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:15px}
+
+.contact{background:var(--ink);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.contact h2{font-size:clamp(28px,4vw,40px);margin:10px 0 12px}
+.contact p{color:#c4d2e2}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:26px;display:grid;gap:14px}
+.row{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#dbe6f2}
+.row b{display:block;color:#fff}
+.note{font-size:13px;color:#ffb27a}
+
+footer{background:#081320;color:#8aa0b8;font-size:13px;text-align:center;padding:24px 20px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.35)}
+.fab svg{width:30px;height:30px}
+
+@media (max-width:900px){
+  .hero .wrap,.gas .wrap,.contact .wrap{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .hero .wrap{padding:44px 20px 52px}
+  .btn{width:100%;justify-content:center}
+  .brand{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Muestra gratuita preparada por SV WebStudio para Adrianzen</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Adrianzen <span>Línea Blanca</span></a>
+    <a class="nav-wa js-wa" href="#contacto">WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Servicio técnico a domicilio · Puente Piedra</span>
+      <h1>Tu cocina, lavadora o refri <em>funcionando otra vez</em>, sin salir de casa</h1>
+      <p class="lead">Reparamos cocinas, lavadoras y refrigeradoras, y convertimos tu cocina a gas natural. Vamos a tu casa en Puente Piedra y Lima Norte, te decimos el costo antes de empezar y te dejamos todo funcionando.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa js-wa" href="#contacto">
+          <svg viewBox="0 0 24 24" fill="#08311a" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+          Pide tu visita por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="badges">
+        <span>Visita a domicilio</span><span>Presupuesto antes de reparar</span><span>Repuestos garantizados</span>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <h3>¿Qué le pasa a tu equipo?</h3>
+      <ul>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8Z"/></svg></span><span><b>La cocina no prende</b>o la llama sale amarilla y débil</span></li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="13" r="6"/><path d="M5 4h14v3H5z"/></svg></span><span><b>La lavadora no centrifuga</b>no bota el agua o hace ruido</span></li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span><span><b>La refri no enfría</b>o forma hielo donde no debe</span></li>
+        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 20h16M7 20V9l5-5 5 5v11"/></svg></span><span><b>Quieres pasarte a gas natural</b>y ahorrar cada mes</span></li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo que reparamos</h2>
+      <p>Trabajamos con las marcas que tienes en casa. Te explicamos qué tiene tu equipo y cuánto cuesta antes de tocar nada.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><circle cx="8" cy="4" r="1.5"/><circle cx="16" cy="4" r="1.5"/><path d="M7 12h10"/></svg></div>
+        <h3>Cocinas</h3>
+        <p>Reparación y mantenimiento de cocinas a gas y eléctricas.</p>
+        <ul><li>Quemadores y hornillas</li><li>Encendido eléctrico</li><li>Horno y termostato</li></ul>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8Z"/></svg></div>
+        <h3>Conversión a gas natural</h3>
+        <p>Adaptamos tu cocina para que funcione con gas natural de forma segura.</p>
+        <ul><li>Cambio de inyectores</li><li>Regulación de llama</li><li>Prueba de fugas</li></ul>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M8 5h2"/></svg></div>
+        <h3>Lavadoras</h3>
+        <p>Automáticas y semiautomáticas, de carga frontal y superior.</p>
+        <ul><li>No centrifuga o no drena</li><li>Ruidos y vibración</li><li>Tarjeta y motor</li></ul>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 9h14M8 5v2M8 12v3"/></svg></div>
+        <h3>Refrigeradoras</h3>
+        <p>No frost, convencionales y side by side.</p>
+        <ul><li>No enfría</li><li>Carga de gas refrigerante</li><li>Termostato y ventilador</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gas">
+  <div class="wrap">
+    <div class="head" style="margin:0">
+      <span class="eyebrow">Gas natural</span>
+      <h2>¿Ya tienes gas natural en casa? Tu cocina también puede usarlo</h2>
+      <p>Con la conversión dejas de comprar balones y pagas menos cada mes. Lo hacemos en tu casa, en poco tiempo, y te dejamos la cocina probada y sin fugas.</p>
+    </div>
+    <div class="gas-box">
+      <h3>Así hacemos la conversión</h3>
+      <ol>
+        <li>Revisamos tu cocina y te decimos el costo.</li>
+        <li>Cambiamos los inyectores y regulamos cada quemador.</li>
+        <li>Probamos que no haya fugas y que la llama salga azul.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Pedir tu visita es fácil</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Escríbenos por WhatsApp</h3><p>Cuéntanos qué equipo es y qué le pasa. Si puedes, mándanos una foto.</p></div>
+      <div class="step"><h3>Vamos a tu casa</h3><p>Coordinamos el día y la hora. Revisamos el equipo y te damos el presupuesto.</p></div>
+      <div class="step"><h3>Lo dejamos funcionando</h3><p>Si estás de acuerdo, lo reparamos ahí mismo y lo probamos contigo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h2>¿Tu equipo falló? Escríbenos ahora</h2>
+      <p>Atendemos en Puente Piedra y Lima Norte. Te respondemos por WhatsApp y coordinamos tu visita.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa js-wa" href="#contacto">
+          <svg viewBox="0 0 24 24" fill="#08311a" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="row"><span>📍</span><span><b>Zona de atención</b>Puente Piedra y Lima Norte</span></div>
+      <div class="row"><span>🛠️</span><span><b>Servicios</b>Cocinas · Gas natural · Lavadoras · Refrigeradoras</span></div>
+      <div class="row"><span>💬</span><span><b>WhatsApp</b><span class="js-wa-text">Aquí irá su número de WhatsApp</span></span></div>
+      <p class="note js-wa-note">En la versión final, todos los botones verdes abren directo el chat de WhatsApp de Adrianzen.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Adrianzen · Expertos en Línea Blanca · Puente Piedra, Lima<br>Muestra preparada por SV WebStudio</footer>
+
+<a class="fab js-wa" href="#contacto" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+</a>
+
+<script>
+// Número de WhatsApp del cliente (9 dígitos). Vacío mientras no lo tengamos.
+const WA = '';
+if (WA) {
+  const url = 'https://wa.me/51' + WA + '?text=' + encodeURIComponent('Hola, quiero pedir una visita técnica');
+  document.querySelectorAll('.js-wa').forEach(a => { a.href = url; a.target = '_blank'; a.rel = 'noopener'; });
+  document.querySelector('.js-wa-text').textContent = WA.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+  document.querySelector('.js-wa-note').remove();
+}
+</script>
+</body>
+</html>
