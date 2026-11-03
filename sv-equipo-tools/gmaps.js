@@ -10,6 +10,10 @@ const queries = process.argv.slice(2);
     try {
       await p.goto('https://www.google.com/maps/search/' + encodeURIComponent(q) + '?hl=es', { timeout: 45000, waitUntil: 'domcontentloaded' });
       await p.waitForTimeout(4000);
+      if (/google\.com\/sorry/.test(p.url())) {  // captcha de «tráfico inusual»: no seguir martillando
+        console.error('BLOQUEADO por Google (tráfico inusual) en: ' + q + '. Las búsquedas que faltan no se hicieron.');
+        process.exitCode = 3; break;
+      }
       let prev = 0;
       for (let i = 0; i < 12; i++) {
         await p.evaluate(() => { const f = document.querySelector('div[role="feed"]'); if (f) f.scrollBy(0, 4000); });
