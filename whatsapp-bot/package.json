@@ -1,0 +1,26 @@
+{
+  "name": "whatsapp-bot-ventas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Asistente de ventas por WhatsApp que responde a prospectos con Claude",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "simular": "tsx scripts/simular.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.4.0",
+    "@upstash/redis": "^1.41.0",
+    "@vercel/functions": "^3.10.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
