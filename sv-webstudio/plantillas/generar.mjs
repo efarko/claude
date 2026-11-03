@@ -71,9 +71,12 @@ export function render(cliente) {
   const nombre = esc(cliente.nombre);
   const distrito = esc(cliente.distrito || 'Lima');
   const fill = (s) => String(s).replaceAll('{nombre}', nombre).replaceAll('{distrito}', distrito);
-  const wa = waDigits(cliente.whatsapp);
-  const waUrl = wa ? `https://wa.me/${wa}?text=${encodeURIComponent(cliente.waTexto || c.waTexto)}` : '#contacto';
-  const waAttrs = wa ? ' target="_blank" rel="noopener"' : '';
+  // Modo ejemplo: página de vitrina de SV WebStudio; todos los botones llevan al WhatsApp de SV.
+  const ejemplo = !!cliente.ejemplo;
+  const svWa = `https://wa.me/51957636046?text=${encodeURIComponent(`Hola Franco, vi el ejemplo de página para ${preset.etiqueta} y quiero una para mi negocio`)}`;
+  const wa = ejemplo ? '' : waDigits(cliente.whatsapp);
+  const waUrl = ejemplo ? svWa : wa ? `https://wa.me/${wa}?text=${encodeURIComponent(cliente.waTexto || c.waTexto)}` : '#contacto';
+  const waAttrs = wa || ejemplo ? ' target="_blank" rel="noopener"' : '';
   const tels = (cliente.telefonos || []).map((t) => ({ show: esc(t), href: telLink(t) })).filter((t) => t.href);
   const fotos = cliente.fotos || {};
   const servicios = cliente.servicios || c.servicios.items;
@@ -86,7 +89,8 @@ export function render(cliente) {
   const heroAside = fotos.hero ? `<figure class="hero-photo"><img src="${esc(fotos.hero)}" alt="${nombre}" width="800" height="1000"></figure>` : tarjeta;
 
   const telRow = tels.length ? `<div class="row">${icon('phone')}<span><b>Teléfono</b>${tels.map((t) => `<a href="tel:${t.href}">${t.show}</a>`).join(' · ')}</span></div>` : '';
-  const waRow = `<div class="row">${WA_SVG}<span><b>WhatsApp</b>${wa ? `<a href="${waUrl}"${waAttrs}>${showWa(wa)}</a>` : 'Aquí irá su número de WhatsApp'}</span></div>`;
+  const waRow = ejemplo ? `<div class="row">${WA_SVG}<span><b>WhatsApp</b>Aquí va el WhatsApp de su negocio: cada botón verde abre su chat</span></div>`
+    : `<div class="row">${WA_SVG}<span><b>WhatsApp</b>${wa ? `<a href="${waUrl}"${waAttrs}>${showWa(wa)}</a>` : 'Aquí irá su número de WhatsApp'}</span></div>`;
   const dirRow = direccion ? `<div class="row">${icon('map')}<span><b>Dirección</b><a href="${comoLlegar}" target="_blank" rel="noopener">${esc(cliente.direccion)}, ${distrito}</a></span></div>` : '';
   const horRow = cliente.horario ? `<div class="row">${icon('clock')}<span><b>Horario</b>${esc(cliente.horario)}</span></div>` : '';
   const redesRow = Object.keys(redes).length ? `<div class="row">${icon('users')}<span><b>Redes</b>${Object.entries(redes).map(([k, v]) => `<a href="${esc(v)}" target="_blank" rel="noopener">${esc(k[0].toUpperCase() + k.slice(1))}</a>`).join(' · ')}</span></div>` : '';
@@ -113,7 +117,7 @@ a{color:inherit}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
 .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acento);font-weight:700}
-.demo{background:var(--acento);color:#fff;font-size:13px;text-align:center;padding:8px 16px;font-weight:600}
+.demo{display:block;background:var(--acento);color:#fff;font-size:13px;text-align:center;padding:8px 16px;font-weight:600;text-decoration:none}
 nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
 .brand{font-weight:800;font-size:18px;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -203,7 +207,7 @@ footer{background:color-mix(in srgb,var(--tinta) 88%,#000);color:color-mix(in sr
 </style>
 </head>
 <body>
-${cliente.muestra ? `<div class="demo">Muestra gratuita preparada por SV WebStudio para ${nombre}</div>\n` : ''}<nav>
+${ejemplo ? `<a class="demo" href="${svWa}" target="_blank" rel="noopener">Ejemplo de página para ${esc(preset.etiqueta)} hecho por SV WebStudio · ¿Quiere una así para su negocio? Escríbanos</a>\n` : cliente.muestra ? `<div class="demo">Muestra gratuita preparada por SV WebStudio para ${nombre}</div>\n` : ''}<nav>
   <div class="wrap">
     <a class="brand" href="#">${nombre}</a>
     <a class="nav-wa" href="${waUrl}"${waAttrs}>${WA_SVG}WhatsApp</a>
@@ -283,11 +287,22 @@ ${mapa ? `
   </div>
 </section>
 
-<footer>${nombre} · ${distrito}, Lima${cliente.muestra ? '<br>Muestra preparada por SV WebStudio' : '<br>Web hecha por <a href="https://sv-web-studio.vercel.app/" target="_blank" rel="noopener">SV WebStudio</a>'}</footer>
+<footer>${nombre} · ${distrito}, Lima${ejemplo ? '<br>Ejemplo hecho por <a href="https://sv-web-studio.vercel.app/" target="_blank" rel="noopener">SV WebStudio</a> · Su página lista en 48 horas, desde S/ 89 al mes' : cliente.muestra ? '<br>Muestra preparada por SV WebStudio' : '<br>Web hecha por <a href="https://sv-web-studio.vercel.app/" target="_blank" rel="noopener">SV WebStudio</a>'}</footer>
 
 <a class="fab" href="${waUrl}"${waAttrs} aria-label="WhatsApp">${WA_SVG}</a>
 </body>
 </html>
+`;
+}
+
+function indice(ejemplos) {
+  const items = ejemplos.map((e) => `<li><a href="${e.rubro}/"><b>${esc(RUBROS[e.rubro].etiqueta[0].toUpperCase() + RUBROS[e.rubro].etiqueta.slice(1))}</b><span>Ver ejemplo →</span></a></li>`).join('');
+  const wa = `https://wa.me/51957636046?text=${encodeURIComponent('Hola Franco, vi los ejemplos de páginas y quiero una para mi negocio')}`;
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ejemplos de páginas web por rubro · SV WebStudio</title>
+<meta name="description" content="Ejemplos de páginas web para negocios de Lima: casas de reposo, clínicas dentales, fisioterapia, veterinarias, talleres y servicio técnico. Lista en 48 horas, desde S/ 89 al mes.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 Inter,system-ui,sans-serif;background:#f4f6fa;color:#0e142a}.wrap{max-width:760px;margin:0 auto;padding:56px 20px}h1{font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 12px}p{color:#4b5568}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#2d87ff;font-weight:700}ul{list-style:none;display:grid;gap:12px;margin:32px 0}li a{display:flex;justify-content:space-between;gap:12px;background:#fff;border:1px solid #e2e7f0;border-radius:16px;padding:18px 20px;text-decoration:none;color:inherit}li a span{color:#2d87ff;font-weight:600;white-space:nowrap}.btn{display:inline-block;background:#25d366;color:#08311a;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:999px}</style></head>
+<body><div class="wrap"><span class="eyebrow">SV WebStudio</span><h1>Así se vería la página de su negocio</h1><p>Elija su rubro y véala desde su celular. Le hacemos la suya con su nombre, sus servicios y su WhatsApp, lista en 48 horas: S/ 300 en un solo pago o desde S/ 89 al mes.</p><ul>${items}</ul><a class="btn" href="${wa}" target="_blank" rel="noopener">Quiero la mía</a><p style="margin-top:24px;font-size:14px"><a href="https://sv-web-studio.vercel.app/">sv-web-studio.vercel.app</a></p></div></body></html>
 `;
 }
 
@@ -301,6 +316,7 @@ function main() {
       fs.writeFileSync(path.join(out, 'index.html'), render(e));
       console.log('ok', e.rubro);
     }
+    fs.writeFileSync(path.join(here, 'ejemplos', 'index.html'), indice(ejemplos));
     return;
   }
   if (args.length !== 2) {

@@ -3,6 +3,7 @@
 
 export const RUBROS = {
   'casa-reposo': {
+    etiqueta: 'casas de reposo',
     colores: { tinta: '#1d2b29', fondo: '#f6f3ee', marca: '#2f7a6d', marca2: '#225c52', acento: '#d98a4e', suave: '#e5efe9' },
     hero: {
       eyebrow: 'Casa de reposo en {distrito}',
@@ -50,6 +51,7 @@ export const RUBROS = {
   },
 
   dental: {
+    etiqueta: 'clínicas dentales',
     colores: { tinta: '#0d2236', fondo: '#f4f8fb', marca: '#1f7ae0', marca2: '#155bb0', acento: '#18b6a8', suave: '#e3f0fc' },
     hero: {
       eyebrow: 'Clínica dental en {distrito}',
@@ -97,6 +99,7 @@ export const RUBROS = {
   },
 
   fisioterapia: {
+    etiqueta: 'centros de fisioterapia',
     colores: { tinta: '#132a24', fondo: '#f4f8f6', marca: '#1f9d77', marca2: '#16765a', acento: '#3b82f6', suave: '#def2ea' },
     hero: {
       eyebrow: 'Fisioterapia y rehabilitación en {distrito}',
@@ -144,6 +147,7 @@ export const RUBROS = {
   },
 
   veterinaria: {
+    etiqueta: 'veterinarias',
     colores: { tinta: '#2a1d14', fondo: '#fbf6f1', marca: '#e0692d', marca2: '#b84f1c', acento: '#2a9d8f', suave: '#fbe7da' },
     hero: {
       eyebrow: 'Veterinaria en {distrito}',
@@ -191,6 +195,7 @@ export const RUBROS = {
   },
 
   taller: {
+    etiqueta: 'talleres mecánicos',
     colores: { tinta: '#16181c', fondo: '#f4f4f2', marca: '#1f2937', marca2: '#111827', acento: '#f2b705', suave: '#ececea' },
     hero: {
       eyebrow: 'Taller automotriz en {distrito}',
@@ -238,6 +243,7 @@ export const RUBROS = {
   },
 
   'servicio-tecnico': {
+    etiqueta: 'servicio técnico',
     colores: { tinta: '#0c1a2b', fondo: '#f5f8fb', marca: '#1f6feb', marca2: '#0b4fbf', acento: '#ff7a1a', suave: '#eaf2ff' },
     hero: {
       eyebrow: 'Servicio técnico a domicilio · {distrito}',
