@@ -122,3 +122,13 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado a 2 correos del 24/10: Creative Home, Avalec.
 - Bloqueados hoy: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz (bloqueado el 28/10).
 - Pendiente para el 2/11 (lunes): seguimiento 2 a Carpintería Antonio (seguimiento 1 el 29/10); los 9 del 22/10 y 2 del 23/10 con seguimiento 1 del 30/10 vencen el 3/11; seguimiento 1 a los correos restantes del 24/10 (STG, Pintura Avendaño, Casa de Reposo Emmanuel, Copyimpresoras Edsel, Decogarden, MST Perú, World Safety, El Vegetariano Sayel).
+
+## 2–3/11/2026 · revisión automática (la del 2/11 se cortó por un reinicio y se terminó el 3/11, 5:50 pm)
+- Respuestas:
+  - **Adrianzen Expertos en Línea Blanca** (Xavier Adrianzen, xaviadrianzen42@gmail.com), 2/11: pide muestra y precio; hacen cocinas, conversión a gas natural, lavadoras y refrigeradoras. Muestra publicada: https://adrianzen-linea-blanca.vercel.app (`demos/adrianzen-linea-blanca/`, sin fotos ni WhatsApp todavía: el número va en la constante `WA`). Borrador en Gmail con link, precio S/ 300 y pregunta por su WhatsApp, para que Franco lo revise y envíe.
+  - **Fortexa** (Angélica Castillo, administracion@fortexa.pe), 1/11: pregunta si les vendemos la base de correos para mandar correos en frío. Borrador en Gmail: no vendemos bases de datos; se les vuelve a ofrecer la muestra de su web corregida.
+- Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 12 hilos: Carpintería Antonio, Trituración Moisés, Importaciones Cárcamo, MyM Consultores, Segetuc, SAS Import, Bici Parts, Alcalisse, Dental Family, Ebanistería Lars, Tecniservice, Terrazos y Pulidos Alemao.
+- Seguimiento 1 enviado a los 8 correos restantes del 24/10: STG Servicios Generales, Pintura Avendaño, Casa de Reposo Emmanuel (Dra. Hernández), Copyimpresoras Edsel, Decogarden Perú, MST Perú, World Safety Perú, El Vegetariano Sayel.
+- Bloqueados: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz.
+- Pendiente: seguimiento 2 a los 10 hilos con seguimiento 1 del 31/10 (vencen el 4/11); seguimiento 1 a los 10 correos del 25–26/10 (Procesos Continuos, Hidráulica Mival, Más Servicios Múltiples, Industrias Científicas, Servicios Generales Flores, Generadores Perú, Dr. Domínguez, Parabrisas Elohim, Jor & Ma Eventos, Oximax).
