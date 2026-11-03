@@ -1,0 +1,2088 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SV WebStudio | Landing pages para negocios de Lima</title>
+<meta name="description" content="Landing pages a medida para negocios de Lima. Precio cerrado, lista en días, con un botón directo a tu WhatsApp.">
+<!-- DOMINIO DE PRODUCCION
+     Las seis URL absolutas de esta cabecera (canonical, og:url, og:image,
+     twitter:image y las dos del JSON-LD) apuntan al dominio que este repo
+     publica hoy. El dia que haya dominio propio, buscar y reemplazar
+     "sv-web-studio.vercel.app" y no queda ninguna suelta.
+     Tienen que apuntar al dominio REAL: el canonical le dice a Google cual
+     es la version buena, y og:image es de donde WhatsApp e Instagram sacan
+     la tarjeta al compartir el enlace. -->
+<link rel="canonical" href="https://sv-web-studio.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SV WebStudio">
+<meta property="og:locale" content="es_PE">
+<meta property="og:url" content="https://sv-web-studio.vercel.app/">
+<meta property="og:title" content="SV WebStudio | Landing pages para negocios de Lima">
+<meta property="og:description" content="Webs a medida desde S/ 300, listas en días y con un botón directo a tu WhatsApp. Precio cerrado y propuesta sin costo.">
+<meta property="og:image" content="https://sv-web-studio.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SV WebStudio: de seguidor a cliente, en un solo mensaje. Landing pages para negocios de Lima desde S/ 300.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SV WebStudio | Landing pages para negocios de Lima">
+<meta name="twitter:description" content="Webs a medida desde S/ 300, listas en días y con un botón directo a tu WhatsApp.">
+<meta name="twitter:image" content="https://sv-web-studio.vercel.app/og.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "SV WebStudio",
+  "description": "Diseño y desarrollo de landing pages a medida para negocios de Lima, con botón directo a WhatsApp.",
+  "url": "https://sv-web-studio.vercel.app/",
+  "image": "https://sv-web-studio.vercel.app/og.jpg",
+  "email": "sv.webstudio2026@gmail.com",
+  "telephone": ["+51916068187", "+51957636046"],
+  "areaServed": { "@type": "City", "name": "Lima" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Lima", "addressCountry": "PE" },
+  "founder": [{ "@type": "Person", "name": "Jesús Salas" }, { "@type": "Person", "name": "Franco Vallardes" }],
+  "priceRange": "S/ 300 - S/ 500",
+  "sameAs": ["https://www.instagram.com/sv.webstudio", "https://www.tiktok.com/@sv.webstudio"]
+}
+</script>
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070a14" media="(prefers-color-scheme: dark)">
+<!-- Fonts and icons are served from this site: no third-party requests, no visitor data sent to font or CDN providers -->
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/icons.css">
+<link rel="preload" as="image" href="img/avelino.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%230e142a%27%2F%3E%3Cstop%20offset%3D%2755%25%27%20stop-color%3D%27%231c5cc6%27%2F%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%232d87ff%27%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2714%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Ctext%20x%3D%2732%27%20y%3D%2745%27%20text-anchor%3D%27middle%27%20font-family%3D%27system-ui%2C-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-weight%3D%27700%27%20font-size%3D%2734%27%20fill%3D%27%23ffffff%27%3ESV%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+/* Tokens. Radius system: interactive = pill, cards = 22px, phones = 34px. One accent: WhatsApp-adjacent green. */
+:root{
+  --bg:#f4f5f8; --surface:#fbfcfe; --sunk:#e8eaf1;
+  --ink:#0e142a; --muted:#565d73; --line:#d6dae4;
+  --accent:#25d366; --on-accent:#06170d; --accent-ink:#0d5c2c;
+  /* El azul del logo. Identifica: etiquetas, iconos, enlaces y foco.
+     El verde se reserva para la accion. --brand-ink es el tono que pasa
+     AA como texto sobre papel; el plano #2d87ff da 3,3:1 y no llega. */
+  --brand:#2d87ff; --brand-ink:#1c5cc6;
+  --feature-bg:#0e142a; --feature-ink:#f1f3f9; --feature-muted:#a8b0c9; --feature-line:#232c48;
+  --shadow:0 30px 60px -30px rgb(14 20 42 / .35);
+  --r-card:22px; --r-phone:34px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --font:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#070a14; --surface:#0e142a; --sunk:#141c33;
+    --ink:#eceef5; --muted:#a3aac2; --line:#242c46;
+    --accent-ink:#5ce08d; --brand-ink:#8ec0ff;
+    --feature-bg:#10254a; --feature-ink:#eceef5; --feature-muted:#a7b4cc; --feature-line:#1c5cc6;
+    --shadow:0 30px 60px -30px rgb(0 0 0 / .7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#070a14; --surface:#0e142a; --sunk:#141c33;
+  --ink:#eceef5; --muted:#a3aac2; --line:#242c46;
+  --accent-ink:#5ce08d; --brand-ink:#8ec0ff;
+  --feature-bg:#10254a; --feature-ink:#eceef5; --feature-muted:#a7b4cc; --feature-line:#1c5cc6;
+  --shadow:0 30px 60px -30px rgb(0 0 0 / .7);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
+p{margin:0}
+.wrap{width:100%;max-width:1680px;margin:0 auto;padding:0 20px}
+@media (min-width:768px){.wrap{padding:0 40px}}
+@media (min-width:1100px){.wrap{padding:0 clamp(40px,4vw,72px)}}
+section{scroll-margin-top:84px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:999px;z-index:100}
+.skip:focus{left:12px}
+:focus-visible{outline:2px solid var(--brand-ink);outline-offset:3px;border-radius:6px}
+
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-ink);display:inline-flex;align-items:center;gap:8px}
+.lead{color:var(--muted);font-size:clamp(17px,1.4vw,19px);max-width:56ch}
+.h2{font-size:clamp(34px,4.6vw,58px)}
+
+/* Buttons */
+.btn{--h:54px;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:var(--h);padding:0 26px;border-radius:999px;font:600 16px/1 var(--font);text-decoration:none;white-space:nowrap;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),translate .4s var(--ease),background-color .25s,border-color .25s,box-shadow .25s}
+.btn:active{transform:scale(.96);transition-duration:80ms}
+/* magnetic WhatsApp CTAs move every frame: own compositor layer so the move never leaves repaint trails */
+a.btn[href^="https://wa.me/"],.fab{will-change:translate,transform;backface-visibility:hidden}
+.btn i{font-size:20px}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:inset 0 -2px 0 rgb(0 0 0 / .12)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:inset 0 -2px 0 rgb(0 0 0 / .12),0 12px 24px -12px rgb(0 0 0 / .35)}
+.btn-primary:active,.btn-ink:active{transform:scale(.96)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-ink{background:var(--on-accent);color:#edeff4}
+.btn-ink:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgb(0 0 0 / .35)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .wrap{height:68px;display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:-.02em;font-size:17px;white-space:nowrap}
+.mark{width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 13px/1 var(--mono);letter-spacing:-.02em;position:relative}
+.mark::after{content:"";position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.nav-links{display:none;gap:28px;margin-left:auto}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:15px;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+.icon-btn{width:42px;height:42px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:19px}
+.icon-btn:hover{border-color:var(--ink)}
+.nav .btn{--h:42px;padding:0 18px;font-size:15px}
+.nav .btn .lbl{display:none}
+@media (min-width:600px){.nav .btn .lbl{display:inline}}
+@media (min-width:980px){.nav-links{display:flex}.nav-actions{margin-left:12px}}
+
+/* ==========================================================================
+   Menú de secciones en móvil
+   --------------------------------------------------------------------------
+   Por debajo de 980px la barra escondia los cuatro enlaces y no los
+   sustituia nada: no habia forma de saltar de seccion en una pagina de
+   casi 14.000px. De 980px para arriba nada de esto existe, asi que el
+   escritorio no se entera.
+   ========================================================================== */
+
+/* El boton no existe en escritorio */
+.burger{display:none}
+
+/* Dos barras que se cruzan: la de abajo es un ::before de la de arriba */
+.burger-ln,
+.burger-ln::before{
+  display:block;
+  width:18px;height:2px;
+  border-radius:2px;
+  background:currentColor;
+  transition:transform .3s var(--ease);
+}
+.burger-ln{position:relative;transform:translateY(-3px)}
+.burger-ln::before{content:"";position:absolute;left:0;transform:translateY(6px)}
+
+.nav[data-menu="abierto"] .burger-ln{transform:translateY(0) rotate(45deg)}
+.nav[data-menu="abierto"] .burger-ln::before{transform:translateY(0) rotate(-90deg)}
+
+.menu{display:none}
+.menu-scrim{display:none}
+
+@media (max-width:979px){
+  .burger{
+    display:grid;place-items:center;
+    width:44px;height:44px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:transparent;color:var(--ink);
+    cursor:pointer;
+  }
+  .burger:active{background:var(--sunk)}
+
+  .menu{
+    display:block;
+    position:absolute;
+    top:100%;left:0;right:0;
+    /* No pasa de la pantalla aunque el telefono sea bajo o el teclado
+       este abierto: dvh sigue al alto visible real. */
+    max-height:calc(100dvh - 69px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    padding:10px 16px calc(18px + env(safe-area-inset-bottom, 0px));
+    background:color-mix(in srgb, var(--bg) 99%, transparent);
+    backdrop-filter:blur(26px) saturate(180%);
+    -webkit-backdrop-filter:blur(26px) saturate(180%);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 20px 40px -24px rgb(14 20 42 / .45);
+
+    /* Cerrado: fuera del alcance del teclado y del lector de pantalla */
+    visibility:hidden;opacity:0;
+    transform:translateY(-10px);
+    transform-origin:100% 0;
+    transition:opacity .22s var(--ease),transform .3s var(--ease),visibility .3s;
+  }
+  .nav[data-menu="abierto"] .menu{visibility:visible;opacity:1;transform:none}
+
+  .menu-links{display:grid}
+  .menu-links a{
+    display:flex;align-items:center;gap:14px;
+    min-height:54px;padding:0 12px;
+    border-radius:14px;
+    text-decoration:none;color:var(--ink);
+    font-size:16.5px;font-weight:500;
+    letter-spacing:-.01em;
+    /* Entran escalonados desde una caja invisible */
+    opacity:0;transform:translateY(10px);
+    transition:opacity .34s var(--ease),transform .34s var(--ease),background .18s;
+  }
+  .menu-links a i{margin-left:auto;font-size:17px;color:var(--muted);flex:none;transition:transform .2s var(--ease)}
+  .menu-links a:active i{transform:translateX(3px);color:var(--brand-ink)}
+  .menu-links a:active{background:var(--sunk)}
+
+  .menu-cta{
+    width:100%;margin-top:12px;
+    opacity:0;transform:translateY(10px);
+    transition:opacity .34s var(--ease),transform .34s var(--ease);
+  }
+
+  .nav[data-menu="abierto"] .menu-links a,
+  .nav[data-menu="abierto"] .menu-cta{opacity:1;transform:none}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(1){transition-delay:.04s}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(2){transition-delay:.07s}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(3){transition-delay:.10s}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(4){transition-delay:.13s}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(5){transition-delay:.16s}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(6){transition-delay:.19s}
+  .nav[data-menu="abierto"] .menu-links a:nth-child(7){transition-delay:.22s}
+  .nav[data-menu="abierto"] .menu-cta{transition-delay:.25s}
+
+  /* El velo solo se dibuja con el menu abierto. Lo manda el estado de la
+     barra (data-menu), no un atributo: asi no puede quedarse encendido. */
+  .nav[data-menu="abierto"] ~ .menu-scrim{
+    display:block;
+    position:fixed;inset:0;
+    z-index:39;
+    background:rgb(14 20 42 / .42);
+    animation:velo .22s var(--ease);
+  }
+  @keyframes velo{from{opacity:0}to{opacity:1}}
+
+  /* Con el menu abierto el fondo no se mueve */
+  body.sin-scroll{position:fixed;width:100%;overflow:hidden}
+
+  /* El menu se dibuja sobre el velo */
+  .nav{z-index:41}
+}
+
+/* ==========================================================================
+   Base tactil
+   --------------------------------------------------------------------------
+   Todo dentro de (pointer: coarse): con raton no cambia ni un pixel.
+   ========================================================================== */
+@media (pointer: coarse){
+  /* El destello gris que pinta el navegador encima de lo que tocas */
+  html{-webkit-tap-highlight-color:transparent}
+  /* Sin el, el navegador espera 300ms por si llega un segundo toque */
+  a,button,[role=button],summary{touch-action:manipulation}
+  /* Mantener pulsado un boton no selecciona su etiqueta */
+  button,[role=button],.btn,.chip,.cfg-chip{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .burger-ln,.burger-ln::before,.menu,.menu-links a,.menu-cta{transition-duration:.01ms}
+  .menu-scrim{animation:none}
+}
+@media (max-width:359px){.nav .wrap{gap:10px}.brand{font-size:15px;gap:8px}.nav-actions{gap:6px}.nav .btn{padding:0 14px}}
+
+/* Hero */
+.hero{padding:40px 0 72px;overflow:hidden}
+.hero-grid{display:grid;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,4.6vw,60px);letter-spacing:-.035em;line-height:1.02;margin:22px 0 22px}
+.hl{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 55%,transparent) 62%,color-mix(in srgb,var(--accent) 55%,transparent) 92%,transparent 92%);padding:0 .14em;margin:0 -.04em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero .lead{margin-bottom:34px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+/* Below 1024px the three phones scale with the screen so the fan always fits (about 16px margin each side) */
+.stage{--pw:clamp(120px,calc((100vw - 32px) / 2.45),250px);position:relative;height:calc(var(--pw) * 2.5 + 56px);display:flex;justify-content:center;align-items:flex-start}
+.phone{position:absolute;width:var(--pw);aspect-ratio:375/844;border-radius:var(--r-phone);background:#0b0b0c;padding:7px;box-shadow:var(--shadow),0 0 0 1px rgb(255 255 255 / .06) inset}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:calc(var(--r-phone) - 7px)}
+.phone::before{content:"";position:absolute;top:calc(var(--pw) * .065);left:50%;translate:-50% 0;width:calc(var(--pw) * .28);height:calc(var(--pw) * .08);border-radius:999px;background:#0b0b0c;z-index:1}
+.stage .p1{--r:-9deg;--x:calc(var(--pw) * -.54);--y:calc(var(--pw) * .23);z-index:1}
+.stage .p2{--r:0deg;--x:0px;--y:0px;z-index:3}
+.stage .p3{--r:9deg;--x:calc(var(--pw) * .54);--y:calc(var(--pw) * .23);z-index:2}
+.stage .phone{transform:translate(var(--x),var(--y)) rotate(var(--r))}
+.stage-tag{position:absolute;z-index:4;bottom:14px;left:50%;translate:-50% 0;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);font-size:14px;white-space:nowrap}
+.stage-tag i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font-size:17px}
+@media (min-width:1024px){
+  .hero{padding:56px 0 96px}
+  .hero-grid{grid-template-columns:1.2fr .8fr;gap:24px}
+  .stage{height:620px}
+  .stage{margin-left:56px}
+  .stage{--pw:236px}
+  .stage .p1{--x:-124px;--y:62px}.stage .p3{--x:124px;--y:62px}
+}
+@media (min-width:1366px) and (max-width:1499px){
+  .stage{height:600px}
+  .stage{--pw:220px}
+  .stage .p1{--x:-116px;--y:58px}.stage .p3{--x:116px;--y:58px}
+}
+@media (min-width:1500px){
+  .hero-grid{grid-template-columns:1.1fr .9fr}
+  .stage{height:720px;margin-left:0}
+  .stage{--pw:268px}
+  .stage .p1{--x:-146px;--y:70px}.stage .p3{--x:146px;--y:70px}
+}
+@media (min-width:1760px){
+  .stage{height:800px}
+  .stage{--pw:300px}
+  .stage .p1{--x:-170px;--y:78px}.stage .p3{--x:170px;--y:78px}
+}
+@media (min-width:1024px) and (max-width:1199px){
+  .stage{--pw:172px;height:500px;margin-left:0}
+  .stage .p1{--x:-90px;--y:46px}.stage .p3{--x:90px;--y:46px}
+}
+@media (min-width:1200px) and (max-width:1365px){
+  .stage{margin-left:20px;height:560px}
+  .stage{--pw:200px}
+  .stage .p1{--x:-104px;--y:54px}.stage .p3{--x:104px;--y:54px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero .enter{opacity:0;animation:rise 1.4s var(--ease) forwards;animation-delay:calc(var(--i,0) * 160ms)}
+  .stage .phone{opacity:0;animation:deal 1.1s var(--ease) forwards;animation-delay:calc(250ms + var(--i,0) * 120ms)}
+  .stage .phone:hover{transition:transform .5s var(--ease)}
+  .stage-tag{opacity:0;animation:rise .8s var(--ease) 900ms forwards}
+}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes deal{from{opacity:0;transform:translate(0,60px) rotate(0)}to{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+
+/* Problem: DM pile */
+.problem{padding:72px 0;border-top:1px solid var(--line)}
+.problem-grid{display:grid;gap:48px;align-items:center}
+.problem .lead{margin-top:22px}
+.dms{display:flex;flex-direction:column;gap:12px;max-width:440px;width:100%;justify-self:center}
+.dm{align-self:flex-start;max-width:85%;padding:12px 16px;border-radius:20px 20px 20px 6px;background:var(--surface);border:1px solid var(--line);font-size:16px;line-height:1.4}
+.dm small{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:4px}
+.dm:nth-child(2){margin-left:22px}.dm:nth-child(3){margin-left:8px}.dm:nth-child(4){margin-left:34px}
+.dm.reply{align-self:flex-end;background:var(--accent);color:var(--on-accent);border-color:transparent;border-radius:20px 20px 6px 20px;font-weight:500}
+.dm.reply small{color:color-mix(in srgb,var(--on-accent) 70%,transparent)}
+@media (min-width:900px){.problem{padding:96px 0}.problem-grid{grid-template-columns:1.1fr .9fr;gap:80px}}
+
+/* Projects */
+.work{padding:16px 0 96px;overflow-x:clip}
+.work-head{max-width:720px;margin-bottom:40px}
+.work-head .lead{margin-top:18px}
+@media (min-width:900px){.work{padding:16px 0 96px}}
+
+/* Projects: real 3D cylinder. Each project is a curved panel built from thin vertical strips of a
+   desktop screenshot (JS builds the strips). Rotation and per-strip shading are transform/opacity only. */
+.cyl{--h:540px;--r:520px;position:relative;width:100vw;margin-left:calc(50% - 50vw);height:calc(var(--h) + 64px);perspective:2300px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.cyl.grabbing{cursor:grabbing}
+.cyl:focus-visible{outline:2px solid var(--brand-ink);outline-offset:6px;border-radius:var(--r-card)}
+.cyl-stage{position:absolute;left:50%;top:0;width:0;height:var(--h);transform-style:preserve-3d;transform:translateZ(calc(var(--r) * -1))}
+.cyl-ring{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.panel{position:absolute;inset:0;transform-style:preserve-3d;-webkit-user-drag:none}
+.strip{position:absolute;top:0;left:0;height:var(--h);overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;background-repeat:no-repeat;background-color:#0d0d0f}
+.strip.first{border-radius:18px 0 0 18px}
+.strip.last{border-radius:0 18px 18px 0}
+.strip i{position:absolute;inset:0;background:#050506;opacity:0;pointer-events:none}
+.strip b{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.cyl-shadow{position:absolute;left:50%;bottom:6px;width:calc(var(--r) * 1.7);height:46px;margin-left:calc(var(--r) * -.85);border-radius:50%;background:radial-gradient(closest-side,rgb(10 25 16 / .28),transparent);pointer-events:none;will-change:transform}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cyl-shadow{background:radial-gradient(closest-side,rgb(0 0 0 / .75),transparent)}}
+:root[data-theme="dark"] .cyl-shadow{background:radial-gradient(closest-side,rgb(0 0 0 / .75),transparent)}
+.cyl-ui{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:4px}
+.cyl-hint{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--muted);transition:opacity .6s var(--ease)}
+.cyl-hint i{font-size:18px}
+.cyl-hint.gone{opacity:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Caption synced with the panel at the front: all three live in the DOM, one is shown */
+.proj-info{display:grid;max-width:1000px;margin:36px auto 0}
+.proj{grid-area:1/1;display:grid;gap:22px 56px;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .45s var(--ease),transform .55s var(--ease),visibility 0s .45s}
+.proj.on{opacity:1;visibility:visible;transform:none;transition-delay:.08s,.08s,0s}
+.proj .kind{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.proj h3{font-size:clamp(28px,3vw,38px);margin:8px 0 16px}
+.proj dl{margin:0;display:grid;gap:16px}
+.proj dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.proj dd{margin:4px 0 0;font-size:16px;line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font-size:13px;line-height:1.2;padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.visit{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;padding:4px 0;color:var(--ink)}
+.visit i{transition:transform .3s var(--ease)}
+.visit:hover i{transform:translate(3px,-3px)}
+.visit:hover{color:var(--accent-ink)}
+@media (min-width:800px){.proj{grid-template-columns:.85fr 1.15fr;align-items:start}}
+.proj{gap:14px;align-items:stretch}
+.proj>div,.proj dl>div{border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);padding:26px 28px}
+.proj>div{display:flex;flex-direction:column}
+.proj>div .chips{margin-bottom:22px}
+.proj>div .visit{margin-top:auto;align-self:flex-start;padding:12px 20px;border-radius:999px;border:1px solid var(--line);transition:border-color .2s,color .2s}
+.proj>div .visit:hover{border-color:var(--ink)}
+.proj dl{gap:14px}
+.proj dl>div{display:flex;flex-direction:column;gap:10px}
+.proj dt{display:flex;align-items:center;gap:10px}
+.proj dt i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--sunk);color:var(--accent-ink);font-size:18px}
+.proj dd{margin:0;display:grid;gap:14px;align-content:start}
+.proj dd ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.proj dd li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45}
+.proj dd li i{flex:none;margin-top:3px;font-size:16px;color:var(--accent-ink)}
+.proj .asks-t{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--muted);margin-top:4px}/* Sin mayusculas: "Lo que el visitante queria saber" son 32 caracteres, una frase y no una etiqueta. En mayusculas se lee letra a letra. El resto del tratamiento (mono, 12px, apagado) ya dice que es un rotulo. El tracking baja de .05 a .02em porque el de mayusculas queda suelto en minusculas. */
+.proj .asks li{color:var(--muted)}
+.proj .asks li i{color:var(--muted)}
+.proj .did{padding-top:14px!important;border-top:1px solid var(--line)}
+@media (min-width:800px){
+  .proj{grid-template-columns:.9fr 2.1fr;align-items:stretch}
+  .proj dl{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){.proj,.proj.on{transition:none;transform:none}}
+@media (max-width:699px){.cyl{perspective:1100px;height:calc(var(--h) + 44px)}.proj-info{margin-top:24px}}
+
+/* Why: manifesto + reasons */
+.why{padding:72px 0;border-top:1px solid var(--line)}
+.manifesto{font-size:clamp(30px,4vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.1;max-width:20ch;text-wrap:balance}
+.manifesto span{color:var(--muted)}
+.reasons{display:grid;gap:36px;margin-top:56px}
+.reason{padding-top:22px;border-top:1px solid var(--ink)}
+.reason i{font-size:28px;color:var(--brand-ink)}
+.reason h3{font-size:21px;letter-spacing:-.02em;line-height:1.25;margin:16px 0 10px}
+.reason p{color:var(--muted);font-size:16px}
+@media (min-width:700px){.reasons{grid-template-columns:repeat(2,1fr);gap:44px 40px}}
+@media (min-width:1100px){.why{padding:96px 0}.reasons{grid-template-columns:repeat(4,1fr);gap:32px}}
+
+/* Why: code editor typing real lines of this page */
+.why-top{display:grid;gap:40px;align-items:center}
+.editor{margin:0;border-radius:var(--r-card);background:#101012;border:1px solid #25272c;overflow:hidden;color:#cdcfd7}
+.editor-bar{display:flex;align-items:center;gap:14px;height:44px;padding:0 14px;border-bottom:1px solid #212328;font:12px var(--mono);color:#8b8d95}
+.editor-bar .tab{color:#e6e8ed;padding:6px 12px;background:#181a1e;border-radius:8px}
+.editor pre{margin:0;padding:18px 20px 22px 12px;font:13.5px/1.8 var(--mono);white-space:pre;overflow-x:auto}
+.editor .ln{display:block}
+.editor .ln b{display:inline-block;width:2.4em;text-align:right;margin-right:16px;color:#80848e;font-weight:400;user-select:none}
+.editor .k{color:#7fd4a6}.editor .s{color:#e6c07b}.editor .c{color:#787c86}.editor .n{color:#8fb8ff}.editor .f{color:#d6a5f0}
+.editor .t{display:inline-block;vertical-align:top}
+.editor .caret{display:inline-block;width:8px;height:1.15em;vertical-align:-3px;background:var(--accent)}
+@media (prefers-reduced-motion:no-preference){
+  .js .editor .t{clip-path:inset(0 100% 0 0)}
+  .js .editor.in .t{animation:type calc(var(--n) * 28ms) steps(var(--n),end) var(--d) forwards}
+  .js .editor .caret{opacity:0}
+  .js .editor.in .caret{animation:blink 1.1s steps(1) var(--d) infinite}
+}
+@keyframes type{to{clip-path:inset(0 0 0 0)}}
+@keyframes blink{0%{opacity:1}50%{opacity:0}}
+@media (min-width:1000px){.why-top{grid-template-columns:1fr 1fr;gap:64px}}
+
+/* Pricing */
+.pricing{padding:72px 0;background:var(--sunk)}
+.pricing-head{max-width:700px;margin-bottom:48px}
+.pricing-head h2{margin:18px 0}
+.plans{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:stretch}
+@media (max-width:400px){.plan{padding:26px 22px}.price{gap:8px}}
+.plan{border-radius:var(--r-card);padding:32px;display:flex;flex-direction:column;gap:22px;background:var(--surface);border:1px solid var(--line)}
+.plan-top{display:flex;flex-wrap:wrap-reverse;justify-content:space-between;align-items:flex-start;gap:12px}
+.plan-name{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.plan h3{font-size:28px;margin-top:8px}
+.plan .for{color:var(--muted);font-size:15px;margin-top:6px}
+.badge{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent);color:var(--on-accent);white-space:nowrap}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price strong{font-size:clamp(52px,6vw,68px);letter-spacing:-.035em;line-height:1;font-weight:600}
+.price s{color:var(--muted);font-size:18px}
+.price em{font-style:normal;font-family:var(--mono);font-size:13px;color:var(--accent-ink)}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.plan li{display:flex;gap:12px;font-size:16px;line-height:1.45}
+.plan li i{color:var(--accent-ink);font-size:18px;margin-top:2px;flex:none}
+.plan li.inherit{font-weight:600}
+.plan .btn{margin-top:auto;width:100%}
+.plan-feature{background:var(--feature-bg);color:var(--feature-ink);border-color:var(--feature-line)}
+.plan-feature .plan-name,.plan-feature .for,.plan-feature .price s,.plan-feature .facts dt{color:var(--feature-muted)}
+.plan-feature li i,.plan-feature .price em{color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 20px;margin:0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plan-feature .facts{border-color:var(--feature-line)}
+.plan-feature .btn-ghost{color:var(--feature-ink);border-color:rgb(255 255 255 / .24)}
+.plan-feature .btn-ghost:hover{border-color:var(--feature-ink)}
+.plan-feature:not(.plan-basic){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.plan-basic{border-color:var(--feature-line)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .plan-basic{background:var(--surface);border-color:var(--line)}:root:not([data-theme="light"]) .plan-basic .facts{border-color:var(--line)}:root:not([data-theme="light"]) .plan-basic .btn-ghost{border-color:var(--line)}}
+:root[data-theme="dark"] .plan-basic{background:var(--surface);border-color:var(--line)}
+:root[data-theme="dark"] .plan-basic .facts{border-color:var(--line)}
+:root[data-theme="dark"] .plan-basic .btn-ghost{border-color:var(--line)}
+.facts dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-weight:600;font-size:16px}
+.guarantee{margin-top:16px;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--brand-ink);padding:24px 28px;display:grid;gap:14px;align-items:center}
+.guarantee>i{font-size:40px;color:var(--accent-ink)}
+.guarantee h3{font-size:22px;letter-spacing:-.02em}
+.guarantee p{color:var(--muted);font-size:16px;margin-top:6px;max-width:70ch}
+.g-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);white-space:nowrap}
+.g-link:hover{color:var(--accent-ink)}
+@media (min-width:860px){.guarantee{grid-template-columns:auto 1fr auto;gap:24px}}
+.addon{margin-top:16px;border-radius:var(--r-card);border:1px dashed color-mix(in srgb,var(--ink) 30%,transparent);padding:24px 28px;display:grid;gap:14px;align-items:center}
+.addon h3{font-size:22px;letter-spacing:-.02em}
+.addon p{color:var(--muted);font-size:15px}
+.addon .amt{font-size:34px;font-weight:600;letter-spacing:-.03em;white-space:nowrap}
+.addon .amt small{font-size:15px;font-weight:400;color:var(--muted);letter-spacing:0}
+.fine{margin-top:28px;display:grid;gap:10px;color:var(--muted);font-size:15px;max-width:80ch}
+.fine p{display:flex;gap:10px}
+.fine i{font-size:18px;margin-top:3px;flex:none;color:var(--ink)}
+@media (min-width:860px){
+  .pricing{padding:96px 0}
+  .plans{grid-template-columns:.92fr 1.08fr}
+  .plan{padding:40px}
+  .addon{grid-template-columns:auto 1fr auto;gap:28px}
+}
+
+/* Process: pinned while scrolling down, steps appear one by one (one-way); the stage shows each step */
+.process{padding:80px 0}
+.proc-grid{display:grid;gap:48px;align-items:center}
+.process h2{max-width:16ch}
+.process .lead{margin-top:16px}
+.steps{list-style:none;margin:36px 0 0;padding:0;position:relative;display:grid;gap:4px}
+.steps::before,.steps::after{content:"";position:absolute;z-index:0;left:13.5px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.steps::after{background:var(--accent-ink);transform-origin:top;transform:scaleY(var(--fill,1));will-change:transform}
+.step{position:relative;z-index:1;display:grid;grid-template-columns:28px 1fr;column-gap:18px;padding:10px 0}
+.step::before{content:attr(data-n);grid-row:1 / span 2;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:500 13px/1 var(--mono);background:var(--ink);color:var(--bg);position:relative;z-index:1;transition:background-color .5s var(--ease),color .5s var(--ease),transform .5s var(--ease)}
+.step.active::before{background:var(--accent);color:var(--on-accent);transform:scale(1.12)}
+.step-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.step h3{font-size:20px;letter-spacing:-.02em;line-height:1.3}
+.step p{color:var(--muted);font-size:15px;margin:4px 0 0;max-width:46ch}
+.when{display:inline-block;font-family:var(--mono);font-size:12px;line-height:1.2;padding:5px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.proc-stage{display:none}
+
+@media (min-width:1000px){
+  .process{padding:0}
+  .proc-pin{min-height:100vh;display:flex;align-items:center;padding:96px 0 40px}
+  .proc-track.pinned .proc-pin{position:sticky;top:0;height:100vh;min-height:0;padding:84px 0 24px}
+  .proc-track.pinned.done .proc-pin{position:relative}
+  .proc-track.pinned .h2{font-size:clamp(40px,4.2vw,64px)}
+  .proc-track.pinned .step p{max-height:0;opacity:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .6s var(--ease)}
+  .proc-track.pinned .step.active p{max-height:4.8em;opacity:1}
+  .proc-grid{grid-template-columns:.82fr 1.18fr;gap:64px}
+  .process .wrap{max-width:1760px}
+  .process h2{max-width:14ch}
+  .process .lead{font-size:clamp(18px,1.5vw,21px)}
+  .steps{margin-top:32px;gap:2px}
+  .steps::before,.steps::after{left:17.5px;top:18px;bottom:18px}
+  .step{grid-template-columns:36px 1fr;column-gap:20px;padding:9px 0}
+  .step::before{width:36px;height:36px;font-size:15px}
+  .step h3{font-size:clamp(21px,1.75vw,26px)}
+  .step p{font-size:17px}
+  .when{font-size:13px;padding:6px 12px}
+  .proc-stage{display:block}
+}
+/* Steps wait for their turn only while the section is pinned */
+@media (prefers-reduced-motion:no-preference){
+  .proc-track.pinned .step{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .proc-track.pinned .step.shown{opacity:1;transform:none}
+}
+
+/* El proceso recorrido a dedo (movil, o cualquier caso sin fijar)
+   --------------------------------------------------------------------------
+   En movil no se fija: robar scroll en una pantalla chica se siente roto.
+   En su lugar cada paso entra cuando entra en pantalla y la linea verde
+   crece hasta el ultimo que ha entrado.
+   El escalonado lo lleva el JS y no un transition-delay por paso, porque la
+   geometria cambia: en un telefono alto (bloque 701px, pantalla 844px) el
+   bloque entero cabe de una y los cinco pasos entran a la vez; en uno bajo
+   entran de a uno segun bajas. Una cola de 80ms cubre los dos casos.
+   La transicion de la linea va solo aqui. En escritorio la mueve el scroll
+   fotograma a fotograma, y ahi una transicion la dejaria arrastrada. */
+@media (prefers-reduced-motion:no-preference){
+  .proc-track.suelto .step{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+  .proc-track.suelto .step.shown{opacity:1;transform:none}
+  .proc-track.suelto .steps::after{transition:transform .6s var(--ease)}
+}
+
+/* Stage: a browser window whose scene follows the active step */
+.browser{border-radius:var(--r-card);background:#101012;border:1px solid #25272c;overflow:hidden;box-shadow:0 40px 80px -40px rgb(10 25 16 / .45)}
+.browser-bar{display:flex;align-items:center;gap:14px;height:46px;padding:0 16px;border-bottom:1px solid #212328}
+.browser-bar .tl{display:flex;gap:7px}
+.browser-bar .tl i{width:11px;height:11px;border-radius:50%;background:#2b2d33}
+.url{flex:1;max-width:420px;margin:0 auto;height:28px;border-radius:999px;background:#181a1e;color:#a1a3ab;font:13px/28px var(--mono);text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 14px}
+.url i{color:var(--accent);margin-right:6px;font-size:12px}
+.scenes{position:relative;aspect-ratio:16/10;color:#e6e8ed}
+.scene{position:absolute;inset:0;padding:30px;opacity:0;visibility:hidden;transform:scale(.98);transition:opacity .6s var(--ease),transform .7s var(--ease),visibility 0s .6s}
+.scene.on{opacity:1;visibility:visible;transform:none;transition-delay:.1s,.1s,0s}
+.scene .in-seq>*{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.scene.on .in-seq>*{opacity:1;transform:none}
+.scene.on .in-seq>:nth-child(2){transition-delay:.45s}
+.scene.on .in-seq>:nth-child(3){transition-delay:.9s}
+.scene.on .in-seq>:nth-child(4){transition-delay:1.35s}
+.scene.on .in-seq>:nth-child(5){transition-delay:1.8s}
+/* 1. chat */
+.chat{display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto}
+.chat p{max-width:80%;padding:11px 15px;border-radius:18px 18px 18px 6px;background:#1c1e23;font-size:15px;line-height:1.45}
+.chat p.me{align-self:flex-end;border-radius:18px 18px 6px 18px;background:var(--accent);color:var(--on-accent);font-weight:500}
+.chat small{display:block;font:11px var(--mono);opacity:.75;margin-top:3px}
+.chat p.me small{opacity:.9}
+/* 2. proposal */
+.doc{max-width:420px;margin:0 auto;background:#f0f2f6;color:#141416;border-radius:14px;padding:24px 26px;display:grid;gap:12px}
+.doc h4{margin:0;font-size:19px;letter-spacing:-.02em}
+.doc .row{display:flex;justify-content:space-between;gap:16px;font-size:15px;padding-top:10px;border-top:1px solid #d7d9e0}
+.doc .row span{color:#5a5c62}
+.doc .row.total{font-weight:600;font-size:17px}
+.doc .ok{justify-self:start;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--accent);color:var(--on-accent)}
+/* 3. build: code on the left, the page assembling on the right */
+.build{display:grid;grid-template-columns:1fr 1fr;gap:20px;height:100%}
+.build pre>span{display:block}
+.build pre{margin:0;font:13px/1.75 var(--mono);color:#cdcfd7;white-space:pre;overflow:hidden}
+.build .k{color:#7fd4a6}.build .s{color:#e6c07b}.build .c{color:#787c86}
+.wire{border-radius:12px;background:#f0f2f6;padding:14px;display:grid;gap:10px;align-content:start}
+.wire>*{border-radius:8px;background:#dadce3}
+.wire .w-nav{height:18px;width:100%}
+.wire .w-hero{height:96px;background:#1c0a09}
+.wire .w-btn{height:28px;width:46%;border-radius:999px;background:var(--accent)}
+.wire .w-row{height:52px}
+/* 4. review and 5. launch: real screenshots */
+.shot{position:relative;height:100%;border-radius:12px;overflow:hidden;background:#0d0d0f}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.pin{position:absolute;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:#f0f2f6;color:#141416;font-size:14px;font-weight:500;box-shadow:0 10px 24px -10px rgb(0 0 0 / .5)}
+.pin i{color:var(--brand-ink);font-size:16px}
+.pin.a{left:8%;top:22%}.pin.b{right:8%;bottom:16%}
+.live{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600}
+.live i{font-size:16px}
+@media (min-width:1000px){
+  /* Everything inside the window scales with the frame (1cqi = 1% of the browser width) */
+  .browser{container-type:inline-size;border-radius:28px;box-shadow:0 60px 110px -50px rgb(10 25 16 / .55)}
+  .browser-bar{height:6.2cqi;padding:0 2.2cqi;gap:1.8cqi}
+  .browser-bar .tl{gap:.9cqi}
+  .browser-bar .tl i{width:1.4cqi;height:1.4cqi}
+  .url{max-width:56cqi;height:3.9cqi;padding:0 2cqi;font-size:1.75cqi;line-height:3.9cqi}
+  .url i{font-size:1.6cqi;margin-right:.8cqi}
+  .scene{padding:3.6cqi;display:flex;flex-direction:column}
+  .scene>.chat,.scene>.doc{margin:auto}
+  .scene>.build,.scene>.shot{flex:1;height:auto;min-height:0}
+  .chat{width:100%;max-width:80cqi;gap:1.8cqi}
+  .chat p{font-size:2.45cqi;padding:1.3cqi 2cqi;border-radius:2.6cqi 2.6cqi 2.6cqi .9cqi}
+  .chat p.me{border-radius:2.6cqi 2.6cqi .9cqi 2.6cqi}
+  .chat small{font-size:1.5cqi;margin-top:.4cqi}
+  .doc{width:100%;max-width:70cqi;padding:4.4cqi 4.8cqi;gap:2cqi;border-radius:2.2cqi}
+  .doc h4{font-size:3.5cqi}
+  .doc .row{font-size:2.5cqi;padding-top:1.5cqi;gap:2cqi}
+  .doc .row.total{font-size:3.1cqi}
+  .build{gap:3cqi}
+  .build pre{font-size:2.3cqi}
+  .wire{padding:2.2cqi;gap:1.6cqi;border-radius:1.8cqi}
+  .wire>*{border-radius:1.1cqi}
+  .wire .w-nav{height:2.8cqi}
+  .wire .w-hero{height:15cqi}
+  .wire .w-btn{height:4.4cqi}
+  .wire .w-row{height:8cqi}
+  .shot{border-radius:1.8cqi}
+  .pin,.live{font-size:2.1cqi;padding:1.3cqi 2cqi;gap:1.1cqi}
+  .pin i,.live i{font-size:2.5cqi}
+  .live{left:2.6cqi;bottom:2.6cqi}
+}
+@media (prefers-reduced-motion:reduce){.scene,.scene .in-seq>*{transition:none}}
+
+/* Team */
+.team{padding:72px 0;border-top:1px solid var(--line)}
+.team-grid{display:grid;gap:48px;align-items:center}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.person{border-radius:var(--r-card);aspect-ratio:4/5;padding:22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.person .mono{font-size:clamp(64px,9vw,120px);font-weight:600;letter-spacing:-.035em;line-height:.9}
+.person h3{font-size:20px;letter-spacing:-.02em}
+.person p{font-size:14px;opacity:.75;margin-top:4px}
+.person-a{background:var(--ink);color:var(--bg)}
+.person-b{background:var(--accent);color:var(--on-accent);translate:0 32px}
+.team .lead{margin-top:20px}
+.team-note{margin-top:28px;padding-left:18px;border-left:2px solid var(--accent);color:var(--ink);max-width:52ch}
+@media (min-width:900px){.team{padding:96px 0 120px}.team-grid{grid-template-columns:1fr 1fr;gap:80px}}
+
+/* FAQ */
+.faq{padding:72px 0;border-top:1px solid var(--line)}
+.faq-grid{display:grid;gap:40px}
+.faq-list{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:clamp(18px,1.6vw,21px);font-weight:500;letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+summary .pm{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .35s var(--ease),background-color .2s}
+details[open] summary .pm{transform:rotate(45deg);background:var(--accent);border-color:transparent;color:var(--on-accent)}
+details .ans{padding:0 56px 26px 0;color:var(--muted);max-width:62ch}
+@media (prefers-reduced-motion:no-preference){details[open] .ans{animation:rise .5s var(--ease)}}
+@media (min-width:900px){.faq{padding:96px 0}.faq-grid{grid-template-columns:.8fr 1.2fr;gap:80px}.faq-grid h2{position:sticky;top:110px;align-self:start}}
+
+/* Contact */
+.contact{padding:24px 0 96px}
+.cta-card{border-radius:calc(var(--r-card) + 8px);background:var(--accent);color:var(--on-accent);padding:44px 26px;display:grid;grid-template-columns:minmax(0,1fr);gap:36px;position:relative;overflow:hidden}
+.cta-card h2{font-size:clamp(38px,5.6vw,76px);letter-spacing:-.035em;max-width:14ch}
+.cta-card p{font-size:18px;max-width:46ch;margin-top:18px;color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.cta-card .btn{--h:62px;font-size:17px;padding:0 30px}
+.cta-meta{font-family:var(--mono);font-size:14px;margin-top:14px;color:color-mix(in srgb,var(--on-accent) 75%,transparent)}
+.channels{display:grid;gap:10px}
+.channel{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:rgb(11 26 17 / .08);text-decoration:none;transition:background-color .2s}
+.channel:hover{background:rgb(11 26 17 / .15)}
+.channel i{font-size:24px}
+.channel span{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.channel small{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
+.channel b{font-weight:600;overflow-wrap:anywhere;font-size:clamp(14px,1.25vw,16px)}
+.channel .go{margin-left:auto;font-size:18px}
+@media (min-width:900px){.contact{padding:32px 0 96px}.cta-card{padding:72px 64px;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}}
+
+/* ==========================================================================
+   Orden de las secciones en movil
+   --------------------------------------------------------------------------
+   En movil el configurador y los planes quedaban pegados: marcabas las
+   opciones, te recomendaba un plan, bajabas y te volvian a salir los planes.
+   Parecia que te lo estaban preguntando dos veces.
+
+   Abajo de 980px los planes bajan hasta despues de las preguntas, que es
+   donde ya estan resueltas las dudas de entrega, dominio y pago. Asi:
+
+     configurador -> quienes somos -> preguntas -> planes -> contacto
+
+   Se hace con el orden visual del flex, no moviendo el HTML: el orden de
+   lectura para buscadores y lectores de pantalla no cambia, los enlaces
+   (#servicios) siguen llevando al mismo sitio, y en escritorio no se toca
+   nada porque main solo es flex por debajo de 980px. Las secciones separan
+   con padding, no con margin, asi que el flex no altera ni un pixel de
+   espaciado.
+   ========================================================================== */
+@media (max-width:979px){
+  main{display:flex;flex-direction:column}
+  #faq{order:1}
+  #servicios{order:2}
+  #contacto{order:3}
+}
+
+/* Plan configurator: chips on the left, live recommendation on the right */
+.config{padding:72px 0}
+.config-head{max-width:700px;margin-bottom:40px}
+.config-head .lead{margin-top:18px}
+.cfg{display:grid;gap:32px;align-items:start}
+.cfg-q{display:grid;gap:28px}
+.cfg-q h3{font-size:18px;letter-spacing:-.02em;line-height:1.3;margin-bottom:12px}
+.cfg-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cfg-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 15px/1.2 var(--font);cursor:pointer;transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),transform .25s var(--ease)}
+.cfg-chip:hover{border-color:var(--ink)}
+.cfg-chip:active{transform:scale(.96);transition-duration:80ms}
+.cfg-chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cfg-chip i{font-size:15px;display:none}
+.cfg-chip[aria-pressed="true"] i{display:inline}
+.cfg-res{border-radius:var(--r-card);padding:28px;display:grid;gap:20px;background:var(--feature-bg);color:var(--feature-ink);border:1px solid var(--feature-line)}
+.cfg-res .plan-name{color:var(--feature-muted)}
+.cfg-res h3{font-size:30px;margin-top:6px}
+.cfg-res .price strong{font-size:clamp(44px,5vw,56px)}
+.cfg-res .price s{color:var(--feature-muted)}
+.cfg-res .facts{border-color:var(--feature-line);padding:14px 0}
+.cfg-res .facts dt{color:var(--feature-muted)}
+.cfg-res{position:relative;isolation:isolate;overflow:hidden}
+.cfg-res>*{position:relative;z-index:1}
+.cfg-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.cfg-res .price strong{display:inline-block;font-variant-numeric:tabular-nums}
+.cfg-badge{opacity:0;transform:scale(.6);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.cfg-res.is-premium .cfg-badge{opacity:1;transform:none}
+/* Premium perks: rows open, items slide in one by one */
+.cfg-perks{display:grid;grid-template-rows:0fr;margin-top:-20px;transition:grid-template-rows .7s var(--ease)}
+.cfg-perks>div{min-height:0;overflow:hidden}
+.cfg-res.is-premium .cfg-perks{grid-template-rows:1fr}
+.perks-t{padding-top:20px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.cfg-perks ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.cfg-perks li{display:flex;gap:10px;font-size:15px;line-height:1.45;opacity:0;transform:translateX(-16px);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.cfg-perks li i{color:var(--accent);font-size:17px;margin-top:2px;flex:none}
+.cfg-res.is-premium .cfg-perks li{opacity:1;transform:none}
+.cfg-res.is-premium .cfg-perks li:nth-child(1){transition-delay:.3s}
+.cfg-res.is-premium .cfg-perks li:nth-child(2){transition-delay:.42s}
+.cfg-res.is-premium .cfg-perks li:nth-child(3){transition-delay:.54s}
+/* While Premium is shown: a light runs around the border and a sheen crosses the card */
+@property --spin{syntax:"<angle>";inherits:false;initial-value:0deg}
+.cfg-res::before,.cfg-res::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .6s var(--ease)}
+.cfg-res::before{z-index:2;padding:3px;background:conic-gradient(from var(--spin),transparent 0 46%,var(--accent) 72%,#e4ffef 82%,var(--accent) 90%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.cfg-res::after{z-index:2;background:linear-gradient(105deg,transparent 38%,rgb(255 255 255 / .09) 50%,transparent 62%);transform:translateX(-110%)}
+.cfg-res.is-premium{border-color:color-mix(in srgb,var(--accent) 35%,var(--feature-line))}
+.cfg-res.is-premium::before{opacity:1;animation:spin-border 3.2s linear infinite}
+.cfg-res.is-premium::after{opacity:1;animation:sheen 4.2s var(--ease) 1.2s infinite}
+@keyframes spin-border{to{--spin:360deg}}
+@keyframes sheen{0%{transform:translateX(-110%)}45%,100%{transform:translateX(110%)}}
+/* Upgrade to Premium: the card takes a hit, a burst fills it, price and name land hard */
+.cfg-res .cfg-burst{position:absolute;inset:-30%;z-index:0;background:radial-gradient(circle at 40% 30%,color-mix(in srgb,var(--accent) 55%,transparent),transparent 55%);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.cfg-res.upgrade{animation:punch .75s cubic-bezier(.2,.9,.25,1.25)}
+.cfg-res.is-premium .cfg-burst{opacity:.4;animation:aura 6s ease-in-out infinite alternate}
+.cfg-res.upgrade .cfg-burst{animation:burst 1.1s var(--ease),aura 6s ease-in-out 1.1s infinite alternate}
+.cfg-res.upgrade [data-f="price"]{animation:price-in .8s cubic-bezier(.2,.9,.25,1.3)}
+.cfg-res.upgrade [data-f="name"]{animation:name-in .6s var(--ease) .08s both}
+.cfg-res.upgrade .cfg-badge{animation:badge-in .7s cubic-bezier(.2,.9,.3,1.6) .25s both}
+.cfg-res.upgrade dd{animation:flip-in .55s var(--ease) both}
+.cfg-res.upgrade .facts div+div dd{animation-delay:.1s}
+.cfg-res.downgrade{animation:settle .5s var(--ease)}
+@keyframes punch{0%{transform:scale(1)}14%{transform:scale(.93)}50%{transform:scale(1.035)}75%{transform:scale(.995)}100%{transform:none}}
+@keyframes burst{0%{opacity:0;transform:scale(.4)}18%{opacity:1}100%{opacity:.4;transform:translate(-8%,-6%)}}
+@keyframes aura{0%{opacity:.4;transform:translate(-8%,-6%) scale(1)}100%{opacity:.4;transform:translate(14%,22%) scale(1.15)}}
+@keyframes price-in{0%{transform:translateY(.45em) scale(.7);filter:blur(8px);opacity:0}55%{transform:translateY(-.05em) scale(1.12);filter:none;opacity:1;color:var(--accent)}100%{transform:none}}
+@keyframes name-in{from{clip-path:inset(0 100% 0 0);transform:translateX(-10px)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes badge-in{from{opacity:0;transform:scale(.3) rotate(-12deg)}to{opacity:1;transform:none}}
+@keyframes flip-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes settle{0%{opacity:.6;transform:scale(.985)}100%{opacity:1;transform:none}}
+.wa-preview{margin:0;border-radius:18px 18px 18px 6px;padding:14px 16px;background:color-mix(in srgb,var(--feature-ink) 8%,transparent);font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.wa-preview figcaption{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--feature-muted);margin-bottom:6px}
+.cfg-res .btn{width:100%}
+.cfg-legal{font-size:13px;color:var(--feature-muted);text-align:center;margin-top:-4px}
+.cfg-legal a,.cta-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.cta-legal{font-size:14px;margin-top:8px;color:color-mix(in srgb,var(--on-accent) 80%,transparent)}
+@media (min-width:960px){
+  .config{padding:96px 0}
+  .cfg{grid-template-columns:1.1fr .9fr;gap:56px;align-items:stretch}
+  .cfg-res{padding:28px 40px;display:flex;flex-direction:column;gap:12px;margin-bottom:110px;transition:margin-bottom .8s cubic-bezier(.3,1.25,.4,1)}
+  .cfg-res.is-premium{margin-bottom:0}
+  /* The message preview is a small chat window that takes the free height; the bubble sits at its bottom */
+  .cfg-res .wa-preview{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:18px;padding:16px;background-color:color-mix(in srgb,var(--feature-ink) 6%,transparent);background-image:radial-gradient(color-mix(in srgb,var(--feature-ink) 9%,transparent) 1px,transparent 1.5px);background-size:16px 16px}
+  .cfg-res .wa-preview{overflow-y:auto;overscroll-behavior:contain}
+  .cfg-res .wa-preview p{margin-top:auto;align-self:flex-end;max-width:94%;padding:12px 16px;border-radius:16px 16px 4px 16px;background:color-mix(in srgb,var(--accent) 24%,var(--feature-bg))}
+}
+/* Wide screens: the questions set the height; a long message scrolls inside its preview instead of stretching the card */
+@media (min-width:1200px){.cfg-res{contain:size}}
+@media (prefers-reduced-motion:reduce){.cfg-res,.cfg-chip,.cfg-perks,.cfg-perks li,.cfg-badge{transition-duration:1ms!important;transition-delay:0s!important}.cfg-res,.cfg-res *,.cfg-res::after{animation:none!important}.cfg-res::before{animation:none}.cfg-res.is-premium::after{opacity:0}}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:40px 0 48px;color:var(--muted);font-size:15px}
+.foot{display:grid;gap:24px}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+@media (min-width:800px){.foot{grid-template-columns:1fr auto auto;align-items:center;gap:40px}}
+
+.foot-legal{grid-column:1 / -1;display:grid;gap:14px;padding-top:24px;border-top:1px solid var(--line)}
+.foot-legal nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.foot-legal .libro{justify-self:start;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);color:var(--ink);font-weight:500}
+.foot-legal .libro i{font-size:20px;color:var(--accent-ink)}
+.foot-legal .libro:hover{border-color:var(--ink)}
+.foot-legal .biz{font-size:14px}
+.foot-legal .biz a{text-decoration:underline;text-underline-offset:3px}
+
+/* Floating WhatsApp (mobile conversion) */
+.fab{position:fixed;right:18px;bottom:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:30px;box-shadow:0 14px 28px -12px rgb(15 25 18 / .45);text-decoration:none;transition:transform .3s var(--ease),opacity .3s}
+.fab:hover{transform:scale(1.06);box-shadow:0 16px 30px -12px rgb(0 0 0 / .4)}
+.fab:active{transform:scale(.96);transition-duration:80ms}
+.fab{transition:transform .3s var(--ease),translate .4s var(--ease),opacity .3s,box-shadow .3s}
+.fab.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+.fab.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);pointer-events:none;animation:ring 1.6s var(--ease) 3}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(1.75);opacity:0}}
+
+/* "Abriendo WhatsApp…": tells the visitor the tap worked while the app opens; never delays the link */
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:15px;font-weight:500;white-space:nowrap;box-shadow:0 16px 32px -14px rgb(0 0 0 / .45);pointer-events:none;opacity:0;transform:translate(-50%,16px);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid color-mix(in srgb,var(--bg) 30%,transparent);border-top-color:var(--accent);animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.btn,.fab,.toast{transition-duration:1ms}.spin{animation-duration:2s}}
+
+/* Large screens: bigger type, wider blocks and bigger visuals so less of the viewport sits empty */
+@media (min-width:1100px){
+  body{font-size:18px}
+  .lead{font-size:clamp(19px,1.45vw,23px);max-width:58ch}
+  .h2{font-size:clamp(46px,4.6vw,80px)}
+  .eyebrow{font-size:14px}
+  .nav .wrap{height:76px}
+  .brand{font-size:19px}
+  .nav-links a{font-size:16px}
+  .nav .btn{--h:46px;font-size:16px}
+  .btn{--h:60px;font-size:17px;padding:0 30px}
+  .hero h1{font-size:clamp(56px,5.2vw,92px)}
+  .dms{max-width:600px}
+  .dm{font-size:19px;padding:15px 20px}
+  .dm small{font-size:13px}
+  .work-head,.pricing-head,.config-head{max-width:900px}
+  .proj-info{max-width:none}
+  .proj>div,.proj dl>div{padding:32px 34px}
+  .proj h3{font-size:clamp(34px,3vw,48px)}
+  .proj dd{font-size:19px}
+  .proj dd li{font-size:17px}
+  .proj .kind,.chip{font-size:14px}
+  .cyl-hint{font-size:14px}
+  .manifesto{font-size:clamp(40px,4.3vw,74px)}
+  .reason i{font-size:34px}
+  .reason h3{font-size:25px}
+  .reason p{font-size:18px}
+  .editor-bar{height:50px;font-size:13px}
+  .editor pre{font-size:clamp(15px,1.1vw,18px)}
+  .plan .for{font-size:17px}
+  .plan h3{font-size:34px}
+  .plan li{font-size:18px}
+  .price strong{font-size:clamp(64px,5.4vw,92px)}
+  .price s{font-size:21px}
+  .facts dd{font-size:18px}
+  .addon h3{font-size:26px}
+  .addon p,.fine{font-size:17px}
+  .addon .amt{font-size:42px}
+  .cfg-q h3{font-size:22px}
+  .cfg-chip{min-height:50px;padding:0 22px;font-size:17px}
+  .cfg-res h3{font-size:36px}
+  .cfg-res .price strong{font-size:clamp(56px,4.6vw,76px)}
+  .cfg-perks li{font-size:17px}
+  .wa-preview{font-size:16px}
+  .person h3{font-size:26px}
+  .person p{font-size:16px}
+  .team-note{font-size:19px}
+  summary{font-size:clamp(21px,1.7vw,27px);padding:28px 0}
+  details .ans{font-size:18px}
+  .cta-card h2{font-size:clamp(56px,6vw,104px)}
+  .cta-card p{font-size:21px}
+  .cta-card .btn{--h:68px;font-size:19px}
+  .channel b{font-size:17px}
+  footer{font-size:16px}
+}
+
+/* Scroll reveal (IntersectionObserver) */
+@media (prefers-reduced-motion:no-preference){
+  .js .reveal{opacity:0;transform:translateY(36px);transition:opacity 1.3s var(--ease),transform 1.5s var(--ease);transition-delay:calc(var(--i,0) * 160ms)}
+  .js .reveal.in{opacity:1;transform:none}
+}
+
+/* En movil el mismo reveal, pero mas corto
+   --------------------------------------------------------------------------
+   Con 1.3s/1.5s medimos un elemento durante un flick normal de telefono:
+   esta 349ms en pantalla, con opacidad media 0.46, y se va al 0.81 sin
+   haberse llegado a ver entero. Eso no se lee como efecto, se lee como que
+   la pagina esta apagada. En escritorio aguanta porque se recorre mas
+   despacio y el elemento esta mucho mas tiempo a la vista.
+   Aqui entra en 400ms, que cabe dentro de esos 349ms de ventana. */
+@media (max-width:979px) and (prefers-reduced-motion:no-preference){
+  .js .reveal{transform:translateY(24px);transition-duration:.4s,.5s;transition-delay:calc(var(--i,0) * 70ms)}
+}
+
+/* ==========================================================================
+   Un solo boton de WhatsApp a la vez en movil
+   --------------------------------------------------------------------------
+   Por debajo de 600px el CTA de la barra pierde su texto y queda como un
+   circulo verde con el icono de WhatsApp; el flotante es otro circulo verde
+   con el mismo icono. Dos botones identicos en la misma pantalla.
+
+   Se quita el de la barra, no el flotante, por tres razones: el flotante
+   esta a la altura del pulgar y se alcanza desde cualquier punto de la
+   pagina, mientras que el de la barra solo existe arriba del todo; el hero
+   ya tiene su propio "Cuentanos tu negocio" a tamano completo justo debajo;
+   y la barra en movil queda para lo que tiene que estar, que es la marca y
+   el cambio de tema.
+
+   De 600px en adelante el de la barra recupera su etiqueta, deja de
+   parecerse al flotante y los dos conviven sin competir.
+   ========================================================================== */
+@media (max-width:599px){
+  .nav-actions .btn-primary{display:none}
+}
+
+/* ==========================================================================
+   Titular del hero: el resaltado no se parte
+   --------------------------------------------------------------------------
+   El resaltado usa box-decoration-break:clone, asi que al partirse en dos
+   lineas cada trozo se dibuja con su propio relleno y sus propios extremos:
+   salen dos barras sueltas de distinto ancho en vez de una marca.
+
+   Medido: la frase entera mide 309px a 40px de cuerpo, y de 360px de ancho
+   en adelante cabe de sobra en la columna (320-374px). Solo le faltaba que
+   algo le impidiera partirse. A 320px no cabe, asi que ahi el cuerpo baja
+   con el ancho en vez de quedarse fijo en 40px.
+   ========================================================================== */
+@media (max-width:599px){
+  .hero h1{font-size:clamp(35px,11vw,60px)}
+  .hero h1 .hl{white-space:nowrap}
+}
+
+/* ==========================================================================
+   Objetivos tactiles minimos (44x44)
+   --------------------------------------------------------------------------
+   Veinte elementos interactivos quedaban por debajo en movil. Se arreglan
+   aqui, juntos, en vez de retocar diez reglas sueltas por el archivo.
+
+   Dos tecnicas segun el caso:
+   - Lo que ya es una caja (botones, marca, enlaces de pie): se le sube la
+     altura minima. No mueve nada porque la barra y el pie ya son mas altos.
+   - Lo que es un enlace dentro de una frase (privacidad, correo): NO se le
+     toca la altura, porque empujaria el texto. Se le pone encima una capa
+     invisible de 44px centrada en el enlace, que amplia la zona que
+     responde al dedo sin cambiar como se ve.
+   ========================================================================== */
+
+/* Botones de icono: 42 -> 44 */
+.icon-btn{width:44px;height:44px}
+
+/* Boton de la barra: 42 -> 44 de alto */
+.nav .btn{--h:44px}
+
+/* Enlace para saltar al contenido: 43 -> 44 */
+.skip{padding:11px 16px}
+
+/* La marca, en barra y en pie */
+.brand{min-height:44px}
+
+/* Enlaces del pie: eran de 24px de alto */
+.foot nav a,
+.foot-legal nav a{display:inline-flex;align-items:center;min-height:44px}
+
+/* Enlace de la garantia */
+.g-link{min-height:44px}
+
+/* Enlaces dentro de un parrafo: la capa invisible, sin tocar el texto */
+.cfg-legal a,
+.cta-legal a,
+.biz a{position:relative}
+
+.cfg-legal a::after,
+.cta-legal a::after,
+.biz a::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:50%;
+  height:44px;
+  transform:translateY(-50%);
+}
+
+/* Si el visitante no quiere ampliaciones invisibles que se solapen con la
+   linea de arriba, el puntero fino no las necesita: con raton basta el
+   enlace. Se quedan solo donde hay dedo. */
+@media (hover:hover) and (pointer:fine){
+  .cfg-legal a::after,
+  .cta-legal a::after,
+  .biz a::after{display:none}
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="SV WebStudio, inicio"><span class="mark" aria-hidden="true">SV</span>SV WebStudio</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#trabajos">Proyectos</a>
+      <a href="#servicios">Planes</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme" type="button" aria-label="Cambiar tema claro u oscuro"><i class="ph ph-moon" aria-hidden="true"></i></button>
+      <a class="btn btn-primary" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20quiero%20contarles%20sobre%20mi%20negocio." target="_blank" rel="noopener" aria-label="Cuéntanos tu negocio por WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span class="lbl">Cuéntanos tu negocio</span></a>
+      <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        <span class="burger-ln" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú de secciones. Solo existe por debajo de 980px: de ahí para
+       arriba la barra ya muestra los enlaces en línea. -->
+  <div class="menu" id="menu">
+    <nav class="menu-links" aria-label="Secciones">
+      <a href="#trabajos">Proyectos<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+      <a href="#servicios">Planes y precios<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+      <a href="#configura">Qué necesita tu negocio<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+      <a href="#proceso">Cómo trabajamos<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+      <a href="#nosotros">Quiénes somos<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+      <a href="#faq">Preguntas frecuentes<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+      <a href="#contacto">Contacto<i class="ph ph-caret-right" aria-hidden="true"></i></a>
+    </nav>
+    <a class="btn btn-primary menu-cta" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20quiero%20contarles%20sobre%20mi%20negocio." target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>Cuéntanos tu negocio</a>
+  </div>
+</header>
+<div class="menu-scrim" id="menu-scrim"></div>
+
+<main id="contenido">
+
+  <!-- Hero: asymmetric split, real screenshots of the three published projects -->
+  <section class="hero" aria-labelledby="hero-t">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow enter" style="--i:0"><i class="ph-bold ph-check-circle" aria-hidden="true"></i>3 webs publicadas en Lima</span>
+        <h1 class="enter" id="hero-t" style="--i:1">De seguidor a cliente, en <span class="hl">un solo mensaje.</span></h1>
+        <p class="lead enter" style="--i:2">Landing pages a medida para negocios de Lima. Precio cerrado, lista en días, con un botón directo a tu WhatsApp.</p>
+        <div class="cta-row enter" style="--i:3">
+          <a class="btn btn-primary" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20quiero%20contarles%20sobre%20mi%20negocio." target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>Cuéntanos tu negocio</a>
+          <a class="btn btn-ghost" href="#trabajos">Ver proyectos</a>
+        </div>
+      </div>
+      <div class="stage" aria-label="Tres webs hechas por SV WebStudio, vistas en celular">
+        <figure class="phone p1" style="--i:0;margin:0"><img src="img/kiara.jpg" alt="Web de Kiarapersonalized en celular: Un regalo que existe solo para esa persona" width="375" height="844"></figure>
+        <figure class="phone p2" style="--i:1;margin:0"><img src="img/avelino.jpg" alt="Web de Avelino Restaurante en celular: El alma de Miraflores, servida en cada plato" width="375" height="844" fetchpriority="high"></figure>
+        <figure class="phone p3" style="--i:2;margin:0"><img src="img/gladiadores.jpg" alt="Web de Gladiadores Lima en celular: Ponte la armadura" width="375" height="844"></figure>
+        <div class="stage-tag"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>Cada una termina en WhatsApp</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="problem" aria-labelledby="problema-t">
+    <div class="wrap problem-grid">
+      <div class="reveal">
+        <h2 class="h2" id="problema-t">Tu Instagram muestra tu negocio. Tu web lo vende.</h2>
+        <p class="lead">La gente te descubre en redes, pero decide si confiar en ti cuando revisa tu web. Sin una, respondes lo mismo todos los días y pierdes clientes que ya estaban interesados.</p>
+      </div>
+      <div class="dms" aria-label="Mensajes que recibe un negocio sin web">
+        <p class="dm reveal" style="--i:0">¿Precio? <small>9:14</small></p>
+        <p class="dm reveal" style="--i:1">¿Hasta qué hora atienden? <small>11:02</small></p>
+        <p class="dm reveal" style="--i:2">Hola, ¿hacen delivery a Surco? <small>13:47</small></p>
+        <p class="dm reveal" style="--i:3">¿Tienen página web para ver todo? <small>18:30</small></p>
+        <p class="dm reply reveal" style="--i:4">Ahora sí: todo está en tu web, y el botón te trae solo a quien ya quiere comprar. <small>SV WebStudio</small></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects: 3D cylinder of curved screenshots; the caption below follows the panel in front -->
+  <section class="work" id="trabajos" aria-labelledby="trabajos-t">
+    <div class="wrap">
+      <div class="work-head reveal">
+        <h2 class="h2" id="trabajos-t">Webs en línea, funcionando hoy</h2>
+        <p class="lead">Entra desde tu celular y pruébalas. Así las ve tu cliente.</p>
+      </div>
+      <div class="reveal">
+      <div class="cyl" id="cyl" tabindex="0" role="region" aria-roledescription="carrusel 3D" aria-label="Proyectos publicados. Usa las flechas izquierda y derecha para girar.">
+        <div class="cyl-shadow" aria-hidden="true"></div>
+        <div class="cyl-stage"><div class="cyl-ring">
+          <a class="panel" href="https://avelino-restaurante.base44.app/#reservar" target="_blank" rel="noopener" draggable="false" data-a="0" data-img="img/avelino-desk.webp" data-name="Avelino Restaurante" aria-label="Ver proyecto Avelino Restaurante"></a>
+          <a class="panel" href="https://gladiadores-lima.vercel.app/" target="_blank" rel="noopener" draggable="false" data-a="120" data-img="img/gladiadores-desk.webp" data-name="Gladiadores Lima" aria-label="Ver proyecto Gladiadores Lima"></a>
+          <a class="panel" href="https://kiarapersonalized.vercel.app/" target="_blank" rel="noopener" draggable="false" data-a="240" data-img="img/kiara-desk.webp" data-name="Kiarapersonalized" aria-label="Ver proyecto Kiarapersonalized"></a>
+        </div></div>
+      </div>
+      <div class="cyl-ui">
+        <button class="icon-btn" id="cyl-prev" type="button" aria-label="Proyecto anterior"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+        <span class="cyl-hint" id="cyl-hint"><i class="ph ph-hand-grabbing" aria-hidden="true"></i>Arrastra para girar</span>
+        <button class="icon-btn" id="cyl-next" type="button" aria-label="Proyecto siguiente"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+      </div>
+      <div class="proj-info" id="proj-info" aria-live="polite">
+        <article class="proj on">
+          <div>
+            <span class="kind">Restaurante en Miraflores</span>
+            <h3>Avelino Restaurante</h3>
+            <div class="chips"><span class="chip">Landing Premium</span><span class="chip">Reservas online</span></div>
+            <a class="visit" href="https://avelino-restaurante.base44.app/#reservar" target="_blank" rel="noopener">Ver proyecto <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
+          <dl>
+            <div><dt><i class="ph ph-target" aria-hidden="true"></i>El reto</dt><dd><p>Que quien descubre el restaurante en Instagram o Google pueda reservar en el momento, sin llamar ni esperar respuesta, y que antes vea la carta y lo que opinan otros comensales.</p><p class="asks-t">Lo que el visitante quería saber</p><ul class="asks"><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Qué platos tienen?</li><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Hay mesa para hoy?</li><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Dónde queda?</li></ul></dd></div>
+            <div><dt><i class="ph ph-wrench" aria-hidden="true"></i>Lo que hicimos</dt><dd><p>Armamos la landing alrededor de la reserva: el visitante conoce el local y aparta mesa desde la misma página.</p><ul class="did"><li><i class="ph-bold ph-check" aria-hidden="true"></i>Reserva con turno de almuerzo o cena</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Carta en 5 categorías: cebichería, entradas, criollos, parrilla y coctelería</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Secciones del chef y reseñas de comensales</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Mapa, teléfono y cómo llegar en Miraflores</li></ul></dd></div>
+          </dl>
+        </article>
+        <article class="proj" aria-hidden="true">
+          <div>
+            <span class="kind">Club de básquet</span>
+            <h3>Gladiadores Lima</h3>
+            <div class="chips"><span class="chip">Landing Premium</span><span class="chip">Inscripción por WhatsApp</span></div>
+            <a class="visit" href="https://gladiadores-lima.vercel.app/" target="_blank" rel="noopener" tabindex="-1">Ver proyecto <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
+          <dl>
+            <div><dt><i class="ph ph-target" aria-hidden="true"></i>El reto</dt><dd><p>Convencer a un jugador interesado, o a sus padres, de sumarse al club. Tenía que quedar claro en qué categoría entra cada uno, quién entrena y dónde.</p><p class="asks-t">Lo que el visitante quería saber</p><ul class="asks"><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Hay categoría para mi edad?</li><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Quiénes son los entrenadores?</li><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Dónde es la cancha?</li></ul></dd></div>
+            <div><dt><i class="ph ph-wrench" aria-hidden="true"></i>Lo que hicimos</dt><dd><p>Categorías, cuerpo técnico y ubicación, y cada sección cierra con un WhatsApp para inscribirse.</p><ul class="did"><li><i class="ph-bold ph-check" aria-hidden="true"></i>4 categorías: Mini Basket, U15, U17 y Master</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Entrenadores, galería y valores del club</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Respaldo de Meta Sport, su patrocinador</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Cancha de la UV3, Cercado de Lima, en Google Maps</li></ul></dd></div>
+          </dl>
+        </article>
+        <article class="proj" aria-hidden="true">
+          <div>
+            <span class="kind">Regalos personalizados</span>
+            <h3>Kiarapersonalized</h3>
+            <div class="chips"><span class="chip">Landing</span><span class="chip">Catálogo + WhatsApp</span></div>
+            <a class="visit" href="https://kiarapersonalized.vercel.app/" target="_blank" rel="noopener" tabindex="-1">Ver proyecto <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
+          <dl>
+            <div><dt><i class="ph ph-target" aria-hidden="true"></i>El reto</dt><dd><p>Mostrar todo lo que se puede personalizar sin que el cliente pregunte producto por producto, y que el pedido llegue por WhatsApp con la idea clara.</p><p class="asks-t">Lo que el visitante quería saber</p><ul class="asks"><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Qué puedo regalar?</li><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Lo hacen para esta ocasión?</li><li><i class="ph ph-chat-circle-text" aria-hidden="true"></i>¿Cómo hago el pedido?</li></ul></dd></div>
+            <div><dt><i class="ph ph-wrench" aria-hidden="true"></i>Lo que hicimos</dt><dd><p>Ordenamos el catálogo por tipo de regalo y llevamos cada pedido directo a WhatsApp.</p><ul class="did"><li><i class="ph-bold ph-check" aria-hidden="true"></i>Galería con 15 pedidos ya entregados</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>6 líneas: tazas, polos, ramos eternos, peluches, cajas y temáticos</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Ideas por ocasión: Día de la Madre, San Valentín y más</li><li><i class="ph-bold ph-check" aria-hidden="true"></i>Formulario que arma el pedido y lo envía por WhatsApp</li></ul></dd></div>
+          </dl>
+        </article>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="why" id="nosotros-por-que" aria-labelledby="why-t">
+    <div class="wrap">
+      <div class="why-top">
+        <h2 class="manifesto reveal" id="why-t">No somos la opción más barata ni la más grande. <span>Somos la que te contesta, te explica y te entrega.</span></h2>
+        <figure class="editor reveal" style="--i:1">
+          <div class="editor-bar"><span class="tab">index.html</span><span>Extracto real de esta página</span></div>
+          <pre tabindex="0" aria-label="Código de esta página"><span class="ln"><b>1</b><span class="t" style="--n:39;--d:300ms"><span class="c">&lt;!-- botón principal de esta página --&gt;</span></span></span><span class="ln"><b>2</b><span class="t" style="--n:26;--d:1512ms">&lt;<span class="k">a</span> class=<span class="s">"btn btn-primary"</span></span></span><span class="ln"><b>3</b><span class="t" style="--n:36;--d:2360ms">   href=<span class="s">"https://wa.me/51916068187?text=…"</span>&gt;</span></span><span class="ln"><b>4</b><span class="t" style="--n:22;--d:3488ms">  Cuéntanos tu negocio</span></span><span class="ln"><b>5</b><span class="t" style="--n:4;--d:4224ms">&lt;/<span class="k">a</span>&gt;</span></span><span class="ln"><b>6</b><span class="t" style="--n:1;--d:4456ms"> </span></span><span class="ln"><b>7</b><span class="t" style="--n:36;--d:4604ms"><span class="c">// inercia del cilindro de proyectos</span></span></span><span class="ln"><b>8</b><span class="t" style="--n:26;--d:5732ms"><span class="k">const</span> FRICTION_60 = <span class="n">0.995</span>;</span></span><span class="ln"><b>9</b><span class="t" style="--n:23;--d:6580ms">v *= Math.<span class="f">exp</span>(-K * dt);</span></span><span class="ln"><b>10</b><span class="caret" style="--d:7344ms"></span></span></pre>
+        </figure>
+      </div>
+      <div class="reasons">
+        <div class="reason reveal" style="--i:0"><i class="ph ph-chats-circle" aria-hidden="true"></i><h3>Hablas con quien hace tu web</h3><p>Sin vendedores ni intermediarios. Lo que acuerdas por WhatsApp es lo que se construye.</p></div>
+        <div class="reason reveal" style="--i:1"><i class="ph ph-receipt" aria-hidden="true"></i><h3>Precio cerrado antes de empezar</h3><p>Alcance, tiempos y precio por escrito. Si no te convence, ahí queda: no cobramos por cotizar.</p></div>
+        <div class="reason reveal" style="--i:2"><i class="ph ph-device-mobile" aria-hidden="true"></i><h3>Pensada para el celular</h3><p>Tu cliente llega desde Instagram o TikTok. Diseñamos primero para esa pantalla.</p></div>
+        <div class="reason reveal" style="--i:3"><i class="ph ph-ruler" aria-hidden="true"></i><h3>A medida, no una plantilla</h3><p>Cada web se arma alrededor de lo que vendes y de lo que te preguntan tus clientes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process: pinned on desktop while the five steps appear one by one; never rewinds -->
+  <section class="process" id="proceso" aria-labelledby="proceso-t">
+    <div class="proc-track" id="proc-track">
+      <div class="proc-pin">
+        <div class="wrap proc-grid">
+          <div>
+            <h2 class="h2 reveal" id="proceso-t">Del primer mensaje a tu web publicada</h2>
+            <p class="lead reveal">Sabes qué recibes, cuánto cuesta y cuándo lo tienes antes de empezar.</p>
+            <ol class="steps" id="steps">
+              <li class="step shown active" data-n="1"><div class="step-head"><h3>Contacto</h3><span class="when">Mismo día</span></div><p>Nos escribes por WhatsApp y nos cuentas tu negocio y qué quieres lograr.</p></li>
+              <li class="step" data-n="2"><div class="step-head"><h3>Propuesta</h3><span class="when">24 horas</span></div><p>Te enviamos alcance, tiempos y precio cerrado. Si no te convence, ahí queda.</p></li>
+              <li class="step" data-n="3"><div class="step-head"><h3>Diseño y desarrollo</h3><span class="when">3 a 10 días</span></div><p>Armamos tu web con tu contenido y tu identidad, sin plantillas.</p></li>
+              <li class="step" data-n="4"><div class="step-head"><h3>Revisión</h3><span class="when">1 a 2 días</span></div><p>La ves terminada y nos dices qué ajustar. Nada sale sin tu visto bueno.</p></li>
+              <li class="step" data-n="5"><div class="step-head"><h3>Lanzamiento</h3><span class="when">El día que apruebas</span></div><p>Tu web queda en línea, lista para recibir clientes por WhatsApp.</p></li>
+            </ol>
+          </div>
+          <div class="proc-stage" aria-hidden="true">
+            <div class="browser">
+              <div class="browser-bar"><span class="tl"><i></i><i></i><i></i></span><span class="url" id="proc-url"><i class="ph-fill ph-lock-simple"></i><span>WhatsApp</span></span></div>
+              <div class="scenes">
+                <div class="scene on" data-url="WhatsApp">
+                  <div class="chat in-seq">
+                    <p>Hola, tengo una pastelería en Surco. ¿Me pueden hacer una web? <small>10:42</small></p>
+                    <p class="me">¡Hola! Claro. Cuéntanos qué vendes y quién te compra. <small>10:44</small></p>
+                    <p>Tortas por encargo. Me escriben por Instagram y pierdo pedidos. <small>10:45</small></p>
+                    <p class="me">Perfecto. Hoy mismo te mandamos la propuesta con precio y tiempos. <small>10:46</small></p>
+                  </div>
+                </div>
+                <div class="scene" data-url="Propuesta.pdf">
+                  <div class="doc in-seq">
+                    <h4>Propuesta para tu pastelería</h4>
+                    <div class="row"><span>Plan</span><b>Landing Premium</b></div>
+                    <div class="row"><span>Entrega</span><b>7 a 10 días hábiles</b></div>
+                    <div class="row"><span>Ajustes incluidos</span><b>3 rondas</b></div>
+                    <div class="row total"><span>Precio cerrado</span><b>S/ 500</b></div>
+                  </div>
+                </div>
+                <div class="scene" data-url="localhost:5173">
+                  <div class="build">
+                    <pre class="in-seq"><span><span class="c">&lt;!-- hero --&gt;</span></span><span>&lt;<span class="k">h1</span>&gt;Tortas que se piden&lt;/<span class="k">h1</span>&gt;</span><span>&lt;<span class="k">a</span> href=<span class="s">"https://wa.me/51..."</span>&gt;</span><span>  Pedir por WhatsApp</span><span>&lt;/<span class="k">a</span>&gt;</span></pre>
+                    <div class="wire in-seq"><div class="w-nav"></div><div class="w-hero"></div><div class="w-btn"></div><div class="w-row"></div><div class="w-row"></div></div>
+                  </div>
+                </div>
+                <div class="scene" data-url="Vista previa">
+                  <div class="shot in-seq">
+                    <img src="img/kiara-desk.webp" alt="" loading="lazy" width="1440" height="900">
+                    <span class="pin a"><i class="ph-fill ph-chat-circle-text"></i>¿Probamos otra foto aquí?</span>
+                    <span class="pin b"><i class="ph-fill ph-check-circle"></i>Aprobado</span>
+                  </div>
+                </div>
+                <div class="scene" data-url="avelino-restaurante.base44.app">
+                  <div class="shot in-seq">
+                    <img src="img/avelino-desk.webp" alt="" loading="lazy" width="1440" height="900">
+                    <span class="live"><i class="ph-fill ph-broadcast"></i>En línea</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan configurator: recommends a plan and prefills the WhatsApp message -->
+  <section class="config" id="configura" aria-labelledby="config-t">
+    <div class="wrap">
+      <div class="cfg">
+        <div class="cfg-main">
+        <div class="config-head reveal">
+          <h2 class="h2" id="config-t">¿Qué necesita tu negocio?</h2>
+          <p class="lead">Marca lo que aplica. Te decimos qué plan te conviene y te dejamos el mensaje listo para enviar.</p>
+        </div>
+        <div class="cfg-q reveal" id="cfg-q">
+          <div><h3 id="g-rubro">Tipo de negocio</h3><div class="cfg-chips" data-g="rubro" data-single role="group" aria-labelledby="g-rubro">
+            <button type="button" class="cfg-chip" aria-pressed="true"><i class="ph-bold ph-check" aria-hidden="true"></i>Restaurante</button><button type="button" class="cfg-chip" aria-pressed="false"><i class="ph-bold ph-check" aria-hidden="true"></i>Tienda</button><button type="button" class="cfg-chip" aria-pressed="false"><i class="ph-bold ph-check" aria-hidden="true"></i>Servicios</button><button type="button" class="cfg-chip" aria-pressed="false"><i class="ph-bold ph-check" aria-hidden="true"></i>Salud / Belleza</button><button type="button" class="cfg-chip" aria-pressed="false"><i class="ph-bold ph-check" aria-hidden="true"></i>Otro</button>
+          </div></div>
+          <div><h3 id="g-feat">Qué quieres que haga tu web</h3><div class="cfg-chips" data-g="feat" role="group" aria-labelledby="g-feat">
+            <button type="button" class="cfg-chip" aria-pressed="false" data-w="2"><i class="ph-bold ph-check" aria-hidden="true"></i>Recibir reservas</button><button type="button" class="cfg-chip" aria-pressed="false" data-w="2"><i class="ph-bold ph-check" aria-hidden="true"></i>Mostrar catálogo / carta</button><button type="button" class="cfg-chip" aria-pressed="false" data-w="1"><i class="ph-bold ph-check" aria-hidden="true"></i>Galería de fotos</button><button type="button" class="cfg-chip" aria-pressed="false" data-w="1"><i class="ph-bold ph-check" aria-hidden="true"></i>Preguntas frecuentes</button><button type="button" class="cfg-chip" aria-pressed="false" data-w="1"><i class="ph-bold ph-check" aria-hidden="true"></i>Mostrar casos / reseñas</button>
+          </div></div>
+          <div><h3 id="g-txt">¿Tienes textos?</h3><div class="cfg-chips" data-g="txt" data-single role="group" aria-labelledby="g-txt">
+            <button type="button" class="cfg-chip" aria-pressed="true" data-v="own"><i class="ph-bold ph-check" aria-hidden="true"></i>Sí, los tengo</button><button type="button" class="cfg-chip" aria-pressed="false" data-w="2" data-v="help"><i class="ph-bold ph-check" aria-hidden="true"></i>Necesito ayuda</button>
+          </div></div>
+          <div><h3 id="g-lead">¿Ya tienes clientes que te escriben?</h3><div class="cfg-chips" data-g="lead" data-single role="group" aria-labelledby="g-lead">
+            <button type="button" class="cfg-chip" aria-pressed="true" data-v="new"><i class="ph-bold ph-check" aria-hidden="true"></i>Recién empiezo</button><button type="button" class="cfg-chip" aria-pressed="false" data-w="2" data-v="busy"><i class="ph-bold ph-check" aria-hidden="true"></i>Sí, varios por semana</button>
+          </div></div>
+        </div>
+        </div>
+        <div class="cfg-res reveal" style="--i:1" id="cfg-res" data-plan="landing">
+          <span class="cfg-burst" aria-hidden="true"></span>
+          <div class="cfg-top"><div><span class="plan-name">Plan recomendado</span><h3 data-f="name" aria-live="polite"></h3></div><span class="badge cfg-badge">Mejor valor</span></div>
+          <div class="price"><s data-f="old"></s><strong data-f="price"></strong></div>
+          <dl class="facts">
+            <div><dt>Entrega</dt><dd data-f="days"></dd></div>
+            <div><dt>Ajustes</dt><dd data-f="rounds"></dd></div>
+          </dl>
+          <div class="cfg-perks"><div><p class="perks-t">Además con Premium</p><ul id="cfg-perks"></ul></div></div>
+          <figure class="wa-preview" tabindex="0" aria-label="Vista previa del mensaje"><figcaption>Vista previa del mensaje</figcaption><p id="cfg-msg"></p></figure>
+          <a class="btn btn-primary" id="cfg-link" href="https://wa.me/51916068187" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>Enviar por WhatsApp</a>
+          <p class="cfg-legal">Nada de lo que marcas se guarda. Solo recibimos el mensaje si lo envías. <a href="privacidad.html">Privacidad</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing: figures come from #plans-data -->
+  <section class="pricing" id="servicios" aria-labelledby="planes-t">
+    <div class="wrap">
+      <div class="pricing-head reveal">
+        <span class="eyebrow">Planes y precios</span>
+        <h2 class="h2" id="planes-t">Pagas una vez. La web es tuya.</h2>
+        <p class="lead">Dos formas de empezar, las dos diseñadas alrededor de tu negocio. Precio de lanzamiento válido hasta el 31/12.</p>
+      </div>
+      <div class="plans">
+        <article class="plan plan-feature plan-basic reveal" aria-labelledby="p1" data-plan="landing">
+          <div class="plan-top">
+            <div><span class="plan-name" data-f="name"></span><h3 id="p1">Presencia digital profesional</h3><p class="for">Para negocios que todavía no tienen web.</p></div>
+          </div>
+          <div class="price"><s data-f="old"></s><strong data-f="price"></strong><em data-f="off"></em></div>
+          <dl class="facts">
+            <div><dt>Secciones</dt><dd>Hasta 5</dd></div>
+            <div><dt>Entrega</dt><dd data-f="days"></dd></div>
+            <div><dt>Ajustes</dt><dd data-f="rounds"></dd></div>
+            <div><dt>Textos</dt><dd>Ordenamos los tuyos</dd></div>
+          </dl>
+          <ul>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Una página con lo esencial de tu negocio</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>WhatsApp integrado en toda la página</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Se ve bien en celular, tablet y computadora</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Lista para compartir en Instagram y Google</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20me%20interesa%20el%20plan%20Landing%20(S%2F%20300).%20%C2%BFLo%20coordinamos%3F" target="_blank" rel="noopener">Quiero la Landing</a>
+        </article>
+        <article class="plan plan-feature reveal" style="--i:1" aria-labelledby="p2" data-plan="premium">
+          <div class="plan-top">
+            <div><span class="plan-name" data-f="name"></span><h3 id="p2">Estrategia y conversión</h3><p class="for">Para negocios que ya reciben interés y quieren cerrar más.</p></div>
+            <span class="badge">Recomendado</span>
+          </div>
+          <div class="price"><s data-f="old"></s><strong data-f="price"></strong><em data-f="off"></em></div>
+          <dl class="facts">
+            <div><dt>Secciones</dt><dd>Según tu rubro</dd></div>
+            <div><dt>Entrega</dt><dd data-f="days"></dd></div>
+            <div><dt>Ajustes</dt><dd data-f="rounds"></dd></div>
+            <div><dt>Textos</dt><dd>Los escribimos contigo</dd></div>
+          </dl>
+          <ul>
+            <li class="inherit"><i class="ph-bold ph-check" aria-hidden="true"></i><span>Todo lo del plan Landing, y además:</span></li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Antes de diseñar estudiamos qué frena a tus clientes</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Textos y estructura escritos para vender</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Catálogo, reservas, casos o preguntas, según tu rubro</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Galería de fotos y detalle visual por sección</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Enlace directo desde tu Instagram y TikTok</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Te ayudamos a escribir cada texto de tu web</li>
+            <li><i class="ph-bold ph-check" aria-hidden="true"></i>Tres rondas de ajustes hasta dejarla a tu gusto</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20me%20interesa%20el%20plan%20Landing%20Premium%20(S%2F%20500).%20%C2%BFLo%20coordinamos%3F" target="_blank" rel="noopener">Quiero la Premium</a>
+        </article>
+      </div>
+      <div class="guarantee reveal">
+        <i class="ph-fill ph-shield-check" aria-hidden="true"></i>
+        <div>
+          <h3>Garantía SV WebStudio</h3>
+          <p>Propuesta sin costo: si no te convence, no pagas nada. Y si no entregamos lo acordado, te devolvemos el 100% de lo que pagaste.</p>
+        </div>
+        <a class="g-link" href="reembolsos.html">Política de reembolsos <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="addon reveal">
+        <div><h3>Mantenimiento opcional</h3></div>
+        <p>Cambios menores de textos, fotos, precios u horarios, y gestión del hosting para que tu web siga en línea. Lo puedes contratar después.</p>
+        <div class="amt">S/ 60 <small>al mes</small></div>
+      </div>
+      <div class="fine reveal">
+        <p><i class="ph ph-globe-simple" aria-hidden="true"></i>El dominio y el hosting se contratan aparte, a tu nombre. Te decimos cuánto cuesta el tuyo antes de empezar y lo dejamos configurado.</p>
+        <p><i class="ph ph-stack" aria-hidden="true"></i>¿Necesitas reservas con calendario, catálogo con stock o pagos en línea? Lo vemos aparte y te decimos con claridad qué implica.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team" id="nosotros" aria-labelledby="team-t">
+    <div class="wrap team-grid">
+      <div class="people">
+        <div class="person person-a reveal"><span class="mono" aria-hidden="true">JS</span><div><h3>Jesús Salas</h3><p>Cofundador. Diseño y desarrollo</p></div></div>
+        <div class="person person-b reveal" style="--i:1"><span class="mono" aria-hidden="true">FV</span><div><h3>Franco Vallardes</h3><p>Cofundador. Diseño y desarrollo</p></div></div>
+      </div>
+      <div class="reveal">
+        <h2 class="h2" id="team-t">Dos dueños. Trato directo contigo.</h2>
+        <p class="lead">Cuando nos escribes, hablas con nosotros. Sin vendedores, sin intermediarios, sin tercerizar tu web a alguien que nunca vas a conocer.</p>
+        <p class="team-note">Somos un estudio chico a propósito: tomamos pocos encargos a la vez para que el tuyo no termine en una cola. Te escribe la misma persona que está armando tu web.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq" aria-labelledby="faq-t">
+    <div class="wrap faq-grid">
+      <h2 class="h2 reveal" id="faq-t">Lo que nos preguntan antes de empezar</h2>
+      <div class="faq-list reveal">
+        <details><summary>¿Cuánto demora tener mi web lista?<span class="pm" aria-hidden="true"><i class="ph ph-plus"></i></span></summary><p class="ans">La Landing toma entre 3 y 5 días hábiles y la Premium entre 7 y 10, contados desde que nos pasas tu contenido y aprobamos la propuesta. Si tienes una fecha límite, dínoslo al escribir y te confirmamos si llegamos.</p></details>
+        <details><summary>¿Incluye dominio y hosting?<span class="pm" aria-hidden="true"><i class="ph ph-plus"></i></span></summary><p class="ans">El dominio se cotiza aparte: el precio depende del nombre y la extensión que elijas, y se paga una vez al año directo al proveedor. Te decimos cuánto cuesta el tuyo antes de empezar y lo dejamos configurado y funcionando. El hosting también se contrata aparte, a nombre tuyo; si prefieres no ocuparte, el mantenimiento opcional incluye su gestión.</p></details>
+        <details><summary>¿Qué necesito enviarles para empezar?<span class="pm" aria-hidden="true"><i class="ph ph-plus"></i></span></summary><p class="ans">Tu logo si lo tienes, fotos de tu negocio o tus productos, y una idea de lo que quieres decir. Si no tienes textos listos no es problema: en la Landing los ordenamos nosotros y en la Premium los escribimos contigo.</p></details>
+        <details><summary>¿Y si después quiero cambiar algo?<span class="pm" aria-hidden="true"><i class="ph ph-plus"></i></span></summary><p class="ans">Cada plan incluye sus rondas de ajustes antes de publicar: 1 en Landing y 3 en Premium. Después de publicada, los cambios los coordinamos por WhatsApp y siempre te decimos antes si tienen costo.</p></details>
+        <details><summary>¿Cómo puedo pagar?<span class="pm" aria-hidden="true"><i class="ph ph-plus"></i></span></summary><p class="ans">Coordinamos la forma de pago por WhatsApp cuando te pasamos la propuesta, antes de empezar a trabajar.</p></details>
+        <details><summary>Solo tengo Instagram, ¿igual me sirve?<span class="pm" aria-hidden="true"><i class="ph ph-plus"></i></span></summary><p class="ans">Sí, de hecho es el caso más común. Instagram sirve para que te descubran, pero no para explicar precios, horarios o todo tu catálogo. La web centraliza eso y deja un solo botón para que te escriban por WhatsApp, sin que tengas que repetir lo mismo cada día.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contacto" aria-labelledby="contacto-t">
+    <div class="wrap">
+      <div class="cta-card reveal">
+        <div>
+          <h2 id="contacto-t">¿Listo para tener la web de tu negocio?</h2>
+          <p>No hace falta que tengas todo definido, para eso estamos. Te respondemos nosotros dos, normalmente el mismo día.</p>
+          <div style="margin-top:32px">
+            <a class="btn btn-ink" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20quiero%20cotizar%20mi%20landing%20page." target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>Cuéntanos tu negocio</a>
+            <p class="cta-meta">WhatsApp Jesús +51 916 068 187</p>
+            <p class="cta-legal">Usamos tus datos solo para responderte. <a href="privacidad.html">Política de privacidad</a></p>
+          </div>
+        </div>
+        <div class="channels">
+          <a class="channel" href="mailto:sv.webstudio2026@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span><small>Correo</small><b>sv.webstudio2026@gmail.com</b></span><i class="ph ph-arrow-up-right go" aria-hidden="true"></i></a>
+          <a class="channel" href="https://wa.me/51957636046?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20quiero%20contarles%20sobre%20mi%20negocio." target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span><small>WhatsApp Franco</small><b>+51 957 636 046</b></span><i class="ph ph-arrow-up-right go" aria-hidden="true"></i></a>
+          <a class="channel" href="https://www.instagram.com/sv.webstudio" target="_blank" rel="noopener"><i class="ph ph-instagram-logo" aria-hidden="true"></i><span><small>Instagram</small><b>@sv.webstudio</b></span><i class="ph ph-arrow-up-right go" aria-hidden="true"></i></a>
+          <a class="channel" href="https://www.tiktok.com/@sv.webstudio" target="_blank" rel="noopener"><i class="ph ph-tiktok-logo" aria-hidden="true"></i><span><small>TikTok</small><b>@sv.webstudio</b></span><i class="ph ph-arrow-up-right go" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">SV</span>SV WebStudio</a>
+    <nav aria-label="Pie de página">
+      <a href="#trabajos">Proyectos</a><a href="#servicios">Planes</a><a href="#proceso">Proceso</a><a href="#nosotros">Nosotros</a><a href="#faq">Preguntas</a>
+    </nav>
+    <p>© 2026 SV WebStudio. Hecho en Lima, Perú.</p>
+    <div class="foot-legal">
+      <a class="libro" href="libro-de-reclamaciones.html"><i class="ph ph-book-open-text" aria-hidden="true"></i>Libro de Reclamaciones</a>
+      <nav aria-label="Documentos legales">
+        <a href="privacidad.html">Política de privacidad</a><a href="terminos.html">Términos y condiciones</a><a href="cookies.html">Política de cookies</a><a href="reembolsos.html">Política de reembolsos</a>
+      </nav>
+      <p class="biz">SV WebStudio · Jesús Salas y Franco Vallardes · Lima, Perú · <a href="mailto:sv.webstudio2026@gmail.com">sv.webstudio2026@gmail.com</a> · WhatsApp Jesús +51 916 068 187 · WhatsApp Franco +51 957 636 046</p>
+    </div>
+  </div>
+</footer>
+
+<aside aria-label="Contacto rápido"><a class="fab" id="fab" href="https://wa.me/51916068187?text=Hola%2C%20vi%20la%20web%20de%20SV%20WebStudio%20y%20quiero%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i></a></aside>
+
+<div class="toast" id="wa-toast" role="status" aria-live="polite"><span class="spin" aria-hidden="true"></span><span class="toast-txt"></span></div>
+
+<!-- Plans: single source for the pricing cards and the configurator -->
+<script type="application/json" id="plans-data">
+{
+  "_": [
+    "Fuente unica de precios. Las tarjetas y el configurador leen de aqui.",
+    "promoHasta: ultimo dia del precio de lanzamiento, en YYYY-MM-DD.",
+    "Cuando esa fecha pasa, la pagina muestra sola el precio regular sin",
+    "tachar y sin la etiqueta de descuento. No hay que tocar nada mas.",
+    "Para quitar la promo a mano: pon promoHasta en null."
+  ],
+  "promoHasta": "2026-12-31",
+  "planes": {
+    "landing": { "name": "Landing", "price": 300, "old": 390, "days": "3 a 5 días hábiles", "rounds": "1 ronda" },
+    "premium": { "name": "Landing Premium", "price": 500, "old": 690, "days": "7 a 10 días hábiles", "rounds": "3 rondas" }
+  }
+}
+</script>
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+
+  // Theme: system by default, manual override remembered per viewer
+  const btn = document.getElementById('theme');
+  const icon = btn.querySelector('i');
+  const sysDark = matchMedia('(prefers-color-scheme: dark)');
+  let saved = null;
+  try { saved = localStorage.getItem('sv-theme'); } catch (e) {}
+  if (saved) root.dataset.theme = saved;
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : sysDark.matches;
+  const sync = () => { icon.className = isDark() ? 'ph ph-sun' : 'ph ph-moon'; };
+  sync();
+  sysDark.addEventListener('change', sync);
+  btn.addEventListener('click', () => {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('sv-theme', root.dataset.theme); } catch (e) {}
+    sync();
+  });
+
+  // Reveal on enter
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Nav border once the hero leaves; hide floating button while the contact card is visible
+  const hero = document.querySelector('.hero');
+  const nav = document.querySelector('.nav');
+  new IntersectionObserver(([e]) => nav.classList.toggle('scrolled', !e.isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(hero.querySelector('h1'));
+  const fab = document.getElementById('fab');
+  new IntersectionObserver(([e]) => fab.classList.toggle('hide', e.isIntersecting)).observe(document.querySelector('.cta-card'));
+
+  // Plans: the pricing cards and the configurator read the same data (#plans-data)
+  const DATA = JSON.parse(document.getElementById('plans-data').textContent);
+  const PLANS = DATA.planes;
+
+  // Promo viva hasta el final del dia indicado. Se construye con numeros y
+  // no con new Date("2026-12-31"), que se interpreta en UTC y en Lima
+  // (UTC-5) apagaria la promo cinco horas antes de tiempo.
+  const promoViva = (() => {
+    const txt = DATA.promoHasta;
+    if (!txt) return false;
+    const [a, m, d] = String(txt).split('-').map(Number);
+    if (!a || !m || !d) return false;
+    return Date.now() <= new Date(a, m - 1, d, 23, 59, 59, 999).getTime();
+  })();
+
+  // Precio que se cobra hoy: el de lanzamiento mientras la promo viva, el
+  // regular en cuanto venza. Todo lo demas lee de aqui.
+  const precioHoy = (p) => (promoViva ? p.price : p.old);
+
+  const soles = (n) => 'S/ ' + n;
+  const fillPlan = (el, key) => {
+    const p = PLANS[key];
+    const f = { name: p.name, price: soles(precioHoy(p)), old: soles(p.old), off: Math.round((1 - p.price / p.old) * 100) + '% menos', days: p.days, rounds: p.rounds };
+    el.dataset.plan = key;
+    el.querySelectorAll('[data-f]').forEach((n) => { n.textContent = f[n.dataset.f]; });
+    // Vencida la promo no queda rastro: ni precio tachado ni etiqueta de
+    // descuento. Se quitan del DOM, no se ocultan, para que no los lea un
+    // lector de pantalla ni aparezcan al copiar el texto.
+    if (!promoViva) el.querySelectorAll('[data-f="old"],[data-f="off"]').forEach((n) => n.remove());
+  };
+  document.querySelectorAll('.plan[data-plan]').forEach((el) => fillPlan(el, el.dataset.plan));
+  const WA_NUMBER = new URL(fab.href).pathname.slice(1);   // the number every CTA already uses
+
+  // Configurator: chips score the needs, the card recommends a plan and prefills the WhatsApp message
+  const cfgQ = document.getElementById('cfg-q');
+  if (cfgQ) {
+    const res = document.getElementById('cfg-res');
+    const msgEl = document.getElementById('cfg-msg');
+    const link = document.getElementById('cfg-link');
+    const picked = (g) => [...cfgQ.querySelectorAll(`[data-g="${g}"] .cfg-chip[aria-pressed="true"]`)];
+    const label = (c) => c.textContent.trim();
+    const priceEl = res.querySelector('[data-f="price"]');
+    const reduceCfg = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Premium perks are the first three bullets of the Premium pricing card, not a second copy
+    const perks = document.getElementById('cfg-perks');
+    document.querySelectorAll('.plan[data-plan="premium"] li:not(.inherit)').forEach((li, i) => { if (i < 3) perks.appendChild(li.cloneNode(true)); });
+    let shownPlan = '', countRaf = 0;
+    const countPrice = (from, to) => {                       // S/ 300 -> S/ 500 rolls instead of swapping
+      cancelAnimationFrame(countRaf);
+      if (reduceCfg) return;
+      const t0 = performance.now(), dur = 750;
+      const stepPrice = (t) => {
+        const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 4);
+        priceEl.textContent = soles(Math.round(from + (to - from) * e));
+        if (k < 1) countRaf = requestAnimationFrame(stepPrice);
+      };
+      priceEl.textContent = soles(from);
+      countRaf = requestAnimationFrame(stepPrice);
+    };
+    const update = () => {
+      const [rubro] = picked('rubro'), feats = picked('feat'), [txt] = picked('txt'), [lead] = picked('lead');
+      const score = [...feats, txt, lead].reduce((sum, c) => sum + (c ? +c.dataset.w || 0 : 0), 0);
+      const key = score >= 4 || feats.length >= 3 ? 'premium' : 'landing';
+      const prev = shownPlan;
+      fillPlan(res, key);
+      res.classList.toggle('is-premium', key === 'premium');
+      if (prev && prev !== key) {
+        res.classList.remove('upgrade', 'downgrade');
+        void res.offsetWidth;                                // restart the entrance
+        res.classList.add(key === 'premium' ? 'upgrade' : 'downgrade');
+        countPrice(precioHoy(PLANS[prev]), precioHoy(PLANS[key]));
+      }
+      const kind = rubro && label(rubro) !== 'Otro' ? ' de ' + label(rubro).toLowerCase() : '';
+      const msg = [
+        `Hola SV WebStudio 👋 Tengo un negocio${kind}.`,
+        feats.length ? `Quiero que mi web: ${feats.map((c) => label(c).toLowerCase()).join(', ')}.` : 'Quiero una web para mi negocio.',
+        txt && txt.dataset.v === 'help' ? 'Necesito ayuda con los textos.' : 'Ya tengo mis textos.',
+        lead && lead.dataset.v === 'busy' ? 'Ya me escriben varios clientes por semana.' : 'Recién estoy empezando.',
+        `Me interesa el plan ${PLANS[key].name} (${soles(precioHoy(PLANS[key]))}).`
+      ].join(' ');
+      msgEl.textContent = msg;
+      link.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      shownPlan = key;
+    };
+    cfgQ.addEventListener('click', (e) => {
+      const chip = e.target.closest('.cfg-chip');
+      if (!chip) return;
+      const group = chip.parentElement;
+      if (group.hasAttribute('data-single')) group.querySelectorAll('.cfg-chip').forEach((c) => c.setAttribute('aria-pressed', c === chip));
+      else chip.setAttribute('aria-pressed', chip.getAttribute('aria-pressed') !== 'true');
+      update();
+    });
+    update();
+  }
+
+  // WhatsApp CTAs: "Abriendo WhatsApp…" toast on click. The link is never delayed or prevented.
+  const WA_SEL = 'a[href^="https://wa.me/"]';
+  const toast = document.getElementById('wa-toast');
+  let toastTimer = 0;
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest(WA_SEL)) return;
+    toast.lastElementChild.textContent = 'Abriendo WhatsApp…';
+    toast.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.classList.remove('on'); toast.lastElementChild.textContent = ''; }, 1800);
+  });
+
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Magnetic pull (mouse only): one shared pointermove, measured once per frame
+  if (!reduceMotion && matchMedia('(pointer: fine)').matches) {
+    const REACH = 90, PULL_X = 0.25, PULL_Y = 0.35, CAP = 16;
+    const mags = [...document.querySelectorAll(WA_SEL)].map((el) => ({ el, x: 0, y: 0 }));
+    let px = -1e4, py = -1e4, queued = false;
+    const pull = () => {
+      queued = false;
+      for (const m of mags) {
+        const r = m.el.getBoundingClientRect();
+        let tx = 0, ty = 0;
+        if (r.width) {
+          const now = getComputedStyle(m.el).translate.split(' ').map(parseFloat);  // where the eased offset is right now
+          const cx = r.left + r.width / 2 - (now[0] || 0), cy = r.top + r.height / 2 - (now[1] || 0);
+          const dx = px - cx, dy = py - cy;
+          const gap = Math.hypot(Math.max(0, Math.abs(dx) - r.width / 2), Math.max(0, Math.abs(dy) - r.height / 2));
+          if (gap < REACH) {
+            const k = 1 - gap / REACH;                                                // fades in as the cursor approaches
+            tx = Math.round(Math.max(-CAP, Math.min(CAP, dx * PULL_X * k)));   // whole pixels: no sub-pixel seams
+            ty = Math.round(Math.max(-CAP, Math.min(CAP, dy * PULL_Y * k)));
+          }
+        }
+        if (tx !== m.x || ty !== m.y) {
+          m.x = tx; m.y = ty;
+          m.el.style.translate = tx || ty ? `${tx}px ${ty}px` : '';
+        }
+      }
+    };
+    const queue = () => { if (!queued) { queued = true; requestAnimationFrame(pull); } };
+    addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse') return; px = e.clientX; py = e.clientY; queue(); }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => { px = py = -1e4; queue(); });
+  }
+
+  // Floating button pulses once per visit: after ~30 s, or once the visitor has scrolled past the plans
+  if (!reduceMotion) {
+    let pulsed = false;
+    try { pulsed = sessionStorage.getItem('sv-pulsed') === '1'; } catch (e) {}
+    if (!pulsed) {
+      let timer = 0, seen = null;
+      const pulse = () => {
+        if (pulsed) return;
+        pulsed = true;
+        clearTimeout(timer);
+        seen.disconnect();
+        try { sessionStorage.setItem('sv-pulsed', '1'); } catch (e) {}
+        fab.classList.add('pulse');
+      };
+      fab.addEventListener('animationend', () => fab.classList.remove('pulse'));
+      timer = setTimeout(pulse, 30000);
+      seen = new IntersectionObserver(([e]) => { if (!e.isIntersecting && e.boundingClientRect.bottom < 0) pulse(); });
+      seen.observe(document.getElementById('servicios'));
+    }
+  }
+
+  // Process: on desktop the section pins while the steps appear one by one. Progress only moves forward;
+  // once complete, the pin's extra scroll length is removed (and scroll compensated) so going back up is normal.
+  // El pin solo se arma si el visitante va a recorrerlo. Mientras esta armado
+  // la pagina mide 1.25 pantallas mas de lo que medira despues, asi que
+  // cualquier salto a algo que este debajo caeria en una posicion que va a
+  // dejar de existir: antes de saltar se suelta.
+  const track = document.getElementById('proc-track');
+  if (track) {
+    const list = document.getElementById('steps');
+    const steps = [...track.querySelectorAll('.step')];
+    const scenes = [...track.querySelectorAll('.scene')];
+    const urlText = document.querySelector('#proc-url span');
+    const puedeFijar = () => !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      matchMedia('(min-width: 1000px) and (min-height: 720px)').matches;
+    const debajoDelProceso = (el) =>
+      !!el && !!(track.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING);
+
+    // Llegar apuntando a algo que esta debajo del proceso (un enlace
+    // compartido con #contacto, o una recarga) cuenta como no poder fijarlo:
+    // fijarlo empujaria hacia abajo todo lo que viene despues y te dejaria
+    // lejos del sitio al que ibas. Se mira el hash y no la posicion de
+    // scroll porque el navegador salta al fragmento despues de que esto
+    // corre, no antes.
+    const anclaDeEntrada = () => {
+      const h = location.hash.slice(1);
+      if (!h) return null;
+      try { return document.getElementById(decodeURIComponent(h)); } catch (e) { return null; }
+    };
+    const canPin = puedeFijar() &&
+      !debajoDelProceso(anclaDeEntrada()) &&
+      track.getBoundingClientRect().bottom > innerHeight * .5;
+    let shown = 1;
+    const setStep = (n) => {
+      if (n <= shown) return;                          // one-way
+      shown = n;
+      steps.forEach((el, i) => { el.classList.toggle('shown', i < n); el.classList.toggle('active', i === n - 1); });
+      scenes.forEach((el, i) => el.classList.toggle('on', i === n - 1));
+      urlText.textContent = scenes[n - 1].dataset.url;
+    };
+
+    const todosLosPasos = () => {
+      steps.forEach((el) => { el.classList.add('shown'); el.classList.remove('active'); });
+    };
+
+    if (!canPin) {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        todosLosPasos();
+      } else {
+        // Cada paso entra cuando entra en pantalla, y la linea verde crece
+        // hasta el ultimo que ha entrado. La linea va del punto del paso 1
+        // al del 5, asi que para llegar al paso n hay que recorrer (n-1) de
+        // los 4 tramos: de ahi el (vistos-1)/(total-1).
+        //
+        // La cola es por la geometria: en un telefono alto el bloque entero
+        // cabe en una pantalla, asi que los cinco pasos entran de golpe y
+        // saldrian todos juntos. Encolados salen de uno en uno cada 80ms. En
+        // un telefono bajo entran de a uno conforme bajas, la cola esta
+        // vacia y cada paso sale en cuanto llega.
+        steps.forEach((el) => el.classList.remove('shown', 'active'));
+        track.classList.add('suelto');
+        list.style.setProperty('--fill', 0);
+        const cola = [];
+        let soltando = 0, vistos = 0;
+        const revelar = () => {
+          const el = cola.shift();
+          if (!el) { soltando = 0; return; }
+          el.classList.add('shown');
+          vistos = Math.max(vistos, steps.indexOf(el) + 1);
+          list.style.setProperty('--fill', ((vistos - 1) / (steps.length - 1)).toFixed(3));
+          soltando = setTimeout(revelar, 80);
+        };
+        const ojo = new IntersectionObserver((es) => {
+          es.filter((e) => e.isIntersecting)
+            .sort((a, b) => steps.indexOf(a.target) - steps.indexOf(b.target))
+            .forEach((e) => { ojo.unobserve(e.target); cola.push(e.target); });
+          if (!soltando) revelar();
+        }, { threshold: .4, rootMargin: '0px 0px -10% 0px' });
+        steps.forEach((el) => ojo.observe(el));
+      }
+    } else {
+      track.classList.add('pinned');
+      list.style.setProperty('--fill', 0);
+      let extra = 0, maxP = 0, done = false, ticking = false, recorrido = false;
+      const size = () => { extra = Math.round(innerHeight * 1.25); track.style.height = (innerHeight + extra) + 'px'; };
+      // Suelta el proceso: le devuelve su alto normal y deja de robar scroll.
+      //   compensar=true   acabas de recorrerlo entero, asi que hay que
+      //                    descontarte el scroll de mas o la pagina salta.
+      //   compensar=false  te vas a otro sitio o el pin ya no aplica:
+      //                    compensar te moveria la pagina bajo los pies.
+      // En los dos casos deja los cinco pasos a la vista: soltarlo a medias
+      // dejaba tres invisibles, porque el pin los arranca en opacity:0.
+      const soltar = (compensar) => {
+        if (done) return;
+        done = true;
+        removeEventListener('scroll', onScroll);
+        setStep(steps.length);
+        list.style.setProperty('--fill', 1);
+        const root = document.documentElement;
+        if (compensar) root.style.overflowAnchor = 'none';   // lo compensamos nosotros
+        track.classList.add('done');
+        track.style.height = '';
+        if (compensar) {
+          window.scrollTo({ top: scrollY - extra, behavior: 'instant' });
+          requestAnimationFrame(() => { root.style.overflowAnchor = ''; });
+        }
+      };
+      // La ventana se hizo chica o baja: el pin ya no aplica. Vuelve a la
+      // version sin fijar, que es la que espera el CSS de movil.
+      const desarmar = () => {
+        soltar(false);
+        track.classList.remove('pinned', 'done');
+        todosLosPasos();
+      };
+      const update = () => {
+        ticking = false;
+        if (done) return;
+        const top = track.getBoundingClientRect().top;
+        // Ya estamos por debajo. Solo hay scroll de mas que descontar si de
+        // verdad lo recorrimos; si aparecimos aqui de golpe (scroll
+        // restaurado al recargar, por ejemplo) descontarlo seria un salto.
+        if (top <= -extra) { soltar(recorrido); return; }
+        recorrido = true;
+        maxP = Math.max(maxP, Math.min(1, Math.max(0, -top / extra)));
+        const q = Math.min(1, maxP / 0.82);            // steps finish at 82%, the rest is a short pause
+        list.style.setProperty('--fill', q.toFixed(4));
+        setStep(1 + Math.min(4, Math.floor(q * 4 + 1e-4)));
+      };
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      size();
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', () => {
+        if (done) return;
+        if (!puedeFijar()) { desarmar(); return; }
+        size(); update();
+      });
+
+      // Un enlace a algo que esta debajo del proceso. Mientras no lo has
+      // recorrido la pagina mide 1.25 pantallas de mas, asi que el salto
+      // apunta a una posicion que va a dejar de existir. Se suelta antes,
+      // en fase de captura, para que el navegador ya mida el sitio final.
+      document.addEventListener('click', (e) => {
+        if (done || !e.target.closest) return;
+        const a = e.target.closest('a[href^="#"]');
+        const href = a && a.getAttribute('href');
+        if (!href || href === '#') return;
+        let destino = null;
+        try { destino = document.getElementById(decodeURIComponent(href.slice(1))); } catch (err) {}
+        if (debajoDelProceso(destino)) soltar(false);
+      }, true);
+
+      update();
+    }
+  }
+
+  // Projects cylinder: curved strips, drag with long inertia, spring snap, slow auto-rotation.
+  const cyl = document.getElementById('cyl');
+  if (cyl) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Tuning knobs
+    const FRICTION_60 = 0.995;                       // velocity kept per frame at 60 fps (higher = glides longer)
+    const K = -Math.log(FRICTION_60) * 60;           // same friction as a per-second decay rate
+    const MAX_V = 3600;                              // deg/s cap on release speed (10 turns/s)
+    const SETTLE_V = 26;                             // below this (deg/s) the spring takes over
+    const AUTO_V = 6;                                // deg/s idle auto-rotation
+    const RESUME_MS = 3000;                          // idle time before auto-rotation resumes
+    const THROW = 1.6;                               // release boost: a flick carries a bit more than the drag
+    const PANEL_ARC = 112;                           // deg of the circle each project covers (the rest is gap)
+    const IMG_W = 1440, IMG_H = 900;                 // screenshot size
+    const SPRING = reduce ? { k: 170, c: 2 * Math.sqrt(170) } : { k: 34, c: 2 * Math.sqrt(34) };
+
+    const ring = cyl.querySelector('.cyl-ring');
+    const shadow = cyl.querySelector('.cyl-shadow');
+    const hint = document.getElementById('cyl-hint');
+    const infos = [...document.querySelectorAll('#proj-info .proj')];
+    const panels = [...cyl.querySelectorAll('.panel')].map((el) => ({ el, a: +el.dataset.a, img: el.dataset.img, name: el.dataset.name }));
+    const N = panels.length, STEP = 360 / N;
+    const RAD = Math.PI / 180;
+    const mod = (x, m) => ((x % m) + m) % m;
+    const wrap180 = (x) => mod(x + 180, 360) - 180;
+    const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+    const snap = (x) => Math.round(x / STEP) * STEP;
+
+    let theta = 0, v = 0, target = 0, auto = 0, mode = 'idle';
+    let idleSince = performance.now() - RESUME_MS + 1200;
+    let degPerPx = 0.2, drag = null, samples = [], suppressClick = false, hinted = false;
+    let lastFront = -1, shownInfo = 0, raf = 0, running = false, last = 0;
+    let strips = [];
+    const frontIndex = () => mod(Math.round(-theta / STEP), N);
+
+    // Build the cylinder: radius from the available width, each panel cut into thin strips of its screenshot
+    const build = () => {
+      const W = cyl.clientWidth;
+      const small = W < 700;
+      const R = small ? W * 0.52 : Math.min(840, W * 0.42);
+      const segs = small ? 18 : 30;                    // strips per panel
+      const dA = PANEL_ARC / segs;                     // deg per strip
+      const arc = R * PANEL_ARC * RAD;                 // panel width along the surface (px)
+      const H = Math.round(small ? arc * 0.72 : Math.min(arc / 1.8, 760));
+      const sw = 2 * R * Math.tan(dA * RAD / 2) + 2.4; // strip width, small overlap hides antialiasing seams
+      const scale = Math.max(arc / IMG_W, H / IMG_H);  // cover
+      const bw = IMG_W * scale, bh = IMG_H * scale, ox = (bw - arc) * 0.2;   // crop favours the left, where headlines sit
+      cyl.style.setProperty('--r', R.toFixed(1) + 'px');
+      cyl.style.setProperty('--h', H + 'px');
+      degPerPx = 360 / (2 * Math.PI * R) * 0.9;        // the surface follows the finger
+      strips = [];
+      for (const p of panels) {
+        p.el.textContent = '';
+        for (let j = 0; j < segs; j++) {
+          const s = document.createElement('span');
+          s.className = 'strip' + (j === 0 ? ' first' : '') + (j === segs - 1 ? ' last' : '');
+          const ang = p.a - PANEL_ARC / 2 + (j + 0.5) * dA;
+          const x = (j + 0.5) * (arc / segs) - sw / 2;   // where this strip samples the image
+          s.style.cssText = `width:${sw.toFixed(2)}px;margin-left:${(-sw / 2).toFixed(2)}px;` +
+            `transform:rotateY(${ang.toFixed(3)}deg) translateZ(${R.toFixed(2)}px);` +
+            `background-image:url(${p.img});background-size:${bw.toFixed(1)}px ${bh.toFixed(1)}px;` +
+            `background-position:${(-(x + ox)).toFixed(2)}px 0`;
+          s.innerHTML = '<i></i><b></b>';
+          strips.push({ ang, shade: s.firstChild, spec: s.lastChild, so: -1, sp: -1 });
+          p.el.appendChild(s);
+        }
+      }
+      render();
+    };
+    const hideHint = () => { if (!hinted) { hinted = true; hint.classList.add('gone'); } };
+
+    const showInfo = (i) => {
+      if (i === shownInfo) return;
+      shownInfo = i;
+      infos.forEach((el, k) => {
+        el.classList.toggle('on', k === i);
+        el.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+        el.querySelector('.visit').tabIndex = k === i ? 0 : -1;
+      });
+    };
+
+    const render = () => {
+      ring.style.transform = `rotateY(${theta.toFixed(3)}deg)`;
+      shadow.style.transform = `scaleX(${(1 + Math.min(Math.abs(v) / MAX_V, 1) * 0.1).toFixed(3)})`;
+      // Light from the viewer, slightly left: strips darken as they turn away and a soft highlight rides the curve
+      for (const s of strips) {
+        const phi = wrap180(s.ang + theta);
+        if (Math.abs(phi) > 95) continue;             // facing away, hidden by backface-visibility
+        const so = Math.round((1 - Math.cos(phi * RAD)) * 85) / 100;
+        const sp = Math.round(Math.max(0, 1 - Math.abs(phi + 22) / 14) * 9) / 100;
+        if (so !== s.so) { s.shade.style.opacity = so; s.so = so; }
+        if (sp !== s.sp) { s.spec.style.opacity = sp; s.sp = sp; }
+      }
+      const fi = frontIndex();
+      if (fi !== lastFront) {
+        lastFront = fi;
+        panels.forEach((p, i) => { p.el.tabIndex = i === fi ? 0 : -1; });
+      }
+      if (Math.abs(v) < 240) showInfo(fi);            // caption follows once the spin is readable
+    };
+
+    const tick = (t) => {
+      const dt = Math.max(0, Math.min((t - last) / 1000, 0.05));
+      last = t;
+      if (mode === 'coast') {
+        v *= Math.exp(-K * dt);
+        theta += v * dt;
+        if (Math.abs(v) < SETTLE_V) { target = snap(theta + v / K); mode = 'spring'; }
+      } else if (mode === 'spring') {
+        v += (SPRING.k * (target - theta) - SPRING.c * v) * dt;
+        theta += v * dt;
+        if (Math.abs(target - theta) < 0.02 && Math.abs(v) < 0.5) { theta = target; v = 0; mode = 'idle'; idleSince = t; }
+      } else if (mode === 'idle') {
+        if (!reduce && t - idleSince > RESUME_MS) { mode = 'auto'; auto = 0; }
+      } else if (mode === 'auto') {
+        auto += (AUTO_V - auto) * (1 - Math.exp(-dt * 1.2));   // ease in, no jolt
+        v = -auto;
+        theta += v * dt;
+      }
+      if (mode !== 'drag' && Math.abs(theta) > 36000) {        // keep numbers small
+        const shift = Math.round(theta / 360) * 360;
+        theta -= shift; target -= shift;
+      }
+      render();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const goTo = (i) => {
+      auto = 0;
+      target = theta + wrap180(-panels[i].a - theta);
+      mode = 'spring';
+    };
+    const stepBy = (dir) => {
+      auto = 0; hideHint();
+      target = (mode === 'spring' ? target : snap(theta)) - dir * STEP;
+      mode = 'spring';
+    };
+
+    cyl.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      const caught = (mode === 'coast' || mode === 'spring') && Math.abs(v) > 60;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, theta0: theta, moved: false, caught };
+      v = 0; auto = 0; mode = 'drag';                              // grab the wheel: stop now
+      samples = [{ t: e.timeStamp, th: theta }];
+    });
+    cyl.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.moved) {
+        if (Math.hypot(dx, dy) < 6) return;
+        if (e.pointerType !== 'mouse' && Math.abs(dy) > Math.abs(dx)) return; // let the page scroll
+        drag.moved = true;
+        try { cyl.setPointerCapture(e.pointerId); } catch (err) {}
+        cyl.classList.add('grabbing');
+      }
+      theta = drag.theta0 + dx * degPerPx;
+      samples.push({ t: e.timeStamp, th: theta });
+      while (samples.length > 2 && e.timeStamp - samples[0].t > 120) samples.shift();
+      if (Math.abs(theta - drag.theta0) > 20) hideHint();
+    });
+    const release = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const d = drag; drag = null;
+      cyl.classList.remove('grabbing');
+      suppressClick = d.moved || d.caught;
+      setTimeout(() => { suppressClick = false; }, 60);
+      let vel = 0;
+      const end = samples[samples.length - 1];
+      if (d.moved && e.timeStamp - end.t < 60) {                   // finger still moving when lifted
+        const first = samples.find((s) => end.t - s.t <= 80);      // average over the last ~80 ms
+        const span = end.t - first.t;
+        if (span > 8) vel = (end.th - first.th) / span * 1000;
+      }
+      v = reduce ? 0 : clamp(vel * THROW, -MAX_V, MAX_V);
+      if (Math.abs(v) > SETTLE_V) mode = 'coast';
+      else { target = snap(theta + v / K); mode = 'spring'; }
+    };
+    cyl.addEventListener('pointerup', release);
+    cyl.addEventListener('pointercancel', release);
+    cyl.addEventListener('dragstart', (e) => e.preventDefault());
+
+    cyl.addEventListener('click', (e) => {
+      const panel = e.target.closest('.panel');
+      if (!panel) return;
+      if (suppressClick) { e.preventDefault(); e.stopPropagation(); return; }
+      const i = panels.findIndex((p) => p.el === panel);
+      if (Math.abs(wrap180(panels[i].a + theta)) > 25) { e.preventDefault(); goTo(i); }  // side panel: bring it forward
+    }, true);
+
+    cyl.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      if (document.activeElement !== cyl) cyl.focus();
+      stepBy(e.key === 'ArrowRight' ? 1 : -1);
+    });
+    document.getElementById('cyl-prev').addEventListener('click', () => stepBy(-1));
+    document.getElementById('cyl-next').addEventListener('click', () => stepBy(1));
+
+    build();
+    let rebuild = 0, lastW = cyl.clientWidth;
+    addEventListener('resize', () => {
+      if (cyl.clientWidth === lastW) return;            // ignore mobile URL-bar height changes
+      lastW = cyl.clientWidth;
+      cancelAnimationFrame(rebuild);
+      rebuild = requestAnimationFrame(build);
+    });
+    // Only animate while the section is on screen
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !running) { running = true; last = performance.now(); raf = requestAnimationFrame(tick); }
+      else if (!e.isIntersecting && running) { running = false; cancelAnimationFrame(raf); }
+    }).observe(cyl);
+  }
+})();
+</script>
+<script>
+/* ===========================================================================
+   Menú de secciones en móvil
+   ---------------------------------------------------------------------------
+   Va en su propio bloque, aislado del script principal: no lee ni escribe
+   nada de lo que ya existe. Si fallara, el resto de la página sigue igual.
+   De 980px para arriba no hace nada: el botón está oculto por CSS.
+   ========================================================================= */
+(() => {
+  const nav    = document.querySelector('.nav');
+  const boton  = document.getElementById('burger');
+  const menu   = document.getElementById('menu');
+  const velo   = document.getElementById('menu-scrim');
+  if (!nav || !boton || !menu || !velo) return;
+
+  const escritorio = matchMedia('(min-width: 980px)');
+  let abierto = false;
+  let scrollGuardado = 0;
+
+  const focalizables = () =>
+    [...menu.querySelectorAll('a[href]')].filter((e) => e.offsetParent !== null);
+
+  const abrir = () => {
+    if (abierto) return;
+    abierto = true;
+    // El bloqueo del fondo: position fixed necesita recordar dónde estabas,
+    // porque al fijar el body el navegador lo manda arriba del todo.
+    scrollGuardado = window.scrollY;
+    document.body.style.top = `-${scrollGuardado}px`;
+    document.body.classList.add('sin-scroll');
+    nav.dataset.menu = 'abierto';
+    boton.setAttribute('aria-expanded', 'true');
+    boton.setAttribute('aria-label', 'Cerrar menú');
+  };
+
+  // restaurar=false cuando se cierra pulsando un enlace: ahí manda el ancla,
+  // y devolver el scroll a mano pelearía con ella y te dejaría en otro sitio.
+  const cerrar = (restaurar = true) => {
+    if (!abierto) return;
+    abierto = false;
+    document.body.classList.remove('sin-scroll');
+    document.body.style.top = '';
+    if (restaurar) window.scrollTo(0, scrollGuardado);
+    nav.dataset.menu = '';
+    boton.setAttribute('aria-expanded', 'false');
+    boton.setAttribute('aria-label', 'Abrir menú');
+  };
+
+  boton.addEventListener('click', () => (abierto ? cerrar() : abrir()));
+  velo.addEventListener('click', () => cerrar());
+
+  // Al pulsar un enlace: cerrar sin restaurar, para que el ancla gane.
+  menu.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a) cerrar(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!abierto) return;
+    if (e.key === 'Escape') { cerrar(); boton.focus(); return; }
+    if (e.key !== 'Tab') return;
+    // Foco atrapado: con el fondo bloqueado, tabular fuera deja al usuario
+    // moviéndose por algo que no puede ver.
+    const f = [boton, ...focalizables()];
+    const primero = f[0], ultimo = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+  });
+
+  // Si se gira el teléfono o se agranda la ventana hasta escritorio, el botón
+  // desaparece: el menú tiene que cerrarse o el fondo se queda bloqueado.
+  escritorio.addEventListener('change', (e) => { if (e.matches) cerrar(); });
+})();
+</script>
+</body>
+</html>
