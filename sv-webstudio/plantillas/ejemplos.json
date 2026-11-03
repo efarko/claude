@@ -1,0 +1,8 @@
+[
+  { "rubro": "casa-reposo", "nombre": "Casa de Reposo Ejemplo", "distrito": "Lince", "direccion": "Av. Arequipa 2000", "whatsapp": "", "telefonos": ["(01) 470-0000"], "horario": "Atención las 24 horas; visitas de 10 am a 6 pm", "muestra": true },
+  { "rubro": "dental", "nombre": "Clínica Dental Ejemplo", "distrito": "Miraflores", "direccion": "Av. Larco 500", "whatsapp": "", "telefonos": [], "horario": "Lunes a sábado, 9 am a 8 pm", "muestra": true },
+  { "rubro": "fisioterapia", "nombre": "Fisio Ejemplo", "distrito": "San Borja", "whatsapp": "", "horario": "Lunes a viernes, 8 am a 8 pm", "muestra": true },
+  { "rubro": "veterinaria", "nombre": "Veterinaria Ejemplo", "distrito": "Surco", "direccion": "Av. Caminos del Inca 1000", "whatsapp": "", "horario": "Todos los días, 9 am a 9 pm", "muestra": true },
+  { "rubro": "taller", "nombre": "Taller Ejemplo", "distrito": "La Victoria", "whatsapp": "", "telefonos": ["(01) 330-0000"], "horario": "Lunes a sábado, 8 am a 6 pm", "muestra": true },
+  { "rubro": "servicio-tecnico", "nombre": "Servicio Técnico Ejemplo", "distrito": "Puente Piedra", "whatsapp": "", "muestra": true }
+]

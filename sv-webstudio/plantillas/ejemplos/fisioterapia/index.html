@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fisio Ejemplo · Fisioterapia y rehabilitación en San Borja</title>
+<meta name="description" content="Terapia física para dolores de espalda, lesiones, recuperación después de una operación y más. Evaluamos su caso y le armamos un plan de sesiones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--tinta:#132a24;--fondo:#f4f8f6;--marca:#1f9d77;--marca2:#16765a;--acento:#3b82f6;--suave:#def2ea;--muted:color-mix(in srgb,var(--tinta) 62%,var(--fondo));--linea:color-mix(in srgb,var(--tinta) 12%,var(--fondo));--wa:#25d366}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acento);font-weight:700}
+.demo{background:var(--acento);color:#fff;font-size:13px;text-align:center;padding:8px 16px;font-weight:600}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand{font-weight:800;font-size:18px;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav-wa{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;text-decoration:none;background:var(--wa);color:#08311a;padding:9px 14px;border-radius:999px;white-space:nowrap}
+.nav-wa svg{width:18px;height:18px}
+.hero{background:linear-gradient(160deg,var(--tinta) 0%,color-mix(in srgb,var(--tinta) 80%,var(--marca)) 100%);color:#fff}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:64px 20px 72px}
+.hero .eyebrow{color:color-mix(in srgb,var(--acento) 70%,#fff)}
+.hero h1{font-size:clamp(34px,5.6vw,56px);margin:14px 0 16px}
+.hero h1 em{font-style:normal;color:color-mix(in srgb,var(--acento) 75%,#fff)}
+.lead{font-size:18px;color:color-mix(in srgb,#fff 78%,var(--tinta));max-width:52ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:999px;font-size:16px;transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--wa);color:#08311a}
+.btn-ghost{border:1px solid rgba(255,255,255,.3);color:#fff}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.badges span{font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 12px;border-radius:999px}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:26px}
+.hero-card h2{font-size:18px;margin-bottom:14px}
+.hero-card ul{list-style:none;display:grid;gap:12px}
+.hero-card li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:color-mix(in srgb,#fff 80%,var(--tinta))}
+.hero-card li b{display:block;color:#fff}
+.dot{width:30px;height:30px;border-radius:9px;background:color-mix(in srgb,var(--acento) 22%,transparent);display:grid;place-items:center;flex:none}
+.dot svg{width:17px;height:17px;stroke:color-mix(in srgb,var(--acento) 80%,#fff)}
+.hero-photo{border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+section{padding:72px 0}
+.head{max-width:640px;margin-bottom:34px}
+.head h2{font-size:clamp(28px,4vw,40px);margin:10px 0}
+.head p{color:var(--muted)}
+.needs{background:var(--suave)}
+.needs ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.needs li{background:#fff;border-radius:16px;padding:20px;display:grid;gap:8px}
+.needs li b{display:block}
+.needs li span{color:var(--muted);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--suave);display:grid;place-items:center}
+.ico svg{width:28px;height:28px;stroke:var(--marca)}
+.card h3{font-size:19px}
+.card p{color:var(--muted);font-size:15px}
+.card ul{list-style:none;font-size:14px;display:grid;gap:4px;margin-top:auto;padding-top:6px}
+.card li::before{content:"✓ ";color:var(--marca);font-weight:700}
+.feature{background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.feature .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.feature-box{background:linear-gradient(150deg,var(--suave),color-mix(in srgb,var(--suave) 60%,var(--acento)));border-radius:22px;padding:30px}
+.feature-box ol{padding-left:20px;display:grid;gap:10px;font-weight:500}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:24px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--marca);color:#fff;font-weight:800;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:15px}
+.faq details{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:18px 20px}
+.faq details+details{margin-top:12px}
+.faq summary{font-weight:600;cursor:pointer}
+.faq details p{margin-top:10px;color:var(--muted)}
+.map{width:100%;height:320px;border:0;border-radius:18px;background:var(--suave)}
+.contact{background:var(--tinta);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.contact h2{font-size:clamp(28px,4vw,40px);margin:10px 0 12px}
+.contact p{color:color-mix(in srgb,#fff 75%,var(--tinta))}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:26px;display:grid;gap:16px}
+.row{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:color-mix(in srgb,#fff 82%,var(--tinta));overflow-wrap:anywhere}
+.row svg{width:22px;height:22px;flex:none;stroke:color-mix(in srgb,var(--acento) 80%,#fff);color:var(--wa);margin-top:2px}
+.row b{display:block;color:#fff}
+.row a{text-decoration:underline;text-underline-offset:3px}
+footer{background:color-mix(in srgb,var(--tinta) 88%,#000);color:color-mix(in srgb,#fff 55%,var(--tinta));font-size:13px;text-align:center;padding:24px 20px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.35)}
+.fab svg{width:30px;height:30px}
+@media (max-width:900px){
+  .hero .wrap,.feature .wrap,.contact .wrap{grid-template-columns:1fr}
+  .grid,.needs ul{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .grid,.needs ul{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .hero .wrap{padding:44px 20px 52px}
+  .btn{width:100%;justify-content:center}
+  .brand{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="demo">Muestra gratuita preparada por SV WebStudio para Fisio Ejemplo</div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Fisio Ejemplo</a>
+    <a class="nav-wa" href="#contacto"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Fisioterapia y rehabilitación en San Borja</span>
+      <h1>Vuelva a moverse <em>sin dolor</em></h1>
+      <p class="lead">Terapia física para dolores de espalda, lesiones, recuperación después de una operación y más. Evaluamos su caso y le armamos un plan de sesiones.</p>
+      <div class="cta-row"><a class="btn btn-wa" href="#contacto"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Escríbanos por WhatsApp</a><a class="btn btn-ghost" href="#servicios">Ver servicios</a></div>
+      <div class="badges"><span>Evaluación personalizada</span><span>Plan de sesiones claro</span><span>Citas por WhatsApp</span></div>
+    </div>
+    <aside class="hero-card"><h2>¿Dónde le duele?</h2><ul><li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M8 5h8M7 9h10M8 13h8M7 17h10"/></svg></span><span><b>Espalda y cuello</b>lumbalgia, contracturas, hernias</span></li><li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4" r="2"/><path d="M9 21l2-6 3 3v3M10 9l3-1 2 4 3 1M11 15l-1-5"/></svg></span><span><b>Rodilla, tobillo o cadera</b>esguinces y desgaste</span></li><li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span><b>Lesión deportiva</b>para volver a entrenar</span></li><li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span><b>Después de una operación</b>rehabilitación paso a paso</span></li></ul></aside>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Servicios</span><h2>Cómo le ayudamos</h2><p>Cada sesión tiene un objetivo. Le decimos cuántas sesiones necesita y qué ejercicios hacer en casa.</p></div>
+    <div class="grid">
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M8 5h8M7 9h10M8 13h8M7 17h10"/></svg></div><h3>Terapia del dolor</h3><p>Alivio del dolor de espalda, cuello y articulaciones.</p><ul><li>Terapia manual</li><li>Electroterapia</li><li>Ejercicios guiados</li></ul></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></div><h3>Rehabilitación</h3><p>Recuperación después de fracturas u operaciones.</p><ul><li>Plan por etapas</li><li>Fortalecimiento</li><li>Control de avances</li></ul></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Lesiones deportivas</h3><p>Para volver a su deporte sin recaer.</p><ul><li>Esguinces y desgarros</li><li>Readaptación</li><li>Prevención</li></ul></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg></div><h3>Terapia a domicilio</h3><p>Para quienes no pueden movilizarse.</p><ul><li>Adultos mayores</li><li>Post operatorio</li><li>Horarios flexibles</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="wrap">
+    <div class="head" style="margin:0"><span class="eyebrow">Primera sesión</span><h2>Empezamos entendiendo su caso</h2><p>Revisamos su historia, evaluamos el movimiento y le explicamos qué está pasando. Con eso armamos un plan con un número claro de sesiones.</p></div>
+    <div class="feature-box"><ol><li>Evaluación del dolor y del movimiento</li><li>Plan de sesiones por escrito</li><li>Ejercicios para hacer en casa</li><li>Control de avances en cada cita</li></ol></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Cómo empezar</span><h2>Es muy fácil</h2></div>
+    <div class="steps"><div class="step"><h3>Escríbanos por WhatsApp</h3><p>Cuéntenos qué le duele y desde cuándo.</p></div><div class="step"><h3>Evaluación</h3><p>Vemos su caso y le proponemos un plan.</p></div><div class="step"><h3>Sesiones</h3><p>Avanzamos juntos hasta que se sienta bien.</p></div></div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Preguntas frecuentes</span><h2>Lo que nos preguntan</h2></div>
+    <details><summary>¿Necesito orden médica?</summary><p>No es obligatoria. Si la tiene, tráigala; nos ayuda a planificar mejor.</p></details>
+    <details><summary>¿Cuántas sesiones voy a necesitar?</summary><p>Depende de su caso. Se lo decimos en la evaluación, antes de empezar.</p></details>
+    <details><summary>¿Atienden a domicilio?</summary><p>Sí, coordinamos visitas según la zona y el horario.</p></details>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h2>¿Empezamos su recuperación?</h2>
+      <p>Escríbanos y le damos el primer horario disponible.</p>
+      <div class="cta-row"><a class="btn btn-wa" href="#contacto"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Escribir por WhatsApp</a></div>
+    </div>
+    <div class="contact-card"><div class="row"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg><span><b>WhatsApp</b>Aquí irá su número de WhatsApp</span></div><div class="row"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Horario</b>Lunes a viernes, 8 am a 8 pm</span></div><p style="font-size:13px;color:#ffc79a">En la versión final, todos los botones verdes abren directo su WhatsApp.</p></div>
+  </div>
+</section>
+
+<footer>Fisio Ejemplo · San Borja, Lima<br>Muestra preparada por SV WebStudio</footer>
+
+<a class="fab" href="#contacto" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+</body>
+</html>
