@@ -80,7 +80,7 @@ export function waMessage(p, userName) {
         `${greeting()}. Soy {closer}, de SV WebStudio.`,
         `Busqué a {negocio} en Google desde el celular, como lo haría un cliente nuevo, y vi que {problema}.${correo}`,
         issue.loss,
-        'Les hacemos una página profesional con sus servicios, fotos, ubicación en Google Maps y un botón que abre directo su WhatsApp. Queda lista en 3 a 5 días.',
+        'Les hacemos una página profesional con sus servicios, fotos, ubicación en Google Maps y un botón que abre directo su WhatsApp. Queda lista en 48 horas.',
         'Les preparo gratis un diseño de prueba con su nombre para que lo vean en su celular. Si no les convence, no pagan nada. ¿Se lo envío por aquí?',
       ]
     : [
@@ -119,7 +119,7 @@ export function callScript(p, userName) {
     {
       t: '3. Di qué hacemos',
       s: nueva
-        ? `Nosotros le hacemos una página web profesional a ${p.name}: una página clara con sus servicios, fotos, su ubicación en Google Maps y un botón que abre directo su WhatsApp. Se ve bien en cualquier celular y queda lista en 3 a 5 días hábiles.`
+        ? `Nosotros le hacemos una página web profesional a ${p.name}: una página clara con sus servicios, fotos, su ubicación en Google Maps y un botón que abre directo su WhatsApp. Se ve bien en cualquier celular y queda lista en 48 horas.`
         : `${issue.fix || FALLBACK.fix} Normalmente queda listo en 1 a 3 días.`,
     },
     {
@@ -135,8 +135,8 @@ export function callScript(p, userName) {
     { t: 'Si dice que sí', s: '¡Perfecto! Anoto el número y el nombre, y se la enviamos hoy o mañana. → Marca «Interesado» y escribe en la nota el WhatsApp, el nombre de la persona y lo que te dijo.' },
     { t: 'Si no es el encargado', s: '¿Me podría decir con quién hablo sobre la página web y a qué hora lo encuentro? → Anota el nombre y la hora en la nota y marca «No contestó» para volver a llamar otro día.' },
     { t: 'Si pregunta el precio', s: nueva
-      ? 'La página web nueva cuesta S/ 300, precio de lanzamiento hasta el 31 de diciembre; el dominio y el hosting se pagan aparte. Tiene garantía: si no le entregamos lo acordado, le devolvemos el 100%. Por eso primero le mandamos el diseño de prueba gratis, para que vea si le gusta.'
-      : 'Depende de lo que haya que corregir; un arreglo como este empieza en S/ 100. Si prefiere una web nueva, cuesta S/ 300 (precio de lanzamiento hasta el 31 de diciembre). Tiene garantía: si no le entregamos lo acordado, le devolvemos el 100%. Por eso primero le mandamos la versión de prueba gratis.' },
+      ? 'La página web nueva cuesta S/ 300 en un solo pago, o S/ 89 al mes por 12 meses con dominio, hosting y mantenimiento incluidos. Es precio de lanzamiento hasta el 31 de diciembre y queda lista en 48 horas. Tiene garantía: si no le entregamos lo acordado, le devolvemos el 100%. Por eso primero le mandamos el diseño de prueba gratis, para que vea si le gusta.'
+      : 'Depende de lo que haya que corregir; un arreglo como este empieza en S/ 100. Si prefiere una web nueva, cuesta S/ 300 en un solo pago o S/ 89 al mes por 12 meses, todo incluido (precio de lanzamiento hasta el 31 de diciembre). Tiene garantía: si no le entregamos lo acordado, le devolvemos el 100%. Por eso primero le mandamos la versión de prueba gratis.' },
     { t: 'Si pregunta quiénes son', s: 'Somos SV WebStudio, un estudio de diseño web de Lima que trabaja con negocios pequeños y medianos. Puede ver nuestros trabajos en sv-web-studio.vercel.app. Su número lo encontramos en su web o en Páginas Amarillas.' },
     { t: 'Si ya tiene quien le hace la web', s: 'Perfecto. Entonces le recomiendo comentarle este detalle a esa persona, porque le está haciendo perder clientes. Si en algún momento necesita apoyo, con gusto le dejo nuestro WhatsApp.' },
     { t: 'Si no tiene tiempo o pide que le escriban', s: 'Claro, no le quito más tiempo. ¿Le envío por WhatsApp lo que encontramos y la muestra para que la vea cuando pueda? ¿A qué número?' },
