@@ -1,0 +1,13 @@
+{
+  "name": "sv-whatsapp-bot",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node scripts/test.mjs" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.4.0",
+    "@vercel/functions": "3.10.6",
+    "nodemailer": "6.9.16",
+    "postgres": "3.4.5"
+  }
+}
