@@ -133,3 +133,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Bloqueados: ninguno. Sigue pendiente para Franco el seguimiento 2 de Romero Automotriz.
 - Pendiente: seguimiento 2 a los 10 hilos con seguimiento 1 del 31/10 (vencen el 4/11); seguimiento 1 a los 10 correos del 25–26/10 (Procesos Continuos, Hidráulica Mival, Más Servicios Múltiples, Industrias Científicas, Servicios Generales Flores, Generadores Perú, Dr. Domínguez, Parabrisas Elohim, Jor & Ma Eventos, Oximax).
 - 3/11, pedido de Franco: se envió a Adrianzen el correo de cierre (muestra, S/ 300 en dos pagos de S/ 150 por Yape/Plin al 957 636 046, dominio aprox. S/ 60/año aparte, garantía 100%, publicada 48 h después de recibir fotos y datos, 3 rondas de cambios) y se pidió su WhatsApp. Se borró el borrador anterior.
+
+## 4/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos por correo: ninguna nueva. Adrianzen no ha contestado al correo de cierre del 3/11 (recordatorio el 5/11 si sigue sin responder).
+- Fortexa: Franco le respondió hoy a Angélica. Queda esperando respuesta.
+- World Safety Perú pasó a ventas en curso (WhatsApp con Franco): le interesa la opción de S/ 1,200. Falta saber con qué empresa tiene hosting y dominio.
+- Rebotes nuevos: ninguno.
+- Seguimientos a prospectos en la revisión de las 4:51 pm: seguimiento 2 a los 10 hilos del 31/10 y seguimiento 1 a los 10 correos del 25–26/10 (World Safety queda fuera porque ya está en conversación).
