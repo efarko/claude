@@ -66,13 +66,14 @@
   // Cotizador
   var q = $('#cotizador-form');
   if (q) {
-    var st = { svc: [], inm: '', m2: 20, dist: '', when: '', name: '', det: '' };
+    var st = { svc: [], inm: '', m2: 20, dist: '', when: '', name: '', det: '', otro: '' };
+    var svcTxt = function () { return st.svc.map(function (s) { return s === 'Otros' && st.otro ? 'Otros (' + st.otro + ')' : s; }).join(', '); };
     var steps = $$('.qstep', q), cur = 0, bar = $('.qprog i', q);
     var sum = {
       svc: $('#s-svc'), inm: $('#s-inm'), m2: $('#s-m2'), dist: $('#s-dist'), when: $('#s-when')
     };
     var paint = function () {
-      sum.svc.textContent = st.svc.length ? st.svc.join(', ') : '—';
+      sum.svc.textContent = st.svc.length ? svcTxt() : '—';
       sum.inm.textContent = st.inm || '—';
       sum.m2.textContent = st.m2 ? 'Aprox. ' + st.m2 + ' m²' : '—';
       sum.dist.textContent = st.dist || '—';
@@ -94,7 +95,9 @@
       c.addEventListener('click', function () {
         var v = c.getAttribute('data-svc'), k = st.svc.indexOf(v);
         if (k < 0) st.svc.push(v); else st.svc.splice(k, 1);
-        c.setAttribute('aria-pressed', k < 0 ? 'true' : 'false'); paint(); check();
+        c.setAttribute('aria-pressed', k < 0 ? 'true' : 'false');
+        if (v === 'Otros') { $('#q-otro-box').hidden = k >= 0; if (k < 0) $('#q-otro').focus(); }
+        paint(); check();
       });
     });
     $$('[data-one]', q).forEach(function (c) {
@@ -107,6 +110,7 @@
     var rng = $('#q-m2'), out = $('#q-m2-out');
     rng.addEventListener('input', function () { st.m2 = +rng.value; out.textContent = rng.value + ' m²'; paint(); });
     $('#q-dist').addEventListener('change', function (e) { st.dist = e.target.value; paint(); check(); });
+    $('#q-otro').addEventListener('input', function (e) { st.otro = e.target.value.trim(); paint(); });
     $('#q-name').addEventListener('input', function (e) { st.name = e.target.value.trim(); });
     $('#q-det').addEventListener('input', function (e) { st.det = e.target.value.trim(); });
     $('.next', q).addEventListener('click', function () { if (cur < steps.length - 1) goStep(cur + 1); });
@@ -114,7 +118,7 @@
     $('.send', q).addEventListener('click', function () {
       var lines = [
         'Hola, Servicios Generales Flores. Quiero una cotización' + (st.name ? ' (soy ' + st.name + ')' : '') + ':',
-        '• Trabajo: ' + st.svc.join(', '),
+        '• Trabajo: ' + svcTxt(),
         '• Inmueble: ' + st.inm,
         '• Área aproximada: ' + st.m2 + ' m²',
         '• Distrito: ' + st.dist,

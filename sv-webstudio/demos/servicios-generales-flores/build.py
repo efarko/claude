@@ -47,6 +47,8 @@ def ic(name, cls=''):
         'calc': '<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h4"/>',
         'camera': '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
         'play': '<path d="M6 4v16l14-8z" fill="currentColor"/>',
+        'dots': '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
+        'video': '<rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8z"/>',
         'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
         'store': '<path d="M3 9 4.5 4h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/>',
         'office': '<rect x="3" y="7" width="18" height="14" rx="1"/><path d="M8 7V4h8v3M3 13h18"/>',
@@ -255,8 +257,8 @@ def page_a():
 def page_b():
     b = '../'
     svc = ''.join(f'''<article class="svc-photo rv"><img src="{b}img/{im}.webp" alt="{t}" loading="lazy"><h3>{t}</h3><p>{d}</p><a href="#cotizador">Cotizar</a></article>''' for t, i, d, im in SERVICES)
-    chips_svc = ''.join(f'<button type="button" class="chip" data-svc="{t}" aria-pressed="false">{ic(i)}{t}</button>' for t, i, _, _ in SERVICES)
-    inm = [('Casa', 'home'), ('Departamento', 'apt'), ('Oficina', 'office'), ('Local comercial', 'store')]
+    chips_svc = ''.join(f'<button type="button" class="chip" data-svc="{t}" aria-pressed="false">{ic(i)}{t}</button>' for t, i, _, _ in SERVICES) + f'<button type="button" class="chip" data-svc="Otros" aria-pressed="false">{ic("dots")}Otros</button>'
+    inm = [('Casa', 'home'), ('Departamento', 'apt'), ('Oficina', 'office'), ('Local comercial', 'store'), ('Otro', 'dots')]
     chips_inm = ''.join(f'<button type="button" class="chip" data-one="inm" data-v="{t}" aria-pressed="false">{ic(i)}{t}</button>' for t, i in inm)
     when = ['Lo antes posible', 'En las próximas semanas', 'Solo estoy cotizando']
     chips_when = ''.join(f'<button type="button" class="chip" data-one="when" data-v="{t}" aria-pressed="false">{ic("clock")}{t}</button>' for t in when)
@@ -307,7 +309,8 @@ def page_b():
   <div class="qbox">
     <form class="qcard" id="cotizador-form" onsubmit="return false">
       <div class="qprog" aria-hidden="true"><i></i></div>
-      <div class="qstep"><h3>1. ¿Qué trabajo necesita?</h3><p class="hint">Puede elegir varios.</p><div class="chips">{chips_svc}</div></div>
+      <div class="qstep"><h3>1. ¿Qué trabajo necesita?</h3><p class="hint">Puede elegir varios.</p><div class="chips">{chips_svc}</div>
+        <div class="field" id="q-otro-box" hidden style="margin-top:14px"><label for="q-otro">¿Qué otro trabajo necesita?</label><input id="q-otro" type="text" placeholder="Ej.: impermeabilizar el techo o instalar una puerta"></div></div>
       <div class="qstep"><h3>2. ¿Dónde es el trabajo?</h3><p class="hint">Elija el tipo de inmueble.</p><div class="chips c4">{chips_inm}</div>
         <div class="field" style="margin-top:18px"><label for="q-m2">Área aproximada</label><div class="range"><input id="q-m2" type="range" min="2" max="300" step="1" value="20"><output id="q-m2-out">20 m²</output></div></div></div>
       <div class="qstep"><h3>3. Distrito y fecha</h3><p class="hint">Atendemos todo Lima y Callao.</p>
@@ -318,8 +321,8 @@ def page_b():
         <div class="field"><label for="q-det">Cuéntenos un poco más</label><textarea id="q-det" rows="3" placeholder="Ej.: quiero cambiar el piso de la sala y enchapar el baño"></textarea></div></div>
       <div class="qnav"><button type="button" class="back">← Atrás</button><button type="button" class="btn btn-navy next">Siguiente {ic('arrow')}</button><button type="button" class="btn btn-wa send" hidden>{WA_SVG}Enviar por WhatsApp</button></div>
     </form>
-    <aside class="qsum rv"><h4>Su pedido</h4><dl><dt>Trabajo</dt><dd id="s-svc">—</dd><dt>Inmueble</dt><dd id="s-inm">—</dd><dt>Área</dt><dd id="s-m2">—</dd><dt>Distrito</dt><dd id="s-dist">—</dd><dt>Para</dt><dd id="s-when">—</dd></dl>
-      <p class="note">{ic('camera')}Al enviarlo se abre WhatsApp con su pedido escrito. Adjunte fotos del espacio y le cotizamos más rápido.</p></aside>
+    <aside class="qsum rv"><h4>{ic("calc")}Su pedido</h4><dl><dt>Trabajo</dt><dd id="s-svc">—</dd><dt>Inmueble</dt><dd id="s-inm">—</dd><dt>Área</dt><dd id="s-m2">—</dd><dt>Distrito</dt><dd id="s-dist">—</dd><dt>Para</dt><dd id="s-when">—</dd></dl>
+      <p class="note">{ic('camera')}<span>Al enviarlo se abre WhatsApp con su pedido escrito. Adjunte fotos del espacio y le cotizamos más rápido.</span></p></aside>
   </div>
 </div></section>
 <section class="sec" id="trabajos" style="background:#fff"><div class="wrap">
@@ -331,7 +334,7 @@ def page_b():
   <div class="steps">{steps_html}</div>
 </div></section>
 <section class="sec" style="background:var(--paper-2)"><div class="wrap video">
-  <div class="vbox rv"><img src="{b}img/piso-3.webp" alt="" loading="lazy"><button type="button" data-yt="{YT}" aria-label="Ver video de Servicios Generales Flores en obra"><span>{ic('play')}</span></button></div>
+  <div class="vbox rv"><img src="{b}img/piso-3.webp" alt="Equipo de Servicios Generales Flores instalando un piso" loading="lazy"><div class="vph"><span class="vtag">{ic('video')}Muestra</span><div><b>Aquí va el video de su equipo en obra</b><p>En la web final ponemos un video corto de sus trabajos, grabado con su celular.</p></div></div></div>
   <div class="rv"><span class="eyebrow dark">En obra</span><h2 style="font-size:clamp(34px,5vw,52px);color:var(--navy);margin:10px 0 14px">Véanos trabajando</h2><p style="color:var(--muted)">Así trabaja nuestro equipo en cada proyecto: con orden, seguridad y cuidado en cada acabado.</p>
     <p style="color:var(--navy);font-weight:700;margin-top:22px">Zonas de atención</p><div class="zones">{zones}</div></div>
 </div></section>
@@ -354,7 +357,7 @@ def page_index():
     pick_b = f'https://wa.me/{FRANCO_WA}?text=' + quote('Hola Franco, soy Jorge de Servicios Generales Flores. Me quedo con la opción B (S/ 800).')
     li = lambda xs: ''.join(f'<li>{ic("check")}<span>{x}</span></li>' for x in xs)
     a_items = ['Diseño nuevo, rápido y hecho para el celular', 'WhatsApp y teléfono que llaman al 907 335 502 con un toque', '8 servicios con botón de cotizar cada uno', 'Galería de 12 fotos de sus obras', 'Quiénes somos, contacto, correos y mapa de Villa María del Triunfo', 'Preparada para aparecer en Google']
-    b_items = ['Todo lo de la opción A', '<b>Cotizador en línea:</b> el cliente elige el trabajo, el inmueble, el área y el distrito, y le llega el pedido listo a su WhatsApp', '<b>Portafolio de 28 fotos</b> con filtros (baños, pisos, drywall, techos, en obra)', 'Portada a pantalla completa con animaciones', 'Sección “Cómo trabajamos”, video de su equipo en obra y preguntas frecuentes', 'Barra fija en el celular: Llamar · WhatsApp · Cotizar']
+    b_items = ['Todo lo de la opción A', '<b>Cotizador en línea:</b> el cliente elige el trabajo, el inmueble, el área y el distrito, y le llega el pedido listo a su WhatsApp', '<b>Portafolio de 28 fotos</b> con filtros (baños, pisos, drywall, techos, en obra)', 'Portada a pantalla completa con animaciones', 'Sección “Cómo trabajamos”, espacio para el video de su equipo en obra y preguntas frecuentes', 'Barra fija en el celular: Llamar · WhatsApp · Cotizar']
     return f'''<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow">
 <title>Propuesta web · Servicios Generales Flores</title><meta name="theme-color" content="#0b1650"><link rel="icon" href="img/logo.png">{FONTS}<link rel="stylesheet" href="assets/site.css">

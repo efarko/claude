@@ -232,14 +232,15 @@ body.has-mbar .fab{bottom:92px}
 .qnav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
 .qnav .btn{min-height:48px}
 .qnav .back{color:var(--muted);font-weight:700;padding:0 6px}
-.qsum{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:22px}
-.qsum h4{font-family:"Barlow Condensed";text-transform:uppercase;font-size:22px;margin-bottom:12px;color:var(--gold)}
-.qsum dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:15px}
+.qsum{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-lg);padding:26px}
+.qsum h4{font-family:"Barlow Condensed";text-transform:uppercase;font-size:32px;line-height:1;margin-bottom:18px;color:var(--gold);display:flex;align-items:center;gap:10px}
+.qsum h4 svg{width:28px;height:28px}
+.qsum dl{display:grid;grid-template-columns:auto 1fr;gap:12px 18px;font-size:18px;line-height:1.35}
 .qsum dt{color:#9ea6d6}
 .qsum dd{font-weight:600}
-.qsum .note{margin-top:16px;font-size:14px;color:#c9cff0;display:flex;gap:8px}
-.qsum .note svg{width:18px;height:18px;flex:none;color:var(--gold)}
-@media(min-width:900px){.qbox{grid-template-columns:1.35fr .65fr;align-items:start}.qsum{position:sticky;top:96px}}
+.qsum .note{margin-top:22px;font-size:17px;line-height:1.45;font-weight:600;color:#fff;display:flex;gap:12px;align-items:flex-start;background:rgba(245,179,1,.14);border:1.5px solid rgba(245,179,1,.55);border-radius:14px;padding:16px}
+.qsum .note svg{width:26px;height:26px;flex:none;color:var(--gold);margin-top:1px}
+@media(min-width:900px){.qbox{grid-template-columns:1.15fr .85fr;align-items:start}.qsum{position:sticky;top:96px}}
 
 /* Proceso */
 .steps{display:grid;gap:14px;counter-reset:s}
@@ -282,3 +283,9 @@ body.has-mbar .fab{bottom:92px}
 .citem a{display:block}
 .qnav .btn{white-space:nowrap;padding:0 18px;font-size:15.5px}
 .qnav .back{white-space:nowrap}
+.vph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px;background:linear-gradient(180deg,rgba(5,9,31,.35),rgba(5,9,31,.15) 40%,rgba(5,9,31,.92));color:#fff}
+.vtag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--gold-ink);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.vtag svg{width:18px;height:18px}
+.vph b{display:block;font-family:"Barlow Condensed";text-transform:uppercase;font-size:28px;line-height:1.05;margin-bottom:8px}
+.vph p{font-size:15px;color:#d8dcf3}
+.vbox img{opacity:1}
