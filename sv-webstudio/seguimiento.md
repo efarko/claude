@@ -140,3 +140,11 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - World Safety Perú pasó a ventas en curso (WhatsApp con Franco): le interesa la opción de S/ 1,200. Falta saber con qué empresa tiene hosting y dominio.
 - Rebotes nuevos: ninguno.
 - Seguimientos a prospectos en la revisión de las 4:51 pm: seguimiento 2 a los 10 hilos del 31/10 y seguimiento 1 a los 9 correos del 25–26/10 (sin Servicios Generales Flores, que pasó a no-contactar porque Franco ya lo atiende por WhatsApp; World Safety también queda fuera porque ya está en conversación).
+
+## 4/11/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna nueva. Adrianzen sigue sin contestar (recordatorio mañana 5/11). Fortexa, sin respuesta a lo que Franco le mandó hoy.
+- Rebotes nuevos: ninguno.
+- Seguimiento 1 enviado a 6 correos del 25/10: Hidráulica Mival, Industrias Científicas, Generadores Perú, Jor & Ma Eventos, Parabrisas y Multiservicios Elohim (con el ejemplo de talleres), Más Servicios Múltiples.
+- Seguimiento 2 (el último) enviado a 10 hilos con seguimiento 1 del 31/10: Dra. Juana Díaz Arévalo, Dr. Ernesto Rosales Turriate, VIMER, JL León & Asociados, Multi Industrias Metálicas, Señacril, Santa Agustina Automotores, Centro Geriátrico Regalito de Dios, Creative Home, Avalec.
+- Bloqueados por el sistema de permisos (no se reintentaron, quedan para Franco): seguimiento 1 a Procesos Continuos, Dr. Danny Domínguez Garcés y Gases Industriales Oximax. Sigue pendiente también el seguimiento 2 de Romero Automotriz.
+- Ya no quedan prospectos por correo con seguimientos pendientes, salvo los 7 del 24/10 (STG, Pintura Avendaño, Casa de Reposo Emmanuel, Copyimpresoras Edsel, Decogarden, MST Perú, El Vegetariano Sayel), cuyo seguimiento 2 toca el 7/11, y los 6 de hoy, cuyo seguimiento 2 toca el 8/11.
