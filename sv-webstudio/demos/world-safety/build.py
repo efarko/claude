@@ -95,7 +95,7 @@ body.has-quote .fab{bottom:96px}
 '''
 
 def page(tier):
-    label = {'landing':'Opción 1 · Landing · S/ 300','web':'Opción 2 · Web corporativa · S/ 500','catalogo':'Opción 3 · Catálogo con cotizador · S/ 800'}[tier]
+    label = {'web':'Opción A · Web corporativa · S/ 500','catalogo':'Opción B · Catálogo con cotizador · S/ 1,200'}[tier]
     full = tier in ('web','catalogo')
     cat = tier == 'catalogo'
     links = '<a href="#productos">Productos</a>' + ('<a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a>' if full else '') + ('<a href="#catalogo">Catálogo</a>' if cat else '') + '<a href="#contacto">Contacto</a>'
@@ -104,7 +104,7 @@ def page(tier):
 <title>World Safety Perú · Equipos de protección personal en Lima</title>
 <meta name="description" content="Distribuidores de equipos de protección personal y confeccionistas de ropa industrial. MSA, 3M, Delta Plus, Portwest y más. 25 años de experiencia. Cotice por WhatsApp.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>{CSS}</style></head><body>
-<a class="demo" href="../">Propuesta de SV WebStudio · {label} · Ver las 3 opciones</a>
+<a class="demo" href="../">Propuesta de SV WebStudio · {label} · Ver las 2 opciones</a>
 <nav><div class="wrap"><a class="logo" href="#"><img src="img/logo.jpg" alt="World Safety Perú" width="200" height="56"></a><div class="links">{links}</div>
 <a class="nav-wa" href="{wa('Hola, quisiera una cotización de equipos de protección')}" target="_blank" rel="noopener">{WA_SVG}Cotizar</a></div></nav>
 <header class="hero"><div class="wrap"><span class="eyebrow">Equipos de protección personal · Lima</span>
@@ -139,8 +139,6 @@ def page(tier):
             h.append(f'<article class="prod" data-c="{c}"><img src="img/{img}" alt="{n}" width="400" height="400" loading="lazy"><small>{c}</small><h3>{n}</h3><button class="btn add" data-n="{n}">Agregar a cotización</button></article>')
         h.append('</div></div></section>')
     h.append(f'''<section><div class="wrap"><div class="head"><span class="eyebrow">Nuestros clientes</span><h2>Empresas que confían en nosotros</h2></div><div class="logos">{''.join(f'<img src="img/{c}" alt="Cliente" width="160" height="56" loading="lazy">' for c in CLIENTES)}</div></div></section>''')
-    if full:
-        h.append('<section style="padding-top:0"><div class="wrap"><div class="head"><span class="eyebrow">Sedes</span><h2>Tres sedes para atenderle</h2></div><div class="sedes"><div><b>Lima · San Isidro</b>Av. Guardia Civil 1282</div><div><b>Sede 2</b>Dirección por confirmar</div><div><b>Sede 3</b>Dirección por confirmar</div></div></div></section>')
     h.append(f'''<section class="contact" id="contacto"><div class="wrap"><div><span class="eyebrow">Contacto</span><h2>Pida su cotización hoy</h2><p>Escríbanos por WhatsApp con lo que necesita y le respondemos con precios y stock.</p>
 <div class="cta"><a class="btn btn-wa" href="{wa('Hola, quisiera una cotización de equipos de protección')}" target="_blank" rel="noopener">{WA_SVG}Escribir por WhatsApp</a></div>
 <div class="rows"><div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query={urllib.parse.quote('Av. Guardia Civil 1282, San Isidro, Lima')}" target="_blank" rel="noopener">Av. Guardia Civil 1282, San Isidro, Lima</a></div>
@@ -169,7 +167,7 @@ window.open('https://wa.me/{WA}?text='+encodeURIComponent(t),'_blank')}});sync()
     h.append('</body></html>')
     return '\n'.join(h)
 
-for t in ('landing','web','catalogo'):
+for t in ('web','catalogo'):
     os.makedirs(os.path.join(D, t), exist_ok=True)
     html = page(t).replace('src="img/', 'src="../img/').replace('url(img/', 'url(../img/')
     open(os.path.join(D, t, 'index.html'), 'w').write(html)
@@ -181,11 +179,10 @@ idx = f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name=
 .plan ul{{list-style:none;display:grid;gap:7px;font-size:15px}}.plan li::before{{content:"✓ ";color:var(--blue);font-weight:800}}.plan .btn{{justify-content:center;margin-top:auto}}.tag{{align-self:flex-start;background:var(--yel);color:#2b2100;font-size:12px;font-weight:800;border-radius:999px;padding:4px 10px}}
 @media (max-width:980px){{.plans{{grid-template-columns:1fr}}}}</style></head><body>
 <section><div class="wrap"><img src="img/logo.jpg" alt="World Safety Perú" style="height:46px;width:auto;margin-bottom:22px">
-<div class="head"><span class="eyebrow">Propuesta de SV WebStudio</span><h2>Nueva página web para World Safety Perú</h2><p>Tres opciones, ya armadas con su información. Ábralas desde su celular y elija la que mejor se adapta a su empresa. Todas incluyen botón de WhatsApp, teléfonos que se llaman con un toque, mapa y diseño que se ve bien en celular y computadora.</p></div>
-<div class="plans">
-<div class="plan"><b>Opción 1 · Landing</b><div class="price">S/ 300 <small>o S/ 89 al mes</small></div><ul><li>Una página con todo lo esencial</li><li>6 categorías de productos</li><li>Marcas y clientes</li><li>Botón de WhatsApp en toda la página</li><li>Lista en 48 horas</li></ul><a class="btn btn-y" href="landing/">Ver la opción 1</a></div>
-<div class="plan"><b>Opción 2 · Web corporativa</b><div class="price">S/ 500 <small>o S/ 99 al mes</small></div><ul><li>Todo lo de la opción 1</li><li>Quiénes somos y servicios (recarga de extintores, confección)</li><li>Sus 3 sedes</li><li>Textos escritos para vender</li><li>Lista en 7 a 10 días</li></ul><a class="btn btn-y" href="web/">Ver la opción 2</a></div>
-<div class="plan rec"><span class="tag">Recomendada para World Safety</span><b>Opción 3 · Catálogo con cotizador</b><div class="price">S/ 800</div><ul><li>Todo lo de la opción 2</li><li>Catálogo de productos con fotos y filtros por categoría</li><li>El cliente arma su lista con cantidades y la envía por WhatsApp</li><li>Carga de todo su catálogo</li><li>Lista en 10 a 14 días</li></ul><a class="btn btn-y" href="catalogo/">Ver la opción 3</a></div>
+<div class="head"><span class="eyebrow">Propuesta de SV WebStudio</span><h2>Nueva página web para World Safety Perú</h2><p>Dos opciones, ya armadas con su información. Ábralas desde su celular y elija la que mejor se adapta a su empresa. Todas incluyen botón de WhatsApp, teléfonos que se llaman con un toque, mapa y diseño que se ve bien en celular y computadora.</p></div>
+<div class="plans" style="grid-template-columns:repeat(2,1fr)">
+<div class="plan"><b>Opción A · Web corporativa</b><div class="price">S/ 500 <small>o S/ 99 al mes</small></div><ul><li>Diseño que se ve completo en el celular y en la computadora</li><li>Productos por categoría, marcas y clientes</li><li>Quiénes somos y servicios (extintores, confección, protección ambiental)</li><li>WhatsApp y teléfonos que conectan con un toque</li><li>En su mismo dominio grupoworld.pe</li><li>Lista en 7 a 10 días</li></ul><a class="btn btn-y" href="web/">Ver la opción A</a></div>
+<div class="plan rec"><span class="tag">Recomendada para World Safety</span><b>Opción B · Catálogo con cotizador</b><div class="price">S/ 1,200</div><ul><li>Todo lo de la opción A</li><li>Catálogo con fotos y filtros por categoría (cargamos hasta 60 productos)</li><li>El comprador elige productos, pone cantidades y envía su pedido de cotización por WhatsApp, con su empresa y RUC</li><li>Ficha técnica descargable por producto</li><li>Optimizada para aparecer en Google cuando buscan "EPP en Lima"</li><li>Lista en 10 a 14 días</li></ul><a class="btn btn-y" href="catalogo/">Ver la opción B</a></div>
 </div>
 <p style="margin-top:26px;color:var(--muted);font-size:15px">Pago: 50% para empezar y 50% al publicar, por Yape o Plin. Dominio propio aparte (aprox. S/ 60 al año). Garantía: si no entregamos lo acordado, devolvemos el 100%.<br>Franco Valladares · SV WebStudio · +51 957 636 046 · <a href="https://sv-web-studio.vercel.app/">sv-web-studio.vercel.app</a></p>
 </div></section></body></html>'''
