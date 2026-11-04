@@ -1,0 +1,280 @@
+# Opción B (catálogo con cotizador) para World Safety Perú: diseño premium con animaciones.
+import os, json, urllib.parse
+D = os.path.dirname(os.path.abspath(__file__))
+WA = '51961611555'
+def wa(t): return f'https://wa.me/{WA}?text=' + urllib.parse.quote(t)
+
+PRODS = [
+  {'n':'Casco Libus Milenium Class','c':'Cabeza','b':'Libus','d':'Casco de seguridad con suspensión ajustable.','img':'casco.png'},
+  {'n':'Respirador MSA Advantage 200 LS','c':'Respiratoria','b':'MSA','d':'Respirador reutilizable de media cara.','img':'respirador.png'},
+  {'n':'Cartucho 3M 6059 multigás','c':'Respiratoria','b':'3M','d':'Cartucho para gases y vapores, para respiradores 3M.','img':'cartucho.png'},
+  {'n':'Orejeras 3M Peltor Optime H10A','c':'Auditiva','b':'3M','d':'Orejeras con banda para ambientes de alto ruido.','img':'orejeras.png'},
+  {'n':'Guantes Steelpro Multiflex látex','c':'Manos','b':'Steelpro','d':'Guante recubierto de látex para mejor agarre.','img':'guantes.png'},
+  {'n':'Poncho impermeable World Safety','c':'Ropa industrial','b':'World Safety','d':'Confección propia para trabajo bajo lluvia.','img':'poncho.png'},
+  {'n':'Casaca térmica GYW','c':'Ropa industrial','b':'GYW','d':'Abrigo para trabajo en zonas frías.','img':'campera.png'},
+  {'n':'Polainas de cuero sintético','c':'Ropa industrial','b':'World Safety','d':'Protección contra mordeduras, confección propia.','img':'polainas.png'},
+  {'n':'Chaleco salvavidas cuello alto','c':'Ropa industrial','b':'World Safety','d':'Chaleco salvavidas de confección propia.','img':'chaleco.png'},
+  {'n':'Kit para derrame de petróleo','c':'Ambiental','b':'World Safety','d':'Contención y limpieza de derrames.','img':'kit.png'},
+]
+CATS = [('Cabeza','Cascos y accesorios','casco.png'),('Respiratoria','Respiradores, filtros y cartuchos','respirador.png'),('Auditiva','Tapones y orejeras','orejeras.png'),
+        ('Manos','Anticorte, cuero, nitrilo, soldadura','guantes.png'),('Ropa industrial','Uniformes, lluvia, frío, salvavidas','poncho.png'),('Ambiental','Barreras y kits de derrame','kit.png')]
+CLIENTES = ['c-repsol.jpg','c-tottus.jpg','c-makro.png','c-cepsa.jpg','c-frontera.jpg','c-oefa.png','c-sencico.jpg','c-andes.jpg']
+MARCAS = ['MSA','3M','Delta Plus','Portwest','CAT','Bata','Libus']
+WAI = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>'
+I = {
+ 'search':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+ 'list':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>',
+ 'x':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+ 'mail':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+ 'arrow':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+ 'check':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>',
+ 'oil':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>',
+ 'cart':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>',
+ 'gov':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg>',
+ 'build':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l6-4v15M10 20V5l10 4v11M2 20h20M14 12h2M14 16h2"/></svg>',
+ 'fire':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z"/></svg>',
+ 'needle':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21 18 3M14 4l2 2M5 15l4 4"/></svg>',
+ 'leaf':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15M5 19l7-7"/></svg>',
+}
+
+CSS = r'''
+:root{--ink:#0a1430;--navy:#0d1b3d;--blue:#1d4ed8;--blue2:#1e3a8a;--green:#16a34a;--yel:#facc15;--bg:#f6f8fc;--muted:#5b6785;--line:#e3e8f2;--wa:#25d366;--r:20px;--sh:0 24px 60px -30px rgba(10,20,48,.45)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}a{color:inherit}button{font:inherit;cursor:pointer}
+h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,sans-serif;line-height:1.1;letter-spacing:-.025em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--blue)}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.demo{display:block;background:var(--yel);color:#2b2100;font-size:13px;text-align:center;padding:8px 16px;font-weight:700;text-decoration:none}
+.top{background:var(--ink);color:#aab6d3;font-size:13px}.top .wrap{display:flex;justify-content:space-between;gap:16px;height:36px;align-items:center}.top a{text-decoration:none;color:#dfe6f6}
+nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.sc{box-shadow:0 10px 30px -20px rgba(10,20,48,.4)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:70px}
+.logo img{height:42px;width:auto}
+.links{display:flex;gap:24px;margin-left:auto;font-weight:500;font-size:15px}.links a{text-decoration:none;color:var(--muted);transition:color .2s}.links a:hover{color:var(--ink)}
+.qbtn{position:relative;display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;transition:transform .2s}
+.qbtn svg{width:19px;height:19px}.qbtn:active{transform:scale(.96)}
+.badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;border-radius:999px;background:var(--yel);color:#2b2100;font-size:12px;font-weight:800;display:grid;place-items:center;padding:0 6px;transform:scale(0);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.badge.on{transform:scale(1)}.badge.pop{animation:pop .45s}
+@keyframes pop{40%{transform:scale(1.45)}}
+.hero{position:relative;overflow:hidden;background:radial-gradient(1200px 600px at 85% 20%,rgba(29,78,216,.55),transparent 60%),radial-gradient(800px 500px at 10% 110%,rgba(22,163,74,.35),transparent 60%),var(--navy);color:#fff}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000,transparent);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:80px 20px 96px}
+.hero .eyebrow{color:var(--yel)}
+.hero h1{font-size:clamp(38px,5.6vw,66px);margin:16px 0 18px}
+.hero h1 span{background:linear-gradient(90deg,#facc15,#4ade80);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:18px;color:#c9d4ee;max-width:52ch}
+.search{margin-top:28px;display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:8px 8px 8px 16px;max-width:520px;box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
+.search svg{width:20px;height:20px;color:var(--muted);flex:none}.search input{flex:1;border:0;outline:0;font:inherit;color:var(--ink);min-width:0}
+.search button{border:0;background:var(--blue);color:#fff;border-radius:12px;padding:11px 16px;font-weight:700;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chips button{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#dfe6f6;border-radius:999px;padding:6px 12px;font-size:13px}
+.stats{display:flex;gap:34px;margin-top:34px}.stats b{display:block;font-family:"Plus Jakarta Sans";font-size:34px;color:#fff}.stats span{font-size:13px;color:#a9b6d6}
+.stage{position:relative;height:460px}
+.float{position:absolute;background:#fff;border-radius:24px;padding:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);animation:float 6s ease-in-out infinite}
+.float img{width:100%;height:100%;object-fit:contain}
+.f1{width:230px;height:230px;left:6%;top:4%}.f2{width:260px;height:260px;right:2%;top:24%;animation-delay:-2s}.f3{width:200px;height:200px;left:22%;bottom:0;animation-delay:-4s}
+.float small{position:absolute;left:14px;bottom:10px;font-size:11px;font-weight:700;color:var(--blue2);background:#eef3ff;padding:3px 8px;border-radius:999px}
+@keyframes float{50%{transform:translateY(-14px) rotate(-1deg)}}
+.marquee{background:#fff;border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden}
+.marquee p{text-align:center;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.track{display:flex;gap:44px;width:max-content;animation:scroll 30s linear infinite}
+.track img{height:46px;width:130px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:.3s}.track img:hover{filter:none;opacity:1}
+@keyframes scroll{to{transform:translateX(-50%)}}
+section{padding:88px 0}.head{max-width:700px;margin-bottom:38px}.head h2{font-size:clamp(30px,4.2vw,46px);margin:12px 0}.head p{color:var(--muted);font-size:17px}
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 14px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s;border-width:1px}
+.cat:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:#c9d6f5}
+.cat img{width:96px;height:96px;object-fit:contain;margin:0 auto 10px;transition:transform .4s}.cat:hover img{transform:scale(1.08) rotate(-3deg)}
+.cat b{display:block;font-size:15px}.cat span{font-size:12px;color:var(--muted)}
+.catalog{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:26px}
+.tools .search{margin:0;box-shadow:none;border:1px solid var(--line);flex:1;min-width:240px;max-width:none}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 15px;font-size:14px;font-weight:600;color:var(--ink);transition:.2s}
+.filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prod{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.prod:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+.pimg{background:#fff;border-radius:14px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;margin-bottom:14px}
+.pimg img{width:82%;height:82%;object-fit:contain;transition:transform .5s}.prod:hover .pimg img{transform:scale(1.08)}
+.brand{position:absolute;top:26px;left:26px;font-size:11px;font-weight:800;background:var(--ink);color:#fff;padding:4px 9px;border-radius:999px}
+.prod small{font-size:12px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.prod h3{font-size:16px;margin:4px 0 6px}.prod p{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+.add{margin-top:auto;border:0;border-radius:12px;padding:12px;font-weight:700;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .25s,transform .15s}
+.add:active{transform:scale(.97)}.add svg{width:18px;height:18px}
+.add.on{background:#e7f8ee;color:#0f6b34}
+.empty{display:none;text-align:center;color:var(--muted);padding:30px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:"Plus Jakarta Sans";font-size:56px;font-weight:800;color:#e8eefb;position:absolute;right:18px;top:6px}
+.step b{display:block;font-size:19px;margin-bottom:6px;position:relative}.step span{color:var(--muted);position:relative}
+.inds{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ind{border-radius:var(--r);padding:26px;color:#fff;background:linear-gradient(160deg,#1e3a8a,#0d1b3d);min-height:190px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s}
+.ind:nth-child(2){background:linear-gradient(160deg,#166534,#0d1b3d)}.ind:nth-child(3){background:linear-gradient(160deg,#334155,#0d1b3d)}.ind:nth-child(4){background:linear-gradient(160deg,#a16207,#0d1b3d)}
+.ind:hover{transform:translateY(-6px)}.ind svg{width:34px;height:34px;color:var(--yel)}.ind b{font-size:19px;display:block}.ind span{font-size:13.5px;color:#cbd5ef}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about .pic{position:relative}.about .pic img{border-radius:28px;aspect-ratio:4/3.4;object-fit:cover;width:100%}
+.about .tag{position:absolute;left:-14px;bottom:24px;background:#fff;border-radius:18px;padding:16px 20px;box-shadow:var(--sh)}.about .tag b{font-size:30px;font-family:"Plus Jakarta Sans";display:block;color:var(--blue2)}
+.svc{display:grid;gap:14px;margin-top:26px}.svc div{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.svc svg{width:26px;height:26px;color:var(--green);flex:none}.svc b{display:block}.svc span{font-size:14px;color:var(--muted)}
+.brands{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}.brands span{font-family:"Plus Jakarta Sans";font-weight:800;font-size:20px;color:#9aa6c2;padding:10px 22px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:.25s}.brands span:hover{color:var(--ink);border-color:var(--ink)}
+.cta{border-radius:32px;padding:56px;background:radial-gradient(600px 300px at 90% 0%,rgba(250,204,21,.35),transparent 60%),linear-gradient(120deg,#1d4ed8,#0d1b3d);color:#fff;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.cta h2{font-size:clamp(28px,3.6vw,40px);max-width:18ch}.cta p{color:#cfdaf5;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:14px;padding:15px 22px;font-weight:700;text-decoration:none;transition:transform .15s}
+.btn:active{transform:scale(.97)}.btn svg{width:20px;height:20px}.btn-wa{background:var(--wa);color:#06341a}.btn-y{background:var(--yel);color:#2b2100}.btn-l{background:#fff;color:var(--ink)}
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:28px}
+.cbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:grid;gap:16px;align-content:start}
+.cbox div b{display:block;font-size:13px;color:var(--muted);font-weight:600}.cbox a{font-weight:600;text-decoration:none}
+.map{width:100%;min-height:340px;height:100%;border:0;border-radius:var(--r)}
+footer{background:var(--ink);color:#9aa6c2;padding:46px 0 28px;font-size:14px}.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+.foot b{color:#fff;display:block;margin-bottom:10px}.foot a{display:block;text-decoration:none;color:#c5cfe6;margin:4px 0}.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-top:18px;font-size:13px}
+.fab{position:fixed;right:18px;bottom:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.4)}.fab svg{width:30px;height:30px}
+.scrim{position:fixed;inset:0;background:rgba(10,20,48,.5);backdrop-filter:blur(3px);z-index:60;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:#fff;z-index:61;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .45s cubic-bezier(.22,1,.36,1);box-shadow:-30px 0 60px -30px rgba(10,20,48,.5)}
+.drawer.open{transform:none}
+.dh{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}.dh h3{font-size:20px}.dh small{display:block;color:var(--muted);font-size:13px}
+.icon{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center}.icon svg{width:18px;height:18px}
+.db{flex:1;overflow:auto;padding:16px 22px}
+.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateX(16px)}}
+.item img{width:56px;height:56px;object-fit:contain;background:var(--bg);border-radius:12px;padding:6px;flex:none}
+.item .t{flex:1;min-width:0}.item b{display:block;font-size:14px;line-height:1.3}.item span{font-size:12px;color:var(--muted)}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:12px;overflow:hidden}.qty button{width:32px;height:34px;border:0;background:#fff;font-size:18px;font-weight:700}
+.qty input{width:44px;height:34px;border:0;text-align:center;font:inherit;font-weight:700;-moz-appearance:textfield}.qty input::-webkit-inner-spin-button{-webkit-appearance:none}
+.rm{border:0;background:none;color:#94a3b8;padding:4px}.rm svg{width:16px;height:16px}
+.none{text-align:center;padding:40px 10px;color:var(--muted)}.none svg{width:46px;height:46px;margin:0 auto 10px;color:#c3cde3}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.form label{font-size:12.5px;font-weight:600;color:var(--muted);display:grid;gap:5px}.form .full{grid-column:1/-1}
+.form input,.form textarea{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;color:var(--ink);width:100%}.form textarea{resize:vertical;min-height:70px}
+.form input:focus,.form textarea:focus{outline:2px solid #bfd3ff;border-color:var(--blue)}
+.df{padding:16px 22px;border-top:1px solid var(--line);display:grid;gap:10px}.df .btn{justify-content:center}.df small{text-align:center;color:var(--muted);font-size:12px}
+.toast{position:fixed;left:50%;bottom:26px;z-index:70;background:var(--ink);color:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:14px;transform:translate(-50%,140%);transition:transform .45s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--sh)}
+.toast.show{transform:translate(-50%,0)}.toast button{border:0;background:var(--yel);color:#2b2100;border-radius:10px;padding:7px 12px;font-weight:700}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}.rv.in{opacity:1;transform:none}
+.hero .rv{transition-delay:calc(var(--d,0)*120ms)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media (max-width:1060px){.links{display:none}.qbtn{margin-left:auto}.hero .wrap{grid-template-columns:1fr}.stage{height:320px}.f1{width:170px;height:170px}.f2{width:190px;height:190px}.f3{width:150px;height:150px}
+.cats{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:repeat(3,1fr)}.inds{grid-template-columns:repeat(2,1fr)}.about,.contact{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.top .wrap span:first-child{display:none}.top .wrap{justify-content:center}.hero .wrap{padding:52px 20px 64px}.stats{gap:22px}.stats b{font-size:26px}
+.cats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.prod{padding:12px}.prod p{display:none}.prod h3{font-size:14px}.brand{top:18px;left:18px}
+.steps,.inds{grid-template-columns:1fr}section{padding:64px 0}.cta{padding:32px 24px}.foot{grid-template-columns:1fr}.qbtn span{display:none}.logo img{height:34px}.search button span{display:none}.form{grid-template-columns:1fr}.about .tag{left:12px}}
+'''
+
+def html():
+    cats = [c[0] for c in CATS]
+    p = []
+    p.append(f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Safety Perú · Equipos de protección personal para empresas</title>
+<meta name="description" content="Distribuidores de equipos de protección personal y confeccionistas de ropa industrial. MSA, 3M, Delta Plus, Portwest y más. Arme su cotización en línea.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet"><style>{CSS}</style></head><body>
+<a class="demo" href="../">Propuesta de SV WebStudio · Opción B · Catálogo con cotizador · Ver las 2 opciones</a>
+<div class="top"><div class="wrap"><span>Equipos de protección personal para empresas · 25 años</span><span><a href="tel:+51961611555">961 611 555</a> · <a href="mailto:ventas@grupoworld.pe">ventas@grupoworld.pe</a></span></div></div>
+<nav id="nav"><div class="wrap"><a class="logo" href="#"><img src="../img/logo.jpg" alt="World Safety Perú" width="200" height="56"></a>
+<div class="links"><a href="#catalogo">Catálogo</a><a href="#industrias">Industrias</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+<button class="qbtn" data-open>{I['list']}<span>Mi cotización</span><i class="badge" id="badge">0</i></button></div></nav>
+<header class="hero"><div class="wrap"><div>
+<span class="eyebrow rv" style="--d:0">Seguridad industrial · Lima, Perú</span>
+<h1 class="rv" style="--d:1">Equipos de protección para su empresa, <span>cotizados en minutos</span></h1>
+<p class="rv" style="--d:2">Distribuidores de MSA, 3M, Delta Plus, Portwest, CAT, Bata y Libus, y confeccionistas de ropa industrial. Elija los productos, indique cantidades y reciba su cotización por WhatsApp.</p>
+<form class="search rv" style="--d:3" id="heroSearch">{I['search']}<input name="q" placeholder="Busque: casco, guantes, respirador…" aria-label="Buscar producto"><button>{I['arrow']}<span>Buscar</span></button></form>
+<div class="chips rv" style="--d:4">''' + ''.join(f'<button data-cat="{c}">{c}</button>' for c in cats[:4]) + f'''</div>
+<div class="stats rv" style="--d:5"><div><b data-count="25">25</b><span>años en el sector</span></div><div><b data-count="3">3</b><span>sedes en el país</span></div><div><b data-count="7" data-plus>7+</b><span>marcas líderes</span></div></div></div>
+<div class="stage" aria-hidden="true"><div class="float f1"><img src="../img/casco.png" alt=""><small>Libus</small></div><div class="float f2"><img src="../img/respirador.png" alt=""><small>MSA</small></div><div class="float f3"><img src="../img/orejeras.png" alt=""><small>3M</small></div></div>
+</div></header>
+<div class="marquee"><p>Empresas que confían en World Safety</p><div class="track">''' + ''.join(f'<img src="../img/{c}" alt="Cliente" width="130" height="46">' for c in CLIENTES*2) + '''</div></div>''')
+    p.append('<section><div class="wrap"><div class="head rv"><span class="eyebrow">Categorías</span><h2>Todo el equipo de protección en un solo proveedor</h2><p>Desde la cabeza hasta los pies, y la protección del medio ambiente.</p></div><div class="cats">')
+    for i,(c,d,img) in enumerate(CATS):
+        p.append(f'<button class="cat rv" style="transition-delay:{i*60}ms" data-cat="{c}"><img src="../img/{img}" alt="" width="96" height="96" loading="lazy"><b>{c}</b><span>{d}</span></button>')
+    p.append('</div></div></section>')
+    p.append('<section class="catalog" id="catalogo"><div class="wrap"><div class="head rv"><span class="eyebrow">Catálogo</span><h2>Arme su cotización</h2><p>Agregue productos, ajuste cantidades y envíe su solicitud. Le respondemos con precios, stock y tiempo de entrega.</p></div>')
+    p.append(f'<div class="tools rv"><label class="search">{I["search"]}<input id="q" placeholder="Buscar en el catálogo" aria-label="Buscar en el catálogo"></label><div class="filters" id="filters"><button aria-pressed="true" data-c="">Todos</button>' + ''.join(f'<button aria-pressed="false" data-c="{c}">{c}</button>' for c in cats) + '</div></div><div class="grid" id="grid">')
+    for i,x in enumerate(PRODS):
+        p.append(f'<article class="prod rv" style="transition-delay:{(i%4)*70}ms" data-c="{x["c"]}" data-n="{x["n"]}" data-b="{x["b"]}"><span class="brand">{x["b"]}</span><div class="pimg"><img src="../img/{x["img"]}" alt="{x["n"]}" width="400" height="400" loading="lazy"></div><small>{x["c"]}</small><h3>{x["n"]}</h3><p>{x["d"]}</p><button class="add" data-n="{x["n"]}">{I["list"]}Agregar a cotización</button></article>')
+    p.append('</div><p class="empty" id="empty">No encontramos ese producto en esta muestra. Escríbanos y se lo cotizamos igual.</p></div></section>')
+    p.append('''<section><div class="wrap"><div class="head rv"><span class="eyebrow">Cómo cotizar</span><h2>Su cotización en tres pasos</h2></div><div class="steps">
+<div class="step rv"><b>Elija sus productos</b><span>Busque o filtre por categoría y agréguelos a su lista.</span></div>
+<div class="step rv" style="transition-delay:80ms"><b>Indique cantidades</b><span>Ajuste las cantidades y deje los datos de su empresa.</span></div>
+<div class="step rv" style="transition-delay:160ms"><b>Reciba su cotización</b><span>La envía por WhatsApp o correo y le respondemos con precios y stock.</span></div></div></div></section>''')
+    p.append(f'''<section id="industrias" style="padding-top:0"><div class="wrap"><div class="head rv"><span class="eyebrow">Industrias</span><h2>Protegemos a quienes mueven el país</h2></div><div class="inds">
+<div class="ind rv">{I['oil']}<div><b>Petróleo y energía</b><span>Repsol, Cepsa, Frontera</span></div></div>
+<div class="ind rv" style="transition-delay:70ms">{I['cart']}<div><b>Retail y logística</b><span>Tottus, Makro</span></div></div>
+<div class="ind rv" style="transition-delay:140ms">{I['gov']}<div><b>Sector público</b><span>OEFA, Sencico</span></div></div>
+<div class="ind rv" style="transition-delay:210ms">{I['build']}<div><b>Construcción e industria</b><span>EPP y ropa de trabajo a medida</span></div></div></div></div></section>''')
+    p.append(f'''<section id="nosotros" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap about">
+<div class="pic rv"><img src="../img/banner3.jpg" alt="Equipos de protección World Safety" width="800" height="680" loading="lazy"><div class="tag"><b><span data-count="25">25</span> años</b>protegiendo trabajadores</div></div>
+<div class="rv"><span class="eyebrow">Quiénes somos</span><h2 style="font-size:clamp(30px,4vw,44px);margin:12px 0">Más que un proveedor de EPP</h2>
+<p style="color:var(--muted)">Distribuimos equipos de protección personal de las mejores marcas y confeccionamos ropa de uso industrial, chalecos salvavidas, barreras de contención y polainas contra mordeduras.</p>
+<div class="svc"><div>{I['fire']}<p><b>Recarga de extintores</b><span>PQS, CO2, agua y más, con mantenimiento.</span></p></div>
+<div>{I['needle']}<p><b>Confección industrial</b><span>Uniformes, ropa para lluvia y frío, chalecos y polainas.</span></p></div>
+<div>{I['leaf']}<p><b>Protección ambiental</b><span>Barreras de contención y kits de derrame.</span></p></div></div></div></div></section>''')
+    p.append('<section style="padding:56px 0"><div class="wrap"><div class="brands rv">' + ''.join(f'<span>{m}</span>' for m in MARCAS) + '</div></div></section>')
+    p.append(f'''<section style="padding-top:0"><div class="wrap"><div class="cta rv"><div><h2>¿Necesita equipar a su personal?</h2><p>Envíenos su lista y le cotizamos el mismo día.</p></div>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><button class="btn btn-y" data-open>{I['list']}Armar cotización</button><a class="btn btn-l" href="{wa('Hola, quisiera una cotización de equipos de protección')}" target="_blank" rel="noopener">{WAI}Escribir por WhatsApp</a></div></div></div></section>''')
+    addr = 'Av. Guardia Civil 1282, San Isidro, Lima'
+    p.append(f'''<section id="contacto" style="padding-top:0"><div class="wrap"><div class="head rv"><span class="eyebrow">Contacto</span><h2>Visítenos o escríbanos</h2></div><div class="contact">
+<div class="cbox rv"><div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query={urllib.parse.quote(addr)}" target="_blank" rel="noopener">{addr}</a></div>
+<div><b>Celulares</b><a href="tel:+51961611555">961 611 555</a> · <a href="tel:+51996494571">996 494 571</a></div><div><b>Teléfono fijo</b><a href="tel:+5116540787">(01) 654-0787</a></div>
+<div><b>Correo</b><a href="mailto:ventas@grupoworld.pe">ventas@grupoworld.pe</a></div><div><b>Horario</b>Lunes a viernes, 9 am a 6 pm</div>
+<a class="btn btn-wa" href="{wa('Hola, quisiera una cotización de equipos de protección')}" target="_blank" rel="noopener">{WAI}Escribir por WhatsApp</a></div>
+<iframe class="map rv" src="https://www.google.com/maps?q={urllib.parse.quote(addr)}&output=embed" title="Mapa de World Safety" loading="lazy"></iframe></div></div></section>
+<footer><div class="wrap"><div class="foot"><div><img src="../img/logo.jpg" alt="World Safety" style="height:40px;width:auto;background:#fff;border-radius:8px;padding:4px;margin-bottom:12px"><p>Equipos de protección personal y confección industrial. 25 años protegiendo a trabajadores en todo el Perú.</p></div>
+<div><b>Catálogo</b>''' + ''.join(f'<a href="#catalogo" data-cat="{c}">{c}</a>' for c in cats) + f'''</div><div><b>Contacto</b><a href="tel:+51961611555">961 611 555</a><a href="mailto:ventas@grupoworld.pe">ventas@grupoworld.pe</a><a href="#contacto">{addr}</a></div></div>
+<p class="copy">© 2026 World Safety Perú · Propuesta preparada por SV WebStudio</p></div></footer>
+<a class="fab" href="{wa('Hola, quisiera una cotización de equipos de protección')}" target="_blank" rel="noopener" aria-label="WhatsApp">{WAI}</a>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Mi cotización" aria-hidden="true"><div class="dh"><div><h3>Mi cotización</h3><small id="dsub">Aún no agregó productos</small></div><button class="icon" id="dclose" aria-label="Cerrar">{I['x']}</button></div>
+<div class="db"><div id="items"></div><div class="none" id="none">{I['list']}<p>Su lista está vacía.<br>Agregue productos del catálogo.</p></div>
+<div class="form" id="form"><label>Nombre<input id="f-nom" autocomplete="name"></label><label>Empresa<input id="f-emp" autocomplete="organization"></label>
+<label>RUC<input id="f-ruc" inputmode="numeric" maxlength="11"></label><label>Ciudad de entrega<input id="f-ciu" placeholder="Lima"></label>
+<label class="full">Comentarios<textarea id="f-com" placeholder="Tallas, colores, fecha que lo necesita…"></textarea></label></div></div>
+<div class="df"><button class="btn btn-wa" id="send">{WAI}Enviar por WhatsApp</button><button class="btn btn-l" id="mail" style="border:1px solid var(--line)">{I['mail']}Enviar por correo</button><small>Le respondemos con precios, stock y tiempo de entrega.</small></div></aside>
+<div class="toast" id="toast" role="status"><span id="tmsg"></span><button data-open>Ver lista</button></div>''')
+    data = json.dumps({x['n']: {'c': x['c'], 'b': x['b'], 'img': '../img/' + x['img']} for x in PRODS}, ensure_ascii=False)
+    p.append('<script>const P=' + data + ';const WA="' + WA + '";\n' + r'''
+(()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let L={};try{L=JSON.parse(localStorage.getItem('ws-cot')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('ws-cot',JSON.stringify(L))}catch(e){}};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv').forEach(el=>io.observe(el));
+addEventListener('scroll',()=>$('#nav').classList.toggle('sc',scrollY>10),{passive:true});
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,end=+el.dataset.count,plus=el.hasAttribute('data-plus');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1400),v=Math.round(end*(1-Math.pow(1-k,3)));el.textContent=v+(plus&&k===1?'+':'');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),{threshold:.6});
+$$('[data-count]').forEach(el=>cio.observe(el));
+let cat='',q='';
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const apply=()=>{let n=0;$$('.prod').forEach(p=>{const ok=(!cat||p.dataset.c===cat)&&(!q||norm(p.dataset.n+' '+p.dataset.c+' '+p.dataset.b).includes(norm(q)));p.hidden=!ok;if(ok){n++;p.classList.add('in')}});$('#empty').style.display=n?'none':'block';
+$$('#filters button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===cat))};
+const goCat=c=>{cat=c;q='';$('#q').value='';apply();$('#catalogo').scrollIntoView({behavior:'smooth'})};
+$$('#filters button').forEach(b=>b.addEventListener('click',()=>{cat=b.dataset.c;apply()}));
+$$('[data-cat]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();goCat(b.dataset.cat)}));
+$('#q').addEventListener('input',e=>{q=e.target.value;cat='';apply()});
+$('#heroSearch').addEventListener('submit',e=>{e.preventDefault();q=e.target.q.value;cat='';$('#q').value=q;apply();$('#catalogo').scrollIntoView({behavior:'smooth'})});
+const count=()=>Object.values(L).reduce((a,b)=>a+b,0);
+let tt;const toast=m=>{$('#tmsg').textContent=m;$('#toast').classList.add('show');clearTimeout(tt);tt=setTimeout(()=>$('#toast').classList.remove('show'),2600)};
+const render=()=>{const k=Object.keys(L),n=count(),b=$('#badge');b.textContent=n;b.classList.toggle('on',n>0);
+$('#dsub').textContent=k.length?k.length+(k.length===1?' producto · ':' productos · ')+n+(n===1?' unidad':' unidades'):'Aún no agregó productos';
+$('#none').style.display=k.length?'none':'block';$('#form').style.display=k.length?'grid':'none';$('#send').disabled=$('#mail').disabled=!k.length;$('#send').style.opacity=$('#mail').style.opacity=k.length?1:.5;
+const box=$('#items');const prev=new Set([...box.children].map(x=>x.dataset.n));box.innerHTML='';
+k.forEach(name=>{const d=P[name],r=document.createElement('div');r.className='item';r.dataset.n=name;if(prev.has(name))r.style.animation='none';
+r.innerHTML='<img alt=""><div class="t"><b></b><span></span></div><div class="qty"><button aria-label="Menos">−</button><input type="number" min="1" aria-label="Cantidad"><button aria-label="Más">+</button></div><button class="rm" aria-label="Quitar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
+r.querySelector('img').src=d.img;r.querySelector('b').textContent=name;r.querySelector('.t span').textContent=d.b+' · '+d.c;const inp=r.querySelector('input');inp.value=L[name];
+const [mn,pl]=r.querySelectorAll('.qty button');mn.onclick=()=>{L[name]=Math.max(1,L[name]-1);save();render()};pl.onclick=()=>{L[name]++;save();render()};
+inp.onchange=()=>{L[name]=Math.max(1,parseInt(inp.value)||1);save();render()};r.querySelector('.rm').onclick=()=>{delete L[name];save();render()};box.appendChild(r)});
+$$('.add').forEach(b=>{const on=!!L[b.dataset.n];b.classList.toggle('on',on);b.lastChild.textContent=on?'En su cotización ('+L[b.dataset.n]+')':'Agregar a cotización'})};
+$$('.add').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.n;L[n]=(L[n]||0)+1;save();render();const bd=$('#badge');bd.classList.remove('pop');void bd.offsetWidth;bd.classList.add('pop');toast('Agregado: '+n)}));
+const open=()=>{$('#drawer').classList.add('open');$('#scrim').classList.add('open');$('#drawer').setAttribute('aria-hidden','false');$('#toast').classList.remove('show')};
+const close=()=>{$('#drawer').classList.remove('open');$('#scrim').classList.remove('open');$('#drawer').setAttribute('aria-hidden','true')};
+$$('[data-open]').forEach(b=>b.addEventListener('click',open));$('#dclose').onclick=close;$('#scrim').onclick=close;addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+const text=()=>{let t='Hola World Safety, quisiera cotizar:\n';Object.entries(L).forEach(([n,c])=>t+='• '+c+' x '+n+'\n');
+[['Nombre','#f-nom'],['Empresa','#f-emp'],['RUC','#f-ruc'],['Entrega en','#f-ciu'],['Comentarios','#f-com']].forEach(([l,s])=>{const v=$(s).value.trim();if(v)t+='\n'+l+': '+v});return t};
+$('#send').onclick=()=>window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(text()),'_blank');
+$('#mail').onclick=()=>{location.href='mailto:ventas@grupoworld.pe?subject='+encodeURIComponent('Solicitud de cotización'+($('#f-emp').value?' · '+$('#f-emp').value:''))+'&body='+encodeURIComponent(text())};
+render()})();
+</script></body></html>''')
+    return '\n'.join(p)
+
+os.makedirs(os.path.join(D, 'catalogo'), exist_ok=True)
+open(os.path.join(D, 'catalogo', 'index.html'), 'w').write(html())
+print('ok')
