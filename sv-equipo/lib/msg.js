@@ -67,6 +67,21 @@ export function issueOf(p) {
 
 const isNew = (p, issue) => p.need === 'nueva' || issue.key === 'caida' || issue.key === 'sinweb';
 
+// Ejemplo público del rubro (https://sv-ejemplos.vercel.app), según la categoría o el nombre del negocio.
+const EJEMPLOS = [
+  [/reposo|geri[aá]tric|adulto mayor|asilo/i, 'casas de reposo', 'casa-reposo'],
+  [/dent|odont|ortodon/i, 'clínicas dentales', 'dental'],
+  [/fisio|terapia f[ií]sica|rehabilit/i, 'centros de fisioterapia', 'fisioterapia'],
+  [/veterin|mascota|\bpet/i, 'veterinarias', 'veterinaria'],
+  [/taller mec|mec[aá]nic|automotr|automóvil/i, 'talleres', 'taller'],
+  [/t[eé]cnic|electrodom|l[ií]nea blanca|lavadora|refriger/i, 'servicio técnico', 'servicio-tecnico'],
+];
+export function ejemploDe(p) {
+  const text = `${p.category || ''} ${p.name || ''}`;
+  const hit = EJEMPLOS.find(([re]) => re.test(text));
+  return hit ? { rubro: hit[1], url: `https://sv-ejemplos.vercel.app/${hit[2]}/` } : null;
+}
+
 // Estructura: hallazgo concreto → lo que pierden (sin exagerar) → lo que hacemos → muestra gratis sin riesgo → pregunta de sí o no.
 // Solo los prospectos con muestra publicada usan su mensaje propio (wa_msg); el resto usa siempre esta plantilla.
 export function waMessage(p, userName) {
@@ -75,12 +90,13 @@ export function waMessage(p, userName) {
   const issue = issueOf(p);
   const correo = /correo/i.test(p.source || '') ? ' Hace unos días les escribí a su correo sobre esto.' : '';
   const nueva = isNew(p, issue);
+  const ejemplo = ejemploDe(p);
   const lines = nueva
     ? [
         `${greeting()}. Soy {closer}, de SV WebStudio.`,
         `Busqué a {negocio} en Google desde el celular, como lo haría un cliente nuevo, y vi que {problema}.${correo}`,
         issue.loss,
-        'Les hacemos una página profesional con sus servicios, fotos, ubicación en Google Maps y un botón que abre directo su WhatsApp. Queda lista en 48 horas.',
+        `Les hacemos una página profesional con sus servicios, fotos, ubicación en Google Maps y un botón que abre directo su WhatsApp. Queda lista en 48 horas.${ejemplo ? ` Así se ve una para ${ejemplo.rubro}: ${ejemplo.url}` : ''}`,
         'Les preparo gratis un diseño de prueba con su nombre para que lo vean en su celular. Si no les convence, no pagan nada. ¿Se lo envío por aquí?',
       ]
     : [

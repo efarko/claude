@@ -16,5 +16,7 @@ PLANES (precio de lanzamiento hasta el 31 de diciembre):
 En el plan mensual el primer mes se paga para empezar, e incluye dominio propio (.com), hosting, mantenimiento y hasta 2 cambios pequeños al mes.
 En el pago único, el dominio propio va aparte (aprox. S/ 60 al año) y el mantenimiento es opcional (S/ 60 al mes).
 Garantía: si no se entrega lo acordado, se devuelve el 100%.
+Referidos: por cada negocio que el cliente recomiende y que contrate, el cliente recibe 1 mes gratis de su plan mensual (o 1 mes gratis de mantenimiento si pagó en un solo pago).
+Ejemplos de páginas por rubro: https://sv-ejemplos.vercel.app (casas de reposo, dentistas, fisioterapia, veterinarias, talleres, servicio técnico).
 Antes de pagar nada, el cliente puede pedir una muestra gratis de cómo quedaría su página.
 `.trim();
