@@ -139,4 +139,4 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Fortexa: Franco le respondió hoy a Angélica. Queda esperando respuesta.
 - World Safety Perú pasó a ventas en curso (WhatsApp con Franco): le interesa la opción de S/ 1,200. Falta saber con qué empresa tiene hosting y dominio.
 - Rebotes nuevos: ninguno.
-- Seguimientos a prospectos en la revisión de las 4:51 pm: seguimiento 2 a los 10 hilos del 31/10 y seguimiento 1 a los 10 correos del 25–26/10 (World Safety queda fuera porque ya está en conversación).
+- Seguimientos a prospectos en la revisión de las 4:51 pm: seguimiento 2 a los 10 hilos del 31/10 y seguimiento 1 a los 9 correos del 25–26/10 (sin Servicios Generales Flores, que pasó a no-contactar porque Franco ya lo atiende por WhatsApp; World Safety también queda fuera porque ya está en conversación).
