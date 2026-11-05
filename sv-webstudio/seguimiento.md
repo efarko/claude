@@ -148,3 +148,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 2 (el último) enviado a 10 hilos con seguimiento 1 del 31/10: Dra. Juana Díaz Arévalo, Dr. Ernesto Rosales Turriate, VIMER, JL León & Asociados, Multi Industrias Metálicas, Señacril, Santa Agustina Automotores, Centro Geriátrico Regalito de Dios, Creative Home, Avalec.
 - Bloqueados por el sistema de permisos (no se reintentaron, quedan para Franco): seguimiento 1 a Procesos Continuos, Dr. Danny Domínguez Garcés y Gases Industriales Oximax. Sigue pendiente también el seguimiento 2 de Romero Automotriz.
 - Ya no quedan prospectos por correo con seguimientos pendientes, salvo los 7 del 24/10 (STG, Pintura Avendaño, Casa de Reposo Emmanuel, Copyimpresoras Edsel, Decogarden, MST Perú, El Vegetariano Sayel), cuyo seguimiento 2 toca el 7/11, y los 6 de hoy, cuyo seguimiento 2 toca el 8/11.
+
+## 5/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos por correo: ninguna nueva. Fortexa sigue sin responder.
+- Ventas en curso: Adrianzen no contestó a la propuesta del 3/11; se le mandó el recordatorio con el link de su muestra y las dos formas de pago. Último recordatorio el 8/11 si sigue sin responder.
+- Rebotes: ninguno definitivo. Entrega demorada del seguimiento 2 a Carpintería Antonio (Gmail sigue intentando); ese hilo ya está cerrado.
