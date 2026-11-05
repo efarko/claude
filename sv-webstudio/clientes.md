@@ -11,6 +11,7 @@ Una venta se pierde si dice que no o si no responde después del último recorda
 | BLESD (Jesús, amigo de Franco) | WhatsApp de Franco | Propuesta enviada | S/ 1,800 promo (S/ 3,215 normal) | Franco le preguntó si se decidió (31/10) | **Franco** (WhatsApp) | 31/10/2026 |
 | El Hogar de las Canitas Felices (Dr. Víctor Sáenz) | WhatsApp 947 116 973 | Propuesta enviada | S/ 300 + dominio | Sin respuesta desde el 24/10; un último recordatorio por WhatsApp | **Franco** (WhatsApp) | 24/10/2026 |
 | Fortexa Seguridad (Angélica Castillo) | administracion@fortexa.pe | Interesado | — | Franco le respondió el 4/11 (no vendemos bases de correos, se reofrece la muestra); esperar respuesta | Claude | 4/11/2026 |
+| Servicios Generales Flores (Jorge Flores) | WhatsApp de Franco | Propuesta enviada | Opción B S/ 800, o S/ 99 al mes por 12 meses (demo: flores-propuesta.vercel.app) | Espera cobrar una factura de su trabajo para decidir (5/11). Volver a escribirle el 10/11 | **Franco** (WhatsApp) | 5/11/2026 |
 | World Safety Perú | WhatsApp de Franco | Propuesta enviada | Opción B S/ 1,200 (catálogo con cotizador); SEO aparte | Le interesa la de S/ 1,200. Franco averigua con qué empresa tiene hosting y dominio, quién hizo su web actual y si necesita factura | **Franco** (WhatsApp) | 4/11/2026 |
 
 ## Muestras publicadas
