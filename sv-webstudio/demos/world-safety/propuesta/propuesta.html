@@ -96,6 +96,21 @@
   .steps > li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 6.5mm; height: 6.5mm; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 700; font-size: 9pt; display: flex; align-items: center; justify-content: center; }
   .note { border-left: 3px solid var(--accent); padding: 2mm 0 2mm 4mm; margin: 3mm 0; }
   .sec { margin-bottom: 4mm; }
+  .tiers { display: grid; grid-template-columns: 1fr 1.12fr 1fr; gap: 3mm; align-items: stretch; }
+  .tier { border: 1px solid var(--line); border-radius: 4mm; padding: 4mm; display: flex; flex-direction: column; }
+  .tier.hl { border: 2px solid var(--accent); background: var(--accent-soft); position: relative; }
+  .tier .ribbon { position: absolute; top: -3.2mm; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 7.5pt; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 99px; white-space: nowrap; }
+  .tier h3 { font-size: 11pt; margin: 1mm 0 1mm; }
+  .tier .what { font-size: 8.5pt; color: var(--muted); min-height: 12mm; margin-bottom: 2mm; }
+  .tier .once { font-size: 18pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .tier .once small, .tier .month small { font-size: 8pt; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .tier .plus { font-size: 8.5pt; color: var(--muted); margin: 1mm 0; }
+  .tier .month { font-size: 12.5pt; font-weight: 800; }
+  .tier ul { font-size: 8.5pt; margin: 3mm 0 0; }
+  .tier .strike { text-decoration: line-through; color: var(--muted); font-weight: 600; font-size: 9pt; }
+  .pain { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 4mm; }
+  .pain div { background: var(--soft); border-radius: 3mm; padding: 2.5mm 4mm; font-size: 8.8pt; line-height: 1.4; }
+  .pain b { display: block; font-size: 9.5pt; margin-bottom: 0.5mm; }
 </style>
 </head>
 <body>
@@ -109,8 +124,8 @@
 
   <div class="cover-hero">
     <div class="eyebrow">Propuesta para World Safety Perú</div>
-    <h1>Nueva web con catálogo y cotizador, preparada para aparecer en Google</h1>
-    <p class="lead">Este documento explica qué incluye cada servicio, cuánto cuesta, cuándo se entrega, qué podemos garantizar y qué no. La idea es que no quede ninguna duda antes de decidir.</p>
+    <h1>Que sus compradores lo encuentren en Google y le pidan cotización en un minuto</h1>
+    <p class="lead">Aquí está todo: qué incluye cada opción, cuánto cuesta, cuándo se entrega, qué podemos garantizar y qué no. La demo ya está armada con su información, para que vea el resultado antes de decidir.</p>
     <div class="cover-meta">
       <div><b>Fecha</b>5/11/2026</div>
       <div><b>Precios válidos</b>hasta el 31/12/2026</div>
@@ -118,39 +133,62 @@
     </div>
   </div>
 
-  <h2>Resumen</h2>
-  <p class="muted">Puede contratar solo la web, o la web junto con el proyecto de posicionamiento (lo que recomendamos si su objetivo es aparecer cuando buscan sus productos).</p>
-  <div class="summary">
-    <div class="card">
-      <span class="tag">Opción 1</span>
-      <h3 style="margin-top:2mm">Web catálogo con cotizador</h3>
-      <div class="price">S/ 1,200 <small>pago único</small></div>
-      <p class="small muted" style="margin-top:2mm">Lista en 7 días hábiles. Incluye el primer año de mantenimiento.</p>
-    </div>
-    <div class="card hl">
-      <span class="tag">Opción 2 · Recomendada</span>
-      <h3 style="margin-top:2mm">Web + proyecto de posicionamiento inicial</h3>
-      <div class="price">S/ 2,500 <small>pago único</small></div>
-      <p class="small" style="margin:1mm 0 0"><b>Ahorra S/ 200</b> frente a contratar por separado (S/ 2,700).</p>
-      <p class="small muted" style="margin-top:2mm">Web en 7 días hábiles; posicionamiento completo en 3 a 4 semanas.</p>
-    </div>
+  <h3>Lo que hoy le cuesta su web actual</h3>
+  <div class="pain">
+    <div><b>En el celular se ve cortada</b>La página es más ancha que la pantalla. La mayoría de compradores revisa proveedores desde el celular.</div>
+    <div><b>Cotizar toma demasiados pasos</b>Para pedir precio hay que descargar un PDF. Un comprador apurado le escribe al siguiente proveedor.</div>
   </div>
 
-  <h3 style="margin-top:5mm">Mensualidades (opcionales, empiezan cuando la web está publicada)</h3>
-  <table>
-    <tr><th>Plan</th><th>Precio</th><th>Para qué sirve</th></tr>
-    <tr><td><b>Mantenimiento</b></td><td class="num">S/ 60 al mes</td><td>Web funcionando y cambios en el catálogo. <b>El primer año va incluido</b>: se paga desde el segundo año.</td></tr>
-    <tr><td><b>Posicionamiento Pro</b></td><td class="num">S/ 900 al mes</td><td>Trabajo continuo para aparecer en más búsquedas de Google y en el modo IA. Incluye el mantenimiento. Mínimo 6 meses.</td></tr>
-  </table>
-  <p class="small muted">No hay costos escondidos: el dominio grupoworld.pe ya es suyo y lo sigue renovando con su proveedor; las herramientas de Google que usamos son gratuitas.</p>
+  <h2 style="margin-bottom:4.5mm">Elija su plan</h2>
+  <div class="tiers">
+    <div class="tier">
+      <h3>Esencial</h3>
+      <div class="what">La web nueva con catálogo y cotizador.</div>
+      <div class="once">S/ 1,200 <small>pago único</small></div>
+      <div class="plus">+ mantenimiento</div>
+      <div class="month">S/ 149 <small>al mes</small></div>
+      <ul class="check">
+        <li>Web catálogo con cotizador</li>
+        <li>Hasta 60 productos</li>
+        <li>Base para Google</li>
+      </ul>
+    </div>
+    <div class="tier hl">
+      <div class="ribbon">Recomendado</div>
+      <h3>Crecimiento</h3>
+      <div class="what">La web nueva, preparada desde el inicio para aparecer en Google.</div>
+      <div class="once">S/ 2,500 <small>pago único</small></div>
+      <div class="plus"><span class="strike">S/ 2,700</span> <b style="color:var(--accent)">Ahorra S/ 200</b></div>
+      <div class="plus" style="margin-top:0">+ mantenimiento</div>
+      <div class="month">S/ 149 <small>al mes</small></div>
+      <ul class="check">
+        <li>Todo lo de Esencial</li>
+        <li>60 fichas completas y preguntas para el modo IA</li>
+        <li>Catálogo en Google Shopping*</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <h3>Liderazgo</h3>
+      <div class="what">Crecimiento, más trabajo de posicionamiento todos los meses.</div>
+      <div class="once">S/ 2,500 <small>pago único</small></div>
+      <div class="plus">+ posicionamiento Pro</div>
+      <div class="month">S/ 900 <small>al mes</small></div>
+      <ul class="check">
+        <li>Todo lo de Crecimiento</li>
+        <li>Mantenimiento incluido</li>
+        <li>Contenido nuevo y reporte cada mes</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:3mm">El mantenimiento es parte de todos los planes y empieza el mes en que se publica la web. *Solo si publican precios, aunque sean referenciales. El dominio grupoworld.pe ya es suyo: no hay otros costos.</p>
 
   <div class="foot"><span>SV WebStudio · Franco Valladares · +51 957 636 046</span><span>1 / 5</span></div>
 </section>
 
 <!-- 2. LA WEB -->
 <section class="page">
-  <div class="eyebrow">Opción 1 · S/ 1,200</div>
-  <h2>Web catálogo con cotizador</h2>
+  <div class="eyebrow">Incluido en los tres planes</div>
+  <h2>La web catálogo con cotizador · S/ 1,200</h2>
   <p class="lead">La web que ya vio en la demo, con su información real, en su dominio grupoworld.pe.</p>
 
   <div class="sec">
@@ -164,7 +202,6 @@
       <li>Botón de WhatsApp y teléfonos que llaman con un toque.</li>
       <li>Base para Google: títulos y descripciones por página, datos estructurados básicos, mapa del sitio, alta en Google Search Console y perfil de Google Maps (lo creamos o mejoramos).</li>
       <li>3 rondas de cambios antes de publicar.</li>
-      <li><b>Primer año de mantenimiento incluido</b> (lo que cubre está en la página 3).</li>
     </ul>
   </div>
 
@@ -174,68 +211,73 @@
   </div>
 
   <div class="sec">
-    <h3>Formas de pago (elija una)</h3>
+    <h3>Formas de pago del pago único (elija una)</h3>
     <table>
-      <tr><th>Forma</th><th>Cómo se paga</th><th>Total</th></tr>
-      <tr><td><b>50% y 50%</b></td><td>S/ 600 para empezar y S/ 600 cuando la web está publicada y usted la aprobó.</td><td class="num">S/ 1,200</td></tr>
-      <tr><td><b>3 cuotas</b></td><td>S/ 400 para empezar, S/ 400 al publicar y S/ 400 a los 30 días.</td><td class="num">S/ 1,200</td></tr>
-      <tr><td><b>Mensual</b></td><td>S/ 149 al mes durante 12 meses. El primer mes se paga para empezar.</td><td class="num">S/ 1,788</td></tr>
+      <tr><th>Forma</th><th>Esencial (S/ 1,200)</th><th>Crecimiento o Liderazgo (S/ 2,500)</th></tr>
+      <tr><td><b>50% y 50%</b></td><td>S/ 600 para empezar y S/ 600 al publicar</td><td>S/ 1,250 para empezar y S/ 1,250 al publicar</td></tr>
+      <tr><td><b>3 cuotas</b></td><td>S/ 400 para empezar, S/ 400 al publicar y S/ 400 a los 30 días</td><td>S/ 850 para empezar, S/ 850 al publicar y S/ 800 a los 30 días</td></tr>
     </table>
-    <p class="small muted">Pagos por Yape o Plin al 957 636 046, a nombre de Franco Valladares.</p>
+    <p class="small muted">"Al publicar" significa cuando la web está en grupoworld.pe y usted la aprobó. Pagos por Yape o Plin al 957 636 046, a nombre de Franco Valladares.</p>
   </div>
 
-  <div class="note small"><b>Hosting:</b> su web actual está en la plataforma Duda, que no permite subir una web hecha a medida. La web nueva se aloja en su hosting si tiene cPanel, o en una cuenta gratuita de Cloudflare a nombre de World Safety. Cuando la web nueva esté publicada, puede cancelar su plan de Duda y ahorrarse ese pago.</div>
+  <div class="note small"><b>Hosting:</b> su web actual está en la plataforma Duda, que no permite subir una web hecha a medida. La web nueva se aloja en su hosting si tiene cPanel, o en una cuenta de Cloudflare a nombre de World Safety. Cuando la web nueva esté publicada, puede cancelar su plan de Duda y dejar de pagarlo.</div>
 
   <div class="foot"><span>SV WebStudio · Franco Valladares · +51 957 636 046</span><span>2 / 5</span></div>
 </section>
 
-<!-- 3. POSICIONAMIENTO Y MENSUALIDADES -->
+<!-- 3. MANTENIMIENTO Y POSICIONAMIENTO -->
 <section class="page">
-  <div class="eyebrow">Opción 2 · S/ 2,500 (web + posicionamiento inicial)</div>
-  <h2>Proyecto de posicionamiento inicial</h2>
-  <p class="lead" style="max-width:none">Hace que Google y su inteligencia artificial entiendan qué vende World Safety y puedan mostrarlo. Solo cuesta S/ 1,500; con la web, el paquete queda en S/ 2,500.</p>
-
-  <div class="sec">
-    <h3>Qué incluye (se hace una sola vez)</h3>
-    <ul class="check">
-      <li>Investigación de unas 100 búsquedas: productos, preguntas de compradores y búsquedas locales.</li>
-      <li><b>60 fichas de producto completas:</b> descripción, especificaciones, normas, usos y ficha técnica, verificadas con sus PDFs.</li>
-      <li><b>20 páginas de categoría</b> con 5 preguntas frecuentes cada una (es el formato que más usa el modo IA de Google).</li>
-      <li>Datos estructurados completos: producto, empresa, ubicación, preguntas frecuentes y navegación.</li>
-      <li>Google Search Console y Google Analytics, con medición de clics en WhatsApp y de cotizaciones enviadas.</li>
-      <li>Catálogo en Google Merchant Center para la sección de compras de Google (<b>solo si publican precios</b>, aunque sean referenciales).</li>
-      <li>Perfil de Google Maps completo (categorías, servicios, fotos y productos) y revisión técnica de velocidad, celular y enlaces.</li>
-          </ul>
-    <p><b>Plazo:</b> 3 a 4 semanas desde que recibimos sus fichas técnicas. <b>Pago del paquete:</b> S/ 1,250 para empezar y S/ 1,250 cuando la web está publicada y usted la aprobó.</p>
-  </div>
-
-  <div class="two">
+  <div class="eyebrow">Lo que mantiene su web vendiendo</div>
+  <h2>Mantenimiento mensual · S/ 149 al mes</h2>
+  <p>Una web de catálogo cambia todo el tiempo: productos nuevos, precios, fichas. El mantenimiento es parte de todos los planes para que el cotizador, los botones y el catálogo funcionen siempre. Son menos de S/ 5 al día.</p>
+  <div class="two" style="margin-bottom:5mm">
     <div class="box">
-      <h3>Mantenimiento · S/ 60 al mes</h3>
-      <p class="small muted">Incluido el primer año. Desde el segundo año, opcional. Las mensualidades se pagan por adelantado.</p>
-      <ul class="small">
+      <h3>Incluye</h3>
+      <ul class="check small">
         <li>Hosting y certificado de seguridad (el candado de "sitio seguro").</li>
-        <li>Hasta 5 cambios al mes en el catálogo: productos, fotos, textos o datos de contacto.</li>
+        <li>Hasta 5 cambios al mes: agregar o quitar productos, fotos, textos o datos.</li>
         <li>Revisión mensual de cotizador, WhatsApp, teléfonos y formularios.</li>
         <li>Copia de seguridad de la web.</li>
         <li>Atención por WhatsApp con respuesta el mismo día hábil.</li>
       </ul>
-      <p class="small muted">No incluye secciones nuevas ni rediseños.</p>
     </div>
     <div class="box">
-      <h3>Posicionamiento Pro · S/ 900 al mes</h3>
-      <p class="small muted">Incluye todo el mantenimiento. Mínimo 6 meses; después se cancela avisando con 30 días.</p>
+      <h3>Condiciones</h3>
       <ul class="small">
-        <li>4 artículos al mes sobre lo que buscan los compradores (por ejemplo, "qué casco usar para trabajos eléctricos").</li>
-        <li>20 fichas de producto nuevas o mejoradas al mes.</li>
-        <li>Actualización del catálogo en Merchant Center.</li>
-        <li>Google Maps: 4 publicaciones al mes y mensaje para pedir reseñas a sus clientes.</li>
-        <li>Menciones en directorios empresariales y webs de las marcas.</li>
-        <li>Revisión manual de 30 búsquedas en Google y en el modo IA, con capturas.</li>
-        <li>Reporte mensual: visitas, búsquedas, posiciones, cotizaciones y plan del mes siguiente.</li>
+        <li>Empieza el mes en que se publica la web. Se paga por adelantado.</li>
+        <li>Permanencia mínima de 12 meses. Después se cancela avisando con 30 días.</li>
+        <li>No incluye secciones nuevas ni rediseños.</li>
+        <li>Con el plan Liderazgo no se paga aparte: va incluido en los S/ 900.</li>
       </ul>
     </div>
   </div>
+
+  <h2>Posicionamiento inicial · incluido en Crecimiento y Liderazgo</h2>
+  <p class="muted">Hace que Google y su inteligencia artificial entiendan qué vende World Safety y puedan mostrarlo. Por separado cuesta S/ 1,500.</p>
+  <ul class="check small" style="columns:2; column-gap:6mm">
+    <li>Investigación de unas 100 búsquedas de compradores.</li>
+    <li><b>60 fichas de producto completas</b>, verificadas con sus PDFs.</li>
+    <li><b>20 páginas de categoría</b> con 5 preguntas frecuentes cada una.</li>
+    <li>Datos estructurados completos.</li>
+    <li>Search Console y Analytics, con medición de cotizaciones.</li>
+    <li>Catálogo en Google Merchant Center (si publican precios).</li>
+    <li>Perfil de Google Maps completo.</li>
+    <li>Revisión técnica de velocidad y celular.</li>
+  </ul>
+  <p class="small"><b>Plazo:</b> 3 a 4 semanas desde que recibimos sus fichas técnicas.</p>
+
+  <h2 style="margin-top:4mm">Posicionamiento Pro · S/ 900 al mes · plan Liderazgo</h2>
+  <ul class="check small" style="columns:2; column-gap:6mm">
+    <li>4 artículos al mes sobre lo que buscan los compradores.</li>
+    <li>20 fichas de producto nuevas o mejoradas al mes.</li>
+    <li>Catálogo de Merchant Center al día.</li>
+    <li>Google Maps: 4 publicaciones y pedido de reseñas.</li>
+    <li>Menciones en directorios y webs de las marcas.</li>
+    <li>Revisión de 30 búsquedas en Google y en el modo IA, con capturas.</li>
+    <li>Reporte mensual de visitas, posiciones y cotizaciones.</li>
+    <li>Mantenimiento incluido.</li>
+  </ul>
+  <p class="small muted">Mínimo 6 meses. Después puede seguir con el Pro o pasar solo a mantenimiento (S/ 149 al mes).</p>
 
   <div class="foot"><span>SV WebStudio · Franco Valladares · +51 957 636 046</span><span>3 / 5</span></div>
 </section>
@@ -253,7 +295,7 @@
         <li>Entregar la web con todo lo listado en este documento, en el plazo indicado. <b>Si no lo cumplimos, le devolvemos el 100%.</b></li>
         <li>Que su correo ventas@grupoworld.pe <b>no se caiga</b> durante el cambio: solo tocamos los registros de la web, no los del correo.</li>
         <li>Que el dominio, el hosting y las cuentas de Google queden <b>a nombre de World Safety</b>. Si un día deja de trabajar con nosotros, todo sigue siendo suyo y le entregamos la web completa.</li>
-        <li>Hacer cada mes el trabajo del plan que contrate y mostrarle el reporte con lo hecho.</li>
+        <li>Hacer cada mes el trabajo del plan que contrate y mostrarle lo hecho.</li>
         <li>No inventar especificaciones: los datos técnicos salen de sus fichas.</li>
         <li>Medir con datos reales de Google cuántas visitas y cotizaciones llegan.</li>
       </ul>
@@ -290,7 +332,7 @@
   <h2>Cómo empezamos</h2>
 
   <ol class="steps" style="margin-top:5mm">
-    <li><b>Elige la opción y la forma de pago</b> y hace el primer pago.</li>
+    <li><b>Elige el plan y la forma de pago</b> y hace el primer pago.</li>
     <li><b>Nos envía la información del catálogo:</b>
       <ul class="small" style="margin-top:1.5mm">
         <li>Lista de productos (hasta 60) y sus fichas técnicas en PDF.</li>
@@ -299,24 +341,26 @@
         <li>De qué marcas son distribuidores autorizados (MSA, 3M, Delta Plus u otras).</li>
       </ul>
     </li>
-    <li><b>Nos da acceso al panel del dominio</b> (o nos agrega como usuarios) y, si tiene, al cPanel. Si no tiene, le guiamos para abrir una cuenta gratuita de Cloudflare a nombre de la empresa.</li>
+    <li><b>Nos da acceso al panel del dominio</b> (o nos agrega como usuarios) y, si tiene, al cPanel. Si no tiene, le guiamos para abrir una cuenta de Cloudflare a nombre de la empresa.</li>
     <li><b>En 7 días hábiles</b> le mostramos la web terminada para que la revise. Tiene 3 rondas de cambios.</li>
-    <li><b>Publicamos en grupoworld.pe</b> sin cortar su correo. Usted verifica el perfil de Google Maps con el código que Google le envía.</li>
-    <li>Si eligió la opción 2, en las <b>3 a 4 semanas</b> siguientes completamos el posicionamiento inicial y le entregamos el primer reporte.</li>
+    <li><b>Publicamos en grupoworld.pe</b> sin cortar su correo. Usted verifica el perfil de Google Maps con el código que Google le envía. Desde ese mes empieza el mantenimiento.</li>
+    <li>En Crecimiento y Liderazgo, en las <b>3 a 4 semanas</b> siguientes completamos el posicionamiento inicial y le entregamos el primer reporte.</li>
     <li>Cuando todo funcione, puede <b>cancelar su plan de Duda</b>.</li>
   </ol>
 
-  <div class="card hl" style="margin-top:8mm">
+  <div class="card hl" style="margin-top:6mm">
     <h3>Resumen de precios</h3>
     <table style="margin:0">
-      <tr><td>Web catálogo con cotizador</td><td class="num">S/ 1,200</td></tr>
-      <tr><td>Web + proyecto de posicionamiento inicial</td><td class="num">S/ 2,500</td></tr>
-      <tr><td>Mantenimiento (desde el segundo año)</td><td class="num">S/ 60 al mes</td></tr>
-      <tr><td>Posicionamiento Pro (opcional, mínimo 6 meses)</td><td class="num">S/ 900 al mes</td></tr>
+      <tr><th>Plan</th><th>Pago único</th><th>Mensual</th></tr>
+      <tr><td>Esencial</td><td class="num">S/ 1,200</td><td class="num">S/ 149</td></tr>
+      <tr><td><b>Crecimiento (recomendado)</b></td><td class="num">S/ 2,500</td><td class="num">S/ 149</td></tr>
+      <tr><td>Liderazgo</td><td class="num">S/ 2,500</td><td class="num">S/ 900 <span class="muted" style="font-weight:400">(mín. 6 meses)</span></td></tr>
     </table>
   </div>
 
-  <div style="margin-top:10mm">
+  <p style="margin-top:6mm">Los precios se mantienen hasta el 31 de diciembre de 2026. Para empezar, basta con responder qué plan prefiere.</p>
+
+  <div style="margin-top:6mm">
     <p><b>Franco Valladares</b> · SV WebStudio<br>
     WhatsApp: +51 957 636 046 · sv.webstudio2026@gmail.com<br>
     <span class="muted">sv-web-studio.vercel.app · Demo: world-safety-propuesta.vercel.app</span></p>

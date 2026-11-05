@@ -153,3 +153,9 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas de prospectos por correo: ninguna nueva. Fortexa sigue sin responder.
 - Ventas en curso: Adrianzen no contestó a la propuesta del 3/11; se le mandó el recordatorio con el link de su muestra y las dos formas de pago. Último recordatorio el 8/11 si sigue sin responder.
 - Rebotes: ninguno definitivo. Entrega demorada del seguimiento 2 a Carpintería Antonio (Gmail sigue intentando); ese hilo ya está cerrado.
+
+## 5/11/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna nueva.
+- Rebotes: ninguno definitivo. Aviso de entrega demorada en el hilo de Decormadera (Gmail sigue intentando).
+- Seguimientos: ninguno vencía hoy. Los correos nuevos del 4/11 y 5/11 reciben seguimiento 1 a partir del 7/11 y 8/11; el seguimiento 2 de los 7 hilos del 24/10 toca el 7/11.
+- World Safety: propuesta en PDF rehecha con tres planes (Esencial S/ 1,200, Crecimiento S/ 2,500 recomendado, Liderazgo S/ 2,500 + S/ 900 al mes) y mantenimiento obligatorio de S/ 149 al mes con 12 meses de permanencia (ya no se incluye el primer año).
