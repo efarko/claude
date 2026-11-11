@@ -12,3 +12,5 @@
 | Helados San Miguel | catmi.chel@hotmail.com | 19/10/2026 |
 | Cousin Import | ventas1@cousinimport.com.pe | 21/10/2026 |
 | Florería Virgen de Chapi | floreriavirgendchapi@gmail.com | 23/10/2026 |
+| Decormadera Asociados (dirección en copia) | (ver hilo en Gmail) | 07/11/2026 |
+| Carpintería Antonio | (ver hilo en Gmail) | 07/11/2026 |

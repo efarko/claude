@@ -7,7 +7,7 @@ Una venta se pierde si dice que no o si no responde después del último recorda
 
 | Cliente | Contacto | Etapa | Precio | Siguiente paso | Responsable | Última fecha |
 |---|---|---|---|---|---|---|
-| Adrianzen Expertos en Línea Blanca (Xavier Adrianzen) | xaviadrianzen42@gmail.com | Propuesta enviada | S/ 300 (150 + 150); si duda, ofrecer S/ 89 al mes | Recordatorio enviado el 5/11. Si no responde, el último ("la dejo separada hasta el viernes") el 8/11 y luego venta perdida | Claude | 5/11/2026 |
+| Adrianzen Expertos en Línea Blanca (Xavier Adrianzen) | xaviadrianzen42@gmail.com | Propuesta enviada | S/ 300 (150 + 150); si duda, ofrecer S/ 89 al mes | Último aviso enviado el 11/11 (separada hasta el viernes 13/11). Si no responde, venta perdida | Claude | 11/11/2026 |
 | BLESD (Jesús, amigo de Franco) | WhatsApp de Franco | Propuesta enviada | S/ 1,800 promo (S/ 3,215 normal) | Franco le preguntó si se decidió (31/10) | **Franco** (WhatsApp) | 31/10/2026 |
 | El Hogar de las Canitas Felices (Dr. Víctor Sáenz) | WhatsApp 947 116 973 | Propuesta enviada | S/ 300 + dominio | Sin respuesta desde el 24/10; un último recordatorio por WhatsApp | **Franco** (WhatsApp) | 24/10/2026 |
 | Fortexa Seguridad (Angélica Castillo) | administracion@fortexa.pe | Interesado | — | Franco le respondió el 4/11 (no vendemos bases de correos, se reofrece la muestra); esperar respuesta | Claude | 4/11/2026 |

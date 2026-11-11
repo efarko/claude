@@ -159,3 +159,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Rebotes: ninguno definitivo. Aviso de entrega demorada en el hilo de Decormadera (Gmail sigue intentando).
 - Seguimientos: ninguno vencía hoy. Los correos nuevos del 4/11 y 5/11 reciben seguimiento 1 a partir del 7/11 y 8/11; el seguimiento 2 de los 7 hilos del 24/10 toca el 7/11.
 - World Safety: propuesta en PDF rehecha con tres planes (Esencial S/ 1,200, Crecimiento S/ 2,500 recomendado, Liderazgo S/ 2,500 + S/ 900 al mes) y mantenimiento obligatorio de S/ 149 al mes con 12 meses de permanencia (ya no se incluye el primer año).
+
+## 6/11 a 11/11/2026 · revisiones atrasadas (corridas juntas el 11/11, 9:51 am)
+- La sesión estuvo desconectada del 6/11 al 11/11; las 9 corridas se hicieron en una sola.
+- Respuestas de prospectos por correo en los últimos 7 días: ninguna.
+- Rebotes definitivos el 7/11 (bandeja llena): Decormadera (dirección en copia) y Carpintería Antonio.
+- Adrianzen: último aviso enviado el 11/11, separada hasta el viernes 13/11.
+- Seguimientos atrasados: se envían en la corrida de la tarde de hoy (máximo 20, los más antiguos primero).
