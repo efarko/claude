@@ -166,3 +166,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Rebotes definitivos el 7/11 (bandeja llena): Decormadera (dirección en copia) y Carpintería Antonio.
 - Adrianzen: último aviso enviado el 11/11, separada hasta el viernes 13/11.
 - Seguimientos atrasados: se envían en la corrida de la tarde de hoy (máximo 20, los más antiguos primero).
+
+## 11/11/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna nueva. Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) enviado a 13 hilos: STG Servicios Generales, Pintura Avendaño, Casa de Reposo Emmanuel (Dra. Hernández), Copyimpresoras Edsel, Decogarden Perú, MST Perú, El Vegetariano Sayel, Hidráulica Mival, Industrias Científicas, Generadores Perú, Jor & Ma Eventos, Parabrisas Elohim, Más Servicios Múltiples.
+- Seguimiento 1 enviado a 7 correos del 4/11: Virgen de Fátima, Virgen de Guadalupe, Dedicados con Amor (los tres con el ejemplo de casas de reposo), Plusdent Perú, Clínica Dental Tresierra (los dos con el ejemplo dental), J&R Contadores, T&P Abogados.
+- Bloqueados: ninguno.
+- Pendiente para mañana: seguimiento 1 a Casa de Reposo Emanuel (4/11; se dejó para no escribirle el mismo día que a Casa de Reposo Emmanuel, por si es el mismo negocio) y a los 10 correos del 5/11, y a los que siguen. Decormadera no recibe seguimiento (rebotó la dirección en copia).
