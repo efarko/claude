@@ -478,17 +478,4 @@ if __name__ == '__main__':
     (ROOT / 'web' / 'index.html').write_text(page_a(), encoding='utf-8')
     (ROOT / 'cotizador' / 'index.html').write_text(page_b(), encoding='utf-8')
     (ROOT / 'index.html').write_text(page_index(), encoding='utf-8')
-    # Web final de Jorge (opción A, pagada): carpeta propia, lista para su dominio
-    import re, shutil
-    OUT = ROOT.parent.parent / 'clientes' / 'servicios-generales-flores'
-    (OUT / 'assets').mkdir(parents=True, exist_ok=True)
-    (OUT / 'img').mkdir(exist_ok=True)
-    html = page_a(final=True)
-    (OUT / 'index.html').write_text(html, encoding='utf-8')
-    for f in ('site.css', 'site.js'):
-        shutil.copy(ROOT / 'assets' / f, OUT / 'assets' / f)
-    for f in sorted(set(re.findall(r'img/([\w-]+\.(?:webp|png))', html))):
-        shutil.copy(ROOT / 'img' / f, OUT / 'img' / f)
-    (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n', encoding='utf-8')
-    (OUT / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE}</loc><changefreq>monthly</changefreq><priority>1.0</priority></url></urlset>\n', encoding='utf-8')
-    print('ok', OUT)
+    print('ok')
