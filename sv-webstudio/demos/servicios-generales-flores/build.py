@@ -22,7 +22,7 @@ YT = '3uKk5c3VZCE'
 TIKTOK = 'https://www.tiktok.com/@sgflores8'
 SITE = 'https://www.contratistasgeneralesflores.com/'
 # Usuario de Instagram de Jorge, sin @. Mientras esté vacío, la web no muestra Instagram.
-INSTAGRAM = ''
+INSTAGRAM = 'fs.flores0'
 IG_URL = f'https://www.instagram.com/{INSTAGRAM}/' if INSTAGRAM else ''
 IG_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>'
 TT_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>'
