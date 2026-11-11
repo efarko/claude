@@ -19,7 +19,6 @@ WA = '51907335502'
 TEL = '+51907335502'
 TEL_TXT = '907 335 502'
 MAIL1 = 'sgflores_1985@outlook.com'
-MAIL2 = 'cotizaciones@contratistasgeneralesflores.com'
 ADDR = 'Los Laureles 161 A, Vallecito Bajo, Villa María del Triunfo, Lima'
 TIKTOK = 'https://www.tiktok.com/@sgflores8'
 INSTAGRAM = 'https://www.instagram.com/fs.flores0/'
@@ -304,7 +303,7 @@ def page():
     <div class="cinfo rv">
       <a class="citem" href="{WA_MAIN}" target="_blank" rel="noopener"><span class="ic" style="background:rgba(37,211,102,.12);color:#25d366">{WA_SVG}</span><span><small>WhatsApp</small><span class="v">{TEL_TXT}</span></span></a>
       <a class="citem" href="tel:{TEL}"><span class="ic">{ic('phone')}</span><span><small>Llámenos</small><span class="v">{TEL_TXT}</span></span></a>
-      <div class="citem"><span class="ic">{ic('mail')}</span><span><small>Correo</small><a class="v" href="mailto:{MAIL1}">{MAIL1}</a><a class="v" href="mailto:{MAIL2}">{MAIL2}</a></span></div>
+      <a class="citem" href="mailto:{MAIL1}"><span class="ic">{ic('mail')}</span><span><small>Correo</small><span class="v">{MAIL1}</span></span></a>
       <div class="citem"><span class="ic">{ic('pin')}</span><span><small>Dirección</small><span class="v">{ADDR}</span></span></div>
       <div class="citem"><span class="ic">{ic('clock')}</span><span><small>Horario</small><span class="v">Las 24 horas, todos los días</span></span></div>
     </div>
