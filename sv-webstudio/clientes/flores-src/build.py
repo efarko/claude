@@ -27,26 +27,29 @@ SITE = 'https://www.contratistasgeneralesflores.com/'
 
 # ---------- Fotos (archivo en img/ sin extensión .webp, texto) ----------
 HERO = ('hero', 'Baño en mármol negro con iluminación LED terminado por FS Flores')
-REEL = ['bano-1', 'piso-6', 'drywall-1', 'bano-5', 'escalera', 'techo-1', 'bano-13', 'granito', 'mueble-1', 'piso-1', 'bano-3', 'techo-2']
+REEL = ['j-sala-porcelanato', 'j-cocina-madera', 'j-bano-madera', 'j-terraza', 'bano-1', 'j-tablero-marmol', 'j-escalera-gris', 'drywall-1', 'j-bano-marmol', 'piso-6', 'j-ducha-madera', 'bano-5']
 SERVICES = [  # (título, descripción, foto, clase del bento)
-    ('Remodelación de baños', 'Enchapado, mamparas, muebles y gasfitería completa, de principio a fin.', 'bano-1', 'big'),
-    ('Pisos y madera', 'Laminados, madera, porcelanato y revestimiento de escaleras.', 'piso-6', 'wide'),
+    ('Remodelación de baños', 'Enchapado, mamparas, muebles y gasfitería completa, de principio a fin.', 'j-bano-madera', 'big'),
+    ('Pisos y porcelanato', 'Porcelanato, laminados y madera en interiores, terrazas y escaleras.', 'j-terraza', 'wide'),
+    ('Cocinas a medida', 'Muebles, tableros de mármol o granito e instalación completa.', 'j-cocina-madera', ''),
     ('Drywall', 'Muros, techos, divisiones y muebles empotrados con luz LED.', 'drywall-1', ''),
-    ('Gasfitería', 'Tuberías, griferías, sanitarios y fugas. Atención 24 horas.', 'gasfiteria', ''),
-    ('Electricidad', 'Instalaciones, tableros, tomacorrientes e iluminación.', 'bano-5', ''),
-    ('Pintura', 'Interiores y exteriores, con acabado limpio y parejo.', 'piso-4', ''),
+    ('Gasfitería y electricidad', 'Tuberías, fugas, tableros e iluminación. Atención 24 horas.', 'gasfiteria', ''),
+    ('Pintura y acabados', 'Interiores y exteriores, con acabado limpio y parejo.', 'j-sala-porcelanato', ''),
     ('Albañilería y obras civiles', 'Muros, tarrajeo, contrapisos, techos y ampliaciones.', 'techo-1', 'wide'),
 ]
-BEFORE_AFTER = None  # ('antes', 'despues', 'texto') cuando haya un par real de la misma obra
+BEFORE_AFTER = ('j-antes', 'j-despues', 'El mismo baño, antes y después de nuestro trabajo: de mayólica antigua y piso roto a porcelanato tipo mármol de piso a techo, con ducha nueva y mueble flotante.')
 GALLERY = [
-    ('bano-1', 'Baño con mampara y mueble flotante'), ('piso-6', 'Piso de madera en sala'), ('bano-5', 'Baño en mármol negro con LED'),
-    ('drywall-1', 'Repisas de drywall con luz LED'), ('escalera', 'Escalera revestida en madera'), ('techo-1', 'Estructura de techo en azotea'),
-    ('bano-13', 'Baño con revestimiento de madera'), ('granito', 'Tablero de granito en cocina'), ('mueble-1', 'Mueble empotrado a medida'),
-    ('bano-3', 'Baño con mampara y muro oscuro'), ('piso-1', 'Pisos laminados terminados'), ('techo-2', 'Pérgola de madera en azotea'),
-    ('bano-4', 'Mueble de baño blanco'), ('bano-6', 'Ducha con mampara de vidrio'), ('techo-4', 'Techo de cochera'), ('bano-7', 'Mampara de vidrio esmerilado'),
+    ('j-sala-porcelanato', 'Sala con porcelanato tipo madera'), ('j-cocina-madera', 'Cocina con muebles de madera y tablero de mármol'), ('j-bano-madera', 'Baño con pared tipo madera y lavatorio de mármol'),
+    ('j-terraza', 'Terraza con porcelanato tipo madera'), ('bano-1', 'Baño con mampara y mueble flotante'), ('j-tablero-marmol', 'Tablero de baño en mármol'),
+    ('j-escalera-gris', 'Escalera con porcelanato y perfiles dorados'), ('bano-5', 'Baño en mármol negro con LED'), ('j-bano-marmol', 'Baño en porcelanato tipo mármol'),
+    ('j-ducha-madera', 'Ducha con revestimiento tipo madera'), ('piso-6', 'Piso de madera en sala'), ('j-terraza-2', 'Terraza terminada'),
+    ('drywall-1', 'Repisas de drywall con luz LED'), ('j-bano-madera-2', 'Baño con revestimiento tipo madera'), ('escalera', 'Escalera revestida en madera'),
+    ('j-cocina-blanca', 'Cocina con tablero blanco y lavadero de acero'), ('j-piso-gris', 'Porcelanato gris en departamento'), ('granito', 'Tablero de granito en cocina'),
+    ('j-pasadizo', 'Pasadizo con porcelanato'), ('techo-1', 'Estructura de techo en azotea'), ('bano-13', 'Baño con revestimiento de madera'),
+    ('j-cocina-negra', 'Cocina con tablero oscuro'), ('mueble-1', 'Mueble empotrado a medida'), ('techo-2', 'Pérgola de madera en azotea'),
 ]
 ABOUT_IMG = ('piso-5', 'Equipo de FS Flores instalando un piso')
-FINAL_IMG = 'piso-6'
+FINAL_IMG = 'j-terraza'
 
 
 def wa(text):
@@ -142,9 +145,11 @@ def page():
     ba_html = ''
     if BEFORE_AFTER:
         a, b, t = BEFORE_AFTER
-        ba_html = f'''<section class="sec" style="padding-top:0"><div class="wrap">
-  <div class="sec-head rv"><span class="eyebrow">Antes y después</span><h2 class="h"><span class="silver">Deslice y vea</span> <span class="blue">la diferencia</span></h2><p>{t}</p></div>
-  <div class="ba rv"><img src="{img(a)}" alt="Antes"><img class="after" src="{img(b)}" alt="Después"><span class="tag l">Antes</span><span class="tag r">Después</span><div class="bar"></div><div class="knob">{ic('lr')}</div><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después"></div>
+        ba_html = f'''<section class="sec" style="padding-top:20px"><div class="wrap ba-wrap">
+  <div class="rv"><span class="eyebrow">Antes y después</span><h2 class="h" style="font-size:clamp(36px,5.4vw,62px);margin:14px 0 16px"><span class="silver">Deslice y vea</span> <span class="blue">la diferencia</span></h2><p style="color:var(--muted);font-size:18.5px">{t}</p>
+    <ul class="checks"><li>{ic('check')}Retiro de la mayólica y el piso antiguos</li><li>{ic('check')}Porcelanato de piso a techo</li><li>{ic('check')}Gasfitería, ducha y sanitarios nuevos</li></ul>
+    <div class="cta"><a class="btn btn-wa" href="{wa('Hola, vi el antes y después de su página web y quiero renovar mi baño.')}" target="_blank" rel="noopener">{WA_SVG}Quiero renovar mi baño</a></div></div>
+  <div class="ba tall rv d1"><img src="{img(a)}" alt="Baño antes de la remodelación"><img class="after" src="{img(b)}" alt="El mismo baño después de la remodelación"><span class="tag l">Antes</span><span class="tag r">Después</span><div class="bar"></div><div class="knob">{ic('lr')}</div><input type="range" min="0" max="100" value="50" aria-label="Deslice para comparar el antes y el después"></div>
 </div></section>'''
     gal_html = ''.join(f'<button type="button" class="rv" data-src="{img(n)}" data-cap="{t}" aria-label="Ver foto: {t}"><img src="{img(n)}" alt="{t}" loading="lazy"><span>{t}</span></button>' for n, t in GALLERY)
     steps = [

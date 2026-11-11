@@ -242,3 +242,7 @@ a.citem:hover{border-color:var(--blue)}
 .hero h1{font-size:clamp(44px,7.6vw,98px);max-width:1120px}
 @media(min-width:1000px){.svc:not(.big):not(.wide) h3{font-variation-settings:"wdth" 100;font-stretch:100%;font-size:23px}}
 .brand img{height:60px}
+.ba-wrap{display:grid;gap:36px;align-items:center}
+.ba.tall{aspect-ratio:795/1600;max-width:440px;width:100%;margin:0 auto}
+@media(min-width:900px){.ba-wrap{grid-template-columns:1.1fr .9fr;gap:60px}}
+@media(max-width:899px){.ba-wrap .ba{order:-1}}
