@@ -43,15 +43,26 @@ BEFORE_AFTER = [
     ('Barra de terraza', 'k-barra-antes', 'k-barra-terraza', '787/1400', 'Una barra a medida para una terraza: de la estructura en obra al mueble terminado con porcelanato y acabado tipo madera.', ['Estructura y revestimiento a medida', 'Acabado tipo madera y tablero de piedra', 'Mueble empotrado al fondo']),
     ('Terraza', 'k-terraza-antes', 'k-terraza-despues', '1400/788', 'Un mesón con lavadero y banca para una terraza: del enchapado en proceso al espacio listo para usar.', ['Mesón y banca enchapados en porcelanato', 'Lavadero de acero y grifería', 'Acabado limpio en cada borde']),
 ]
+# Galería por secciones, en este orden: techos primero, trabajos dentro de la casa y pisos al final.
+# (id, título, descripción, [(foto, texto), ...])
 GALLERY = [
-    ('k-bano-espejo-led', 'Baño con espejo redondo iluminado'), ('j-sala-porcelanato', 'Sala con porcelanato tipo madera'), ('k-cava-led', 'Cava y repisas a medida con luz LED'),
-    ('j-cocina-madera', 'Cocina con muebles de madera y tablero de mármol'), ('k-casa-playa', 'Casa frente al mar construida por FS Flores'), ('k-mueble-flotante', 'Mueble de baño flotante con cajones'),
-    ('j-bano-madera', 'Baño con pared tipo madera y lavatorio de mármol'), ('k-barra-terraza', 'Barra a medida en terraza'), ('bano-5', 'Baño en mármol negro con LED'),
-    ('k-lavatorio-marmol', 'Lavatorio con tablero de mármol y cajón'), ('j-terraza', 'Terraza con porcelanato tipo madera'), ('k-panel-led', 'Panel tipo madera con luz LED'),
-    ('k-bano-marmol-madera', 'Baño en porcelanato tipo mármol'), ('j-escalera-gris', 'Escalera con porcelanato y perfiles dorados'), ('bano-1', 'Baño con mampara y mueble flotante'),
-    ('k-barra-madera', 'Barra con puertas corredizas'), ('j-tablero-marmol', 'Tablero de baño en mármol'), ('k-terraza-banca', 'Banca enchapada en terraza'),
-    ('k-bano-patron', 'Baño con mayólica decorativa'), ('drywall-1', 'Repisas de drywall con luz LED'), ('j-ducha-madera', 'Ducha con revestimiento tipo madera'),
-    ('piso-6', 'Piso de madera en sala'), ('j-cocina-blanca', 'Cocina con tablero blanco'), ('escalera', 'Escalera revestida en madera'),
+    ('techos', 'Techos y estructuras', 'Techos, coberturas, pérgolas y estructuras metálicas, hasta casas completas.', [
+        ('k-casa-playa', 'Casa de dos pisos frente al mar'), ('techo-1', 'Estructura de techo en azotea'), ('k-casa-obra', 'Segundo piso en construcción'),
+        ('techo-4', 'Techo de cochera'), ('techo-2', 'Pérgola de madera en azotea')]),
+    ('banos', 'Baños', 'Remodelaciones completas: enchapado, mamparas, muebles flotantes y gasfitería.', [
+        ('k-bano-espejo-led', 'Baño con espejo redondo iluminado'), ('j-bano-madera', 'Baño con pared tipo madera'), ('bano-5', 'Baño en mármol negro con LED'),
+        ('k-mueble-flotante', 'Mueble flotante con cajones'), ('k-lavatorio-marmol', 'Lavatorio con tablero de mármol'), ('k-bano-marmol-madera', 'Baño en porcelanato tipo mármol'),
+        ('bano-1', 'Baño con mampara y mueble flotante'), ('j-ducha-madera', 'Ducha con revestimiento tipo madera'), ('j-tablero-marmol', 'Tablero de baño en mármol')]),
+    ('drywall', 'Drywall y muebles a medida', 'Repisas con luz LED, cavas, barras, cocinas y muebles empotrados.', [
+        ('k-cava-led', 'Cava y repisas con luz LED'), ('drywall-1', 'Repisas de drywall con luz LED'), ('k-barra-terraza', 'Barra a medida en terraza'),
+        ('j-cocina-madera', 'Cocina con muebles de madera'), ('k-panel-led', 'Panel tipo madera con luz LED'), ('k-barra-madera', 'Barra con puertas corredizas'),
+        ('j-cocina-blanca', 'Cocina con tablero blanco'), ('granito', 'Tablero de granito en cocina'), ('mueble-1', 'Mueble empotrado a medida')]),
+    ('escaleras', 'Escaleras', 'Escaleras revestidas en madera o porcelanato, con perfiles y acabados finos.', [
+        ('j-escalera-gris', 'Escalera con porcelanato y perfiles dorados'), ('escalera', 'Escalera revestida en madera'), ('j-escalera-obra', 'Escalera en pleno enchapado')]),
+    ('pisos', 'Pisos y porcelanato', 'Porcelanato, laminados y madera en salas, pasadizos y terrazas.', [
+        ('j-sala-porcelanato', 'Sala con porcelanato tipo madera'), ('j-terraza', 'Terraza con porcelanato tipo madera'), ('piso-6', 'Piso de madera en sala'),
+        ('k-terraza-banca', 'Banca y piso enchapados en terraza'), ('j-piso-gris', 'Porcelanato gris en departamento'), ('j-pasadizo', 'Pasadizo con porcelanato'),
+        ('j-terraza-2', 'Terraza terminada'), ('piso-1', 'Pisos laminados terminados'), ('k-terraza-lavadero', 'Mesón y piso de terraza enchapados')]),
 ]
 PROJECT = [  # proyecto destacado: casa completa
     ('k-casa-estructura', 'La estructura', 'Estructura metálica y cerramientos, con la seguridad adecuada en cada etapa.'),
@@ -164,7 +175,12 @@ def page():
   <div class="ba-stage rv d1">{sliders}</div>
 </div></section>'''
     proj_html = ''.join(f'<figure class="pj rv d{k}"><img src="{img(im)}" alt="{t}" loading="lazy"><figcaption><b class="h">0{k + 1} · {t}</b>{d}</figcaption></figure>' for k, (im, t, d) in enumerate(PROJECT))
-    gal_html = ''.join(f'<button type="button" class="rv" data-src="{img(n)}" data-cap="{t}" aria-label="Ver foto: {t}"><img src="{img(n)}" alt="{t}" loading="lazy"><span>{t}</span></button>' for n, t in GALLERY)
+    nav_html = ''.join(f'<a href="#obras-{cid}"><b>0{k + 1}</b>{title}</a>' for k, (cid, title, _, _) in enumerate(GALLERY))
+    cats = []
+    for k, (cid, title, desc, photos) in enumerate(GALLERY):
+        btns = ''.join(f'<button type="button" data-src="{img(n)}" data-cap="{title} · {t}" aria-label="Ver foto: {t}"><img src="{img(n)}" alt="{t}" loading="lazy"><span>{t}</span></button>' for n, t in photos)
+        cats.append(f'<div class="cat rv" id="obras-{cid}"><div class="cat-head"><span class="cat-n h">0{k + 1}</span><div><h3 class="h">{title}</h3><p>{desc}</p></div><span class="cat-c">{len(photos)} fotos</span></div><div class="cat-grid n{len(photos)}">{btns}</div></div>')
+    gal_html = ''.join(cats)
     steps = [
         ('camera', 'Mándenos una foto', 'Por WhatsApp, con una foto del espacio y lo que quiere hacer. Le respondemos rápido, a cualquier hora.'),
         ('doc', 'Reciba su presupuesto', 'Claro y por escrito, con el costo y el plazo. Sin compromiso: usted decide.'),
@@ -217,8 +233,9 @@ def page():
 </div></section>
 {ba_html}
 <section class="sec" id="trabajos" style="background:var(--bg-2)"><div class="wrap">
-  <div class="sec-head rv"><span class="eyebrow">Obras terminadas</span><h2 class="h"><span class="silver">Así quedan</span> <span class="blue">nuestros trabajos</span></h2><p>Fotos reales de obras que entregamos en Lima. Toque cualquiera para verla en grande.</p></div>
-  <div class="gal">{gal_html}</div>
+  <div class="sec-head rv"><span class="eyebrow">Obras terminadas</span><h2 class="h"><span class="silver">Así quedan</span> <span class="blue">nuestros trabajos</span></h2><p>Fotos reales de nuestras obras en Lima, ordenadas por tipo de trabajo: de los techos y estructuras, a los acabados dentro de la casa, hasta el piso. Toque cualquiera para verla en grande.</p></div>
+  <nav class="cat-nav rv" aria-label="Tipos de trabajo">{nav_html}</nav>
+  <div class="cats">{gal_html}</div>
   <div class="cta rv" style="justify-content:center;margin-top:34px"><a class="btn btn-wa" href="{wa('Hola, vi sus trabajos en la página web y quiero algo así para mi casa.')}" target="_blank" rel="noopener">{WA_SVG}Quiero algo así para mi casa</a></div>
   <div class="lb" role="dialog" aria-modal="true" aria-label="Foto ampliada"><button class="x" type="button" aria-label="Cerrar">{ic('x')}</button><button class="pv" type="button" aria-label="Anterior">{ic('left')}</button><img alt=""><button class="nx" type="button" aria-label="Siguiente">{ic('right')}</button><div class="cap"></div></div>
 </div></section>

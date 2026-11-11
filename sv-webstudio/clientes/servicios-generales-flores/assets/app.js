@@ -45,7 +45,7 @@
   // Visor de fotos
   var lb = $('.lb');
   if (lb) {
-    var img = $('img', lb), cap = $('.cap', lb), list = $$('.gal button'), i = 0;
+    var img = $('img', lb), cap = $('.cap', lb), list = $$('#trabajos [data-src]'), i = 0;
     var show = function () { img.src = list[i].getAttribute('data-src'); img.alt = list[i].getAttribute('data-cap'); cap.textContent = list[i].getAttribute('data-cap') + '  ·  ' + (i + 1) + ' / ' + list.length; };
     var close = function () { lb.classList.remove('open'); document.body.style.overflow = ''; };
     var go = function (d) { i = (i + d + list.length) % list.length; show(); };
