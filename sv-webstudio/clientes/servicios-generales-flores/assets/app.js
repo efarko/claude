@@ -33,6 +33,15 @@
     set(input.value);
   });
 
+  // Pestañas de antes / después
+  $$('.ba-tabs button').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var c = t.getAttribute('data-case');
+      $$('.ba-tabs button').forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+      $$('.ba-txt, .ba-stage .ba').forEach(function (el) { el.hidden = el.getAttribute('data-case') !== c; });
+    });
+  });
+
   // Visor de fotos
   var lb = $('.lb');
   if (lb) {
