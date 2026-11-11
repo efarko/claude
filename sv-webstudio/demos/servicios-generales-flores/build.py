@@ -16,11 +16,10 @@ TEL = '+51907335502'
 TEL_TXT = '907 335 502'
 FRANCO_WA = '51957636046'
 ADDR = 'Los Laureles 161 A, Vallecito Bajo, Villa María del Triunfo, Lima'
-MAIL1 = 'cotizaciones@contratistasgeneralesflores.com'
-MAIL2 = 'jorgeflores_1985@outlook.com'
+MAIL1 = 'sgflores_1985@outlook.com'
 YT = '3uKk5c3VZCE'
 TIKTOK = 'https://www.tiktok.com/@sgflores8'
-SITE = 'https://www.contratistasgeneralesflores.com/'
+SITE = 'https://servicios-generales-flores.vercel.app/'
 # Usuario de Instagram de Jorge, sin @. Mientras esté vacío, la web no muestra Instagram.
 INSTAGRAM = 'fs.flores0'
 IG_URL = f'https://www.instagram.com/{INSTAGRAM}/' if INSTAGRAM else ''
@@ -227,7 +226,7 @@ def contact(final=False):
     <div class="cinfo rv">
       <a class="citem" href="{wa('Hola, quiero cotizar un trabajo.')}" target="_blank" rel="noopener"><span class="ic" style="background:#e7f8ee;color:#128c4a">{WA_SVG}</span><span><small>WhatsApp</small><span style="font-weight:600;color:var(--navy)">{TEL_TXT}</span></span></a>
       <a class="citem" href="tel:{TEL}"><span class="ic">{ic('phone')}</span><span><small>Llámenos</small><span style="font-weight:600;color:var(--navy)">{TEL_TXT}</span></span></a>
-      <div class="citem"><span class="ic">{ic('mail')}</span><span><small>Correo</small><a href="mailto:{MAIL1}">{MAIL1}</a><a href="mailto:{MAIL2}">{MAIL2}</a></span></div>
+      <div class="citem"><span class="ic">{ic('mail')}</span><span><small>Correo</small><a href="mailto:{MAIL1}">{MAIL1}</a></span></div>
       <div class="citem"><span class="ic">{ic('pin')}</span><span><small>Dirección</small><p>{ADDR}</p></span></div>
       <div class="citem"><span class="ic">{ic('clock')}</span><span><small>Horario</small><p>Atención las 24 horas</p></span></div>
       {tt}
@@ -465,7 +464,7 @@ def page_index():
   <div class="terms">
     <div>{ic('shield')}<span><b>Garantía:</b> si no le entregamos lo acordado, le devolvemos el 100%.</span></div>
     <div>{ic('calc')}<span><b>Pago:</b> 50% para empezar y 50% cuando la web esté publicada y usted la apruebe. Por Yape o Plin.</span></div>
-    <div>{ic('check')}<span><b>Incluye 3 rondas de cambios</b> y usamos su mismo dominio: contratistasgeneralesflores.com.</span></div>
+    <div>{ic('check')}<span><b>Incluye 3 rondas de cambios</b> y le ayudamos a elegir y conectar su dominio propio.</span></div>
   </div>
   <p style="text-align:center;color:var(--muted);margin-top:34px;font-size:15px">Franco Valladares · SV WebStudio · <a style="color:var(--navy);font-weight:700" href="https://wa.me/{FRANCO_WA}" target="_blank" rel="noopener">+51 957 636 046</a></p>
 </main>

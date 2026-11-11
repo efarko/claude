@@ -22,7 +22,7 @@ MAIL1 = 'sgflores_1985@outlook.com'
 ADDR = 'Los Laureles 161 A, Vallecito Bajo, Villa María del Triunfo, Lima'
 TIKTOK = 'https://www.tiktok.com/@sgflores8'
 INSTAGRAM = 'https://www.instagram.com/fs.flores0/'
-SITE = 'https://www.contratistasgeneralesflores.com/'
+SITE = 'https://servicios-generales-flores.vercel.app/'  # cambiar cuando tenga su dominio nuevo
 
 # ---------- Fotos (archivo en img/ sin extensión .webp, texto) ----------
 HERO = ('hero', 'Baño en mármol negro con iluminación LED terminado por FS Flores')

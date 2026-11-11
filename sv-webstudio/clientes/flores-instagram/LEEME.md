@@ -12,7 +12,7 @@ Todo listo para crear la cuenta con Jorge en unos 10 minutos. La cuenta se crea 
 4. Pasarla a **cuenta profesional**: Configuración → Tipo de cuenta → Cambiar a cuenta profesional → **Empresa** → categoría **Contratista** (o "Servicio de construcción").
 5. Botones de contacto: **WhatsApp 907 335 502**, **Llamar** y la **dirección**.
 6. **Foto de perfil:** `foto-de-perfil.png`
-7. **Sitio web:** https://servicios-generales-flores.vercel.app (cuando pase al dominio, cambiar a https://www.contratistasgeneralesflores.com)
+7. **Sitio web:** https://servicios-generales-flores.vercel.app (cuando tenga su dominio nuevo, cambiarlo aquí)
 8. **Biografía** (copiar tal cual, son menos de 150 caracteres):
 
 ```
