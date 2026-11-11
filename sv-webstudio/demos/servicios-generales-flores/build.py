@@ -19,6 +19,9 @@ ADDR = 'Los Laureles 161 A, Vallecito Bajo, Villa María del Triunfo, Lima'
 MAIL1 = 'cotizaciones@contratistasgeneralesflores.com'
 MAIL2 = 'jorgeflores_1985@outlook.com'
 YT = '3uKk5c3VZCE'
+TIKTOK = 'https://www.tiktok.com/@sgflores8'
+SITE = 'https://www.contratistasgeneralesflores.com/'
+TT_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>'
 
 
 def wa(text):
@@ -106,13 +109,39 @@ CATS = [('all', 'Todos'), ('banos', 'Baños'), ('pisos', 'Pisos y madera'), ('dr
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">'
 
 
-def head(title, desc, base):
+def seo(title, desc):
+    import json
+    ld = {
+        '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusiness',
+        'name': 'Servicios Generales Flores', 'url': SITE, 'logo': SITE + 'img/logo.png', 'image': SITE + 'img/bano-1.webp',
+        'description': desc, 'telephone': TEL, 'email': MAIL1,
+        'address': {'@type': 'PostalAddress', 'streetAddress': 'Los Laureles 161 A, Vallecito Bajo', 'addressLocality': 'Villa María del Triunfo', 'addressRegion': 'Lima', 'addressCountry': 'PE'},
+        'areaServed': ['Lima', 'Callao'],
+        'openingHoursSpecification': {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 'opens': '00:00', 'closes': '23:59'},
+        'sameAs': [TIKTOK],
+        'makesOffer': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s[0]}} for s in SERVICES],
+    }
+    return f'''<meta name="robots" content="index, follow">
+<link rel="canonical" href="{SITE}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="Servicios Generales Flores">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{SITE}">
+<meta property="og:image" content="{SITE}img/bano-1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'''
+
+
+def head(title, desc, base, final=False):
+    robots = seo(title, desc) if final else '<meta name="robots" content="noindex, nofollow">'
     return f'''<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
+{robots}
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#0b1650">
@@ -183,7 +212,8 @@ def band(text, sub, btn_href, btn_txt):
 </div></section>'''
 
 
-def contact():
+def contact(final=False):
+    tt = f'<a class="citem" href="{TIKTOK}" target="_blank" rel="noopener"><span class="ic" style="background:#111;color:#fff">{TT_SVG}</span><span><small>Síganos en TikTok</small><span style="font-weight:600;color:var(--navy)">@sgflores8</span></span></a>' if final else ''
     map_q = quote('Los Laureles 161, Vallecito Bajo, Villa María del Triunfo, Lima')
     return f'''<section class="sec" id="contacto"><div class="wrap">
   <div class="sec-head rv"><span class="eyebrow dark">Contacto</span><h2>Hablemos de su obra</h2><p>Escríbanos por WhatsApp o llámenos. Atendemos las 24 horas.</p></div>
@@ -194,18 +224,21 @@ def contact():
       <div class="citem"><span class="ic">{ic('mail')}</span><span><small>Correo</small><a href="mailto:{MAIL1}">{MAIL1}</a><a href="mailto:{MAIL2}">{MAIL2}</a></span></div>
       <div class="citem"><span class="ic">{ic('pin')}</span><span><small>Dirección</small><p>{ADDR}</p></span></div>
       <div class="citem"><span class="ic">{ic('clock')}</span><span><small>Horario</small><p>Atención las 24 horas</p></span></div>
+      {tt}
     </div>
     <div class="map rv"><iframe title="Mapa: Servicios Generales Flores" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q={map_q}&output=embed"></iframe></div>
   </div>
 </div></section>'''
 
 
-def footer(base, label):
+def footer(base, label, final=False):
+    small = f'© <span data-year>2026</span> Servicios Generales Flores · Página web: <a href="https://sv-web-studio.vercel.app/" target="_blank" rel="noopener">SV WebStudio</a>' if final else f'© <span data-year>2026</span> Servicios Generales Flores · {label}, preparada por SV WebStudio'
+    tt = f'<p style="margin-top:10px"><a href="{TIKTOK}" target="_blank" rel="noopener" style="display:inline-flex;gap:8px;align-items:center"><span style="width:20px;height:20px;display:inline-block">{TT_SVG}</span>TikTok @sgflores8</a></p>' if final else ''
     return f'''<footer class="ftr"><div class="wrap">
   <div><a class="brand" href="#inicio"><img src="{base}img/logo.png" alt="Servicios Generales Flores" width="76" height="56"></a><p style="margin-top:14px;max-width:340px">Acabados de construcción y servicios generales en Lima y Callao. Más de 12 años de experiencia.</p></div>
   <div><p style="color:#fff;font-weight:700;margin-bottom:8px">Servicios</p><p>Gasfitería · Electricidad · Drywall · Albañilería · Mayólicas · Pintura · Remodelaciones · Obras civiles</p></div>
-  <div><p style="color:#fff;font-weight:700;margin-bottom:8px">Contacto</p><p><a href="tel:{TEL}">{TEL_TXT}</a></p><p><a href="mailto:{MAIL1}">{MAIL1}</a></p><p>Villa María del Triunfo, Lima</p></div>
-  <p class="small">© <span data-year>2026</span> Servicios Generales Flores · {label}, preparada por SV WebStudio</p>
+  <div><p style="color:#fff;font-weight:700;margin-bottom:8px">Contacto</p><p><a href="tel:{TEL}">{TEL_TXT}</a></p><p><a href="mailto:{MAIL1}">{MAIL1}</a></p><p>Villa María del Triunfo, Lima</p>{tt}</div>
+  <p class="small">{small}</p>
 </div></footer>
 <a class="fab" href="{wa('Hola, quiero cotizar un trabajo.')}" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al {TEL_TXT}">{WA_SVG}</a>
 <script src="{base}assets/site.js" defer></script>
@@ -214,15 +247,15 @@ def footer(base, label):
 
 
 # ---------------- Opción A ----------------
-def page_a():
-    b = '../'
+def page_a(final=False):
+    b = '' if final else '../'
     svc = ''.join(f'''<article class="svc rv"><div class="ic">{ic(i)}</div><h3>{t}</h3><p>{d}</p><a href="{wa(f'Hola, quiero cotizar un trabajo de {t.lower()}.')}" target="_blank" rel="noopener">Cotizar {ic('arrow')}</a></article>''' for t, i, d, _ in SERVICES)
     sel = [g for g in GALLERY if g[0] in ('bano-1', 'piso-6', 'bano-5', 'drywall-1', 'escalera', 'techo-1', 'bano-13', 'granito', 'mueble-1', 'bano-3', 'techo-2', 'piso-1')]
     # el primero ancho
     sel.sort(key=lambda g: 0 if g[0] == 'piso-6' else 1)
-    return f'''{head('Servicios Generales Flores · Acabados de construcción en Lima', 'Acabados de construcción y servicios generales en Lima y Callao: gasfitería, electricidad, drywall, mayólicas, pintura y remodelaciones. Atención 24 horas.', b)}
+    return f'''{head('Servicios Generales Flores · Acabados de construcción en Lima', 'Acabados de construcción y servicios generales en Lima y Callao: gasfitería, electricidad, drywall, mayólicas, pintura y remodelaciones. Atención 24 horas.', b, final)}
 <body>
-{demo_bar('Opción A · Web corporativa · S/ 500')}
+{'' if final else demo_bar('Opción A · Web corporativa · S/ 500')}
 {header(b)}
 <main id="inicio">
 <section class="hero-a"><div class="wrap">
@@ -248,9 +281,9 @@ def page_a():
 </div></section>
 {about(b)}
 {band('¿Tiene una obra en mente?', 'Mándenos fotos y medidas por WhatsApp y le enviamos su cotización.', wa('Hola, quiero cotizar un trabajo. Les envío fotos y medidas.'), 'Pedir cotización')}
-{contact()}
+{contact(final)}
 </main>
-{footer(b, 'Opción A')}'''
+{footer(b, 'Opción A', final)}'''
 
 
 # ---------------- Opción B ----------------
@@ -437,4 +470,17 @@ if __name__ == '__main__':
     (ROOT / 'web' / 'index.html').write_text(page_a(), encoding='utf-8')
     (ROOT / 'cotizador' / 'index.html').write_text(page_b(), encoding='utf-8')
     (ROOT / 'index.html').write_text(page_index(), encoding='utf-8')
-    print('ok')
+    # Web final de Jorge (opción A, pagada): carpeta propia, lista para su dominio
+    import re, shutil
+    OUT = ROOT.parent.parent / 'clientes' / 'servicios-generales-flores'
+    (OUT / 'assets').mkdir(parents=True, exist_ok=True)
+    (OUT / 'img').mkdir(exist_ok=True)
+    html = page_a(final=True)
+    (OUT / 'index.html').write_text(html, encoding='utf-8')
+    for f in ('site.css', 'site.js'):
+        shutil.copy(ROOT / 'assets' / f, OUT / 'assets' / f)
+    for f in sorted(set(re.findall(r'img/([\w-]+\.(?:webp|png))', html))):
+        shutil.copy(ROOT / 'img' / f, OUT / 'img' / f)
+    (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n', encoding='utf-8')
+    (OUT / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE}</loc><changefreq>monthly</changefreq><priority>1.0</priority></url></urlset>\n', encoding='utf-8')
+    print('ok', OUT)
