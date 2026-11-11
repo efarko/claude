@@ -21,6 +21,10 @@ MAIL2 = 'jorgeflores_1985@outlook.com'
 YT = '3uKk5c3VZCE'
 TIKTOK = 'https://www.tiktok.com/@sgflores8'
 SITE = 'https://www.contratistasgeneralesflores.com/'
+# Usuario de Instagram de Jorge, sin @. Mientras esté vacío, la web no muestra Instagram.
+INSTAGRAM = ''
+IG_URL = f'https://www.instagram.com/{INSTAGRAM}/' if INSTAGRAM else ''
+IG_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>'
 TT_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>'
 
 
@@ -118,7 +122,7 @@ def seo(title, desc):
         'address': {'@type': 'PostalAddress', 'streetAddress': 'Los Laureles 161 A, Vallecito Bajo', 'addressLocality': 'Villa María del Triunfo', 'addressRegion': 'Lima', 'addressCountry': 'PE'},
         'areaServed': ['Lima', 'Callao'],
         'openingHoursSpecification': {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 'opens': '00:00', 'closes': '23:59'},
-        'sameAs': [TIKTOK],
+        'sameAs': [TIKTOK] + ([IG_URL] if IG_URL else []),
         'makesOffer': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s[0]}} for s in SERVICES],
     }
     return f'''<meta name="robots" content="index, follow">
@@ -214,6 +218,8 @@ def band(text, sub, btn_href, btn_txt):
 
 def contact(final=False):
     tt = f'<a class="citem" href="{TIKTOK}" target="_blank" rel="noopener"><span class="ic" style="background:#111;color:#fff">{TT_SVG}</span><span><small>Síganos en TikTok</small><span style="font-weight:600;color:var(--navy)">@sgflores8</span></span></a>' if final else ''
+    if final and IG_URL:
+        tt += f'<a class="citem" href="{IG_URL}" target="_blank" rel="noopener"><span class="ic" style="background:linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2);color:#fff">{IG_SVG}</span><span><small>Síganos en Instagram</small><span style="font-weight:600;color:var(--navy)">@{INSTAGRAM}</span></span></a>'
     map_q = quote('Los Laureles 161, Vallecito Bajo, Villa María del Triunfo, Lima')
     return f'''<section class="sec" id="contacto"><div class="wrap">
   <div class="sec-head rv"><span class="eyebrow dark">Contacto</span><h2>Hablemos de su obra</h2><p>Escríbanos por WhatsApp o llámenos. Atendemos las 24 horas.</p></div>
@@ -234,6 +240,8 @@ def contact(final=False):
 def footer(base, label, final=False):
     small = f'© <span data-year>2026</span> Servicios Generales Flores · Página web: <a href="https://sv-web-studio.vercel.app/" target="_blank" rel="noopener">SV WebStudio</a>' if final else f'© <span data-year>2026</span> Servicios Generales Flores · {label}, preparada por SV WebStudio'
     tt = f'<p style="margin-top:10px"><a href="{TIKTOK}" target="_blank" rel="noopener" style="display:inline-flex;gap:8px;align-items:center"><span style="width:20px;height:20px;display:inline-block">{TT_SVG}</span>TikTok @sgflores8</a></p>' if final else ''
+    if final and IG_URL:
+        tt += f'<p style="margin-top:8px"><a href="{IG_URL}" target="_blank" rel="noopener" style="display:inline-flex;gap:8px;align-items:center"><span style="width:20px;height:20px;display:inline-block">{IG_SVG}</span>Instagram @{INSTAGRAM}</a></p>'
     return f'''<footer class="ftr"><div class="wrap">
   <div><a class="brand" href="#inicio"><img src="{base}img/logo.png" alt="Servicios Generales Flores" width="76" height="56"></a><p style="margin-top:14px;max-width:340px">Acabados de construcción y servicios generales en Lima y Callao. Más de 12 años de experiencia.</p></div>
   <div><p style="color:#fff;font-weight:700;margin-bottom:8px">Servicios</p><p>Gasfitería · Electricidad · Drywall · Albañilería · Mayólicas · Pintura · Remodelaciones · Obras civiles</p></div>
