@@ -178,3 +178,9 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas de prospectos por correo: ninguna (tampoco a los 20 seguimientos de ayer). Rebotes: ninguno.
 - Ventas en curso: Adrianzen sin respuesta; su página queda separada hasta mañana 13/11.
 - Seguimientos en la corrida de la tarde: Casa de Reposo Emanuel y los correos del 5/11.
+
+## 12/11/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna. Rebotes: ninguno.
+- Seguimiento 1 enviado a 11 correos: Casa de Reposo Emanuel (4/11, con ejemplo de casas de reposo) y los 10 del 5/11: Centro Odontológico Vidal, Clínica Dental L&S, Edent Perú, Clínica Dental Sonreír, Centro de Estética Dental Nelson Junes (los cinco con ejemplo dental), Centroral, Enerlab, Union Star, New World Aduanas, Tecnología Sanitaria.
+- Bloqueados: ninguno.
+- No salieron correos nuevos de prospección desde el 5/11: la rutina de "10 correos diarios" parece detenida. Próximos seguimientos: seguimiento 2 a los 7 del 4/11 el 15/11 y a estos 11 el 16/11.
