@@ -173,3 +173,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado a 7 correos del 4/11: Virgen de Fátima, Virgen de Guadalupe, Dedicados con Amor (los tres con el ejemplo de casas de reposo), Plusdent Perú, Clínica Dental Tresierra (los dos con el ejemplo dental), J&R Contadores, T&P Abogados.
 - Bloqueados: ninguno.
 - Pendiente para mañana: seguimiento 1 a Casa de Reposo Emanuel (4/11; se dejó para no escribirle el mismo día que a Casa de Reposo Emmanuel, por si es el mismo negocio) y a los 10 correos del 5/11, y a los que siguen. Decormadera no recibe seguimiento (rebotó la dirección en copia).
+
+## 12/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos por correo: ninguna (tampoco a los 20 seguimientos de ayer). Rebotes: ninguno.
+- Ventas en curso: Adrianzen sin respuesta; su página queda separada hasta mañana 13/11.
+- Seguimientos en la corrida de la tarde: Casa de Reposo Emanuel y los correos del 5/11.
