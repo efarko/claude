@@ -189,3 +189,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas de prospectos por correo: ninguna.
 - Rebote: Tecnología Sanitaria (el dominio tecnologiasanitaria.pe ya no existe). Anotado en rebotes.md; no recibe más seguimientos.
 - Adrianzen: hoy vence el plazo que se le dio. Si no responde hasta la corrida de la tarde, la venta se da por perdida.
+
+## 13/11/2026 · revisión automática 4:51 pm
+- Respuestas de prospectos por correo: ninguna. Rebotes nuevos: ninguno.
+- Adrianzen: venció el plazo sin respuesta; venta perdida (si escribe, se retoma con su muestra).
+- Seguimientos: ninguno vencía hoy. Próximos: seguimiento 2 a los 7 del 4/11 el 15/11 (domingo, se envían el lunes 16/11) y a los 10 del 12/11 el 16/11.
