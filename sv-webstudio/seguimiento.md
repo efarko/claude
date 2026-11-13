@@ -184,3 +184,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 1 enviado a 11 correos: Casa de Reposo Emanuel (4/11, con ejemplo de casas de reposo) y los 10 del 5/11: Centro Odontológico Vidal, Clínica Dental L&S, Edent Perú, Clínica Dental Sonreír, Centro de Estética Dental Nelson Junes (los cinco con ejemplo dental), Centroral, Enerlab, Union Star, New World Aduanas, Tecnología Sanitaria.
 - Bloqueados: ninguno.
 - No salieron correos nuevos de prospección desde el 5/11: la rutina de "10 correos diarios" parece detenida. Próximos seguimientos: seguimiento 2 a los 7 del 4/11 el 15/11 y a estos 11 el 16/11.
+
+## 13/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos por correo: ninguna.
+- Rebote: Tecnología Sanitaria (el dominio tecnologiasanitaria.pe ya no existe). Anotado en rebotes.md; no recibe más seguimientos.
+- Adrianzen: hoy vence el plazo que se le dio. Si no responde hasta la corrida de la tarde, la venta se da por perdida.

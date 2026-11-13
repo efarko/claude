@@ -14,3 +14,4 @@
 | Florería Virgen de Chapi | floreriavirgendchapi@gmail.com | 23/10/2026 |
 | Decormadera Asociados (dirección en copia) | (ver hilo en Gmail) | 07/11/2026 |
 | Carpintería Antonio | (ver hilo en Gmail) | 07/11/2026 |
+| Tecnología Sanitaria | ventas@tecnologiasanitaria.pe (el dominio ya no existe) | 12/11/2026 |
