@@ -147,6 +147,14 @@ function waCard(w) {
     card.append(h('div', { class: 'row', style: 'align-items:center' }, h('details', {}, h('summary', {}, 'Ver el mensaje'), h('p', { class: 'bubble', style: 'margin-top:10px' }, w.msg)), skip));
   } else if (!w.result) {
     card.append(h('div', { class: 'small muted', style: 'display:flex;align-items:center;gap:6px' }, icon('check'), 'Enviado. ¿Te respondió?'));
+    if (w.reply) {
+      const copy = h('button', { class: 'btn sm ghost', style: 'margin-top:10px' }, 'Copiar respuesta');
+      copy.onclick = async () => {
+        try { await navigator.clipboard.writeText(w.reply); toast('Copiado. Pégalo en el chat de WhatsApp.'); }
+        catch { toast('No se pudo copiar. Mantén presionado el texto para copiarlo.'); }
+      };
+      card.append(h('details', {}, h('summary', {}, 'Si te dice que sí, responde esto'), h('p', { class: 'bubble', style: 'margin-top:10px' }, w.reply), copy));
+    }
     const mark = (result) => async (e) => {
       let note = null;
       if (result === 'interested') note = prompt('Nota para Franco (opcional): ¿qué dijo, con quién hablaste?') ?? null;

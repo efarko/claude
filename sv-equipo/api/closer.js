@@ -2,7 +2,7 @@ import { sql, today, log, addDays } from '../lib/db.js';
 import { handler, fail, baseUrl } from '../lib/http.js';
 import { currentUser } from '../lib/auth.js';
 import { prepareDay, moreCalls, callableCount, MAX_NO_ANSWER } from '../lib/assign.js';
-import { waLink, waMessage, callScript, showPhone } from '../lib/msg.js';
+import { waLink, waMessage, waReply, variantOf, callScript, showPhone } from '../lib/msg.js';
 import { sendMail, ownerEmails } from '../lib/mail.js';
 
 const RESULTS = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó' };
@@ -37,7 +37,7 @@ export default handler({
       const day = today();
 
       const wa = u.can_wa ? await sql`
-        select id, name, problem, need, wa_phone, wa_msg, wa_state, wa_result, demo_url, source from prospects
+        select id, name, problem, need, category, wa_phone, wa_msg, wa_state, wa_result, demo_url, source from prospects
          where wa_user = ${u.id} and wa_day = ${day} and wa_result is distinct from 'already'
          order by (wa_state = 'done'), (demo_url is not null) desc, priority desc, id` : [];
 
@@ -72,7 +72,7 @@ export default handler({
         day,
         wa: wa.map((p) => ({
           id: p.id, name: p.name, problem: p.problem, need: p.need, phone: showPhone(p.wa_phone),
-          msg: waMessage(p, u.name), link: waLink(p, u.name), sent: p.wa_state === 'done', result: p.wa_result, demo: p.demo_url,
+          msg: waMessage(p, u.name), reply: waReply(p, u.name), link: waLink(p, u.name), sent: p.wa_state === 'done', result: p.wa_result, demo: p.demo_url,
         })),
         calls,
       };
@@ -85,13 +85,14 @@ export default handler({
       const u = await currentUser(req);
       const id = pid(body.id);
       const [p] = await sql`update prospects set wa_state = 'done', wa_at = now()
-        where id = ${id} and wa_user = ${u.id} and wa_day = ${today()} and wa_state = 'assigned' returning id`;
+        where id = ${id} and wa_user = ${u.id} and wa_day = ${today()} and wa_state = 'assigned' returning id, wa_msg, demo_url`;
       if (!p) {
         const [again] = await sql`select 1 from prospects where id = ${id} and wa_user = ${u.id} and wa_state = 'done'`;
         if (!again) fail(409, 'Ese número ya no está en tu lista de hoy.');
         return { ok: true };
       }
-      await log(sql, { userId: u.id, kind: 'wa_sent', prospectId: id, ip });
+      // La nota guarda qué versión del mensaje se envió, para comparar A y B en el panel.
+      await log(sql, { userId: u.id, kind: 'wa_sent', prospectId: id, note: `msg-${variantOf(p)}`, ip });
       return { ok: true };
     },
   },

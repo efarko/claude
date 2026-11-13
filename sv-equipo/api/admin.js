@@ -55,7 +55,15 @@ export default handler({
                count(*) filter (where kind = 'call_result')::int as calls,
                count(*) filter (where kind in ('call_result','wa_result') and result = 'interested')::int as interested
           from activity where day > ${day}::date - 7 group by day order by day`;
-      return { me: { name: me.name }, day, pool, low: pool.wa <= LOW_POOL || pool.calls <= LOW_POOL, lowLimit: LOW_POOL, totals, pending, team: await perUser(day), week };
+      // Comparación de las versiones A y B del primer WhatsApp: enviados e interesados por versión.
+      const variants = await sql`
+        select substr(a.note, 5) as variant, count(*)::int as sent,
+               count(*) filter (where p.wa_result = 'interested')::int as interested,
+               count(*) filter (where p.wa_result = 'not_interested')::int as not_interested
+          from activity a join prospects p on p.id = a.prospect_id
+         where a.kind = 'wa_sent' and a.note like 'msg-%'
+         group by 1 order by 1`;
+      return { me: { name: me.name }, day, pool, variants, low: pool.wa <= LOW_POOL || pool.calls <= LOW_POOL, lowLimit: LOW_POOL, totals, pending, team: await perUser(day), week };
     },
   },
 
