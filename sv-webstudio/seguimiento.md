@@ -194,3 +194,6 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas de prospectos por correo: ninguna. Rebotes nuevos: ninguno.
 - Adrianzen: venció el plazo sin respuesta; venta perdida (si escribe, se retoma con su muestra).
 - Seguimientos: ninguno vencía hoy. Próximos: seguimiento 2 a los 7 del 4/11 el 15/11 (domingo, se envían el lunes 16/11) y a los 10 del 12/11 el 16/11.
+
+## 14/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos por correo: ninguna. Rebotes: ninguno. Sin ventas en curso a cargo de Claude que requieran acción.
