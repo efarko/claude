@@ -29,6 +29,9 @@ class Partida {
     string equipoCT;
     string equipoT;
 
+    // ============================================================
+    // SECTOR: 1. PREPARACION (equipos, agentes, nueva ronda, tienda)
+    // ============================================================
     static Posicion posicionInicial(int i) {
         return (i % 2 == 0) ? Posicion(0, i) : Posicion(filas - 1, i);
     }
@@ -66,6 +69,9 @@ class Partida {
         for (int i = 1; i < total_agentes; i += 2) Tienda::atenderAgente(*agentes[i], equipoT);
     }
 
+    // ============================================================
+    // SECTOR: 2. CICLO DE LA RONDA Y TURNOS
+    // ============================================================
     // Juega una ronda completa (turnos hasta que se cumpla algun objetivo).
     void jugarRonda() {
         bool terminada = false;
@@ -119,6 +125,9 @@ class Partida {
         }
     }
 
+    // ============================================================
+    // SECTOR: 3. ACCIONES DEL AGENTE (mover, atacar, interactuar)
+    // ============================================================
     bool accionMover(Agente& agente) {
         char movimiento;
         cout << "Direccion (W = arriba, S = abajo, A = izquierda, D = derecha): ";
@@ -235,6 +244,9 @@ class Partida {
         }
     }
 
+    // ============================================================
+    // SECTOR: 4. REGLAS Y CONSULTAS (fin de ronda, vivos, casillas)
+    // ============================================================
     bool juegoTerminado() {
         if (bomba.getEstado() == Bomba::Explotada or bomba.getEstado() == Bomba::Desactivada)
             return true;
@@ -270,6 +282,9 @@ class Partida {
         return nullptr;
     }
 
+    // ============================================================
+    // SECTOR: 5. PANTALLA (estado de bomba y agentes)
+    // ============================================================
     void mostrarEstadoBomba() {
         switch (bomba.getEstado()) {
             case Bomba::Con_portador: {
@@ -316,6 +331,9 @@ class Partida {
         }
     }
 
+    // ============================================================
+    // SECTOR: 6. RESULTADOS Y PUNTOS
+    // ============================================================
     // Resultado de UNA ronda. Si se acaba el tiempo sin bomba plantada, gana CT.
     void evaluarRonda(char& ganador, string& motivo) {
         if (bomba.getEstado() == Bomba::Explotada) {
@@ -372,6 +390,9 @@ class Partida {
     }
 
 public:
+    // ============================================================
+    // SECTOR: 7. INTERFAZ PUBLICA (constructor, destructor, jugar)
+    // ============================================================
     Partida(): ronda(1), turno(1), rondasJugadas(0), puntosCT(0), puntosT(0) {
         for (int i = 0; i < total_agentes; i++) agentes[i] = nullptr;
     }
