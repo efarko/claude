@@ -4,7 +4,7 @@
 #include <iostream>
 #include "partida.h"
 #include "historial.h"
-#include "entrada.h"
+#include <stdexcept>
 using namespace std;
 
 class Juego {
@@ -22,7 +22,14 @@ public:
         int opcion;
         do {
             mostrarMenu();
-            opcion = entrada::leerEntero("Seleccione una opcion: ");
+            cout << "Seleccione una opcion: ";
+            while (!(cin >> opcion)) {
+                if (cin.eof()) throw runtime_error("Se cerro la entrada de datos");
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Entrada invalida, ingrese un numero.\nSeleccione una opcion: ";
+            }
+            cin.ignore(10000, '\n');
             switch (opcion) {
                 case 1: {
                     cout << "\nComenzando partida...\n";

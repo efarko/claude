@@ -13,7 +13,7 @@
 #include "antiterrorista.h"
 #include "tienda.h"
 #include "historial.h"
-#include "entrada.h"
+#include <stdexcept>
 
 using namespace std;
 
@@ -34,8 +34,10 @@ class Partida {
     }
 
     void configurarEquipos() {
-        equipoCT = entrada::leerTexto("\nNombre del equipo Antiterrorista (CT): ");
-        equipoT = entrada::leerTexto("Nombre del equipo Terrorista (T): ");
+        cout << "\nNombre del equipo Antiterrorista (CT): ";
+        if (!getline(cin >> ws, equipoCT)) throw runtime_error("Se cerro la entrada de datos");
+        cout << "Nombre del equipo Terrorista (T): ";
+        if (!getline(cin >> ws, equipoT)) throw runtime_error("Se cerro la entrada de datos");
         for (int i = 0; i < agentes_por_equipo; i++) {
             agentes[2*i]= new Antiterrorista(2*i, i+1, equipoCT + "-" + to_string(i+1), posicionInicial(2*i));
             agentes[2*i+1] = new Terrorista(2*i+1, i+1, equipoT + "-" + to_string(i+1), posicionInicial(2*i+1));
@@ -100,7 +102,10 @@ class Partida {
         cout << "\nTurno de " << agente.getNombre() << " (" << agente.etiqueta() << ") | HP "
          << agente.getHp() << " | " << agente.getArma().getNombre() << "\n";
 
-        char accion = entrada::leerCaracter("[M] Moverse  [A] Atacar  [I] Interactuar  [N] Pasar: ");
+        char accion;
+        cout << "[M] Moverse  [A] Atacar  [I] Interactuar  [N] Pasar: ";
+        if (!(cin >> accion)) throw runtime_error("Se cerro la entrada de datos");
+        cin.ignore(10000, '\n');
         bool accionValida = false;
         switch (toupper(accion)) {
             case 'M': accionValida = accionMover(agente); break;
@@ -115,7 +120,10 @@ class Partida {
     }
 
     bool accionMover(Agente& agente) {
-        char movimiento = entrada::leerCaracter("Direccion (W = arriba, S = abajo, A = izquierda, D = derecha): ");
+        char movimiento;
+        cout << "Direccion (W = arriba, S = abajo, A = izquierda, D = derecha): ";
+        if (!(cin >> movimiento)) throw runtime_error("Se cerro la entrada de datos");
+        cin.ignore(10000, '\n');
 
         Posicion desplazamiento;
         switch (toupper(movimiento)) {
@@ -173,7 +181,15 @@ class Partida {
         }
         cout << "  0. No disparar (pierdes el turno)\n";
 
-        int eleccion = entrada::leerEntero("Objetivo: ");
+        int eleccion;
+        cout << "Objetivo: ";
+        while (!(cin >> eleccion)) {
+            if (cin.eof()) throw runtime_error("Se cerro la entrada de datos");
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Entrada invalida, ingrese un numero.\nObjetivo: ";
+        }
+        cin.ignore(10000, '\n');
         if (eleccion < 0 or eleccion > cantidad) {
             cout << "Opcion incorrecta.\n";
             return false;

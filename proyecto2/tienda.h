@@ -3,7 +3,7 @@
 
 #include <string>
 #include "agente.h"
-#include "entrada.h"
+#include <stdexcept>
 #include <iostream>
 using namespace std;
 
@@ -41,7 +41,15 @@ public:
             }
             cout << "0. Terminar compra\n";
 
-            int opcion = entrada::leerEntero("Opcion: ");
+            int opcion;
+            cout << "Opcion: ";
+            while (!(cin >> opcion)) {
+                if (cin.eof()) throw runtime_error("Se cerro la entrada de datos");
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Entrada invalida, ingrese un numero.\nOpcion: ";
+            }
+            cin.ignore(10000, '\n');
             if (opcion < 0 || opcion > maxOpcion) {
                 cout << "Opcion invalida, ingrese un numero del 0 al " << maxOpcion << "\n";
                 continue;
