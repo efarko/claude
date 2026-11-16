@@ -201,3 +201,7 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 ## 14/11/2026 · revisión automática 4:51 pm
 - Respuestas: ninguna. Rebotes: ninguno.
 - Seguimientos: ninguno vencía hoy (los 7 del 4/11 cumplen 4 días el 15/11, domingo). El lunes 16/11 salen los seguimientos 2 de esos 7 y de los 10 del 12/11.
+
+## 16/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos por correo: ninguna. Rebotes: ninguno.
+- Esta tarde: seguimiento 2 a los 7 del 4/11 y a los 10 del 12/11.
