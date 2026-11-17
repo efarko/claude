@@ -205,3 +205,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 ## 16/11/2026 · revisión automática 9:51 am
 - Respuestas de prospectos por correo: ninguna. Rebotes: ninguno.
 - Esta tarde: seguimiento 2 a los 7 del 4/11 y a los 10 del 12/11.
+
+## 16/11 (tarde, atrasada) y 17/11/2026 9:51 am · revisiones automáticas
+- La corrida del 16/11 4:51 pm no se ejecutó (sesión desconectada); se hizo junto con la de hoy.
+- Adrianzen respondió el 16/11: por ahora no, escribirá si se decide. Se le respondió agradeciendo y dejando la muestra guardada. Pasa a "En pausa".
+- Rebotes: ninguno.
+- Seguimiento 2 (el último) enviado a 17 hilos: Virgen de Fátima, Virgen de Guadalupe, Dedicados con Amor, Plusdent Perú, Clínica Dental Tresierra, J&R Contadores, T&P Abogados, Casa de Reposo Emanuel, Centro Odontológico Vidal, Clínica Dental L&S, Centroral, Edent Perú, Clínica Dental Sonreír, Estética Dental Nelson Junes, Enerlab, Union Star, New World Aduanas. Bloqueados: ninguno.
+- Con esto no quedan prospectos por correo con seguimientos pendientes (salvo los 3 bloqueados del 4/11 que quedaron para Franco). Sin correos nuevos de la rutina de prospección, no habrá más seguimientos.
