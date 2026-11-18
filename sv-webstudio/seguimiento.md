@@ -222,3 +222,7 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 ## 18/11/2026 · revisión automática 9:51 am
 - Respuestas de prospectos: ninguna nueva. Rebotes: ninguno.
 - Esta tarde: seguimiento 1 a los 4 correos del 15/11.
+
+## 18/11/2026 · revisión automática 4:51 pm
+- Respuestas: ninguna. Rebotes: ninguno.
+- Seguimiento 1 enviado a los 4 correos del 15/11: Kassabella Muebles, Plásticos Chimú, Daru Importaciones, Grobflex. Bloqueados: ninguno.
