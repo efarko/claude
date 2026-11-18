@@ -218,3 +218,7 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - La rutina de prospección volvió a enviar desde el 14/11 (4 correos al día: 14, 15, 16 y 17/11).
 - Seguimiento 1 enviado a los 4 correos del 14/11: Tapicería y Mueblería MyJ, Windalum, Carpintería Metálica Anicama, SEICAN. Bloqueados: ninguno.
 - Próximos: seguimiento 1 a los del 15/11 el 18/11, a los del 16/11 el 19/11 y a los del 17/11 el 20/11.
+
+## 18/11/2026 · revisión automática 9:51 am
+- Respuestas de prospectos: ninguna nueva. Rebotes: ninguno.
+- Esta tarde: seguimiento 1 a los 4 correos del 15/11.
