@@ -26,7 +26,7 @@ Registro: español peruano natural, **de "usted"** por defecto. Pasa a "tú" sol
 | Inicio de la mensualidad | Corre desde el día en que la página se publica | Confirmado por Franco |
 | Si no se paga la mensualidad | La página se pausa (no se borra). Para reactivarla se exige pagar todo lo pendiente | Confirmado por Franco |
 | Qué pasa tras los 6 meses | El cliente decide si sigue o no con nosotros | Confirmado por Franco |
-| Si el cliente se va tras los 6 meses | ¿Se queda con la web (archivos, dominio, hosting)? No definido | **Pendiente: pregúntale a Franco, no improvises** |
+| Propiedad de la web | El cliente se queda con la web si paga todo lo adeudado (la web y las mensualidades). Interpretación: "todo" = precio de la web + mensualidades hasta cumplir los 6 meses | Confirmado por Franco; alcance exacto de "todo" y qué se entrega (archivos, dominio, hosting) **Pendiente** |
 | Vigencia de la mensualidad obligatoria | Rige desde hoy (2026-11-20) para todo cliente nuevo | Confirmado por Franco |
 | Web pública de SV WebStudio | Se actualizará en enero para reflejar mensualidad obligatoria | Confirmado por Franco; hasta entonces sigue vigente la regla de no compartir su link |
 
