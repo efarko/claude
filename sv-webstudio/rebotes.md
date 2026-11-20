@@ -16,3 +16,4 @@
 | Carpintería Antonio | (ver hilo en Gmail) | 07/11/2026 |
 | Tecnología Sanitaria | ventas@tecnologiasanitaria.pe (el dominio ya no existe) | 12/11/2026 |
 | Puertas Contraplacadas Leiva | (ver hilo en Gmail) | 19/11/2026 |
+| Servicios Generales Aedo | (ver hilo en Gmail) | 20/11/2026 |

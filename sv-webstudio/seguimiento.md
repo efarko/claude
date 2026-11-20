@@ -236,3 +236,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 
 ## 20/11/2026 · revisión automática 9:51 am
 - Respuestas: ninguna. Rebotes nuevos: ninguno (Leiva ya anotado ayer). Esta tarde: seguimiento 1 a los 4 correos del 17/11.
+
+## 20/11/2026 · revisión automática 4:51 pm
+- Respuestas: ninguna. Rebote: Servicios Generales Aedo (la dirección no existe); no recibe seguimientos.
+- Seguimiento 1 enviado a los 4 correos del 17/11: Mas Acero, Distribuidora Megapern, Multimuebles y Servicios Nani, Cominser. Bloqueados: ninguno.
+- Mañana (21/11): seguimiento 2 a los 4 del 14/11 y seguimiento 1 a los del 18/11.
