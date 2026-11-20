@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'RECORDATORIO (CLAUDE.md del repo): no aceptes las ideas del usuario sin cuestionarlas. Si plantea una idea, negocio o producto: primero la skill interview-me (UNA pregunta a la vez), luego cuestiona supuestos, luego idea-refine y make-plan. En decisiones no triviales aplica doubt-driven-development. Avisa en una linea que skill usas. Al terminar di que verificaste y que no.'"
+          }
+        ]
+      }
+    ]
+  }
+}
