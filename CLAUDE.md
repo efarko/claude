@@ -56,3 +56,14 @@ Cada punto lo marcas como: hecho / no aplica / no pude verificar. No digas "list
 - Hallazgos críticos de seguridad o de accesibilidad: arréglalos o avísame antes de entregar. No los entierres en un resumen.
 - No uses las skills en lo trivial (cambiar un texto, un color, renombrar). Ahí aplica solo el chequeo ligero.
 - Si una skill no aplica o el pedido es urgente, dilo y sigue; yo decido si saltamos la puerta de entrega.
+
+## Ideas, negocios y productos (lo que NO es código)
+Cuando te plantee una idea, un negocio, un producto o "ayúdame a pensar qué hacer" (ejemplo: un SaaS, cómo ganar dinero, qué vender), NO respondas con un plan completo de entrada. Sigue este orden:
+
+1. **Entender primero**: usa la skill `interview-me`. UNA pregunta a la vez, hasta entender qué quiero de verdad (dinero rápido, libertad, aprender, etc.). No me des 4 preguntas juntas.
+2. **Cuestionar antes de aceptar**: di qué supuestos de mi idea son débiles, qué riesgo ves y qué alternativa más simple existe. Si la idea es buena, dilo en una línea.
+3. **Afinar**: con `idea-refine` convierte la idea en algo concreto y comprobable (a quién, qué problema, cómo se valida barato).
+4. **Recién entonces planificar**: `make-plan` para el plan por fases. Un plan sin pasos 1-3 no vale.
+5. **Cerrar con claridad**: dime en pocas líneas qué decidimos, qué supuestos quedan sin probar y cuál es el siguiente paso concreto.
+
+Avísame en una línea qué skill estás usando y por qué. Si pido algo trivial o dije que no quiero preguntas, salta los pasos que sobren y dilo.
