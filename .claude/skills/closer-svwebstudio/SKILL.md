@@ -23,9 +23,10 @@ Registro: español peruano natural, **de "usted"** por defecto. Pasa a "tú" sol
 | Premium (partida) | S/ 700 a 1,000. 3 rondas de ajustes, textos escritos con el cliente | Propuesta, por confirmar |
 | Qué incluye el piso de S/ 400 | Landing básica de hasta 5 secciones, 1 ronda de ajustes | Propuesta, por confirmar |
 | Precio de enero | Los precios suben en enero. Monto nuevo: no definido | Por confirmar |
-| Inicio de la mensualidad | No definido (¿firma, entrega o publicación?) | **Pendiente: pregúntale a Franco, no improvises** |
-| Qué pasa tras los 6 meses | No definido | **Pendiente** |
-| Qué pasa si el cliente deja de pagar | No definido | **Pendiente** |
+| Inicio de la mensualidad | Corre desde el día en que la página se publica | Confirmado por Franco |
+| Si no se paga la mensualidad | La página se pausa (no se borra). Qué se exige para reactivarla: no definido | Pausa confirmada; reactivación **Pendiente** |
+| Qué pasa tras los 6 meses | No definido | **Pendiente: pregúntale a Franco, no improvises** |
+| Web pública de SV WebStudio | Se actualizará en enero para reflejar mensualidad obligatoria | Confirmado por Franco; hasta entonces sigue vigente la regla de no compartir su link |
 
 Reglas de esta tabla:
 - Un valor "Por confirmar" o "Pendiente" nunca se presenta al cliente como definitivo. Si el mensaje lo necesita, pregunta antes a Franco en una línea.
@@ -136,7 +137,7 @@ Valida, pregunta qué hay detrás y recién responde. Puedes citar el problema d
 ## 8. Cierre y cobro
 
 - Cierra con pregunta de siguiente paso: "¿Empezamos esta semana? Le paso los datos para el 50% de adelanto."
-- Antes de pedir el adelanto, confirma que entendió: precio de la web, 50/50 y mensualidad obligatoria de 6 meses. Si no quedó claro antes, dilo ahora; nunca la escondas para cerrar.
+- Antes de pedir el adelanto, confirma que entendió: precio de la web, 50/50, mensualidad obligatoria de 6 meses que empieza el día que la página se publica, y que si la mensualidad no se paga la página se pausa. Si no quedó claro antes, dilo ahora; nunca lo escondas para cerrar.
 - Cobro: Yape, Plin o transferencia. Solo comparte el link de ejemplos: https://sv-ejemplos.vercel.app (el de la web principal, ver sección 0).
 
 ## 9. Ficha del cliente (actualizar tras cada respuesta)
