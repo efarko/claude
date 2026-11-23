@@ -82,16 +82,21 @@ export function ejemploDe(p) {
   return hit ? { rubro: hit[1], url: `https://sv-ejemplos.vercel.app/${hit[2]}/` } : null;
 }
 
-// Estructura: hallazgo concreto → lo que pierden (sin exagerar) → lo que hacemos → muestra gratis sin riesgo → pregunta de sí o no.
-// Solo los prospectos con muestra publicada usan su mensaje propio (wa_msg); el resto usa siempre esta plantilla.
-export function waMessage(p, userName) {
-  const closer = firstName(userName);
-  if (p.wa_msg && p.demo_url) return fill(p.wa_msg, p, closer);
-  const issue = issueOf(p);
-  const correo = /correo/i.test(p.source || '') ? ' Hace unos días les escribí a su correo sobre esto.' : '';
-  const nueva = isNew(p, issue);
-  const ejemplo = ejemploDe(p);
-  const lines = nueva
+// Prueba A/B/C del primer WhatsApp (desde 22/11/2026). Cada prospecto recibe siempre la misma variante (según su id),
+// y al marcar «Enviado» se guarda en prospects.wa_variant para comparar respuestas en el Panel.
+//   A = mensaje original (control, el que ya vendió) · B = misma estructura, más corto y sin frase alarmista · C = abrir con una pregunta corta.
+// Los prospectos con mensaje propio (wa_msg + demo_url) no entran en la prueba: variante null.
+export const VARIANTS = ['A', 'B', 'C'];
+export function variantOf(p) {
+  if (p.wa_msg && p.demo_url) return null;
+  return Number.isInteger(p.id) && p.id > 0 ? VARIANTS[p.id % VARIANTS.length] : 'A';
+}
+
+const OPTOUT = 'Si no les interesa, avísenme y no les escribo más.';
+
+// Estructura de A: hallazgo concreto → lo que pierden → lo que hacemos → muestra gratis sin riesgo → pregunta de sí o no.
+function waA(issue, nueva, correo, ejemplo) {
+  return nueva
     ? [
         `${greeting()}. Soy {closer}, de SV WebStudio.`,
         `Busqué a {negocio} en Google desde el celular, como lo haría un cliente nuevo, y vi que {problema}.${correo}`,
@@ -106,6 +111,46 @@ export function waMessage(p, userName) {
         `${issue.fix || FALLBACK.fix} Queda listo en 1 a 3 días.`,
         'Les preparo gratis una versión de prueba ya corregida para que la vean en su celular. Si no les convence, no pagan nada. ¿Se la envío por aquí?',
       ];
+}
+
+// B: igual de concreto, pero en 3 párrafos, sin afirmar que ya les cuesta clientes, y con una línea para que se puedan salir.
+function waB(issue, nueva, correo, ejemplo) {
+  return nueva
+    ? [
+        `${greeting()}. Soy {closer}, de SV WebStudio. Busqué a {negocio} en Google y vi que {problema}.${correo}`,
+        `Muchos clientes comparan 2 o 3 negocios antes de escribir y eligen al que tiene una página clara y WhatsApp a un toque. Hacemos una así, lista en 48 horas.${ejemplo ? ` Así se ve una para ${ejemplo.rubro}: ${ejemplo.url}` : ''}`,
+        `Les preparo gratis una con su nombre; si no les convence, no pagan nada. ¿Se la envío por aquí? ${OPTOUT}`,
+      ]
+    : [
+        `${greeting()}. Soy {closer}, de SV WebStudio. Entré a la web de {negocio} desde el celular y vi que {problema}.${correo}`,
+        `A veces el cliente que ya quería contactarlos se va con otro por eso. ${issue.fix || FALLBACK.fix} Queda listo en 1 a 3 días.`,
+        `Les preparo gratis una versión de prueba ya corregida; si no les convence, no pagan nada. ¿Se la envío por aquí? ${OPTOUT}`,
+      ];
+}
+
+// C: solo el hallazgo y una pregunta corta. El resto de la propuesta va en el segundo mensaje, cuando respondan.
+function waC(nueva, correo) {
+  return nueva
+    ? [
+        `${greeting()}, soy {closer} de SV WebStudio. Busqué a {negocio} en Google y vi que {problema}.${correo}`,
+        '¿Hablo con quien lleva el negocio? Les puedo mostrar gratis cómo se vería su página.',
+      ]
+    : [
+        `${greeting()}, soy {closer} de SV WebStudio. Entré a la web de {negocio} desde el celular y vi que {problema}.${correo}`,
+        '¿Hablo con quien ve la página? Les puedo mostrar gratis cómo se arregla.',
+      ];
+}
+
+// Solo los prospectos con muestra publicada usan su mensaje propio (wa_msg); el resto usa la variante que le toca.
+export function waMessage(p, userName) {
+  const closer = firstName(userName);
+  if (p.wa_msg && p.demo_url) return fill(p.wa_msg, p, closer);
+  const issue = issueOf(p);
+  const correo = /correo/i.test(p.source || '') ? ' Hace unos días les escribí a su correo sobre esto.' : '';
+  const nueva = isNew(p, issue);
+  const ejemplo = ejemploDe(p);
+  const v = variantOf(p);
+  const lines = v === 'B' ? waB(issue, nueva, correo, ejemplo) : v === 'C' ? waC(nueva, correo) : waA(issue, nueva, correo, ejemplo);
   return fill(lines.join('\n\n'), p, closer);
 }
 

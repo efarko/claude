@@ -2,7 +2,7 @@ import { sql, today, log, addDays } from '../lib/db.js';
 import { handler, fail, baseUrl } from '../lib/http.js';
 import { currentUser } from '../lib/auth.js';
 import { prepareDay, moreCalls, callableCount, MAX_NO_ANSWER } from '../lib/assign.js';
-import { waLink, waMessage, callScript, showPhone } from '../lib/msg.js';
+import { waLink, waMessage, callScript, showPhone, variantOf } from '../lib/msg.js';
 import { sendMail, ownerEmails } from '../lib/mail.js';
 
 const RESULTS = { interested: 'Interesado', not_interested: 'No interesado', no_answer: 'No contestó' };
@@ -84,7 +84,10 @@ export default handler({
     async run({ req, body, ip }) {
       const u = await currentUser(req);
       const id = pid(body.id);
-      const [p] = await sql`update prospects set wa_state = 'done', wa_at = now()
+      // La variante se calcula en el servidor con la misma regla que usó el mensaje (nunca viene del navegador).
+      const [row] = await sql`select id, wa_msg, demo_url from prospects where id = ${id} and wa_user = ${u.id}`;
+      const variant = row ? variantOf(row) : null;
+      const [p] = await sql`update prospects set wa_state = 'done', wa_at = now(), wa_variant = ${variant}
         where id = ${id} and wa_user = ${u.id} and wa_day = ${today()} and wa_state = 'assigned' returning id`;
       if (!p) {
         const [again] = await sql`select 1 from prospects where id = ${id} and wa_user = ${u.id} and wa_state = 'done'`;

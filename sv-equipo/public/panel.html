@@ -95,6 +95,13 @@ const VIEWS = {
     parts.push(h('h2', {}, 'Últimos 7 días'), table(['Día', 'WhatsApp', 'Llamadas', 'Interesados'],
       o.week.length ? o.week.map((w) => h('tr', {}, h('td', {}, fmtDay(w.day)), h('td', { class: 'n' }, w.wa), h('td', { class: 'n' }, w.calls), h('td', { class: 'n' }, w.interested)))
         : h('tr', {}, h('td', { colspan: '4', class: 'muted' }, 'Todavía no hay actividad.'))));
+    if (o.variants && o.variants.length) {
+      const pct = (a, b) => (b ? `${(a / b * 100).toFixed(1)} %` : '—');
+      parts.push(h('h2', {}, 'Prueba de mensajes', h('small', {}, 'A = original · B = más corto · C = pregunta corta')),
+        table(['Variante', 'Enviados', 'Respondieron', '% respuesta', 'Interesados'],
+          o.variants.map((v) => h('tr', {}, h('td', {}, h('b', {}, v.variant)), h('td', { class: 'n' }, v.sent), h('td', { class: 'n' }, v.replied), h('td', { class: 'n' }, pct(v.replied, v.sent)), h('td', { class: 'n' }, v.interested)))),
+        h('p', { class: 'small muted' }, '«Respondieron» cuenta los que el closer marcó como Interesado o No interesado. Con menos de unos 100 envíos por variante la diferencia es ruido: no decidas todavía.'));
+    }
     parts.push(h('p', { class: 'small muted', style: 'margin-top:18px' }, `Total en el sistema: ${o.totals.total} prospectos · ${o.totals.interested} interesados · ${o.totals.clients} clientes · ${o.totals.blocked} bloqueados.`));
     view.replaceChildren(...parts);
   },
