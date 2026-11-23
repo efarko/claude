@@ -250,3 +250,7 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Seguimiento 2 (el último) a los 4 del 14/11: Tapicería y Mueblería MyJ, Windalum, Carpintería Metálica Anicama, SEICAN.
 - Seguimiento 1 a los 4 del 18/11: Pisos VENSAA, ACINMAG, SELSA, RM Energroup. Bloqueados: ninguno.
 - Lunes 23/11: seguimiento 2 a los del 15/11 y seguimiento 1 a los del 19/11 y 20/11 (los del 21/11 cumplen 3 días el 24/11).
+
+## 23/11/2026 · revisión automática 9:51 am
+- Respuestas: ninguna. Rebote: RM Energroup (rebotó el seguimiento 1 del 21/11); no recibe más.
+- Esta tarde: seguimiento 2 a los del 15/11 y seguimiento 1 a los del 19/11 y 20/11.
