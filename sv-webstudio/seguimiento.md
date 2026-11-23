@@ -254,3 +254,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 ## 23/11/2026 · revisión automática 9:51 am
 - Respuestas: ninguna. Rebote: RM Energroup (rebotó el seguimiento 1 del 21/11); no recibe más.
 - Esta tarde: seguimiento 2 a los del 15/11 y seguimiento 1 a los del 19/11 y 20/11.
+
+## 23/11/2026 · revisión automática 4:51 pm
+- Respuestas: ninguna. Rebotes nuevos: ninguno.
+- Seguimiento 2 (el último) a 8 hilos: Kassabella Muebles, Plásticos Chimú, Daru Importaciones, Grobflex (del 15/11); A-nia Group, Servfac Perú, Baterías Pacheco, Proterm (del 16/11).
+- Seguimiento 1 a 9 correos: Lavafast, Toldos y Eventos Mayra, Brianna Shop (del 19/11); Servicios Generales Aedo (segunda dirección), Progresol, CECOGESA, Andamios Murrugarra, Fx Famix, MLC Perú (del 20/11). Bloqueados: ninguno.
