@@ -21,3 +21,4 @@
 | RM Energroup | raulmeza@rm-energroup.com | 21/11/2026 |
 | Andamios Murrugarra | (ver hilo en Gmail) | 23/11/2026 |
 | E.O.R.S. Lucho (dos direcciones, ambas rebotaron) | informes@ y administracion@eorselucho.com | 23/11/2026 |
+| JEM Farma Perú | (ver hilo en Gmail) | 24/11/2026 |

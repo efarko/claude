@@ -262,3 +262,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 
 ## 24/11/2026 · revisión automática 9:51 am
 - Respuestas: ninguna. Rebotes: Andamios Murrugarra (rebotó el seguimiento 1 del 23/11) y las dos direcciones de eorselucho.com (correos nuevos del 23/11). Ninguno recibe más.
+
+## 24/11/2026 · revisión automática 4:51 pm
+- Respuestas: ninguna. Rebote: JEM Farma Perú (correo nuevo del 24/11).
+- Seguimiento 2 (el último) a los 4 del 17/11: Mas Acero, Distribuidora Megapern, Multimuebles Nani, Cominser.
+- Seguimiento 1 a 10 correos del 21/11: Montacargas Santiago (segunda dirección), Randhulab, Grumem Perú, Embalajes San Isidro, Andamios Mendoza, Refrigeración Delgado (con ejemplo de servicio técnico), RAVASI, SERVELECOP, GyG Iluminación, Carpintería Metálica Alet. Bloqueados: ninguno.
