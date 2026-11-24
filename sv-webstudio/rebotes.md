@@ -19,3 +19,5 @@
 | Servicios Generales Aedo | (ver hilo en Gmail) | 20/11/2026 |
 | Montacargas Santiago | (ver hilo en Gmail) | 21/11/2026 |
 | RM Energroup | raulmeza@rm-energroup.com | 21/11/2026 |
+| Andamios Murrugarra | (ver hilo en Gmail) | 23/11/2026 |
+| E.O.R.S. Lucho (dos direcciones, ambas rebotaron) | informes@ y administracion@eorselucho.com | 23/11/2026 |
