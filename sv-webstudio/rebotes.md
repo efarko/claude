@@ -23,3 +23,4 @@
 | E.O.R.S. Lucho (dos direcciones, ambas rebotaron) | informes@ y administracion@eorselucho.com | 23/11/2026 |
 | JEM Farma Perú | (ver hilo en Gmail) | 24/11/2026 |
 | Carpintería Metálica Alet | (ver hilo en Gmail) | 24/11/2026 |
+| Casa Mandara | administracion@casamandara.com | 25/11/2026 |

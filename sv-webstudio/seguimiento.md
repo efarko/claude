@@ -270,3 +270,8 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 
 ## 25/11/2026 · revisión automática 9:51 am
 - Respuestas: ninguna. Rebote: Carpintería Metálica Alet (rebotó el seguimiento 1 del 24/11); no recibe más.
+
+## 25/11/2026 · revisión automática 4:51 pm
+- Respuestas: ninguna. Rebote: Casa Mandara (correo nuevo del 25/11).
+- Seguimiento 2 (el último) a los 3 del 18/11 que quedaban: Pisos VENSAA, ACINMAG, SELSA.
+- Seguimiento 1 a los 10 del 22/11: Estructuras & Andamios MARC, COGEL, Serviscriba, World Servicios Industriales, Cartones Rumy, X Printer, O-Ring's Home, Santa Patricia, Casa Musical Delgado, Notaría Gutiérrez Pradel. Bloqueados: ninguno.
