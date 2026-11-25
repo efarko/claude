@@ -267,3 +267,6 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas: ninguna. Rebote: JEM Farma Perú (correo nuevo del 24/11).
 - Seguimiento 2 (el último) a los 4 del 17/11: Mas Acero, Distribuidora Megapern, Multimuebles Nani, Cominser.
 - Seguimiento 1 a 10 correos del 21/11: Montacargas Santiago (segunda dirección), Randhulab, Grumem Perú, Embalajes San Isidro, Andamios Mendoza, Refrigeración Delgado (con ejemplo de servicio técnico), RAVASI, SERVELECOP, GyG Iluminación, Carpintería Metálica Alet. Bloqueados: ninguno.
+
+## 25/11/2026 · revisión automática 9:51 am
+- Respuestas: ninguna. Rebote: Carpintería Metálica Alet (rebotó el seguimiento 1 del 24/11); no recibe más.
