@@ -278,3 +278,10 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 
 ## 26/11/2026 · revisión automática 9:51 am
 - Respuestas: ninguna. Rebotes nuevos: ninguno (Casa Mandara ya anotado).
+
+## 26/11/2026 · revisión 4:51 pm (no corrió; recuperada el 27/11 a las 9:51 am)
+- Seguimiento 1 a los 10 del 23/11 que no rebotaron: ELUCHO (dirección de hotmail), Baterías Pediátricas, Vaneco, Oxígeno OVAS, IMAGIN, Reparación de Colchones Hnos. Jara, A & H Trading, Muebles de Cuero MCT, Múdate Ya, Merquitex. Bloqueados: ninguno.
+- Los seguimiento 2 del 19/11 y 20/11 se mandan hoy en la tarde (su seguimiento 1 salió el 23/11 en la noche, aún no cumple 4 días).
+
+## 27/11/2026 · revisión automática 9:51 am
+- Respuestas: ninguna. Rebotes nuevos: ninguno (solo un aviso de demora de Gmail en el seguimiento 2 de Pisos VENSAA, que ya no recibe más).
