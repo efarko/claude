@@ -290,4 +290,4 @@ Reglas: seguimiento 1 a los 3 días del correo original; seguimiento 2 (el últi
 - Respuestas: ninguna. Rebotes nuevos: ninguno (aviso de demora de Gmail en el hilo del 26/11 a juancarlos25gs; si se vuelve fallo, se anota).
 - Seguimiento 2 (el último) a los 8 del 19/11 y 20/11: Lavafast, Toldos y Eventos Mayra, Brianna Shop, Servicios Generales Aedo, Progresol, CECOGESA, Fx Famix, MLC Perú.
 - Seguimiento 1 a 2 del 24/11: CALA Tasaciones, Envolturas Flexibles Huachipa. Tope de 20 por día alcanzado (10 salieron en la mañana, recuperando el 26/11).
-- Quedan para mañana sábado 28/11: seguimiento 1 a los otros 8 del 24/11 (Clínica Lurín, Luppaar, Academia Estudia, nefrología pediátrica, Bodega Sotelo, Estudio Roy Freyre, Licorería Disenzo; Jenfarma no, rebotó) y seguimiento 2 a los 9 del 21/11. Bloqueados: ninguno.
+- Quedan para mañana sábado 28/11: seguimiento 1 a los otros 7 del 24/11 (Clínica Lurín, Luppaar, Academia Estudia, nefrología pediátrica, Bodega Sotelo, Estudio Roy Freyre, Licorería Disenzo; Jenfarma no, rebotó) y seguimiento 2 a los 9 del 21/11. Bloqueados: ninguno.
